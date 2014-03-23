@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel author="Kaciano Ghelere">
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<database name="RpgRuler">
+</database>
+
+<table name="Element">
+	<schema name="public"/>
+	<position x="23.25" y="19"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="element_name">
+		<type name="character" length="64"/>
+	</column>
+	<column name="element_symbol">
+		<type name="character" length="64"/>
+	</column>
+	<constraint name="element_pk" type="pk-constr" factor="10" table="public.&quot;Element&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Status">
+	<schema name="public"/>
+	<position x="475" y="16.25"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="status_name">
+		<type name="character" length="64"/>
+	</column>
+	<column name="duration" not-null="true" default-value="0">
+		<type name="bigint"/>
+	</column>
+	<constraint name="status_pk" type="pk-constr" factor="10" table="public.&quot;Status&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="element_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.&quot;Element&quot;.id">
+	<schema name="public"/>
+</sequence>
+
+<sequence name="status_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.&quot;Status&quot;.id">
+	<schema name="public"/>
+</sequence>
+
+<table name="Perk">
+	<schema name="public"/>
+	<position x="828.75" y="17.5"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="perk_name">
+		<type name="character" length="64"/>
+	</column>
+	<column name="perk_description">
+		<type name="character" length="255"/>
+	</column>
+	<constraint name="perk_pk" type="pk-constr" factor="10" table="public.&quot;Perk&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="perk_id_pk"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+</sequence>
+
+<table name="PerkType">
+	<schema name="public"/>
+	<position x="860" y="221.25"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="type_name">
+		<type name="character" length="64"/>
+	</column>
+	<constraint name="perk_type_pk" type="pk-constr" factor="10" table="public.&quot;PerkType&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="perk_type_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.&quot;PerkType&quot;.id">
+	<schema name="public"/>
+</sequence>
+
+<relationship name="Perk_has_one_PerkType" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="3" constr-indexes="1,2"
+	 src-table="public.&quot;PerkType&quot;"
+	 dst-table="public.&quot;Perk&quot;"
+	 src-required="true" dst-required="false"/>
+
+</dbmodel>

@@ -1,7 +1,10 @@
 package br.com.rpgruler.main;
 
+import br.com.rpgruler.main.bean.MainScreenBean;
 import br.com.rpgruler.main.interfaces.IMainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
+import br.com.rpgruler.main.view.ElementView;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -15,7 +18,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * Creates new form MainScreen
      */
     public MainScreen() {
-
+        initialize();
     }
 
     /**
@@ -23,31 +26,49 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      */
     private void initialize() {
         initComponents();
+        listener = new MainScreenBean(this);
     }
 
     @Override
     public void save() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.save(null);
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.delete(null);
     }
 
     @Override
     public void process() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.process(null);
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.clear(null);
     }
 
     @Override
     public void load() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.load(null);
+    }
+
+    //<editor-fold desc="Get's & Set's" defaultstate="collapsed">
+    public MainListener getListener() {
+        return listener;
+    }
+
+    public void setListener(MainListener listener) {
+        this.listener = listener;
+    }
+
+    public JDesktopPane getDesktop() {
+        return desktop;
+    }
+
+    public void setDesktop(JDesktopPane desktop) {
+        this.desktop = desktop;
     }
 
     /**
@@ -57,125 +78,216 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jToolBar = new javax.swing.JToolBar();
+        jBSave = new javax.swing.JButton();
+        jBDelete = new javax.swing.JButton();
+        jBProcess = new javax.swing.JButton();
+        jBRefresh = new javax.swing.JButton();
+        desktop = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMOptions = new javax.swing.JMenu();
+        jMISave = new javax.swing.JMenuItem();
+        jMIDelete = new javax.swing.JMenuItem();
+        jMIProcess = new javax.swing.JMenuItem();
+        jMIRefresh = new javax.swing.JMenuItem();
+        jMElement = new javax.swing.JMenu();
+        jMIRegister = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
+        jToolBar.setFloatable(false);
+        jToolBar.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        jBSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
+        jBSave.setToolTipText("Salvar");
+        jBSave.setFocusable(false);
+        jBSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSaveActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBSave);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        jBDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/trash-16.png"))); // NOI18N
+        jBDelete.setToolTipText("Deletar");
+        jBDelete.setFocusable(false);
+        jBDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeleteActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBDelete);
 
-        jButton3.setText("jButton3");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        jBProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
+        jBProcess.setToolTipText("Processar");
+        jBProcess.setFocusable(false);
+        jBProcess.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBProcess.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBProcessActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBProcess);
 
-        jButton4.setText("jButton4");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        jBRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
+        jBRefresh.setToolTipText("Recarregar");
+        jBRefresh.setFocusable(false);
+        jBRefresh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRefresh.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRefreshActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBRefresh);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
+        desktop.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 592, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Elementos", jPanel1);
+        jLabel1.setText("Mensagens");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
-        );
+        jMOptions.setText("Opções");
 
-        jTabbedPane1.addTab("Raças", jPanel2);
+        jMISave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
+        jMISave.setText("Salvar");
+        jMISave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMISaveActionPerformed(evt);
+            }
+        });
+        jMOptions.add(jMISave);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
-        );
+        jMIDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/trash-16.png"))); // NOI18N
+        jMIDelete.setText("Deletar");
+        jMIDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIDeleteActionPerformed(evt);
+            }
+        });
+        jMOptions.add(jMIDelete);
 
-        jTabbedPane1.addTab("Classes", jPanel3);
+        jMIProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
+        jMIProcess.setText("Processar");
+        jMIProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIProcessActionPerformed(evt);
+            }
+        });
+        jMOptions.add(jMIProcess);
 
-        jMenu1.setText("Arquivo");
-        jMenuBar1.add(jMenu1);
+        jMIRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
+        jMIRefresh.setText("Recarregar");
+        jMIRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRefreshActionPerformed(evt);
+            }
+        });
+        jMOptions.add(jMIRefresh);
 
-        jMenu2.setText("Opções");
-        jMenuBar1.add(jMenu2);
+        jMenuBar.add(jMOptions);
 
-        setJMenuBar(jMenuBar1);
+        jMElement.setText("Elementos");
+
+        jMIRegister.setText("Cadastro");
+        jMIRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRegisterActionPerformed(evt);
+            }
+        });
+        jMElement.add(jMIRegister);
+
+        jMenuBar.add(jMElement);
+
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(desktop)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jTabbedPane1))
+                .addComponent(desktop)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
+        save();
+    }//GEN-LAST:event_jBSaveActionPerformed
+
+    private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
+        delete();
+    }//GEN-LAST:event_jBDeleteActionPerformed
+
+    private void jBProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessActionPerformed
+        process();
+    }//GEN-LAST:event_jBProcessActionPerformed
+
+    private void jBRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRefreshActionPerformed
+        load();
+    }//GEN-LAST:event_jBRefreshActionPerformed
+
+    private void jMISaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISaveActionPerformed
+        save();
+    }//GEN-LAST:event_jMISaveActionPerformed
+
+    private void jMIDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDeleteActionPerformed
+        delete();
+    }//GEN-LAST:event_jMIDeleteActionPerformed
+
+    private void jMIProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIProcessActionPerformed
+        process();
+    }//GEN-LAST:event_jMIProcessActionPerformed
+
+    private void jMIRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRefreshActionPerformed
+        load();
+    }//GEN-LAST:event_jMIRefreshActionPerformed
+
+    private void jMIRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegisterActionPerformed
+        listener.insertView(new ElementView(this));
+    }//GEN-LAST:event_jMIRegisterActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JDesktopPane desktop;
+    private javax.swing.JButton jBDelete;
+    private javax.swing.JButton jBProcess;
+    private javax.swing.JButton jBRefresh;
+    private javax.swing.JButton jBSave;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMElement;
+    private javax.swing.JMenuItem jMIDelete;
+    private javax.swing.JMenuItem jMIProcess;
+    private javax.swing.JMenuItem jMIRefresh;
+    private javax.swing.JMenuItem jMIRegister;
+    private javax.swing.JMenuItem jMISave;
+    private javax.swing.JMenu jMOptions;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
 }
