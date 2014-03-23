@@ -48,14 +48,18 @@ public class ElementView extends DefaultView {
      * Modela os dados da tabela
      */
     private void moldeTable() {
-        URL resources = getClass().getResource("/RpgIcons/fire.png");
-        System.out.println(resources.toString());
-        ImageIcon icon = new ImageIcon(resources);
-        System.out.println(icon.getDescription());
         jTableElements.getColumnModel().getColumn(SYMBOL_COLUMN).setCellRenderer((JTable table, Object value, boolean isSelected1, boolean hasFocus, int row, int column) -> {
             URL resource = getClass().getResource((String) getModel().getValueAt(row, SYMBOL_COLUMN));
             ImageIcon ic = new ImageIcon(resource);
-            return new JLabel(ic);
+            JLabel jLabel = new JLabel(ic);
+            if (isSelected1) {
+                jLabel.setOpaque(true);
+                jLabel.setBackground(table.getSelectionBackground());
+            } else {
+                jLabel.setOpaque(false);
+                jLabel.setBackground(new JLabel().getBackground());
+            }
+            return jLabel;
         });
     }
 
@@ -66,6 +70,12 @@ public class ElementView extends DefaultView {
     private List<Element> getDefaultElements() {
         List<Element> data = new ArrayList<>();
         data.add(new Element(new Long(1), "Fogo", "/RpgIcons/fire.png"));
+        data.add(new Element(new Long(2), "Água", "/RpgIcons/water.png"));
+        data.add(new Element(new Long(3), "Vento", "/RpgIcons/wind.png"));
+        data.add(new Element(new Long(4), "Terra", "/RpgIcons/earth.png"));
+        data.add(new Element(new Long(5), "Luz", "/RpgIcons/light.png"));
+        data.add(new Element(new Long(6), "Sombra", "/RpgIcons/dark.png"));
+        data.add(new Element(new Long(7), "Alquimia", "/RpgIcons/alchemy.png"));
         return data;
     }
 

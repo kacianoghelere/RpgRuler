@@ -3,6 +3,7 @@ package br.com.rpgruler.main;
 import br.com.rpgruler.main.bean.MainScreenBean;
 import br.com.rpgruler.main.interfaces.IMainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
+import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
 import javax.swing.JDesktopPane;
 
@@ -83,6 +84,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBDelete = new javax.swing.JButton();
         jBProcess = new javax.swing.JButton();
         jBRefresh = new javax.swing.JButton();
+        jBDice = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -91,6 +93,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIDelete = new javax.swing.JMenuItem();
         jMIProcess = new javax.swing.JMenuItem();
         jMIRefresh = new javax.swing.JMenuItem();
+        jMIDice = new javax.swing.JMenuItem();
         jMElement = new javax.swing.JMenu();
         jMIRegister = new javax.swing.JMenuItem();
 
@@ -147,6 +150,18 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jToolBar.add(jBRefresh);
 
+        jBDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/dice.gif"))); // NOI18N
+        jBDice.setToolTipText("Jogar dados");
+        jBDice.setFocusable(false);
+        jBDice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBDice.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBDice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDiceActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBDice);
+
         desktop.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
@@ -199,6 +214,15 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             }
         });
         jMOptions.add(jMIRefresh);
+
+        jMIDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/dice.gif"))); // NOI18N
+        jMIDice.setText("Jogar dados");
+        jMIDice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIDiceActionPerformed(evt);
+            }
+        });
+        jMOptions.add(jMIDice);
 
         jMenuBar.add(jMOptions);
 
@@ -273,15 +297,25 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new ElementView(this));
     }//GEN-LAST:event_jMIRegisterActionPerformed
 
+    private void jMIDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDiceActionPerformed
+        listener.insertView(new DiceView());
+    }//GEN-LAST:event_jMIDiceActionPerformed
+
+    private void jBDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDiceActionPerformed
+        listener.insertView(new DiceView());
+    }//GEN-LAST:event_jBDiceActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jBDelete;
+    private javax.swing.JButton jBDice;
     private javax.swing.JButton jBProcess;
     private javax.swing.JButton jBRefresh;
     private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIDelete;
+    private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIProcess;
     private javax.swing.JMenuItem jMIRefresh;
     private javax.swing.JMenuItem jMIRegister;
