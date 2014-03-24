@@ -15,13 +15,18 @@ public class ElementWeakness implements Serializable {
     private Integer id;
     private String weaknessName;
     private Effect idEffect;
-    private Element element;
 
     public ElementWeakness() {
     }
 
     public ElementWeakness(Integer id) {
         this.id = id;
+    }
+
+    public ElementWeakness(Integer id, String weaknessName, Effect idEffect) {
+        this.id = id;
+        this.weaknessName = weaknessName;
+        this.idEffect = idEffect;
     }
 
     public Integer getId() {
@@ -48,14 +53,6 @@ public class ElementWeakness implements Serializable {
         this.idEffect = idEffect;
     }
 
-    public Element getElement() {
-        return element;
-    }
-
-    public void setElement(Element element) {
-        this.element = element;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -80,7 +77,7 @@ public class ElementWeakness implements Serializable {
 
     @Override
     public String toString() {
-        return "ElementWeakness[" + id + "]";
+        return weaknessName;
     }
 
 }

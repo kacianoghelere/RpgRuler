@@ -16,7 +16,6 @@ public class Element implements Serializable {
     private String elementSymbol;
     private ElementBoost idElementBoost;
     private ElementWeakness idElementWeakness;
-    private MixedElement idMixedElement;
 
     public Element() {
     }
@@ -27,13 +26,12 @@ public class Element implements Serializable {
         this.elementSymbol = elementSymbol;
     }
 
-    public Element(Integer id, String elementName, String elementSymbol, ElementBoost idElementBoost, ElementWeakness idElementWeakness, MixedElement idMixedElement) {
+    public Element(Integer id, String elementName, String elementSymbol, ElementBoost idElementBoost, ElementWeakness idElementWeakness) {
         this.id = id;
         this.elementName = elementName;
         this.elementSymbol = elementSymbol;
         this.idElementBoost = idElementBoost;
-        this.idElementWeakness = idElementWeakness;
-        this.idMixedElement = idMixedElement;
+        this.idElementWeakness = idElementWeakness;        
     }
 
     public Element(Integer id) {
@@ -68,7 +66,7 @@ public class Element implements Serializable {
         return idElementBoost;
     }
 
-    public void setIdElementBoost(ElementBoost idElementBoost) {
+    public void setElementBoost(ElementBoost idElementBoost) {
         this.idElementBoost = idElementBoost;
     }
 
@@ -76,16 +74,8 @@ public class Element implements Serializable {
         return idElementWeakness;
     }
 
-    public void setIdElementWeakness(ElementWeakness idElementWeakness) {
+    public void setElementWeakness(ElementWeakness idElementWeakness) {
         this.idElementWeakness = idElementWeakness;
-    }
-
-    public MixedElement getIdMixedElement() {
-        return idMixedElement;
-    }
-
-    public void setIdMixedElement(MixedElement idMixedElement) {
-        this.idMixedElement = idMixedElement;
     }
 
     @Override

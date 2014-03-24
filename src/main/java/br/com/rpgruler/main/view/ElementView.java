@@ -1,6 +1,8 @@
 package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.data.db.dao.ElementDAO;
+import br.com.rpgruler.data.entitity.ElementBoost;
+import br.com.rpgruler.data.entitity.ElementWeakness;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.model.ElementModel;
 import br.com.rpgruler.main.view.bean.ElementBean;
@@ -44,16 +46,17 @@ public class ElementView extends DefaultView {
     private void initialize() {
         initComponents();
         bean = new ElementBean(this);
+        jCBonus.setModel(new DefaultComboBoxModel(bean.getBoosts()));
+        jCWeak.setModel(new DefaultComboBoxModel(bean.getWeaks()));
         ElementDAO dao = new ElementDAO();
         jCSymbol.setModel(new DefaultComboBoxModel(bean.getElementsIcons()));
         if (dao.getList().isEmpty()) {
-            dao.insertAll(bean.getDefaultElements());
+            dao.insertAll(bean.getElements());
         }
         elementModel.setData(dao.getList());
         jTableElements.setModel(elementModel);
         moldeTable();
         setSize(498, 394);
-
     }
 
     /**
@@ -81,6 +84,14 @@ public class ElementView extends DefaultView {
 
     public ElementModel getModel() {
         return (ElementModel) jTableElements.getModel();
+    }
+
+    public void add() {
+        String title = jTTitle.getText();
+        String symbol = jCSymbol.getSelectedItem().toString();
+        ElementBoost bonus = (ElementBoost) jCBonus.getSelectedItem();
+        ElementWeakness weak = (ElementWeakness) jCWeak.getSelectedItem();
+        bean.addElement(title, symbol, bonus, weak);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Get's & Set's">
@@ -133,6 +144,10 @@ public class ElementView extends DefaultView {
         jLTitle = new javax.swing.JLabel();
         jLSymbol = new javax.swing.JLabel();
         jCSymbol = new javax.swing.JComboBox();
+        jCWeak = new javax.swing.JComboBox();
+        jLWeak = new javax.swing.JLabel();
+        jLBonus = new javax.swing.JLabel();
+        jCBonus = new javax.swing.JComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -194,11 +209,19 @@ public class ElementView extends DefaultView {
         jCSymbol.setMinimumSize(new java.awt.Dimension(71, 30));
         jCSymbol.setPreferredSize(new java.awt.Dimension(71, 30));
 
+        jCWeak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLWeak.setText("Fraqueza:");
+
+        jLBonus.setText("Bonus:");
+
+        jCBonus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLTitle)
@@ -208,6 +231,14 @@ public class ElementView extends DefaultView {
                 .addComponent(jLSymbol)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLWeak)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCWeak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLBonus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jSP, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -221,17 +252,21 @@ public class ElementView extends DefaultView {
                     .addComponent(jLSymbol)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLTitle)
-                        .addComponent(jCSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCWeak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLWeak)
+                        .addComponent(jLBonus)
+                        .addComponent(jCBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jCSymbol, jLSymbol, jLTitle, jTTitle});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jCBonus, jCSymbol, jCWeak, jLBonus, jLSymbol, jLTitle, jLWeak, jTTitle});
 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
-        // TODO add your handling code here:
+        add();
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
@@ -242,9 +277,13 @@ public class ElementView extends DefaultView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;
+    private javax.swing.JComboBox jCBonus;
     private javax.swing.JComboBox jCSymbol;
+    private javax.swing.JComboBox jCWeak;
+    private javax.swing.JLabel jLBonus;
     private javax.swing.JLabel jLSymbol;
     private javax.swing.JLabel jLTitle;
+    private javax.swing.JLabel jLWeak;
     private javax.swing.JScrollPane jSP;
     private javax.swing.JTextField jTTitle;
     private javax.swing.JTable jTableElements;

@@ -13,7 +13,7 @@ import javax.swing.table.AbstractTableModel;
 public class ElementModel extends AbstractTableModel {
 
     private List<Element> data;
-    private final String[] columns = {"ID", "Titulo", "Simbolo", "Fraqueza", ""};
+    private final String[] columns = {"ID", "Titulo", "Simbolo", "Fraqueza", "Bônus"};
 
     /**
      * Cria nova instancia de ElementModel

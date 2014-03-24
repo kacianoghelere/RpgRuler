@@ -15,13 +15,18 @@ public class ElementBoost implements Serializable {
     private Integer id;
     private String boostName;
     private Effect idEffect;
-    private Element element;
 
     public ElementBoost() {
     }
 
     public ElementBoost(Integer id) {
         this.id = id;
+    }
+
+    public ElementBoost(Integer id, String boostName, Effect idEffect) {
+        this.id = id;
+        this.boostName = boostName;
+        this.idEffect = idEffect;
     }
 
     public Integer getId() {
@@ -48,14 +53,6 @@ public class ElementBoost implements Serializable {
         this.idEffect = idEffect;
     }
 
-    public Element getElement() {
-        return element;
-    }
-
-    public void setElement(Element element) {
-        this.element = element;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -77,7 +74,7 @@ public class ElementBoost implements Serializable {
 
     @Override
     public String toString() {
-        return "ElementBoost[" + id + "]";
+        return boostName;
     }
 
 }

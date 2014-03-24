@@ -12,33 +12,33 @@ public class Effect implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    private Long id;
+    private Integer id;
     private String effectName;
     private Integer strength;
 
     public Effect() {
     }
 
-    public Effect(Long id) {
+    public Effect(Integer id) {
         this.id = id;
     }
 
-    public Effect(Long id, Integer strength) {
+    public Effect(Integer id, Integer strength) {
         this.id = id;
         this.strength = strength;
     }
 
-    public Effect(Long id, String effectName, Integer strength) {
+    public Effect(Integer id, String effectName, Integer strength) {
         this.id = id;
         this.effectName = effectName;
         this.strength = strength;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -60,8 +60,8 @@ public class Effect implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 13 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
