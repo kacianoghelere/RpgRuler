@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.elements;
+package br.com.rpgruler.main.model;
 
 import br.com.rpgruler.data.entitity.Element;
 import java.util.ArrayList;
