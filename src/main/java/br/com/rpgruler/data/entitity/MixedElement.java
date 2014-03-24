@@ -1,61 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import java.util.Objects;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "MixedElement")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "MixedElement.findAll", query = "SELECT m FROM MixedElement m"),
-    @NamedQuery(name = "MixedElement.findById", query = "SELECT m FROM MixedElement m WHERE m.id = :id"),
-    @NamedQuery(name = "MixedElement.findByMixName", query = "SELECT m FROM MixedElement m WHERE m.mixName = :mixName")})
 public class MixedElement implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "mix_name")
+    private Integer id;
     private String mixName;
-    @OneToMany(mappedBy = "idMixedElement")
-    private Collection<Element> elementCollection;
+    private Element element1;
+    private Element element2;    
 
     public MixedElement() {
     }
 
-    public MixedElement(Long id) {
+    public MixedElement(Integer id, String mixName, Element element1, Element element2) {
         this.id = id;
+        this.mixName = mixName;
+        this.element1 = element1;
+        this.element2 = element2;        
     }
 
-    public Long getId() {
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 61 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MixedElement other = (MixedElement) obj;
+        return Objects.equals(this.id, other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "MixedElement{\n" 
+                + "ID = " + id + ",\n"
+                + "MixName =" + mixName + ",\n"
+                + "Element1 =" + element1 + ",\n"
+                + "Element2 =" + element2 + '}';
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -67,38 +71,20 @@ public class MixedElement implements Serializable {
         this.mixName = mixName;
     }
 
-    @XmlTransient
-    public Collection<Element> getElementCollection() {
-        return elementCollection;
+    public Element getElement1() {
+        return element1;
     }
 
-    public void setElementCollection(Collection<Element> elementCollection) {
-        this.elementCollection = elementCollection;
+    public void setElement1(Element element1) {
+        this.element1 = element1;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public Element getElement2() {
+        return element2;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MixedElement)) {
-            return false;
-        }
-        MixedElement other = (MixedElement) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setElement2(Element element2) {
+        this.element2 = element2;
     }
 
-    @Override
-    public String toString() {
-        return "br.com.rpgruler.data.entitity.MixedElement[ id=" + id + " ]";
-    }
-    
 }

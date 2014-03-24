@@ -1,6 +1,7 @@
 package br.com.rpgruler.main.view;
 
 import br.com.gmp.utils.image.ImageUtil;
+import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.model.ElementModel;
@@ -45,11 +46,17 @@ public class ElementView extends DefaultView {
      */
     private void initialize() {
         initComponents();
+        ElementDAO dao = new ElementDAO();
         jCSymbol.setModel(new DefaultComboBoxModel(getElementsIcons()));
-        elementModel.setData(getDefaultElements());
+        getDefaultElements().stream().forEach((element) -> {
+            dao.insert(element);
+        });
+        List<Element> list = dao.getList();
+        elementModel.setData(list);
         jTableElements.setModel(elementModel);
         moldeTable();
         setSize(498, 394);
+        
     }
 
     /**
@@ -81,17 +88,17 @@ public class ElementView extends DefaultView {
 
     private List<Element> getDefaultElements() {
         List<Element> data = new ArrayList<>();
-        data.add(new Element(new Long(1), "Fogo", "/RpgIcons/fire.png"));
-        data.add(new Element(new Long(2), "Água", "/RpgIcons/water.png"));
-        data.add(new Element(new Long(3), "Vento", "/RpgIcons/wind.png"));
-        data.add(new Element(new Long(4), "Terra", "/RpgIcons/earth.png"));
-        data.add(new Element(new Long(5), "Luz", "/RpgIcons/light.png"));
-        data.add(new Element(new Long(6), "Sombra", "/RpgIcons/dark.png"));
-        data.add(new Element(new Long(7), "Alquimia", "/RpgIcons/alchemy.png"));
+        data.add(new Element(1, "Fogo", "/RpgIcons/fire.png"));
+        data.add(new Element(2, "Água", "/RpgIcons/water.png"));
+        data.add(new Element(3, "Vento", "/RpgIcons/wind.png"));
+        data.add(new Element(4, "Terra", "/RpgIcons/earth.png"));
+        data.add(new Element(5, "Luz", "/RpgIcons/light.png"));
+        data.add(new Element(6, "Sombra", "/RpgIcons/dark.png"));
+        data.add(new Element(7, "Alquimia", "/RpgIcons/alchemy.png"));
         return data;
     }
 
-    private String[] getElements() {
+    private String[] getElementImages() {
         return new String[]{"/RpgIcons/fire.png",
             "/RpgIcons/water.png",
             "/RpgIcons/wind.png",
@@ -102,9 +109,9 @@ public class ElementView extends DefaultView {
     }
 
     private ImageIcon[] getElementsIcons() {
-        ImageIcon[] icons = new ImageIcon[getElements().length];
-        for (int i = 0; i < getElements().length; i++) {
-            icons[i] = new ImageIcon(getClass().getResource(getElements()[i]));
+        ImageIcon[] icons = new ImageIcon[getElementImages().length];
+        for (int i = 0; i < getElementImages().length; i++) {
+            icons[i] = new ImageIcon(getClass().getResource(getElementImages()[i]));
             icons[i].setImage(new ImageUtil().getScaledImage(icons[i].getImage(), 20, 20));
         }
         return icons;

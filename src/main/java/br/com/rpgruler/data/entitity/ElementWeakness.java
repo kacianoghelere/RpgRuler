@@ -1,63 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import java.util.Objects;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "ElementWeakness")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ElementWeakness.findAll", query = "SELECT e FROM ElementWeakness e"),
-    @NamedQuery(name = "ElementWeakness.findById", query = "SELECT e FROM ElementWeakness e WHERE e.id = :id"),
-    @NamedQuery(name = "ElementWeakness.findByWeaknessName", query = "SELECT e FROM ElementWeakness e WHERE e.weaknessName = :weaknessName")})
 public class ElementWeakness implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "weakness_name")
+    private Integer id;
     private String weaknessName;
-    @JoinColumn(name = "id_Effect", referencedColumnName = "id")
-    @OneToOne
     private Effect idEffect;
-    @OneToOne(mappedBy = "idElementWeakness")
     private Element element;
 
     public ElementWeakness() {
     }
 
-    public ElementWeakness(Long id) {
+    public ElementWeakness(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -87,19 +58,21 @@ public class ElementWeakness implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ElementWeakness)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        ElementWeakness other = (ElementWeakness) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ElementWeakness other = (ElementWeakness) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -107,7 +80,7 @@ public class ElementWeakness implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.ElementWeakness[ id=" + id + " ]";
+        return "ElementWeakness[" + id + "]";
     }
-    
+
 }

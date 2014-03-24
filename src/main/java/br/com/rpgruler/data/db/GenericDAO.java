@@ -34,7 +34,7 @@ public class GenericDAO<T> {
     public GenericDAO() {
         this.objectClass = (Class<T>) ((ParameterizedType) (getClass()
                 .getGenericSuperclass())).getActualTypeArguments()[0];
-        this.database = new EntityMap().getMap().get(objectClass);
+        this.database = prefix + (new EntityMap().getMap().get(objectClass)) + sufix;
         File file = new File("db");
         if (!file.exists()) {
             file.mkdir();
@@ -46,7 +46,7 @@ public class GenericDAO<T> {
      *
      * @return <code>T</code> Entidade
      */
-    protected List<T> getList() {
+    public List<T> getList() {
         ObjectContainer db = Db4o.openFile(database);
         Query query = db.query();
         query.constrain(objectClass);
@@ -62,7 +62,7 @@ public class GenericDAO<T> {
      *
      * @param entity <code>T</code>
      */
-    protected void insert(T entity) {
+    public void insert(T entity) {
         ObjectContainer db = Db4o.openFile(database);
         db.store(entity);
         db.commit();
@@ -75,7 +75,7 @@ public class GenericDAO<T> {
      * @param entity <code>T</code> Entidade
      * @throws java.lang.IllegalAccessException Acesso ilegal
      */
-    protected void update(T entity) throws IllegalArgumentException, IllegalAccessException {
+    public void update(T entity) throws IllegalArgumentException, IllegalAccessException {
         ObjectContainer db = Db4o.openFile(database);
         Query query = db.query();
         query.constrain(objectClass);
@@ -91,7 +91,7 @@ public class GenericDAO<T> {
      *
      * @param list <code>List(T)</code> Lista a ser deletada
      */
-    protected void deleteAll(List<T> list) {
+    public void deleteAll(List<T> list) {
         list.stream().forEach((entity) -> {
             delete(entity);
         });
@@ -102,7 +102,7 @@ public class GenericDAO<T> {
      *
      * @param entity <code>T</code> Entidade
      */
-    protected void delete(T entity) {
+    public void delete(T entity) {
         ObjectContainer db = Db4o.openFile(database);
         ObjectSet<T> os = db.queryByExample(entity);
         db.delete(os.next());
@@ -115,7 +115,7 @@ public class GenericDAO<T> {
      * @param id <code>Integer</code> ID
      * @return <code>T</code> Entidade
      */
-    protected T queryByID(int id) {
+    public T queryByID(int id) {
         ObjectContainer db = Db4o.openFile(database);
         Query query = db.query();
         query.constrain(objectClass);
@@ -137,7 +137,7 @@ public class GenericDAO<T> {
      * @param value <code>Object</code> Valor da busca
      * @return <code>List(T)</code> Lista contendo o resultado
      */
-    protected List<T> queryByField(String field, Object value) {
+    public List<T> queryByField(String field, Object value) {
         List<T> list = new ArrayList<>();
         ObjectContainer db = Db4o.openFile(database);
         Query query = db.query();

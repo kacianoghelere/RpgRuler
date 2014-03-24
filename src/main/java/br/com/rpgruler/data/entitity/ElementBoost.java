@@ -1,63 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import java.util.Objects;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "ElementBoost")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ElementBoost.findAll", query = "SELECT e FROM ElementBoost e"),
-    @NamedQuery(name = "ElementBoost.findById", query = "SELECT e FROM ElementBoost e WHERE e.id = :id"),
-    @NamedQuery(name = "ElementBoost.findByBoostName", query = "SELECT e FROM ElementBoost e WHERE e.boostName = :boostName")})
 public class ElementBoost implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "boost_name")
+    private Integer id;
     private String boostName;
-    @JoinColumn(name = "id_Effect", referencedColumnName = "id")
-    @OneToOne
     private Effect idEffect;
-    @OneToOne(mappedBy = "idElementBoost")
     private Element element;
 
     public ElementBoost() {
     }
 
-    public ElementBoost(Long id) {
+    public ElementBoost(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -87,27 +58,26 @@ public class ElementBoost implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ElementBoost)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        ElementBoost other = (ElementBoost) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final ElementBoost other = (ElementBoost) obj;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.ElementBoost[ id=" + id + " ]";
+        return "ElementBoost[" + id + "]";
     }
-    
+
 }
