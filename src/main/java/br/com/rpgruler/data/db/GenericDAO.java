@@ -58,13 +58,27 @@ public class GenericDAO<T> {
     }
 
     /**
-     * Insere os dados no banco de dados
+     * Insere a entidade no banco de dados
      *
-     * @param entity <code>T</code>
+     * @param entity <code>T</code> Entidade
      */
     public void insert(T entity) {
         ObjectContainer db = Db4o.openFile(database);
         db.store(entity);
+        db.commit();
+        db.close();
+    }
+
+    /**
+     * Insere as entidades no banco de dados
+     *
+     * @param entities <code>List(T)</code> Entidades
+     */
+    public void insertAll(List<T> entities) {
+        ObjectContainer db = Db4o.openFile(database);
+        for (T entity : entities) {
+            db.store(entity);
+        }
         db.commit();
         db.close();
     }

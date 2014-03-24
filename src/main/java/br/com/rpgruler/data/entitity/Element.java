@@ -64,7 +64,7 @@ public class Element implements Serializable {
         this.elementSymbol = elementSymbol;
     }
 
-    public ElementBoost getIdElementBoost() {
+    public ElementBoost getElementBoost() {
         return idElementBoost;
     }
 
@@ -72,7 +72,7 @@ public class Element implements Serializable {
         this.idElementBoost = idElementBoost;
     }
 
-    public ElementWeakness getIdElementWeakness() {
+    public ElementWeakness getElementWeakness() {
         return idElementWeakness;
     }
 

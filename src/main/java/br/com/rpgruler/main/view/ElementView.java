@@ -1,35 +1,31 @@
 package br.com.rpgruler.main.view;
 
-import br.com.gmp.utils.image.ImageUtil;
 import br.com.rpgruler.data.db.dao.ElementDAO;
-import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.model.ElementModel;
+import br.com.rpgruler.main.view.bean.ElementBean;
 import br.com.rpgruler.main.view.generic.DefaultView;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
+ * View dos Elementos
  *
  * @author kaciano
  */
 public class ElementView extends DefaultView {
 
     private MainScreen screen;
-    private ElementModel elementModel = new ElementModel();
-    private int ID_COLUMN = 0;
-    private int TITLE_COLUMN = 1;
-    private int SYMBOL_COLUMN = 2;
+    private ElementBean bean;
+    private ElementModel elementModel;
+    private final int ID_COLUMN = 0;
+    private final int TITLE_COLUMN = 1;
+    private final int SYMBOL_COLUMN = 2;
 
     /**
      * Cria nova instancia de ElementView
@@ -38,6 +34,7 @@ public class ElementView extends DefaultView {
      */
     public ElementView(MainScreen screen) {
         this.screen = screen;
+        elementModel = new ElementModel();
         initialize();
     }
 
@@ -46,17 +43,17 @@ public class ElementView extends DefaultView {
      */
     private void initialize() {
         initComponents();
+        bean = new ElementBean(this);
         ElementDAO dao = new ElementDAO();
-        jCSymbol.setModel(new DefaultComboBoxModel(getElementsIcons()));
-        getDefaultElements().stream().forEach((element) -> {
-            dao.insert(element);
-        });
-        List<Element> list = dao.getList();
-        elementModel.setData(list);
+        jCSymbol.setModel(new DefaultComboBoxModel(bean.getElementsIcons()));
+        if (dao.getList().isEmpty()) {
+            dao.insertAll(bean.getDefaultElements());
+        }
+        elementModel.setData(dao.getList());
         jTableElements.setModel(elementModel);
         moldeTable();
         setSize(498, 394);
-        
+
     }
 
     /**
@@ -76,45 +73,14 @@ public class ElementView extends DefaultView {
                 jLabel.setOpaque(false);
                 jLabel.setBackground(new JLabel().getBackground());
             }
-            JComboBox combo = new JComboBox(getElementsIcons());
+            JComboBox combo = new JComboBox(bean.getElementsIcons());
             combo.setSelectedItem(value);
             return jLabel;
         });
     }
 
-    private ElementModel getModel() {
+    public ElementModel getModel() {
         return (ElementModel) jTableElements.getModel();
-    }
-
-    private List<Element> getDefaultElements() {
-        List<Element> data = new ArrayList<>();
-        data.add(new Element(1, "Fogo", "/RpgIcons/fire.png"));
-        data.add(new Element(2, "Água", "/RpgIcons/water.png"));
-        data.add(new Element(3, "Vento", "/RpgIcons/wind.png"));
-        data.add(new Element(4, "Terra", "/RpgIcons/earth.png"));
-        data.add(new Element(5, "Luz", "/RpgIcons/light.png"));
-        data.add(new Element(6, "Sombra", "/RpgIcons/dark.png"));
-        data.add(new Element(7, "Alquimia", "/RpgIcons/alchemy.png"));
-        return data;
-    }
-
-    private String[] getElementImages() {
-        return new String[]{"/RpgIcons/fire.png",
-            "/RpgIcons/water.png",
-            "/RpgIcons/wind.png",
-            "/RpgIcons/earth.png",
-            "/RpgIcons/light.png",
-            "/RpgIcons/dark.png",
-            "/RpgIcons/alchemy.png"};
-    }
-
-    private ImageIcon[] getElementsIcons() {
-        ImageIcon[] icons = new ImageIcon[getElementImages().length];
-        for (int i = 0; i < getElementImages().length; i++) {
-            icons[i] = new ImageIcon(getClass().getResource(getElementImages()[i]));
-            icons[i].setImage(new ImageUtil().getScaledImage(icons[i].getImage(), 20, 20));
-        }
-        return icons;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Get's & Set's">
@@ -124,6 +90,30 @@ public class ElementView extends DefaultView {
 
     public void setScreen(MainScreen screen) {
         this.screen = screen;
+    }
+
+    public JComboBox getjCSymbol() {
+        return jCSymbol;
+    }
+
+    public void setjCSymbol(JComboBox jCSymbol) {
+        this.jCSymbol = jCSymbol;
+    }
+
+    public JTextField getjTTitle() {
+        return jTTitle;
+    }
+
+    public void setjTTitle(JTextField jTTitle) {
+        this.jTTitle = jTTitle;
+    }
+
+    public JTable getjTableElements() {
+        return jTableElements;
+    }
+
+    public void setjTableElements(JTable jTableElements) {
+        this.jTableElements = jTableElements;
     }
 
     // </editor-fold>
@@ -228,10 +218,10 @@ public class ElementView extends DefaultView {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLSymbol)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLTitle)
-                        .addComponent(jCSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLSymbol)))
+                        .addComponent(jCSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
         );

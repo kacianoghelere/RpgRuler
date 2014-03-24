@@ -13,7 +13,7 @@ import javax.swing.table.AbstractTableModel;
 public class ElementModel extends AbstractTableModel {
 
     private List<Element> data;
-    private final String[] columns = {"ID", "Titulo", "Simbolo"};
+    private final String[] columns = {"ID", "Titulo", "Simbolo", "Fraqueza", ""};
 
     /**
      * Cria nova instancia de ElementModel
@@ -43,7 +43,7 @@ public class ElementModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 5;
     }
 
     @Override
@@ -55,6 +55,10 @@ public class ElementModel extends AbstractTableModel {
                 return data.get(row).getElementName();
             case 2:
                 return data.get(row).getElementSymbol();
+            case 3:
+                return data.get(row).getElementWeakness().getWeaknessName();
+            case 4:
+                return data.get(row).getElementBoost().getBoostName();
             default:
                 return "";
         }
@@ -68,6 +72,10 @@ public class ElementModel extends AbstractTableModel {
             case 1:
                 return String.class;
             case 2:
+                return String.class;
+            case 3:
+                return String.class;
+            case 4:
                 return String.class;
             default:
                 return String.class;
