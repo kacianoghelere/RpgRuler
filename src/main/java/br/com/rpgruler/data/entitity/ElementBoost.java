@@ -25,39 +25,32 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author kaciano
  */
 @Entity
-@Table(name = "Status")
+@Table(name = "ElementBoost")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s"),
-    @NamedQuery(name = "Status.findById", query = "SELECT s FROM Status s WHERE s.id = :id"),
-    @NamedQuery(name = "Status.findByStatusName", query = "SELECT s FROM Status s WHERE s.statusName = :statusName"),
-    @NamedQuery(name = "Status.findByDuration", query = "SELECT s FROM Status s WHERE s.duration = :duration")})
-public class Status implements Serializable {
+    @NamedQuery(name = "ElementBoost.findAll", query = "SELECT e FROM ElementBoost e"),
+    @NamedQuery(name = "ElementBoost.findById", query = "SELECT e FROM ElementBoost e WHERE e.id = :id"),
+    @NamedQuery(name = "ElementBoost.findByBoostName", query = "SELECT e FROM ElementBoost e WHERE e.boostName = :boostName")})
+public class ElementBoost implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "status_name")
-    private String statusName;
-    @Basic(optional = false)
-    @Column(name = "duration")
-    private long duration;
+    @Column(name = "boost_name")
+    private String boostName;
     @JoinColumn(name = "id_Effect", referencedColumnName = "id")
     @OneToOne
     private Effect idEffect;
+    @OneToOne(mappedBy = "idElementBoost")
+    private Element element;
 
-    public Status() {
+    public ElementBoost() {
     }
 
-    public Status(Long id) {
+    public ElementBoost(Long id) {
         this.id = id;
-    }
-
-    public Status(Long id, long duration) {
-        this.id = id;
-        this.duration = duration;
     }
 
     public Long getId() {
@@ -68,20 +61,12 @@ public class Status implements Serializable {
         this.id = id;
     }
 
-    public String getStatusName() {
-        return statusName;
+    public String getBoostName() {
+        return boostName;
     }
 
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
-    }
-
-    public long getDuration() {
-        return duration;
-    }
-
-    public void setDuration(long duration) {
-        this.duration = duration;
+    public void setBoostName(String boostName) {
+        this.boostName = boostName;
     }
 
     public Effect getIdEffect() {
@@ -90,6 +75,14 @@ public class Status implements Serializable {
 
     public void setIdEffect(Effect idEffect) {
         this.idEffect = idEffect;
+    }
+
+    public Element getElement() {
+        return element;
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
     }
 
     @Override
@@ -102,10 +95,10 @@ public class Status implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Status)) {
+        if (!(object instanceof ElementBoost)) {
             return false;
         }
-        Status other = (Status) object;
+        ElementBoost other = (ElementBoost) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -114,7 +107,7 @@ public class Status implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.Status[ id=" + id + " ]";
+        return "br.com.rpgruler.data.entitity.ElementBoost[ id=" + id + " ]";
     }
     
 }

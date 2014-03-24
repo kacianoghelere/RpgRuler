@@ -7,57 +7,48 @@
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author kaciano
  */
 @Entity
-@Table(name = "Status")
+@Table(name = "MixedElement")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s"),
-    @NamedQuery(name = "Status.findById", query = "SELECT s FROM Status s WHERE s.id = :id"),
-    @NamedQuery(name = "Status.findByStatusName", query = "SELECT s FROM Status s WHERE s.statusName = :statusName"),
-    @NamedQuery(name = "Status.findByDuration", query = "SELECT s FROM Status s WHERE s.duration = :duration")})
-public class Status implements Serializable {
+    @NamedQuery(name = "MixedElement.findAll", query = "SELECT m FROM MixedElement m"),
+    @NamedQuery(name = "MixedElement.findById", query = "SELECT m FROM MixedElement m WHERE m.id = :id"),
+    @NamedQuery(name = "MixedElement.findByMixName", query = "SELECT m FROM MixedElement m WHERE m.mixName = :mixName")})
+public class MixedElement implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "status_name")
-    private String statusName;
-    @Basic(optional = false)
-    @Column(name = "duration")
-    private long duration;
-    @JoinColumn(name = "id_Effect", referencedColumnName = "id")
-    @OneToOne
-    private Effect idEffect;
+    @Column(name = "mix_name")
+    private String mixName;
+    @OneToMany(mappedBy = "idMixedElement")
+    private Collection<Element> elementCollection;
 
-    public Status() {
+    public MixedElement() {
     }
 
-    public Status(Long id) {
+    public MixedElement(Long id) {
         this.id = id;
-    }
-
-    public Status(Long id, long duration) {
-        this.id = id;
-        this.duration = duration;
     }
 
     public Long getId() {
@@ -68,28 +59,21 @@ public class Status implements Serializable {
         this.id = id;
     }
 
-    public String getStatusName() {
-        return statusName;
+    public String getMixName() {
+        return mixName;
     }
 
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
+    public void setMixName(String mixName) {
+        this.mixName = mixName;
     }
 
-    public long getDuration() {
-        return duration;
+    @XmlTransient
+    public Collection<Element> getElementCollection() {
+        return elementCollection;
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
-    public Effect getIdEffect() {
-        return idEffect;
-    }
-
-    public void setIdEffect(Effect idEffect) {
-        this.idEffect = idEffect;
+    public void setElementCollection(Collection<Element> elementCollection) {
+        this.elementCollection = elementCollection;
     }
 
     @Override
@@ -102,10 +86,10 @@ public class Status implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Status)) {
+        if (!(object instanceof MixedElement)) {
             return false;
         }
-        Status other = (Status) object;
+        MixedElement other = (MixedElement) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -114,7 +98,7 @@ public class Status implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.Status[ id=" + id + " ]";
+        return "br.com.rpgruler.data.entitity.MixedElement[ id=" + id + " ]";
     }
     
 }

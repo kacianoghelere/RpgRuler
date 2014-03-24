@@ -6,6 +6,10 @@
     <class>br.com.rpgruler.data.entitity.PerkType</class>
     <class>br.com.rpgruler.data.entitity.Element</class>
     <class>br.com.rpgruler.data.entitity.Perk</class>
+    <class>br.com.rpgruler.data.entitity.ElementBoost</class>
+    <class>br.com.rpgruler.data.entitity.MixedElement</class>
+    <class>br.com.rpgruler.data.entitity.Effect</class>
+    <class>br.com.rpgruler.data.entitity.ElementWeakness</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/RpgRuler"/>
       <property name="javax.persistence.jdbc.user" value="kaciano"/>

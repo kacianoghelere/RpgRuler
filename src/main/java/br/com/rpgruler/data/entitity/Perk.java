@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Perk.findAll", query = "SELECT p FROM Perk p"),
     @NamedQuery(name = "Perk.findById", query = "SELECT p FROM Perk p WHERE p.id = :id"),
     @NamedQuery(name = "Perk.findByPerkName", query = "SELECT p FROM Perk p WHERE p.perkName = :perkName"),
-    @NamedQuery(name = "Perk.findByPerkDescription", query = "SELECT p FROM Perk p WHERE p.perkDescription = :perkDescription")})
+    @NamedQuery(name = "Perk.findByPerkDescription", query = "SELECT p FROM Perk p WHERE p.perkDescription = :perkDescription"),
+    @NamedQuery(name = "Perk.findByInherited", query = "SELECT p FROM Perk p WHERE p.inherited = :inherited")})
 public class Perk implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,6 +41,11 @@ public class Perk implements Serializable {
     private String perkName;
     @Column(name = "perk_description")
     private String perkDescription;
+    @Column(name = "inherited")
+    private Boolean inherited;
+    @JoinColumn(name = "id_Effect", referencedColumnName = "id")
+    @OneToOne
+    private Effect idEffect;
     @JoinColumn(name = "id_PerkType", referencedColumnName = "id")
     @OneToOne
     private PerkType idPerkType;
@@ -73,6 +79,22 @@ public class Perk implements Serializable {
 
     public void setPerkDescription(String perkDescription) {
         this.perkDescription = perkDescription;
+    }
+
+    public Boolean getInherited() {
+        return inherited;
+    }
+
+    public void setInherited(Boolean inherited) {
+        this.inherited = inherited;
+    }
+
+    public Effect getIdEffect() {
+        return idEffect;
+    }
+
+    public void setIdEffect(Effect idEffect) {
+        this.idEffect = idEffect;
     }
 
     public PerkType getIdPerkType() {

@@ -25,39 +25,32 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author kaciano
  */
 @Entity
-@Table(name = "Status")
+@Table(name = "ElementWeakness")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s"),
-    @NamedQuery(name = "Status.findById", query = "SELECT s FROM Status s WHERE s.id = :id"),
-    @NamedQuery(name = "Status.findByStatusName", query = "SELECT s FROM Status s WHERE s.statusName = :statusName"),
-    @NamedQuery(name = "Status.findByDuration", query = "SELECT s FROM Status s WHERE s.duration = :duration")})
-public class Status implements Serializable {
+    @NamedQuery(name = "ElementWeakness.findAll", query = "SELECT e FROM ElementWeakness e"),
+    @NamedQuery(name = "ElementWeakness.findById", query = "SELECT e FROM ElementWeakness e WHERE e.id = :id"),
+    @NamedQuery(name = "ElementWeakness.findByWeaknessName", query = "SELECT e FROM ElementWeakness e WHERE e.weaknessName = :weaknessName")})
+public class ElementWeakness implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "status_name")
-    private String statusName;
-    @Basic(optional = false)
-    @Column(name = "duration")
-    private long duration;
+    @Column(name = "weakness_name")
+    private String weaknessName;
     @JoinColumn(name = "id_Effect", referencedColumnName = "id")
     @OneToOne
     private Effect idEffect;
+    @OneToOne(mappedBy = "idElementWeakness")
+    private Element element;
 
-    public Status() {
+    public ElementWeakness() {
     }
 
-    public Status(Long id) {
+    public ElementWeakness(Long id) {
         this.id = id;
-    }
-
-    public Status(Long id, long duration) {
-        this.id = id;
-        this.duration = duration;
     }
 
     public Long getId() {
@@ -68,20 +61,12 @@ public class Status implements Serializable {
         this.id = id;
     }
 
-    public String getStatusName() {
-        return statusName;
+    public String getWeaknessName() {
+        return weaknessName;
     }
 
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
-    }
-
-    public long getDuration() {
-        return duration;
-    }
-
-    public void setDuration(long duration) {
-        this.duration = duration;
+    public void setWeaknessName(String weaknessName) {
+        this.weaknessName = weaknessName;
     }
 
     public Effect getIdEffect() {
@@ -90,6 +75,14 @@ public class Status implements Serializable {
 
     public void setIdEffect(Effect idEffect) {
         this.idEffect = idEffect;
+    }
+
+    public Element getElement() {
+        return element;
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
     }
 
     @Override
@@ -102,10 +95,10 @@ public class Status implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Status)) {
+        if (!(object instanceof ElementWeakness)) {
             return false;
         }
-        Status other = (Status) object;
+        ElementWeakness other = (ElementWeakness) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -114,7 +107,7 @@ public class Status implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.Status[ id=" + id + " ]";
+        return "br.com.rpgruler.data.entitity.ElementWeakness[ id=" + id + " ]";
     }
     
 }
