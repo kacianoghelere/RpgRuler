@@ -1,7 +1,6 @@
 package br.com.rpgruler.main.elements;
 
 import br.com.rpgruler.data.entitity.Element;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -14,12 +13,20 @@ import javax.swing.table.AbstractTableModel;
 public class ElementModel extends AbstractTableModel {
 
     private List<Element> data;
-    private String[] columns = {"ID", "Titulo", "Simbolo"};
+    private final String[] columns = {"ID", "Titulo", "Simbolo"};
 
+    /**
+     * Cria nova instancia de ElementModel
+     */
     public ElementModel() {
         data = new ArrayList<>();
     }
 
+    /**
+     * Cria nova instancia de ElementModel
+     *
+     * @param data <code>List(Element)</code> Dados do modelo
+     */
     public ElementModel(List data) {
         this.data = data;
     }
@@ -112,15 +119,32 @@ public class ElementModel extends AbstractTableModel {
         data.clear();
     }
 
+    /**
+     * Retorna os dados do modelo
+     *
+     * @return <code>List(Element)</code>
+     */
     public List<Element> getData() {
         return data;
     }
 
+    /**
+     * Modifica os dados do modelo
+     *
+     * @param data <code>List(Element)</code>
+     */
     public void setData(List<Element> data) {
         if (data != null) {
             this.data = data;
             fireTableDataChanged();
         }
+    }
+
+    /**
+     * Recarrega o modelo
+     */
+    public void refresh() {
+        fireTableDataChanged();
     }
 
 }
