@@ -22,8 +22,12 @@ public class ElementBean {
         this.elementView = elementView;
     }
 
-    public void addElement(String title, String symbol, ElementBoost boost, ElementWeakness wek) {
-        elementView.getModel().add(new Element(Integer.SIZE, null, null));
+    public void addElement(String title, int symbol, ElementBoost boost, ElementWeakness weak) {
+        Integer id = 0;
+        for (Element element : elementView.getModel().getData()) {
+            id = element.getId() > id ? element.getId() : id;
+        }        
+        elementView.getModel().add(new Element(id, title, getImages()[symbol], boost, weak));
     }
 
     public void removeElement() {

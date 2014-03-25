@@ -76,9 +76,9 @@ public class GenericDAO<T> {
      */
     public void insertAll(List<T> entities) {
         ObjectContainer db = Db4o.openFile(database);
-        for (T entity : entities) {
+        entities.stream().forEach((entity) -> {
             db.store(entity);
-        }
+        });
         db.commit();
         db.close();
     }
@@ -103,12 +103,16 @@ public class GenericDAO<T> {
     /**
      * Deleta todos os objetos da lista
      *
-     * @param list <code>List(T)</code> Lista a ser deletada
+     * @param entities <code>List(T)</code> Lista a ser deletada
      */
-    public void deleteAll(List<T> list) {
-        list.stream().forEach((entity) -> {
-            delete(entity);
+    public void deleteAll(List<T> entities) {
+        ObjectContainer db = Db4o.openFile(database);
+        entities.stream().forEach((entity) -> {
+            ObjectSet<T> os = db.queryByExample(entity);
+            db.delete(os.next());
         });
+        db.commit();
+        db.close();
     }
 
     /**
@@ -120,6 +124,7 @@ public class GenericDAO<T> {
         ObjectContainer db = Db4o.openFile(database);
         ObjectSet<T> os = db.queryByExample(entity);
         db.delete(os.next());
+        db.commit();
         db.close();
     }
 

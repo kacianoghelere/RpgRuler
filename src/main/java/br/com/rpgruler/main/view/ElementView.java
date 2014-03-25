@@ -56,7 +56,7 @@ public class ElementView extends DefaultView {
         elementModel.setData(dao.getList());
         jTableElements.setModel(elementModel);
         moldeTable();
-        setSize(498, 394);
+        setSize(700, 394);
     }
 
     /**
@@ -88,9 +88,10 @@ public class ElementView extends DefaultView {
 
     public void add() {
         String title = jTTitle.getText();
-        String symbol = jCSymbol.getSelectedItem().toString();
+        int symbol = jCSymbol.getSelectedIndex();
+        System.out.println(symbol);
         ElementBoost bonus = (ElementBoost) jCBonus.getSelectedItem();
-        ElementWeakness weak = (ElementWeakness) jCWeak.getSelectedItem();
+        ElementWeakness weak = (ElementWeakness) jCWeak.getSelectedItem();                
         bean.addElement(title, symbol, bonus, weak);
     }
 
@@ -154,6 +155,8 @@ public class ElementView extends DefaultView {
         setMaximizable(true);
         setResizable(true);
         setTitle("Elementos");
+        setMinimumSize(new java.awt.Dimension(628, 394));
+        setPreferredSize(new java.awt.Dimension(628, 394));
         setVisible(true);
 
         jToolBar.setFloatable(false);
@@ -221,7 +224,7 @@ public class ElementView extends DefaultView {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLTitle)
@@ -239,7 +242,7 @@ public class ElementView extends DefaultView {
                 .addComponent(jLBonus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 94, Short.MAX_VALUE))
             .addComponent(jSP, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
