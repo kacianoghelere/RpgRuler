@@ -1,9 +1,9 @@
 package br.com.rpgruler.main.view;
 
+import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.generic.DefaultView;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.JButton;
 
@@ -16,8 +16,11 @@ public class DiceView extends DefaultView {
 
     /**
      * Creates new form DiceView
+     *
+     * @param screen <code>MainScreen</code> Tela principal
      */
-    public DiceView() {
+    public DiceView(MainScreen screen) {
+        super(screen);
         initialize();
     }
 

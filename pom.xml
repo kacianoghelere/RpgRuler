@@ -10,11 +10,6 @@
             <groupId>com.db4o</groupId>
             <artifactId>com.db4o</artifactId>
             <version>7.7.67</version>
-        </dependency>        
-        <dependency>
-            <groupId>br.com.gmp</groupId>
-            <artifactId>GMPUtils</artifactId>
-            <version>1.1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -26,6 +21,16 @@
             <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
             <version>2.5.1</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>br.com.gmp</groupId>
+            <artifactId>GMPUtils</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>br.com.gmp</groupId>
+            <artifactId>GMPComps</artifactId>
+            <version>1.2</version>
         </dependency>
     </dependencies>
     <properties>

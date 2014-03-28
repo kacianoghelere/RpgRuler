@@ -22,7 +22,6 @@ import javax.swing.JTextField;
  */
 public class ElementView extends DefaultView {
 
-    private MainScreen screen;
     private ElementBean bean;
     private ElementModel elementModel;
     private final int ID_COLUMN = 0;
@@ -32,10 +31,10 @@ public class ElementView extends DefaultView {
     /**
      * Cria nova instancia de ElementView
      *
-     * @param screen MainScreen
+     * @param screen <code>MainScreen</code> Tela principal
      */
     public ElementView(MainScreen screen) {
-        this.screen = screen;
+        super(screen);
         elementModel = new ElementModel();
         initialize();
     }
@@ -55,7 +54,7 @@ public class ElementView extends DefaultView {
         }
         elementModel.setData(dao.getList());
         jTableElements.setModel(elementModel);
-        moldeTable();
+        //moldeTable();
         setSize(700, 394);
     }
 
@@ -91,19 +90,11 @@ public class ElementView extends DefaultView {
         int symbol = jCSymbol.getSelectedIndex();
         System.out.println(symbol);
         ElementBoost bonus = (ElementBoost) jCBonus.getSelectedItem();
-        ElementWeakness weak = (ElementWeakness) jCWeak.getSelectedItem();                
+        ElementWeakness weak = (ElementWeakness) jCWeak.getSelectedItem();
         bean.addElement(title, symbol, bonus, weak);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Get's & Set's">
-    public MainScreen getScreen() {
-        return screen;
-    }
-
-    public void setScreen(MainScreen screen) {
-        this.screen = screen;
-    }
-
     public JComboBox getjCSymbol() {
         return jCSymbol;
     }

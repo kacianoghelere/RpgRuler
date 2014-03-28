@@ -5,6 +5,7 @@ import br.com.rpgruler.main.interfaces.IMainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
+import br.com.rpgruler.main.view.PerkView;
 import javax.swing.JDesktopPane;
 
 /**
@@ -95,7 +96,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIRefresh = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
         jMElement = new javax.swing.JMenu();
-        jMIRegister = new javax.swing.JMenuItem();
+        jMIRegElement = new javax.swing.JMenuItem();
+        jMPerk = new javax.swing.JMenu();
+        jMIRegPerk = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,15 +231,27 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMElement.setText("Elementos");
 
-        jMIRegister.setText("Cadastro");
-        jMIRegister.addActionListener(new java.awt.event.ActionListener() {
+        jMIRegElement.setText("Cadastro");
+        jMIRegElement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIRegisterActionPerformed(evt);
+                jMIRegElementActionPerformed(evt);
             }
         });
-        jMElement.add(jMIRegister);
+        jMElement.add(jMIRegElement);
 
         jMenuBar.add(jMElement);
+
+        jMPerk.setText("Vantagens");
+
+        jMIRegPerk.setText("Cadastro");
+        jMIRegPerk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRegPerkActionPerformed(evt);
+            }
+        });
+        jMPerk.add(jMIRegPerk);
+
+        jMenuBar.add(jMPerk);
 
         setJMenuBar(jMenuBar);
 
@@ -293,17 +308,21 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         load();
     }//GEN-LAST:event_jMIRefreshActionPerformed
 
-    private void jMIRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegisterActionPerformed
+    private void jMIRegElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegElementActionPerformed
         listener.insertView(new ElementView(this));
-    }//GEN-LAST:event_jMIRegisterActionPerformed
+    }//GEN-LAST:event_jMIRegElementActionPerformed
 
     private void jMIDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDiceActionPerformed
-        listener.insertView(new DiceView());
+        listener.insertView(new DiceView(this));
     }//GEN-LAST:event_jMIDiceActionPerformed
 
     private void jBDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDiceActionPerformed
-        listener.insertView(new DiceView());
+        listener.insertView(new DiceView(this));
     }//GEN-LAST:event_jBDiceActionPerformed
+
+    private void jMIRegPerkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegPerkActionPerformed
+        listener.insertView(new PerkView(this));
+    }//GEN-LAST:event_jMIRegPerkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
@@ -318,9 +337,11 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIProcess;
     private javax.swing.JMenuItem jMIRefresh;
-    private javax.swing.JMenuItem jMIRegister;
+    private javax.swing.JMenuItem jMIRegElement;
+    private javax.swing.JMenuItem jMIRegPerk;
     private javax.swing.JMenuItem jMISave;
     private javax.swing.JMenu jMOptions;
+    private javax.swing.JMenu jMPerk;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables

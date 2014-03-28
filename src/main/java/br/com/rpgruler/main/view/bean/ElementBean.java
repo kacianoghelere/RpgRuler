@@ -14,11 +14,12 @@ import javax.swing.ImageIcon;
  *
  * @author kaciano
  */
-public class ElementBean {
+public class ElementBean extends DefaultViewBean<ElementView> {
 
     private ElementView elementView;
 
     public ElementBean(ElementView elementView) {
+        super(elementView);
         this.elementView = elementView;
     }
 
@@ -26,7 +27,7 @@ public class ElementBean {
         Integer id = 0;
         for (Element element : elementView.getModel().getData()) {
             id = element.getId() > id ? element.getId() : id;
-        }        
+        }
         elementView.getModel().add(new Element(id, title, getImages()[symbol], boost, weak));
     }
 

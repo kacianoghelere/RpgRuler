@@ -10,7 +10,6 @@ import javax.persistence.Id;
  */
 public class PerkType implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     private Integer id;
     private String typeName;
