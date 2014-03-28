@@ -1,7 +1,6 @@
 package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.generic.DefaultView;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.util.Random;

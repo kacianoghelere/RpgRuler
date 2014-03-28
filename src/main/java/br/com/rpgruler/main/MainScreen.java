@@ -3,6 +3,7 @@ package br.com.rpgruler.main;
 import br.com.rpgruler.main.bean.MainScreenBean;
 import br.com.rpgruler.main.interfaces.IMainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
+import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
 import br.com.rpgruler.main.view.PerkView;
@@ -28,49 +29,83 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      */
     private void initialize() {
         initComponents();
+        setControls(false, false, false, false, false);
         listener = new MainScreenBean(this);
     }
 
     @Override
     public void save() {
-        listener.save(null);
+        listener.save(new BeanEvent(this, null));
     }
 
     @Override
     public void delete() {
-        listener.delete(null);
+        listener.delete(new BeanEvent(this, null));
     }
 
     @Override
     public void process() {
-        listener.process(null);
+        listener.process(new BeanEvent(this, null));
     }
 
     @Override
     public void clear() {
-        listener.clear(null);
+        listener.clear(new BeanEvent(this, null));
     }
 
     @Override
     public void load() {
-        listener.load(null);
+        listener.load(new BeanEvent(this, null));
     }
 
     //<editor-fold desc="Get's & Set's" defaultstate="collapsed">
+    /**
+     * Retorna o listener
+     *
+     * @return MainListener
+     */
     public MainListener getListener() {
         return listener;
     }
 
+    /**
+     * Modifica o listener
+     *
+     * @param listener MainListener
+     */
     public void setListener(MainListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Retorno o desktop
+     *
+     * @return JDesktopPane
+     */
     public JDesktopPane getDesktop() {
         return desktop;
     }
 
+    /**
+     * Modifica o desktop
+     *
+     * @param desktop JDesktopPane
+     */
     public void setDesktop(JDesktopPane desktop) {
         this.desktop = desktop;
+    }
+
+    /**
+     * Modifica os controles de acordo com a View ativa
+     *
+     * @param controls <code>boolean[]</code> Array com as opções de controle
+     */
+    public void setControls(Boolean... controls) {
+        this.jBSave.setEnabled(controls[0]);
+        this.jBDelete.setEnabled(controls[1]);
+        this.jBProcess.setEnabled(controls[2]);
+        this.jBClear.setEnabled(controls[3]);
+        this.jBRefresh.setEnabled(controls[4]);
     }
 
     /**
@@ -84,6 +119,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBSave = new javax.swing.JButton();
         jBDelete = new javax.swing.JButton();
         jBProcess = new javax.swing.JButton();
+        jBClear = new javax.swing.JButton();
         jBRefresh = new javax.swing.JButton();
         jBDice = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
@@ -140,6 +176,18 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             }
         });
         jToolBar.add(jBProcess);
+
+        jBClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/progress/progress.png"))); // NOI18N
+        jBClear.setToolTipText("Limpar");
+        jBClear.setFocusable(false);
+        jBClear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBClear.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBClearActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBClear);
 
         jBRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
         jBRefresh.setToolTipText("Recarregar");
@@ -324,8 +372,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new PerkView(this));
     }//GEN-LAST:event_jMIRegPerkActionPerformed
 
+    private void jBClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBClearActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JButton jBClear;
     private javax.swing.JButton jBDelete;
     private javax.swing.JButton jBDice;
     private javax.swing.JButton jBProcess;

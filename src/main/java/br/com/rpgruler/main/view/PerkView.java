@@ -2,7 +2,6 @@ package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.dialog.PerkDialog;
-import br.com.rpgruler.main.view.generic.DefaultView;
 
 /**
  * View de cadastro e manutenção de perks

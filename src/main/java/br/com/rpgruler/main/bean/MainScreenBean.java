@@ -3,11 +3,15 @@ package br.com.rpgruler.main.bean;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.generic.DefaultView;
+import br.com.rpgruler.main.view.DefaultView;
 import java.awt.Component;
+import java.beans.PropertyVetoException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 
 /**
  * Bean de controle da tela principal
@@ -16,7 +20,8 @@ import javax.swing.JDesktopPane;
  */
 public class MainScreenBean implements MainListener {
 
-    private MainScreen screen;
+    private DefaultView actualView;
+    private final MainScreen screen;
 
     /**
      * Cria nova instancia de MainScreenBean
@@ -29,40 +34,88 @@ public class MainScreenBean implements MainListener {
 
     @Override
     public void save(BeanEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (getActualView() != null) {
+            getActualView().save();
+        }
     }
 
     @Override
     public void delete(BeanEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (getActualView() != null) {
+            getActualView().delete();
+        }
     }
 
     @Override
     public void process(BeanEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (getActualView() != null) {
+            getActualView().process();
+        }
     }
 
     @Override
     public void clear(BeanEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (getActualView() != null) {
+            getActualView().clear();
+        }
     }
 
     @Override
     public void load(BeanEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (getActualView() != null) {
+            getActualView().load();
+        }
     }
 
     @Override
     public DefaultView getActualView() {
-        return (DefaultView) this.screen.getDesktop().getSelectedFrame();
+        return actualView;
+    }
+
+    @Override
+    public void setActualView(DefaultView view) {
+        this.actualView = view;
+        this.screen.setControls(
+                this.actualView.canSave != null ? actualView.canSave : false,
+                this.actualView.canDelete != null ? actualView.canDelete : false,
+                this.actualView.canProcces != null ? actualView.canProcces : false,
+                this.actualView.canClear != null ? actualView.canClear : false,
+                this.actualView.canLoad != null ? actualView.canLoad : false
+        );
+        System.out.println("View ativa: " + actualView.getClass().getSimpleName());
+    }
+
+    @Override
+    public void clear() {
+        if (screen.getDesktop().getComponentCount() == 0) {
+            this.screen.setControls(false, false, false, false, false);
+        }
     }
 
     @Override
     public void insertView(DefaultView view) {
         if (!isOnDesktop(view)) {
-            screen.getDesktop().add(view);
-            screen.getDesktop().setLayer(view, JDesktopPane.FRAME_CONTENT_LAYER);
-            System.out.println(view.getSize());
+            for (Component c : screen.getDesktop().getComponents()) {
+                if (c instanceof JInternalFrame) {
+                    try {
+                        JInternalFrame jif = (JInternalFrame) c;
+                        jif.setSelected(false);
+                    } catch (PropertyVetoException ex) {
+                        Logger.getLogger(MainScreenBean.class.getName())
+                                .log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            try {
+                screen.getDesktop().add(view);
+                screen.getDesktop().setLayer(view,
+                        JDesktopPane.FRAME_CONTENT_LAYER);
+                screen.getDesktop().setSelectedFrame(view);
+                view.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(MainScreenBean.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
         } else {
             System.out.println("View já está aberta");
         }
@@ -74,13 +127,14 @@ public class MainScreenBean implements MainListener {
      * @param view DefaultView
      * @return Boolean Está na tela?
      */
-    private Boolean isOnDesktop(DefaultView view) {
+    private Boolean isOnDesktop(JInternalFrame view) {
         boolean inDesktop = false;
         for (Component c : screen.getDesktop().getComponents()) {
-            if (c instanceof DefaultView) {
-                DefaultView v = (DefaultView) c;
-                if (v.equals(view)) {
+            if (c instanceof JInternalFrame) {
+                JInternalFrame jif = (JInternalFrame) c;
+                if (jif.equals(view)) {
                     inDesktop = true;
+                    break;
                 }
             }
         }

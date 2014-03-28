@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view.generic;
+package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
@@ -6,6 +6,8 @@ import br.com.rpgruler.main.view.bean.DefaultViewBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.ViewListener;
 import javax.swing.JInternalFrame;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 
 /**
  * View padrão para embasamento
@@ -17,6 +19,11 @@ public class DefaultView extends JInternalFrame implements ViewListener {
 
     private final MainScreen mainScreen;
     private BeanListener bean;
+    public Boolean canSave;
+    public Boolean canDelete;
+    public Boolean canProcces;
+    public Boolean canClear;
+    public Boolean canLoad;
 
     /**
      * Cria nova instancia de DefaultView
@@ -34,6 +41,69 @@ public class DefaultView extends JInternalFrame implements ViewListener {
      */
     private void initialize() {
         initComponents();
+        addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameActivated(InternalFrameEvent e) {
+                mainScreen.getListener().setActualView(DefaultView.this);
+            }
+
+            @Override
+            public void internalFrameClosed(InternalFrameEvent e) {
+                mainScreen.getListener().clear();
+            }
+
+        });
+    }
+
+    @Override
+    public Boolean canSave() {
+        return canSave;
+    }
+
+    @Override
+    public void setSave(boolean save) {
+        canSave = save;
+    }
+
+    @Override
+    public Boolean canDelete() {
+        return canDelete;
+    }
+
+    @Override
+    public void setDelete(boolean delete) {
+        canDelete = delete;
+    }
+
+    @Override
+    public Boolean canProcces() {
+        return canProcces;
+    }
+
+    @Override
+    public void setProcces(boolean process) {
+        canProcces = process;
+    }
+
+    @Override
+    public Boolean canClear() {
+        return this.canClear;
+    }
+
+    @Override
+    public void setClear(boolean clear) {
+        this.canClear = clear;
+    }
+
+    @Override
+    public Boolean canLoad() {
+        return canLoad;
+    }
+
+    @Override
+    public void setLoad(boolean load) {
+        canLoad = load;
     }
 
     @Override

@@ -4,9 +4,8 @@ import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.data.entitity.ElementBoost;
 import br.com.rpgruler.data.entitity.ElementWeakness;
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.model.ElementModel;
+import br.com.rpgruler.main.view.model.ElementModel;
 import br.com.rpgruler.main.view.bean.ElementBean;
-import br.com.rpgruler.main.view.generic.DefaultView;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -36,6 +35,7 @@ public class ElementView extends DefaultView {
     public ElementView(MainScreen screen) {
         super(screen);
         elementModel = new ElementModel();
+        setSave(true);
         initialize();
     }
 
@@ -54,7 +54,7 @@ public class ElementView extends DefaultView {
         }
         elementModel.setData(dao.getList());
         jTableElements.setModel(elementModel);
-        //moldeTable();
+        moldeTable();
         setSize(700, 394);
     }
 

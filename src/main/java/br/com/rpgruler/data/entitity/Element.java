@@ -1,5 +1,6 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
 import java.io.Serializable;
 import javax.persistence.Id;
 
@@ -10,10 +11,15 @@ import javax.persistence.Id;
 public class Element implements Serializable {
 
     @Id
+    @ColumnName(name = "ID")
     private Integer id;
+    @ColumnName(name = "Nome")
     private String elementName;
+    @ColumnName(name = "Simbolo")
     private String elementSymbol;
+    @ColumnName(name = "Bônus")
     private ElementBoost idElementBoost;
+    @ColumnName(name = "Fraqueza")
     private ElementWeakness idElementWeakness;
 
     public Element() {
@@ -30,7 +36,7 @@ public class Element implements Serializable {
         this.elementName = elementName;
         this.elementSymbol = elementSymbol;
         this.idElementBoost = idElementBoost;
-        this.idElementWeakness = idElementWeakness;        
+        this.idElementWeakness = idElementWeakness;
     }
 
     public Element(Integer id) {
