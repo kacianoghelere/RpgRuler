@@ -37,27 +37,27 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
     @Override
     public void save(ActionEvent evt) {
-        listener.save(new BeanEvent(this, null));
+        listener.save(new BeanEvent(this, evt));
     }
 
     @Override
     public void delete(ActionEvent evt)  {
-        listener.delete(new BeanEvent(this, null));
+        listener.delete(new BeanEvent(this, evt));
     }
 
     @Override
     public void process(ActionEvent evt)  {
-        listener.process(new BeanEvent(this, null));
+        listener.process(new BeanEvent(this, evt));
     }
 
     @Override
     public void clear(ActionEvent evt)  {
-        listener.clear(new BeanEvent(this, null));
+        listener.clear(new BeanEvent(this, evt));
     }
 
     @Override
     public void load(ActionEvent evt)  {
-        listener.load(new BeanEvent(this, null));
+        listener.load(new BeanEvent(this, evt));
     }
 
     //<editor-fold desc="Get's & Set's" defaultstate="collapsed">
