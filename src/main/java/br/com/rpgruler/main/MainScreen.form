@@ -124,7 +124,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jToolBar" pref="778" max="32767" attributes="0"/>
           <Component id="desktop" alignment="0" max="32767" attributes="0"/>
-          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jLMsg" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -134,7 +134,7 @@
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
               <Component id="desktop" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="jLMsg" min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -193,7 +193,7 @@
         <Component class="javax.swing.JButton" name="jBClear">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/ComponentIcons/progress/progress.png"/>
+              <Image iconType="3" name="/ComponentIcons/controlers/brush.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Limpar"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -254,10 +254,13 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLMsg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mensagens"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLMsgMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

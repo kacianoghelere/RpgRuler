@@ -7,9 +7,11 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
 import br.com.rpgruler.main.view.PerkView;
+import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 
 /**
+ * Tela principal
  *
  * @author kaciano
  */
@@ -18,7 +20,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private MainListener listener;
 
     /**
-     * Creates new form MainScreen
+     * Cria novo MainScreen
      */
     public MainScreen() {
         initialize();
@@ -34,27 +36,27 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     @Override
-    public void save() {
+    public void save(ActionEvent evt) {
         listener.save(new BeanEvent(this, null));
     }
 
     @Override
-    public void delete() {
+    public void delete(ActionEvent evt)  {
         listener.delete(new BeanEvent(this, null));
     }
 
     @Override
-    public void process() {
+    public void process(ActionEvent evt)  {
         listener.process(new BeanEvent(this, null));
     }
 
     @Override
-    public void clear() {
+    public void clear(ActionEvent evt)  {
         listener.clear(new BeanEvent(this, null));
     }
 
     @Override
-    public void load() {
+    public void load(ActionEvent evt)  {
         listener.load(new BeanEvent(this, null));
     }
 
@@ -123,7 +125,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBRefresh = new javax.swing.JButton();
         jBDice = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
+        jLMsg = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMOptions = new javax.swing.JMenu();
         jMISave = new javax.swing.JMenuItem();
@@ -177,7 +179,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jToolBar.add(jBProcess);
 
-        jBClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/progress/progress.png"))); // NOI18N
+        jBClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/brush.png"))); // NOI18N
         jBClear.setToolTipText("Limpar");
         jBClear.setFocusable(false);
         jBClear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -226,7 +228,12 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             .addGap(0, 592, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("Mensagens");
+        jLMsg.setText("Mensagens");
+        jLMsg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLMsgMouseClicked(evt);
+            }
+        });
 
         jMOptions.setText("Opções");
 
@@ -309,7 +316,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
             .addComponent(desktop)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,42 +325,42 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
                 .addGap(0, 0, 0)
                 .addComponent(desktop)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
-        save();
+        save(evt);
     }//GEN-LAST:event_jBSaveActionPerformed
 
     private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
-        delete();
+        delete(evt);
     }//GEN-LAST:event_jBDeleteActionPerformed
 
     private void jBProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessActionPerformed
-        process();
+        process(evt);
     }//GEN-LAST:event_jBProcessActionPerformed
 
     private void jBRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRefreshActionPerformed
-        load();
+        load(evt);
     }//GEN-LAST:event_jBRefreshActionPerformed
 
     private void jMISaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISaveActionPerformed
-        save();
+        save(evt);
     }//GEN-LAST:event_jMISaveActionPerformed
 
     private void jMIDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDeleteActionPerformed
-        delete();
+        delete(evt);
     }//GEN-LAST:event_jMIDeleteActionPerformed
 
     private void jMIProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIProcessActionPerformed
-        process();
+        process(evt);
     }//GEN-LAST:event_jMIProcessActionPerformed
 
     private void jMIRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRefreshActionPerformed
-        load();
+        load(evt);
     }//GEN-LAST:event_jMIRefreshActionPerformed
 
     private void jMIRegElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegElementActionPerformed
@@ -373,8 +380,12 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }//GEN-LAST:event_jMIRegPerkActionPerformed
 
     private void jBClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClearActionPerformed
-        // TODO add your handling code here:
+        clear(evt);
     }//GEN-LAST:event_jBClearActionPerformed
+
+    private void jLMsgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMsgMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLMsgMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
@@ -384,7 +395,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JButton jBProcess;
     private javax.swing.JButton jBRefresh;
     private javax.swing.JButton jBSave;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLMsg;
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIDelete;
     private javax.swing.JMenuItem jMIDice;
