@@ -137,6 +137,8 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIRegElement = new javax.swing.JMenuItem();
         jMPerk = new javax.swing.JMenu();
         jMIRegPerk = new javax.swing.JMenuItem();
+        jMTerms = new javax.swing.JMenu();
+        jMITermos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -308,6 +310,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMenuBar.add(jMPerk);
 
+        jMTerms.setText("Termos");
+
+        jMITermos.setText("Termos");
+        jMTerms.add(jMITermos);
+
+        jMenuBar.add(jMTerms);
+
         setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -404,8 +413,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuItem jMIRegElement;
     private javax.swing.JMenuItem jMIRegPerk;
     private javax.swing.JMenuItem jMISave;
+    private javax.swing.JMenuItem jMITermos;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenu jMPerk;
+    private javax.swing.JMenu jMTerms;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables

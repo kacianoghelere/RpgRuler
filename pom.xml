@@ -6,11 +6,11 @@
     <version>1.0</version>
     <packaging>jar</packaging>
     <dependencies>      
-        <dependency>
+<!--        <dependency>
             <groupId>com.db4o</groupId>
             <artifactId>com.db4o</artifactId>
             <version>7.7.67</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -31,6 +31,11 @@
             <groupId>br.com.gmp</groupId>
             <artifactId>GMPComps</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
         </dependency>
     </dependencies>
     <properties>

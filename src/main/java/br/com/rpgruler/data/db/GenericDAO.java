@@ -2,11 +2,11 @@ package br.com.rpgruler.data.db;
 
 import br.com.gmp.utils.object.ObjectCopy;
 import br.com.rpgruler.data.db.constant.EntityMap;
-import com.db4o.Db4o;
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectServer;
-import com.db4o.ObjectSet;
-import com.db4o.query.Query;
+//import com.db4o.Db4o;
+//import com.db4o.ObjectContainer;
+//import com.db4o.ObjectServer;
+//import com.db4o.ObjectSet;
+//import com.db4o.query.Query;
 import java.io.File;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class GenericDAO<T> {
     private String database;
     private String sufix = ".yap";
 
-    private ObjectServer objectServer;
+//    private ObjectServer objectServer;
 
     /**
      * Cria nova instancia de GenericDAO
@@ -47,13 +47,13 @@ public class GenericDAO<T> {
      * @return <code>T</code> Entidade
      */
     public List<T> getList() {
-        ObjectContainer db = Db4o.openFile(database);
-        Query query = db.query();
-        query.constrain(objectClass);
-        ObjectSet os = query.execute();
+//        ObjectContainer db = Db4o.openFile(database);
+//        Query query = db.query();
+//        query.constrain(objectClass);
+//        ObjectSet os = query.execute();
         List<T> objs = new ArrayList<>();
-        objs.addAll(os);
-        db.close();
+//        objs.addAll(os);
+//        db.close();
         return objs;
     }
 
@@ -63,10 +63,10 @@ public class GenericDAO<T> {
      * @param entity <code>T</code> Entidade
      */
     public void insert(T entity) {
-        ObjectContainer db = Db4o.openFile(database);
-        db.store(entity);
-        db.commit();
-        db.close();
+//        ObjectContainer db = Db4o.openFile(database);
+//        db.store(entity);
+//        db.commit();
+//        db.close();
     }
 
     /**
@@ -75,12 +75,12 @@ public class GenericDAO<T> {
      * @param entities <code>List(T)</code> Entidades
      */
     public void insertAll(List<T> entities) {
-        ObjectContainer db = Db4o.openFile(database);
-        entities.stream().forEach((entity) -> {
-            db.store(entity);
-        });
-        db.commit();
-        db.close();
+//        ObjectContainer db = Db4o.openFile(database);
+//        entities.stream().forEach((entity) -> {
+//            db.store(entity);
+//        });
+//        db.commit();
+//        db.close();
     }
 
     /**
@@ -90,14 +90,14 @@ public class GenericDAO<T> {
      * @throws java.lang.IllegalAccessException Acesso ilegal
      */
     public void update(T entity) throws IllegalArgumentException, IllegalAccessException {
-        ObjectContainer db = Db4o.openFile(database);
-        Query query = db.query();
-        query.constrain(objectClass);
-        ObjectSet<T> get = db.queryByExample(entity);
-        ObjectCopy.copy(entity, get);
-        db.store(get);
-        db.commit();
-        db.close();
+//        ObjectContainer db = Db4o.openFile(database);
+//        Query query = db.query();
+//        query.constrain(objectClass);
+//        ObjectSet<T> get = db.queryByExample(entity);
+//        ObjectCopy.copy(entity, get);
+//        db.store(get);
+//        db.commit();
+//        db.close();
     }
 
     /**
@@ -106,13 +106,13 @@ public class GenericDAO<T> {
      * @param entities <code>List(T)</code> Lista a ser deletada
      */
     public void deleteAll(List<T> entities) {
-        ObjectContainer db = Db4o.openFile(database);
-        entities.stream().forEach((entity) -> {
-            ObjectSet<T> os = db.queryByExample(entity);
-            db.delete(os.next());
-        });
-        db.commit();
-        db.close();
+//        ObjectContainer db = Db4o.openFile(database);
+//        entities.stream().forEach((entity) -> {
+//            ObjectSet<T> os = db.queryByExample(entity);
+//            db.delete(os.next());
+//        });
+//        db.commit();
+//        db.close();
     }
 
     /**
@@ -121,11 +121,11 @@ public class GenericDAO<T> {
      * @param entity <code>T</code> Entidade
      */
     public void delete(T entity) {
-        ObjectContainer db = Db4o.openFile(database);
-        ObjectSet<T> os = db.queryByExample(entity);
-        db.delete(os.next());
-        db.commit();
-        db.close();
+//        ObjectContainer db = Db4o.openFile(database);
+//        ObjectSet<T> os = db.queryByExample(entity);
+//        db.delete(os.next());
+//        db.commit();
+//        db.close();
     }
 
     /**
@@ -135,17 +135,17 @@ public class GenericDAO<T> {
      * @return <code>T</code> Entidade
      */
     public T queryByID(int id) {
-        ObjectContainer db = Db4o.openFile(database);
-        Query query = db.query();
-        query.constrain(objectClass);
-        query.descend("id").constrain(id);
-        ObjectSet<T> os = query.execute();
-        List<T> list = new ArrayList<>();
-        list.addAll(os);
-        db.close();
-        for (T entity : list) {
-            return entity;
-        }
+//        ObjectContainer db = Db4o.openFile(database);
+//        Query query = db.query();
+//        query.constrain(objectClass);
+//        query.descend("id").constrain(id);
+//        ObjectSet<T> os = query.execute();
+//        List<T> list = new ArrayList<>();
+//        list.addAll(os);
+//        db.close();
+//        for (T entity : list) {
+//            return entity;
+//        }
         return null;
     }
 
@@ -158,13 +158,13 @@ public class GenericDAO<T> {
      */
     public List<T> queryByField(String field, Object value) {
         List<T> list = new ArrayList<>();
-        ObjectContainer db = Db4o.openFile(database);
-        Query query = db.query();
-        query.constrain(objectClass);
-        query.descend(field).constrain(value);
-        ObjectSet<T> os = query.execute();
-        list.addAll(os);
-        db.close();
+//        ObjectContainer db = Db4o.openFile(database);
+//        Query query = db.query();
+//        query.constrain(objectClass);
+//        query.descend(field).constrain(value);
+//        ObjectSet<T> os = query.execute();
+//        list.addAll(os);
+//        db.close();
         return list;
     }
 
@@ -232,20 +232,20 @@ public class GenericDAO<T> {
         this.sufix = sufix;
     }
 
-    /**
-     *
-     * @return
-     */
-    public ObjectServer getObjectServer() {
-        return objectServer;
-    }
+//    /**
+//     *
+//     * @return
+//     */
+//    public ObjectServer getObjectServer() {
+//        return objectServer;
+//    }
 
-    /**
-     *
-     * @param objectServer
-     */
-    public void setObjectServer(ObjectServer objectServer) {
-        this.objectServer = objectServer;
-    }
+//    /**
+//     *
+//     * @param objectServer
+//     */
+//    public void setObjectServer(ObjectServer objectServer) {
+//        this.objectServer = objectServer;
+//    }
 
 }
