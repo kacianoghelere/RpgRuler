@@ -11,10 +11,10 @@
     <class>br.com.rpgruler.data.entitity.Effect</class>
     <class>br.com.rpgruler.data.entitity.ElementWeakness</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/RpgRuler"/>
-      <property name="javax.persistence.jdbc.user" value="kaciano"/>
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="d0v4hk11n"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:testdb"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
     </properties>
   </persistence-unit>
   <persistence-unit name="RpgRulerPU" transaction-type="RESOURCE_LOCAL">
