@@ -29,7 +29,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="status">
 	<schema name="public"/>
-	<position x="832.028" y="434.917"/>
+	<position x="880.778" y="467.417"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -60,7 +60,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="perk">
 	<schema name="public"/>
-	<position x="790.528" y="6.05556"/>
+	<position x="35.5278" y="301.056"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -88,7 +88,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="perk_type">
 	<schema name="public"/>
 	<comment><![CDATA[Passivo/ Ação/ Batalha]]></comment>
-	<position x="1061.11" y="242.833"/>
+	<position x="371.11" y="110.333"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -116,90 +116,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.perk"
 	 src-required="true" dst-required="false"/>
 
-<table name="element_weakness">
-	<schema name="public"/>
-	<position x="399.444" y="415.083"/>
-	<column name="id">
-		<type name="bigint"/>
-	</column>
-	<column name="weakness_name">
-		<type name="character" length="64"/>
-	</column>
-	<constraint name="weakness_pk" type="pk-constr" factor="10" table="public.element_weakness">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<table name="element_boost">
-	<schema name="public"/>
-	<position x="59.1667" y="393.666"/>
-	<column name="id">
-		<type name="bigint"/>
-	</column>
-	<column name="boost_name">
-		<type name="character" length="64"/>
-	</column>
-	<constraint name="boost_pk" type="pk-constr" factor="10" table="public.element_boost">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="element_boost_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.element_boost.id">
-	<schema name="public"/>
-</sequence>
-
-<sequence name="element_weakness_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.element_weakness.id">
-	<schema name="public"/>
-</sequence>
-
-<relationship name="Element_has_one_ElementBoost" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 col-indexes="3" constr-indexes="1,2"
-	 src-table="public.element_boost"
-	 dst-table="public.element"
-	 src-required="true" dst-required="false"/>
-
-<relationship name="Element_has_one_ElementWeakness" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 col-indexes="4" constr-indexes="3,4"
-	 src-table="public.element_weakness"
-	 dst-table="public.element"
-	 src-required="true" dst-required="false"/>
-
-<table name="mixed_element">
-	<schema name="public"/>
-	<position x="506.806" y="15.5556"/>
-	<column name="id">
-		<type name="bigint"/>
-	</column>
-	<column name="mix_name">
-		<type name="character" length="64"/>
-	</column>
-	<constraint name="mixed_element_pk" type="pk-constr" factor="10" table="public.mixed_element">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="mix_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.mixed_element.id">
-	<schema name="public"/>
-</sequence>
-
 <table name="effect">
 	<schema name="public"/>
-	<position x="576.361" y="195.556"/>
+	<position x="1143.86" y="201.806"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -220,33 +139,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 cache="1" cycle="false" owner-col="public.effect.id">
 	<schema name="public"/>
 </sequence>
-
-<relationship name="ElementWeakness_has_one_Effect" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 col-indexes="2" constr-indexes="1,2"
-	 src-table="public.effect"
-	 dst-table="public.element_weakness"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="ElementBoost_has_one_Effect" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 col-indexes="2" constr-indexes="1,2"
-	 src-table="public.effect"
-	 dst-table="public.element_boost"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="MixedElement_has_many_Element" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 col-indexes="5" constr-indexes="5"
-	 src-table="public.mixed_element"
-	 dst-table="public.element"
-	 src-required="false" dst-required="false"/>
 
 <relationship name="Status_has_one_Effect" type="rel11"
 	 src-col-pattern="{sc}_{st}"
@@ -297,7 +189,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="player_char_info">
 	<schema name="public"/>
-	<position x="435.556" y="515.556"/>
+	<position x="609.306" y="756.806"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -343,7 +235,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="char_race">
 	<schema name="public"/>
-	<position x="786.667" y="712.222"/>
+	<position x="639.917" y="339.222"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -382,7 +274,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="enemy_race">
 	<schema name="public"/>
-	<position x="1144.44" y="591.111"/>
+	<position x="836.44" y="44.6109"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -421,7 +313,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="char_class">
 	<schema name="public"/>
-	<position x="462.222" y="845.556"/>
+	<position x="806.222" y="603.556"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -465,7 +357,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 col-indexes="6" constr-indexes="5"
 	 src-table="public.char_race"
 	 dst-table="public.perk"
-	 src-required="false" dst-required="false"/>
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
 
 <relationship name="enemy_race_has_many_perk" type="rel1n"
 	 src-col-pattern="{sc}_{st}"
@@ -474,7 +370,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 col-indexes="7" constr-indexes="6"
 	 src-table="public.enemy_race"
 	 dst-table="public.perk"
-	 src-required="false" dst-required="false"/>
+	 src-required="true" dst-required="false"/>
 
 <relationship name="player_char_has_many_player_char_info" type="rel1n"
 	 src-col-pattern="{sc}_{st}"
@@ -483,7 +379,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 col-indexes="8" constr-indexes="1"
 	 src-table="public.player_char"
 	 dst-table="public.player_char_info"
-	 src-required="false" dst-required="false"/>
+	 src-required="true" dst-required="false"/>
 
 <relationship name="player_char_has_one_char_class" type="rel11"
 	 src-col-pattern="{sc}_{st}"
@@ -501,7 +397,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 col-indexes="8" constr-indexes="7"
 	 src-table="public.char_class"
 	 dst-table="public.perk"
-	 src-required="false" dst-required="false"/>
+	 src-required="true" dst-required="false"	 identifier="true"
+/>
 
 <relationship name="player_char_has_one_char_race" type="rel11"
 	 src-col-pattern="{sc}_{st}"

@@ -3,8 +3,6 @@ package br.com.rpgruler.main.view.bean;
 import br.com.gmp.utils.image.ImageUtil;
 import br.com.rpgruler.data.entitity.Effect;
 import br.com.rpgruler.data.entitity.Element;
-import br.com.rpgruler.data.entitity.ElementBoost;
-import br.com.rpgruler.data.entitity.ElementWeakness;
 import br.com.rpgruler.main.view.ElementView;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +21,12 @@ public class ElementBean extends DefaultViewBean<ElementView> {
         this.elementView = elementView;
     }
 
-    public void addElement(String title, int symbol, ElementBoost boost, ElementWeakness weak) {
-        Integer id = 0;
+    public void addElement(String title, int symbol) {
+        Long id = Long.MIN_VALUE;
         for (Element element : elementView.getModel().getData()) {
             id = element.getId() > id ? element.getId() : id;
         }
-        elementView.getModel().add(new Element(id, title, getImages()[symbol], boost, weak));
+        elementView.getModel().add(new Element(id, title, getImages()[symbol]));
     }
 
     public void removeElement() {
@@ -41,12 +39,9 @@ public class ElementBean extends DefaultViewBean<ElementView> {
      */
     public List<Element> getElements() {
         List<Element> data = new ArrayList<>();
-        ElementBoost[] boosts = getBoosts();
-        ElementWeakness[] weaks = getWeaks();
+
         List<Element> elements = getElement();
         for (int i = 0; i < elements.size(); i++) {
-            elements.get(i).setElementBoost(boosts[i]);
-            elements.get(i).setElementWeakness(weaks[i]);
             data.add(elements.get(i));
         }
         return data;
@@ -54,46 +49,19 @@ public class ElementBean extends DefaultViewBean<ElementView> {
 
     public List<Element> getElement() {
         List<Element> data = new ArrayList<>();
-        String[] names = getNames();
         String[] images = getImages();
         for (int i = 0; i < 7; i++) {
-            data.add(new Element(i, names[i], images[i]));
+            data.add(new Element((long) i, i + "", images[i]));
         }
         return data;
     }
 
-    public ElementWeakness[] getWeaks() {
-        Effect[] effects = getEffects();
-        ElementWeakness[] array = new ElementWeakness[7];
-        array[0] = (new ElementWeakness(0, "Fogo", effects[1]));
-        array[1] = (new ElementWeakness(1, "Agua", effects[1]));
-        array[2] = (new ElementWeakness(2, "Vento", effects[1]));
-        array[3] = (new ElementWeakness(3, "Terra", effects[1]));
-        array[4] = (new ElementWeakness(4, "Luz", effects[1]));
-        array[5] = (new ElementWeakness(5, "Sombra", effects[1]));
-        array[6] = (new ElementWeakness(6, "Alquimia", effects[1]));
-        return array;
-    }
-
-    public ElementBoost[] getBoosts() {
-        Effect[] effects = getEffects();
-        ElementBoost[] array = new ElementBoost[7];
-        array[0] = (new ElementBoost(0, "Fogo", effects[0]));
-        array[1] = (new ElementBoost(1, "Agua", effects[0]));
-        array[2] = (new ElementBoost(2, "Vento", effects[0]));
-        array[3] = (new ElementBoost(3, "Terra", effects[0]));
-        array[4] = (new ElementBoost(4, "Luz", effects[0]));
-        array[5] = (new ElementBoost(5, "Sombra", effects[0]));
-        array[6] = (new ElementBoost(6, "Alquimia", effects[0]));
-        return array;
-    }
-
     public Effect[] getEffects() {
         Effect[] array = new Effect[4];
-        array[0] = (new Effect(0, "Aumento", 20));
-        array[1] = (new Effect(1, "Reduçao", 20));
-        array[2] = (new Effect(2, "Parada", 10));
-        array[3] = (new Effect(3, "Aceleraçao", 10));
+        array[0] = (new Effect((long) 0, "Aumento", 20));
+        array[1] = (new Effect((long) 1, "Reduçao", 20));
+        array[2] = (new Effect((long) 2, "Parada", 10));
+        array[3] = (new Effect((long) 3, "Aceleraçao", 10));
         return array;
     }
 
@@ -105,16 +73,6 @@ public class ElementBean extends DefaultViewBean<ElementView> {
             "/RpgIcons/light.png",
             "/RpgIcons/dark.png",
             "/RpgIcons/alchemy.png"};
-    }
-
-    public String[] getNames() {
-        return new String[]{"Fire",
-            "Water",
-            "Wind",
-            "Earth",
-            "Light",
-            "Dark",
-            "Alchemy"};
     }
 
     public ImageIcon[] getElementsIcons() {

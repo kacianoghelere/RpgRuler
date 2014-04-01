@@ -1,31 +1,59 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
-import java.util.Objects;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
+@Entity
+@Table(name = "perk_type")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "PerkType.findAll", query = "SELECT p FROM PerkType p"),
+    @NamedQuery(name = "PerkType.findById", query = "SELECT p FROM PerkType p WHERE p.id = :id"),
+    @NamedQuery(name = "PerkType.findByTypeName", query = "SELECT p FROM PerkType p WHERE p.typeName = :typeName")})
 public class PerkType implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "type_name")
     private String typeName;
+    @OneToOne(mappedBy = "idPerkType")
+    private Perk perk;
 
     public PerkType() {
     }
 
-    public PerkType(Integer id) {
+    public PerkType(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,28 +65,37 @@ public class PerkType implements Serializable {
         this.typeName = typeName;
     }
 
+    public Perk getPerk() {
+        return perk;
+    }
+
+    public void setPerk(Perk perk) {
+        this.perk = perk;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.id);
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof PerkType)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        PerkType other = (PerkType) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
-        final PerkType other = (PerkType) obj;
-        return Objects.equals(this.id, other.id);
+        return true;
     }
 
     @Override
     public String toString() {
-        return "PerkType[" + id + ", " + typeName + "]";
+        return "br.com.rpgruler.data.entitity.PerkType[ id=" + id + " ]";
     }
-
+    
 }

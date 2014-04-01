@@ -1,38 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
-import java.util.Objects;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
+@Entity
+@Table(name = "status")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s"),
+    @NamedQuery(name = "Status.findById", query = "SELECT s FROM Status s WHERE s.id = :id"),
+    @NamedQuery(name = "Status.findByStatusName", query = "SELECT s FROM Status s WHERE s.statusName = :statusName"),
+    @NamedQuery(name = "Status.findByDuration", query = "SELECT s FROM Status s WHERE s.duration = :duration")})
 public class Status implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "status_name")
     private String statusName;
-    private Integer duration;
+    @Basic(optional = false)
+    @Column(name = "duration")
+    private long duration;
+    @JoinColumn(name = "id_effect", referencedColumnName = "id")
+    @OneToOne
     private Effect idEffect;
 
     public Status() {
     }
 
-    public Status(Integer id) {
+    public Status(Long id) {
         this.id = id;
     }
 
-    public Status(Integer id, Integer duration) {
+    public Status(Long id, long duration) {
         this.id = id;
         this.duration = duration;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,11 +76,11 @@ public class Status implements Serializable {
         this.statusName = statusName;
     }
 
-    public Integer getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
@@ -62,21 +94,19 @@ public class Status implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.id);
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Status)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Status other = (Status) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        Status other = (Status) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -84,7 +114,7 @@ public class Status implements Serializable {
 
     @Override
     public String toString() {
-        return "Status[" + id + ']';
+        return "br.com.rpgruler.data.entitity.Status[ id=" + id + " ]";
     }
-
+    
 }

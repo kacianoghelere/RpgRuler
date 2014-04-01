@@ -1,8 +1,6 @@
 package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.data.db.dao.ElementDAO;
-import br.com.rpgruler.data.entitity.ElementBoost;
-import br.com.rpgruler.data.entitity.ElementWeakness;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.model.ElementModel;
 import br.com.rpgruler.main.view.bean.ElementBean;
@@ -45,8 +43,6 @@ public class ElementView extends DefaultView {
     private void initialize() {
         initComponents();
         bean = new ElementBean(this);
-        jCBonus.setModel(new DefaultComboBoxModel(bean.getBoosts()));
-        jCWeak.setModel(new DefaultComboBoxModel(bean.getWeaks()));
         ElementDAO dao = new ElementDAO();
         jCSymbol.setModel(new DefaultComboBoxModel(bean.getElementsIcons()));
         if (dao.getList().isEmpty()) {
@@ -89,9 +85,7 @@ public class ElementView extends DefaultView {
         String title = jTTitle.getText();
         int symbol = jCSymbol.getSelectedIndex();
         System.out.println(symbol);
-        ElementBoost bonus = (ElementBoost) jCBonus.getSelectedItem();
-        ElementWeakness weak = (ElementWeakness) jCWeak.getSelectedItem();
-        bean.addElement(title, symbol, bonus, weak);
+        bean.addElement(title, symbol);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Get's & Set's">
