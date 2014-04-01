@@ -1,5 +1,6 @@
 package br.com.rpgruler.data.db;
 
+import br.com.gmp.utils.system.SystemProperties;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,10 +22,11 @@ public class HSQL {
             return;
         }
         try {
-            Connection c = DriverManager.getConnection("jdbc:hsqldb:file:testdb", "sa", "");
+            Connection c = DriverManager.getConnection("jdbc:hsqldb:file:" + SystemProperties.USER_HOME + SystemProperties.FILE_SEPARATOR + ".RPG" + SystemProperties.FILE_SEPARATOR + "rpgdb", "sa", "");            
         } catch (SQLException ex) {
             Logger.getLogger(HSQL.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("jdbc:hsqldb:file:" + SystemProperties.USER_HOME + SystemProperties.FILE_SEPARATOR + ".RPG" + SystemProperties.FILE_SEPARATOR + "rpgdb");
     }
 
     public static void main(String[] args) {

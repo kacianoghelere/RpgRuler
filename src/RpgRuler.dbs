@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="RpgRuler" id="Project9230002" database="HSql" >
+	<comment>Banco de dados para o RpgRuler</comment>
+	<schema name="RPGRULER" schemaname="RPGRULER" defo="y" />
+	<layout id="Layout9230004" name="RpgRuler" show_relation_columns="y" />
+</project>
