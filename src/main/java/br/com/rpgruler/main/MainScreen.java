@@ -7,6 +7,7 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
 import br.com.rpgruler.main.view.PerkView;
+import br.com.rpgruler.main.view.TermsView;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 
@@ -313,6 +314,11 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMTerms.setText("Termos");
 
         jMITermos.setText("Termos");
+        jMITermos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMITermosActionPerformed(evt);
+            }
+        });
         jMTerms.add(jMITermos);
 
         jMenuBar.add(jMTerms);
@@ -395,6 +401,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private void jLMsgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMsgMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLMsgMouseClicked
+
+    private void jMITermosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMITermosActionPerformed
+        listener.insertView(new TermsView(this));
+    }//GEN-LAST:event_jMITermosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;

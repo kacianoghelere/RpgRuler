@@ -76,11 +76,11 @@ public class MainScreenBean implements MainListener {
     public void setActualView(DefaultView view) {
         this.actualView = view;
         this.screen.setControls(
-                this.actualView.canSave != null ? actualView.canSave : false,
-                this.actualView.canDelete != null ? actualView.canDelete : false,
-                this.actualView.canProcces != null ? actualView.canProcces : false,
-                this.actualView.canClear != null ? actualView.canClear : false,
-                this.actualView.canLoad != null ? actualView.canLoad : false
+                this.actualView.canSave() != null ? actualView.canSave() : false,
+                this.actualView.canDelete() != null ? actualView.canDelete() : false,
+                this.actualView.canProcces() != null ? actualView.canProcces() : false,
+                this.actualView.canClear() != null ? actualView.canClear() : false,
+                this.actualView.canLoad() != null ? actualView.canLoad() : false
         );
         System.out.println("View ativa: " + actualView.getClass().getSimpleName());
     }

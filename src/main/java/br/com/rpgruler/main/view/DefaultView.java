@@ -5,6 +5,7 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.DefaultViewBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.ViewListener;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -19,11 +20,11 @@ public class DefaultView extends JInternalFrame implements ViewListener {
 
     private final MainScreen mainScreen;
     private BeanListener bean;
-    public Boolean canSave;
-    public Boolean canDelete;
-    public Boolean canProcces;
-    public Boolean canClear;
-    public Boolean canLoad;
+    private Boolean canSave;
+    private Boolean canDelete;
+    private Boolean canProcess;
+    private Boolean canClear;
+    private Boolean canLoad;
 
     /**
      * Cria nova instancia de DefaultView
@@ -56,6 +57,20 @@ public class DefaultView extends JInternalFrame implements ViewListener {
         });
     }
 
+    /**
+     * Modifica os controles da view
+     *
+     * @param param <code>ViewParameter</code> Parametro para carregamento de
+     * views
+     */
+    public void setControls(ViewParameter param) {
+        this.canSave = param.isSave();
+        this.canDelete = param.isDelete();
+        this.canProcess = param.isProcess();
+        this.canClear = param.isClear();
+        this.canLoad = param.isLoad();
+    }
+
     @Override
     public Boolean canSave() {
         return canSave;
@@ -78,12 +93,12 @@ public class DefaultView extends JInternalFrame implements ViewListener {
 
     @Override
     public Boolean canProcces() {
-        return canProcces;
+        return canProcess;
     }
 
     @Override
     public void setProcces(boolean process) {
-        canProcces = process;
+        canProcess = process;
     }
 
     @Override
