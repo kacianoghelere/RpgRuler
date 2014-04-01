@@ -77,6 +77,15 @@ public class PlayerChar implements Serializable {
         this.id = id;
     }
 
+    public PlayerChar(String charName, String playerName, Short age, Character sex, Short height, Short weight) {
+        this.charName = charName;
+        this.playerName = playerName;
+        this.age = age;
+        this.sex = sex;
+        this.height = height;
+        this.weight = weight;
+    }
+
     public Long getId() {
         return id;
     }

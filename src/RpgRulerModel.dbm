@@ -189,7 +189,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="player_char_info">
 	<schema name="public"/>
-	<position x="609.306" y="756.806"/>
+	<position x="498.056" y="793.056"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -370,7 +370,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 col-indexes="7" constr-indexes="6"
 	 src-table="public.enemy_race"
 	 dst-table="public.perk"
-	 src-required="true" dst-required="false"/>
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
 
 <relationship name="player_char_has_many_player_char_info" type="rel1n"
 	 src-col-pattern="{sc}_{st}"
@@ -379,7 +383,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 col-indexes="8" constr-indexes="1"
 	 src-table="public.player_char"
 	 dst-table="public.player_char_info"
-	 src-required="true" dst-required="false"/>
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
 
 <relationship name="player_char_has_one_char_class" type="rel11"
 	 src-col-pattern="{sc}_{st}"
@@ -397,8 +405,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 col-indexes="8" constr-indexes="7"
 	 src-table="public.char_class"
 	 dst-table="public.perk"
-	 src-required="true" dst-required="false"	 identifier="true"
-/>
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
 
 <relationship name="player_char_has_one_char_race" type="rel11"
 	 src-col-pattern="{sc}_{st}"
@@ -408,5 +419,41 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-table="public.char_race"
 	 dst-table="public.player_char"
 	 src-required="false" dst-required="false"/>
+
+<table name="expertise">
+	<schema name="public"/>
+	<position x="1092.5" y="757.5"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="title">
+		<type name="character" length="64"/>
+	</column>
+	<column name="keyskill">
+		<type name="bigint"/>
+	</column>
+	<column name="value">
+		<type name="decimal"/>
+	</column>
+	<constraint name="expertise_id_pk" type="pk-constr" factor="10" table="public.expertise">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="expertise_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.expertise.id">
+	<schema name="public"/>
+</sequence>
+
+<relationship name="player_char_has_many_expertise" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="4" constr-indexes="1"
+	 src-table="public.player_char"
+	 dst-table="public.expertise"
+	 src-required="true" dst-required="false"/>
 
 </dbmodel>
