@@ -10,7 +10,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <database name="RpgRuler">
 </database>
 
-<table name="Element">
+<table name="element">
 	<schema name="public"/>
 	<position x="25.4722" y="26.7778"/>
 	<column name="id">
@@ -22,12 +22,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="element_symbol">
 		<type name="character" length="64"/>
 	</column>
-	<constraint name="element_pk" type="pk-constr" factor="10" table="public.&quot;Element&quot;">
+	<constraint name="element_pk" type="pk-constr" factor="10" table="public.element">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="Status">
+<table name="status">
 	<schema name="public"/>
 	<position x="832.028" y="434.917"/>
 	<column name="id">
@@ -39,7 +39,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="duration" not-null="true" default-value="0">
 		<type name="bigint"/>
 	</column>
-	<constraint name="status_pk" type="pk-constr" factor="10" table="public.&quot;Status&quot;">
+	<constraint name="status_pk" type="pk-constr" factor="10" table="public.status">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -47,18 +47,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <sequence name="element_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.&quot;Element&quot;.id">
+	 cache="1" cycle="false" owner-col="public.element.id">
 	<schema name="public"/>
 </sequence>
 
 <sequence name="status_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.&quot;Status&quot;.id">
+	 cache="1" cycle="false" owner-col="public.status.id">
 	<schema name="public"/>
 </sequence>
 
-<table name="Perk">
+<table name="perk">
 	<schema name="public"/>
 	<position x="790.528" y="6.05556"/>
 	<column name="id">
@@ -73,7 +73,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="inherited" default-value="true">
 		<type name="boolean"/>
 	</column>
-	<constraint name="perk_pk" type="pk-constr" factor="10" table="public.&quot;Perk&quot;">
+	<constraint name="perk_pk" type="pk-constr" factor="10" table="public.perk">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -85,7 +85,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 </sequence>
 
-<table name="PerkType">
+<table name="perk_type">
 	<schema name="public"/>
 	<comment><![CDATA[Passivo/ Ação/ Batalha]]></comment>
 	<position x="1061.11" y="242.833"/>
@@ -95,7 +95,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="type_name">
 		<type name="character" length="64"/>
 	</column>
-	<constraint name="perk_type_pk" type="pk-constr" factor="10" table="public.&quot;PerkType&quot;">
+	<constraint name="perk_type_pk" type="pk-constr" factor="10" table="public.perk_type">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -103,7 +103,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <sequence name="perk_type_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.&quot;PerkType&quot;.id">
+	 cache="1" cycle="false" owner-col="public.perk_type.id">
 	<schema name="public"/>
 </sequence>
 
@@ -112,11 +112,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="4" constr-indexes="1,2"
-	 src-table="public.&quot;PerkType&quot;"
-	 dst-table="public.&quot;Perk&quot;"
+	 src-table="public.perk_type"
+	 dst-table="public.perk"
 	 src-required="true" dst-required="false"/>
 
-<table name="ElementWeakness">
+<table name="element_weakness">
 	<schema name="public"/>
 	<position x="399.444" y="415.083"/>
 	<column name="id">
@@ -125,21 +125,21 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="weakness_name">
 		<type name="character" length="64"/>
 	</column>
-	<constraint name="weakness_pk" type="pk-constr" factor="10" table="public.&quot;ElementWeakness&quot;">
+	<constraint name="weakness_pk" type="pk-constr" factor="10" table="public.element_weakness">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="ElementBoost">
+<table name="element_boost">
 	<schema name="public"/>
-	<position x="52.5" y="339.222"/>
+	<position x="59.1667" y="393.666"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
 	<column name="boost_name">
 		<type name="character" length="64"/>
 	</column>
-	<constraint name="boost_pk" type="pk-constr" factor="10" table="public.&quot;ElementBoost&quot;">
+	<constraint name="boost_pk" type="pk-constr" factor="10" table="public.element_boost">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -147,14 +147,14 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <sequence name="element_boost_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.&quot;ElementBoost&quot;.id">
+	 cache="1" cycle="false" owner-col="public.element_boost.id">
 	<schema name="public"/>
 </sequence>
 
 <sequence name="element_weakness_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.&quot;ElementWeakness&quot;.id">
+	 cache="1" cycle="false" owner-col="public.element_weakness.id">
 	<schema name="public"/>
 </sequence>
 
@@ -163,8 +163,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="3" constr-indexes="1,2"
-	 src-table="public.&quot;ElementBoost&quot;"
-	 dst-table="public.&quot;Element&quot;"
+	 src-table="public.element_boost"
+	 dst-table="public.element"
 	 src-required="true" dst-required="false"/>
 
 <relationship name="Element_has_one_ElementWeakness" type="rel11"
@@ -172,11 +172,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="4" constr-indexes="3,4"
-	 src-table="public.&quot;ElementWeakness&quot;"
-	 dst-table="public.&quot;Element&quot;"
+	 src-table="public.element_weakness"
+	 dst-table="public.element"
 	 src-required="true" dst-required="false"/>
 
-<table name="MixedElement">
+<table name="mixed_element">
 	<schema name="public"/>
 	<position x="506.806" y="15.5556"/>
 	<column name="id">
@@ -185,7 +185,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="mix_name">
 		<type name="character" length="64"/>
 	</column>
-	<constraint name="mixed_element_pk" type="pk-constr" factor="10" table="public.&quot;MixedElement&quot;">
+	<constraint name="mixed_element_pk" type="pk-constr" factor="10" table="public.mixed_element">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -193,13 +193,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <sequence name="mix_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.&quot;MixedElement&quot;.id">
+	 cache="1" cycle="false" owner-col="public.mixed_element.id">
 	<schema name="public"/>
 </sequence>
 
-<table name="Effect">
+<table name="effect">
 	<schema name="public"/>
-	<position x="721.917" y="230"/>
+	<position x="576.361" y="195.556"/>
 	<column name="id">
 		<type name="bigint"/>
 	</column>
@@ -209,7 +209,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="strength" not-null="true" default-value="0">
 		<type name="bigint"/>
 	</column>
-	<constraint name="effect_pk" type="pk-constr" factor="10" table="public.&quot;Effect&quot;">
+	<constraint name="effect_pk" type="pk-constr" factor="10" table="public.effect">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -217,7 +217,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <sequence name="effect_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false" owner-col="public.&quot;Effect&quot;.id">
+	 cache="1" cycle="false" owner-col="public.effect.id">
 	<schema name="public"/>
 </sequence>
 
@@ -226,8 +226,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="2" constr-indexes="1,2"
-	 src-table="public.&quot;Effect&quot;"
-	 dst-table="public.&quot;ElementWeakness&quot;"
+	 src-table="public.effect"
+	 dst-table="public.element_weakness"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="ElementBoost_has_one_Effect" type="rel11"
@@ -235,8 +235,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="2" constr-indexes="1,2"
-	 src-table="public.&quot;Effect&quot;"
-	 dst-table="public.&quot;ElementBoost&quot;"
+	 src-table="public.effect"
+	 dst-table="public.element_boost"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="MixedElement_has_many_Element" type="rel1n"
@@ -244,8 +244,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="5" constr-indexes="5"
-	 src-table="public.&quot;MixedElement&quot;"
-	 dst-table="public.&quot;Element&quot;"
+	 src-table="public.mixed_element"
+	 dst-table="public.element"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="Status_has_one_Effect" type="rel11"
@@ -253,8 +253,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="3" constr-indexes="1,2"
-	 src-table="public.&quot;Effect&quot;"
-	 dst-table="public.&quot;Status&quot;"
+	 src-table="public.effect"
+	 dst-table="public.status"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="Perk_has_one_Effect" type="rel11"
@@ -262,8 +262,254 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 col-indexes="5" constr-indexes="3,4"
-	 src-table="public.&quot;Effect&quot;"
-	 dst-table="public.&quot;Perk&quot;"
+	 src-table="public.effect"
+	 dst-table="public.perk"
+	 src-required="false" dst-required="false"/>
+
+<table name="player_char">
+	<schema name="public"/>
+	<position x="54.4445" y="553.333"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="char_name">
+		<type name="character" length="255"/>
+	</column>
+	<column name="player_name">
+		<type name="character" length="255"/>
+	</column>
+	<column name="age">
+		<type name="smallint"/>
+	</column>
+	<column name="sex" default-value="'M'">
+		<type name="char"/>
+	</column>
+	<column name="height">
+		<type name="smallint"/>
+	</column>
+	<column name="weight">
+		<type name="smallint"/>
+	</column>
+	<constraint name="character_id_pk" type="pk-constr" factor="10" table="public.player_char">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="player_char_info">
+	<schema name="public"/>
+	<position x="435.556" y="515.556"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="char_level" not-null="true" default-value="1">
+		<type name="bigint"/>
+	</column>
+	<column name="hp" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="strength" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="dexterity" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="resistance" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="wisdom" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="lucky" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<constraint name="char_info_id_pk" type="pk-constr" factor="10" table="public.player_char_info">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="char_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.player_char.id">
+	<schema name="public"/>
+</sequence>
+
+<sequence name="char_info_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.player_char_info.id">
+	<schema name="public"/>
+</sequence>
+
+<table name="char_race">
+	<schema name="public"/>
+	<position x="786.667" y="712.222"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="race_name">
+		<type name="character" length="64"/>
+	</column>
+	<column name="bonus_hp" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_str" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_dex" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_res" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_wis" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_luc" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<constraint name="char_race_id_pk" type="pk-constr" factor="10" table="public.char_race">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="char_race_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.char_race.id">
+	<schema name="public"/>
+</sequence>
+
+<table name="enemy_race">
+	<schema name="public"/>
+	<position x="1144.44" y="591.111"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="race_name">
+		<type name="character" length="64"/>
+	</column>
+	<column name="bonus_hp" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_str" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_dex" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_res" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_wis" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_luc" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<constraint name="enemy_race_id_pk" type="pk-constr" factor="10" table="public.enemy_race">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="enemy_race_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="2147483647"
+	 cache="1" cycle="false" owner-col="public.enemy_race.id">
+	<schema name="public"/>
+</sequence>
+
+<table name="char_class">
+	<schema name="public"/>
+	<position x="462.222" y="845.556"/>
+	<column name="id">
+		<type name="bigint"/>
+	</column>
+	<column name="title">
+		<type name="character" length="64"/>
+	</column>
+	<column name="bonus_hp" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_str" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_dex" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_res" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_wis" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<column name="bonus_luc" not-null="true" default-value="0">
+		<type name="smallint"/>
+	</column>
+	<constraint name="char_class_id_pk" type="pk-constr" factor="10" table="public.char_class">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="char_class_id_seq"
+	 start="1" increment="1"
+	 min-value="0" max-value="2147483647"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+</sequence>
+
+<relationship name="char_race_has_many_perk" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="6" constr-indexes="5"
+	 src-table="public.char_race"
+	 dst-table="public.perk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="enemy_race_has_many_perk" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="7" constr-indexes="6"
+	 src-table="public.enemy_race"
+	 dst-table="public.perk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="player_char_has_many_player_char_info" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="8" constr-indexes="1"
+	 src-table="public.player_char"
+	 dst-table="public.player_char_info"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="player_char_has_one_char_class" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="7" constr-indexes="1,2"
+	 src-table="public.char_class"
+	 dst-table="public.player_char"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="char_class_has_many_perk" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="8" constr-indexes="7"
+	 src-table="public.char_class"
+	 dst-table="public.perk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="player_char_has_one_char_race" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="8" constr-indexes="3,4"
+	 src-table="public.char_race"
+	 dst-table="public.player_char"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
