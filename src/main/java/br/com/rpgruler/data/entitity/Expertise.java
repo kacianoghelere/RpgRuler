@@ -1,45 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "expertise")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Expertise.findAll", query = "SELECT e FROM Expertise e"),
-    @NamedQuery(name = "Expertise.findById", query = "SELECT e FROM Expertise e WHERE e.id = :id"),
-    @NamedQuery(name = "Expertise.findByTitle", query = "SELECT e FROM Expertise e WHERE e.title = :title"),
-    @NamedQuery(name = "Expertise.findByKeyskill", query = "SELECT e FROM Expertise e WHERE e.keyskill = :keyskill"),
-    @NamedQuery(name = "Expertise.findByValue", query = "SELECT e FROM Expertise e WHERE e.value = :value")})
 public class Expertise implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Código")
     private Long id;
     @Column(name = "title")
     private String title;
@@ -47,9 +20,6 @@ public class Expertise implements Serializable {
     private BigInteger keyskill;
     @Column(name = "value")
     private BigInteger value;
-    @JoinColumn(name = "id_player_char", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private PlayerChar idPlayerChar;
 
     public Expertise() {
     }
@@ -90,14 +60,6 @@ public class Expertise implements Serializable {
         this.value = value;
     }
 
-    public PlayerChar getIdPlayerChar() {
-        return idPlayerChar;
-    }
-
-    public void setIdPlayerChar(PlayerChar idPlayerChar) {
-        this.idPlayerChar = idPlayerChar;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -122,5 +84,5 @@ public class Expertise implements Serializable {
     public String toString() {
         return "br.com.rpgruler.data.entitity.Expertise[ id=" + id + " ]";
     }
-    
+
 }

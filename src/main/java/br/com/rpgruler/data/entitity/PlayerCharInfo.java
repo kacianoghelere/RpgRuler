@@ -1,73 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "player_char_info")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "PlayerCharInfo.findAll", query = "SELECT p FROM PlayerCharInfo p"),
-    @NamedQuery(name = "PlayerCharInfo.findById", query = "SELECT p FROM PlayerCharInfo p WHERE p.id = :id"),
-    @NamedQuery(name = "PlayerCharInfo.findByCharLevel", query = "SELECT p FROM PlayerCharInfo p WHERE p.charLevel = :charLevel"),
-    @NamedQuery(name = "PlayerCharInfo.findByHp", query = "SELECT p FROM PlayerCharInfo p WHERE p.hp = :hp"),
-    @NamedQuery(name = "PlayerCharInfo.findByStrength", query = "SELECT p FROM PlayerCharInfo p WHERE p.strength = :strength"),
-    @NamedQuery(name = "PlayerCharInfo.findByDexterity", query = "SELECT p FROM PlayerCharInfo p WHERE p.dexterity = :dexterity"),
-    @NamedQuery(name = "PlayerCharInfo.findByResistance", query = "SELECT p FROM PlayerCharInfo p WHERE p.resistance = :resistance"),
-    @NamedQuery(name = "PlayerCharInfo.findByWisdom", query = "SELECT p FROM PlayerCharInfo p WHERE p.wisdom = :wisdom"),
-    @NamedQuery(name = "PlayerCharInfo.findByLucky", query = "SELECT p FROM PlayerCharInfo p WHERE p.lucky = :lucky")})
 public class PlayerCharInfo implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Código")
     private Long id;
-    @Basic(optional = false)
-    @Column(name = "char_level")
+    @Column(name = "Nivel")
     private long charLevel;
-    @Basic(optional = false)
-    @Column(name = "hp")
-    private short hp;
-    @Basic(optional = false)
-    @Column(name = "strength")
-    private short strength;
-    @Basic(optional = false)
-    @Column(name = "dexterity")
-    private short dexterity;
-    @Basic(optional = false)
-    @Column(name = "resistance")
-    private short resistance;
-    @Basic(optional = false)
-    @Column(name = "wisdom")
-    private short wisdom;
-    @Basic(optional = false)
-    @Column(name = "lucky")
-    private short lucky;
-    @JoinColumn(name = "id_player_char", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private PlayerChar idPlayerChar;
+    @Column(name = "HP")
+    private Integer hp;
+    @Column(name = "Força")
+    private Integer strength;
+    @Column(name = "Destreza")
+    private Integer dexterity;
+    @Column(name = "Sabedoria")
+    private Integer wisdom;
+    @Column(name = "Resistencia")
+    private Integer resistance;
+    @Column(name = "Sorte")
+    private Integer lucky;
+    @Column(name = "Personagem")
+    private PlayerChar playerChar;
 
     public PlayerCharInfo() {
     }
@@ -76,7 +37,7 @@ public class PlayerCharInfo implements Serializable {
         this.id = id;
     }
 
-    public PlayerCharInfo(Long id, long charLevel, short hp, short strength, short dexterity, short resistance, short wisdom, short lucky) {
+    public PlayerCharInfo(Long id, long charLevel, Integer hp, Integer strength, Integer dexterity, Integer resistance, Integer wisdom, Integer lucky) {
         this.id = id;
         this.charLevel = charLevel;
         this.hp = hp;
@@ -103,60 +64,60 @@ public class PlayerCharInfo implements Serializable {
         this.charLevel = charLevel;
     }
 
-    public short getHp() {
+    public Integer getHp() {
         return hp;
     }
 
-    public void setHp(short hp) {
+    public void setHp(Integer hp) {
         this.hp = hp;
     }
 
-    public short getStrength() {
+    public Integer getStrength() {
         return strength;
     }
 
-    public void setStrength(short strength) {
+    public void setStrength(Integer strength) {
         this.strength = strength;
     }
 
-    public short getDexterity() {
+    public Integer getDexterity() {
         return dexterity;
     }
 
-    public void setDexterity(short dexterity) {
+    public void setDexterity(Integer dexterity) {
         this.dexterity = dexterity;
     }
 
-    public short getResistance() {
+    public Integer getResistance() {
         return resistance;
     }
 
-    public void setResistance(short resistance) {
+    public void setResistance(Integer resistance) {
         this.resistance = resistance;
     }
 
-    public short getWisdom() {
+    public Integer getWisdom() {
         return wisdom;
     }
 
-    public void setWisdom(short wisdom) {
+    public void setWisdom(Integer wisdom) {
         this.wisdom = wisdom;
     }
 
-    public short getLucky() {
+    public Integer getLucky() {
         return lucky;
     }
 
-    public void setLucky(short lucky) {
+    public void setLucky(Integer lucky) {
         this.lucky = lucky;
     }
 
     public PlayerChar getIdPlayerChar() {
-        return idPlayerChar;
+        return playerChar;
     }
 
     public void setIdPlayerChar(PlayerChar idPlayerChar) {
-        this.idPlayerChar = idPlayerChar;
+        this.playerChar = idPlayerChar;
     }
 
     @Override
@@ -183,5 +144,5 @@ public class PlayerCharInfo implements Serializable {
     public String toString() {
         return "br.com.rpgruler.data.entitity.PlayerCharInfo[ id=" + id + " ]";
     }
-    
+
 }

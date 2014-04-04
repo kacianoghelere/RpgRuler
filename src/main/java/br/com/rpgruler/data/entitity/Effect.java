@@ -1,52 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "effect")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Effect.findAll", query = "SELECT e FROM Effect e"),
-    @NamedQuery(name = "Effect.findById", query = "SELECT e FROM Effect e WHERE e.id = :id"),
-    @NamedQuery(name = "Effect.findByEffectName", query = "SELECT e FROM Effect e WHERE e.effectName = :effectName"),
-    @NamedQuery(name = "Effect.findByStrength", query = "SELECT e FROM Effect e WHERE e.strength = :strength")})
 public class Effect implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Código")
     private Long id;
-    @Column(name = "effect_name")
+    @Column(name = "Nome")
     private String effectName;
     @Basic(optional = false)
-    @Column(name = "strength")
+    @Column(name = "Proporção")
     private long strength;
-    @OneToOne(mappedBy = "idEffect")
-    private Perk perk;
-    @OneToOne(mappedBy = "idEffect")
-    private Status status;
 
     public Effect() {
     }
@@ -90,22 +63,6 @@ public class Effect implements Serializable {
         this.strength = strength;
     }
 
-    public Perk getPerk() {
-        return perk;
-    }
-
-    public void setPerk(Perk perk) {
-        this.perk = perk;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -128,7 +85,7 @@ public class Effect implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.Effect[ id=" + id + " ]";
+        return effectName;
     }
-    
+
 }

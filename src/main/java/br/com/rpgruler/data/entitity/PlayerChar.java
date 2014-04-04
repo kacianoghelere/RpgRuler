@@ -1,73 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "player_char")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "PlayerChar.findAll", query = "SELECT p FROM PlayerChar p"),
-    @NamedQuery(name = "PlayerChar.findById", query = "SELECT p FROM PlayerChar p WHERE p.id = :id"),
-    @NamedQuery(name = "PlayerChar.findByCharName", query = "SELECT p FROM PlayerChar p WHERE p.charName = :charName"),
-    @NamedQuery(name = "PlayerChar.findByPlayerName", query = "SELECT p FROM PlayerChar p WHERE p.playerName = :playerName"),
-    @NamedQuery(name = "PlayerChar.findByAge", query = "SELECT p FROM PlayerChar p WHERE p.age = :age"),
-    @NamedQuery(name = "PlayerChar.findBySex", query = "SELECT p FROM PlayerChar p WHERE p.sex = :sex"),
-    @NamedQuery(name = "PlayerChar.findByHeight", query = "SELECT p FROM PlayerChar p WHERE p.height = :height"),
-    @NamedQuery(name = "PlayerChar.findByWeight", query = "SELECT p FROM PlayerChar p WHERE p.weight = :weight")})
 public class PlayerChar implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+
+    @Column(name = "Código")
     private Long id;
-    @Column(name = "char_name")
+    @Column(name = "Nome")
     private String charName;
-    @Column(name = "player_name")
+    @Column(name = "Jogador")
     private String playerName;
-    @Column(name = "age")
-    private Short age;
-    @Column(name = "sex")
+    @Column(name = "Idade")
+    private Integer age;
+    @Column(name = "Sexo")
     private Character sex;
-    @Column(name = "height")
-    private Short height;
-    @Column(name = "weight")
-    private Short weight;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPlayerChar")
-    private Collection<PlayerCharInfo> playerCharInfoCollection;
-    @JoinColumn(name = "id_char_class", referencedColumnName = "id")
-    @OneToOne
+    @Column(name = "Altura")
+    private Integer height;
+    @Column(name = "Peso")
+    private Integer weight;
+    @Column(name = "Classe")
     private CharClass idCharClass;
-    @JoinColumn(name = "id_char_race", referencedColumnName = "id")
-    @OneToOne
+    @Column(name = "Raça")
     private CharRace idCharRace;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPlayerChar")
+    @Column(name = "Informações")
+    private Collection<PlayerCharInfo> playerCharInfoCollection;
+    @Column(name = "Pericias")
     private Collection<Expertise> expertiseCollection;
 
     public PlayerChar() {
@@ -77,7 +43,7 @@ public class PlayerChar implements Serializable {
         this.id = id;
     }
 
-    public PlayerChar(String charName, String playerName, Short age, Character sex, Short height, Short weight) {
+    public PlayerChar(String charName, String playerName, Integer age, Character sex, Integer height, Integer weight) {
         this.charName = charName;
         this.playerName = playerName;
         this.age = age;
@@ -110,11 +76,11 @@ public class PlayerChar implements Serializable {
         this.playerName = playerName;
     }
 
-    public Short getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(Short age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -126,23 +92,22 @@ public class PlayerChar implements Serializable {
         this.sex = sex;
     }
 
-    public Short getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(Short height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
-    public Short getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(Short weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
-    @XmlTransient
     public Collection<PlayerCharInfo> getPlayerCharInfoCollection() {
         return playerCharInfoCollection;
     }
@@ -167,7 +132,6 @@ public class PlayerChar implements Serializable {
         this.idCharRace = idCharRace;
     }
 
-    @XmlTransient
     public Collection<Expertise> getExpertiseCollection() {
         return expertiseCollection;
     }
@@ -200,5 +164,5 @@ public class PlayerChar implements Serializable {
     public String toString() {
         return "br.com.rpgruler.data.entitity.PlayerChar[ id=" + id + " ]";
     }
-    
+
 }

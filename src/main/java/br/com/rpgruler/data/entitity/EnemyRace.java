@@ -1,72 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "enemy_race")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "EnemyRace.findAll", query = "SELECT e FROM EnemyRace e"),
-    @NamedQuery(name = "EnemyRace.findById", query = "SELECT e FROM EnemyRace e WHERE e.id = :id"),
-    @NamedQuery(name = "EnemyRace.findByRaceName", query = "SELECT e FROM EnemyRace e WHERE e.raceName = :raceName"),
-    @NamedQuery(name = "EnemyRace.findByBonusHp", query = "SELECT e FROM EnemyRace e WHERE e.bonusHp = :bonusHp"),
-    @NamedQuery(name = "EnemyRace.findByBonusStr", query = "SELECT e FROM EnemyRace e WHERE e.bonusStr = :bonusStr"),
-    @NamedQuery(name = "EnemyRace.findByBonusDex", query = "SELECT e FROM EnemyRace e WHERE e.bonusDex = :bonusDex"),
-    @NamedQuery(name = "EnemyRace.findByBonusRes", query = "SELECT e FROM EnemyRace e WHERE e.bonusRes = :bonusRes"),
-    @NamedQuery(name = "EnemyRace.findByBonusWis", query = "SELECT e FROM EnemyRace e WHERE e.bonusWis = :bonusWis"),
-    @NamedQuery(name = "EnemyRace.findByBonusLuc", query = "SELECT e FROM EnemyRace e WHERE e.bonusLuc = :bonusLuc")})
 public class EnemyRace implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Código")
     private Long id;
-    @Column(name = "race_name")
+    @Column(name = "Titulo")
     private String raceName;
-    @Basic(optional = false)
-    @Column(name = "bonus_hp")
-    private short bonusHp;
-    @Basic(optional = false)
-    @Column(name = "bonus_str")
-    private short bonusStr;
-    @Basic(optional = false)
-    @Column(name = "bonus_dex")
-    private short bonusDex;
-    @Basic(optional = false)
-    @Column(name = "bonus_res")
-    private short bonusRes;
-    @Basic(optional = false)
-    @Column(name = "bonus_wis")
-    private short bonusWis;
-    @Basic(optional = false)
-    @Column(name = "bonus_luc")
-    private short bonusLuc;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEnemyRace")
+    @Column(name = "Bonûs HP")
+    private Integer bonusHp;
+    @Column(name = "Bonûs Força")
+    private Integer bonusStr;
+    @Column(name = "Bonûs Destreza")
+    private Integer bonusDex;
+    @Column(name = "Bonûs Sabedoria")
+    private Integer bonusWis;
+    @Column(name = "Bonûs Resistencia")
+    private Integer bonusRes;
+    @Column(name = "Bonûs sorte")
+    private Integer bonusLuc;
+    @Column(name = "Vantagens")
     private Collection<Perk> perkCollection;
 
     public EnemyRace() {
@@ -76,14 +38,16 @@ public class EnemyRace implements Serializable {
         this.id = id;
     }
 
-    public EnemyRace(Long id, short bonusHp, short bonusStr, short bonusDex, short bonusRes, short bonusWis, short bonusLuc) {
+    public EnemyRace(Long id, String raceName, Integer bonusHp, Integer bonusStr, Integer bonusDex, Integer bonusWis, Integer bonusRes, Integer bonusLuc, Collection<Perk> perkCollection) {
         this.id = id;
+        this.raceName = raceName;
         this.bonusHp = bonusHp;
         this.bonusStr = bonusStr;
         this.bonusDex = bonusDex;
-        this.bonusRes = bonusRes;
         this.bonusWis = bonusWis;
+        this.bonusRes = bonusRes;
         this.bonusLuc = bonusLuc;
+        this.perkCollection = perkCollection;
     }
 
     public Long getId() {
@@ -102,55 +66,54 @@ public class EnemyRace implements Serializable {
         this.raceName = raceName;
     }
 
-    public short getBonusHp() {
+    public Integer getBonusHp() {
         return bonusHp;
     }
 
-    public void setBonusHp(short bonusHp) {
+    public void setBonusHp(Integer bonusHp) {
         this.bonusHp = bonusHp;
     }
 
-    public short getBonusStr() {
+    public Integer getBonusStr() {
         return bonusStr;
     }
 
-    public void setBonusStr(short bonusStr) {
+    public void setBonusStr(Integer bonusStr) {
         this.bonusStr = bonusStr;
     }
 
-    public short getBonusDex() {
+    public Integer getBonusDex() {
         return bonusDex;
     }
 
-    public void setBonusDex(short bonusDex) {
+    public void setBonusDex(Integer bonusDex) {
         this.bonusDex = bonusDex;
     }
 
-    public short getBonusRes() {
-        return bonusRes;
-    }
-
-    public void setBonusRes(short bonusRes) {
-        this.bonusRes = bonusRes;
-    }
-
-    public short getBonusWis() {
+    public Integer getBonusWis() {
         return bonusWis;
     }
 
-    public void setBonusWis(short bonusWis) {
+    public void setBonusWis(Integer bonusWis) {
         this.bonusWis = bonusWis;
     }
 
-    public short getBonusLuc() {
+    public Integer getBonusRes() {
+        return bonusRes;
+    }
+
+    public void setBonusRes(Integer bonusRes) {
+        this.bonusRes = bonusRes;
+    }
+
+    public Integer getBonusLuc() {
         return bonusLuc;
     }
 
-    public void setBonusLuc(short bonusLuc) {
+    public void setBonusLuc(Integer bonusLuc) {
         this.bonusLuc = bonusLuc;
     }
 
-    @XmlTransient
     public Collection<Perk> getPerkCollection() {
         return perkCollection;
     }
@@ -181,7 +144,7 @@ public class EnemyRace implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.EnemyRace[ id=" + id + " ]";
+        return "br.com.rpgruler.data.entitity.CharRace[ id=" + id + " ]";
     }
-    
+
 }

@@ -1,75 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "char_race")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CharRace.findAll", query = "SELECT c FROM CharRace c"),
-    @NamedQuery(name = "CharRace.findById", query = "SELECT c FROM CharRace c WHERE c.id = :id"),
-    @NamedQuery(name = "CharRace.findByRaceName", query = "SELECT c FROM CharRace c WHERE c.raceName = :raceName"),
-    @NamedQuery(name = "CharRace.findByBonusHp", query = "SELECT c FROM CharRace c WHERE c.bonusHp = :bonusHp"),
-    @NamedQuery(name = "CharRace.findByBonusStr", query = "SELECT c FROM CharRace c WHERE c.bonusStr = :bonusStr"),
-    @NamedQuery(name = "CharRace.findByBonusDex", query = "SELECT c FROM CharRace c WHERE c.bonusDex = :bonusDex"),
-    @NamedQuery(name = "CharRace.findByBonusRes", query = "SELECT c FROM CharRace c WHERE c.bonusRes = :bonusRes"),
-    @NamedQuery(name = "CharRace.findByBonusWis", query = "SELECT c FROM CharRace c WHERE c.bonusWis = :bonusWis"),
-    @NamedQuery(name = "CharRace.findByBonusLuc", query = "SELECT c FROM CharRace c WHERE c.bonusLuc = :bonusLuc")})
 public class CharRace implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Código")
     private Long id;
-    @Column(name = "race_name")
+    @Column(name = "Titulo")
     private String raceName;
-    @Basic(optional = false)
-    @Column(name = "bonus_hp")
-    private short bonusHp;
-    @Basic(optional = false)
-    @Column(name = "bonus_str")
-    private short bonusStr;
-    @Basic(optional = false)
-    @Column(name = "bonus_dex")
-    private short bonusDex;
-    @Basic(optional = false)
-    @Column(name = "bonus_res")
-    private short bonusRes;
-    @Basic(optional = false)
-    @Column(name = "bonus_wis")
-    private short bonusWis;
-    @Basic(optional = false)
-    @Column(name = "bonus_luc")
-    private short bonusLuc;
-    @OneToOne(mappedBy = "idCharRace")
-    private PlayerChar playerChar;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCharRace")
+    @Column(name = "Bonûs HP")
+    private Integer bonusHp;
+    @Column(name = "Bonûs Força")
+    private Integer bonusStr;
+    @Column(name = "Bonûs Destreza")
+    private Integer bonusDex;
+    @Column(name = "Bonûs Sabedoria")
+    private Integer bonusWis;
+    @Column(name = "Bonûs Resistencia")
+    private Integer bonusRes;
+    @Column(name = "Bonûs sorte")
+    private Integer bonusLuc;
+    @Column(name = "Vantagens")
     private Collection<Perk> perkCollection;
 
     public CharRace() {
@@ -79,14 +38,16 @@ public class CharRace implements Serializable {
         this.id = id;
     }
 
-    public CharRace(Long id, short bonusHp, short bonusStr, short bonusDex, short bonusRes, short bonusWis, short bonusLuc) {
+    public CharRace(Long id, String raceName, Integer bonusHp, Integer bonusStr, Integer bonusDex, Integer bonusWis, Integer bonusRes, Integer bonusLuc, Collection<Perk> perkCollection) {
         this.id = id;
+        this.raceName = raceName;
         this.bonusHp = bonusHp;
         this.bonusStr = bonusStr;
         this.bonusDex = bonusDex;
-        this.bonusRes = bonusRes;
         this.bonusWis = bonusWis;
+        this.bonusRes = bonusRes;
         this.bonusLuc = bonusLuc;
+        this.perkCollection = perkCollection;
     }
 
     public Long getId() {
@@ -105,63 +66,54 @@ public class CharRace implements Serializable {
         this.raceName = raceName;
     }
 
-    public short getBonusHp() {
+    public Integer getBonusHp() {
         return bonusHp;
     }
 
-    public void setBonusHp(short bonusHp) {
+    public void setBonusHp(Integer bonusHp) {
         this.bonusHp = bonusHp;
     }
 
-    public short getBonusStr() {
+    public Integer getBonusStr() {
         return bonusStr;
     }
 
-    public void setBonusStr(short bonusStr) {
+    public void setBonusStr(Integer bonusStr) {
         this.bonusStr = bonusStr;
     }
 
-    public short getBonusDex() {
+    public Integer getBonusDex() {
         return bonusDex;
     }
 
-    public void setBonusDex(short bonusDex) {
+    public void setBonusDex(Integer bonusDex) {
         this.bonusDex = bonusDex;
     }
 
-    public short getBonusRes() {
-        return bonusRes;
-    }
-
-    public void setBonusRes(short bonusRes) {
-        this.bonusRes = bonusRes;
-    }
-
-    public short getBonusWis() {
+    public Integer getBonusWis() {
         return bonusWis;
     }
 
-    public void setBonusWis(short bonusWis) {
+    public void setBonusWis(Integer bonusWis) {
         this.bonusWis = bonusWis;
     }
 
-    public short getBonusLuc() {
+    public Integer getBonusRes() {
+        return bonusRes;
+    }
+
+    public void setBonusRes(Integer bonusRes) {
+        this.bonusRes = bonusRes;
+    }
+
+    public Integer getBonusLuc() {
         return bonusLuc;
     }
 
-    public void setBonusLuc(short bonusLuc) {
+    public void setBonusLuc(Integer bonusLuc) {
         this.bonusLuc = bonusLuc;
     }
 
-    public PlayerChar getPlayerChar() {
-        return playerChar;
-    }
-
-    public void setPlayerChar(PlayerChar playerChar) {
-        this.playerChar = playerChar;
-    }
-
-    @XmlTransient
     public Collection<Perk> getPerkCollection() {
         return perkCollection;
     }
@@ -194,5 +146,5 @@ public class CharRace implements Serializable {
     public String toString() {
         return "br.com.rpgruler.data.entitity.CharRace[ id=" + id + " ]";
     }
-    
+
 }

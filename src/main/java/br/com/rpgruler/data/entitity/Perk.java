@@ -1,64 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.rpgruler.data.entitity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author kaciano
  */
-@Entity
-@Table(name = "perk")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Perk.findAll", query = "SELECT p FROM Perk p"),
-    @NamedQuery(name = "Perk.findById", query = "SELECT p FROM Perk p WHERE p.id = :id"),
-    @NamedQuery(name = "Perk.findByPerkName", query = "SELECT p FROM Perk p WHERE p.perkName = :perkName"),
-    @NamedQuery(name = "Perk.findByPerkDescription", query = "SELECT p FROM Perk p WHERE p.perkDescription = :perkDescription"),
-    @NamedQuery(name = "Perk.findByInherited", query = "SELECT p FROM Perk p WHERE p.inherited = :inherited")})
 public class Perk implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     @Id
-    @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Código")
     private Long id;
-    @Column(name = "perk_name")
+    @Column(name = "Nome")
     private String perkName;
-    @Column(name = "perk_description")
+    @Column(name = "Descrição")
     private String perkDescription;
-    @Column(name = "inherited")
+    @Column(name = "Herdado")
     private Boolean inherited;
-    @JoinColumn(name = "id_char_class", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private CharClass idCharClass;
-    @JoinColumn(name = "id_char_race", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private CharRace idCharRace;
-    @JoinColumn(name = "id_effect", referencedColumnName = "id")
-    @OneToOne
-    private Effect idEffect;
-    @JoinColumn(name = "id_enemy_race", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private EnemyRace idEnemyRace;
-    @JoinColumn(name = "id_perk_type", referencedColumnName = "id")
-    @OneToOne
-    private PerkType idPerkType;
+    @Column(name = "Tipo")
+    private PerkType perkType;
 
     public Perk() {
     }
@@ -99,44 +61,12 @@ public class Perk implements Serializable {
         this.inherited = inherited;
     }
 
-    public CharClass getIdCharClass() {
-        return idCharClass;
+    public PerkType getPerkType() {
+        return perkType;
     }
 
-    public void setIdCharClass(CharClass idCharClass) {
-        this.idCharClass = idCharClass;
-    }
-
-    public CharRace getIdCharRace() {
-        return idCharRace;
-    }
-
-    public void setIdCharRace(CharRace idCharRace) {
-        this.idCharRace = idCharRace;
-    }
-
-    public Effect getIdEffect() {
-        return idEffect;
-    }
-
-    public void setIdEffect(Effect idEffect) {
-        this.idEffect = idEffect;
-    }
-
-    public EnemyRace getIdEnemyRace() {
-        return idEnemyRace;
-    }
-
-    public void setIdEnemyRace(EnemyRace idEnemyRace) {
-        this.idEnemyRace = idEnemyRace;
-    }
-
-    public PerkType getIdPerkType() {
-        return idPerkType;
-    }
-
-    public void setIdPerkType(PerkType idPerkType) {
-        this.idPerkType = idPerkType;
+    public void setPerkType(PerkType perkType) {
+        this.perkType = perkType;
     }
 
     @Override
@@ -163,5 +93,5 @@ public class Perk implements Serializable {
     public String toString() {
         return "br.com.rpgruler.data.entitity.Perk[ id=" + id + " ]";
     }
-    
+
 }
