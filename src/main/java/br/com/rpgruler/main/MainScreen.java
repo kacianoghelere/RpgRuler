@@ -6,6 +6,7 @@ import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
+import br.com.rpgruler.main.view.MaterialsView;
 import br.com.rpgruler.main.view.PerkView;
 import br.com.rpgruler.main.view.TermsView;
 import java.awt.event.ActionEvent;
@@ -134,12 +135,15 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIProcess = new javax.swing.JMenuItem();
         jMIRefresh = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
-        jMElement = new javax.swing.JMenu();
-        jMIRegElement = new javax.swing.JMenuItem();
-        jMPerk = new javax.swing.JMenu();
-        jMIRegPerk = new javax.swing.JMenuItem();
+        jMOthers = new javax.swing.JMenu();
         jMTerms = new javax.swing.JMenu();
         jMITermos = new javax.swing.JMenuItem();
+        jMPerk = new javax.swing.JMenu();
+        jMIRegPerk = new javax.swing.JMenuItem();
+        jMElement = new javax.swing.JMenu();
+        jMIRegElement = new javax.swing.JMenuItem();
+        jMMaterials = new javax.swing.JMenu();
+        jMIMaterials = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,7 +232,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 594, Short.MAX_VALUE)
         );
 
         jLMsg.setText("Mensagens");
@@ -287,29 +291,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMenuBar.add(jMOptions);
 
-        jMElement.setText("Elementos");
-
-        jMIRegElement.setText("Cadastro");
-        jMIRegElement.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIRegElementActionPerformed(evt);
-            }
-        });
-        jMElement.add(jMIRegElement);
-
-        jMenuBar.add(jMElement);
-
-        jMPerk.setText("Vantagens");
-
-        jMIRegPerk.setText("Cadastro");
-        jMIRegPerk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIRegPerkActionPerformed(evt);
-            }
-        });
-        jMPerk.add(jMIRegPerk);
-
-        jMenuBar.add(jMPerk);
+        jMOthers.setText("Outros");
 
         jMTerms.setText("Termos");
 
@@ -321,7 +303,45 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMTerms.add(jMITermos);
 
-        jMenuBar.add(jMTerms);
+        jMOthers.add(jMTerms);
+
+        jMPerk.setText("Vantagens");
+
+        jMIRegPerk.setText("Cadastro");
+        jMIRegPerk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRegPerkActionPerformed(evt);
+            }
+        });
+        jMPerk.add(jMIRegPerk);
+
+        jMOthers.add(jMPerk);
+
+        jMElement.setText("Elementos");
+
+        jMIRegElement.setText("Cadastro");
+        jMIRegElement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRegElementActionPerformed(evt);
+            }
+        });
+        jMElement.add(jMIRegElement);
+
+        jMOthers.add(jMElement);
+
+        jMMaterials.setText("Materiais");
+
+        jMIMaterials.setText("Registro");
+        jMIMaterials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIMaterialsActionPerformed(evt);
+            }
+        });
+        jMMaterials.add(jMIMaterials);
+
+        jMOthers.add(jMMaterials);
+
+        jMenuBar.add(jMOthers);
 
         setJMenuBar(jMenuBar);
 
@@ -406,6 +426,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new TermsView(this));
     }//GEN-LAST:event_jMITermosActionPerformed
 
+    private void jMIMaterialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMaterialsActionPerformed
+        listener.insertView(new MaterialsView(this));
+    }//GEN-LAST:event_jMIMaterialsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jBClear;
@@ -418,13 +442,16 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIDelete;
     private javax.swing.JMenuItem jMIDice;
+    private javax.swing.JMenuItem jMIMaterials;
     private javax.swing.JMenuItem jMIProcess;
     private javax.swing.JMenuItem jMIRefresh;
     private javax.swing.JMenuItem jMIRegElement;
     private javax.swing.JMenuItem jMIRegPerk;
     private javax.swing.JMenuItem jMISave;
     private javax.swing.JMenuItem jMITermos;
+    private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;
+    private javax.swing.JMenu jMOthers;
     private javax.swing.JMenu jMPerk;
     private javax.swing.JMenu jMTerms;
     private javax.swing.JMenuBar jMenuBar;
