@@ -1,9 +1,8 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Id;
 
 /**
  *
@@ -11,15 +10,14 @@ import javax.persistence.Id;
  */
 public class ArmorType implements Serializable {
 
-    @Id
-    @Basic(optional = false)
-    @Column(name = "Código")
+    @NotCopiable
+    @ColumnName(name = "Código")
     private Long id;
-    @Column(name = "type_name")
+    @ColumnName(name = "type_name")
     private String typeName;
-    @Column(name = "Quantidade 1")
+    @ColumnName(name = "Quantidade 1")
     private Double materialAmount1;
-    @Column(name = "Quantidade 2")
+    @ColumnName(name = "Quantidade 2")
     private Double materialAmount2;
 
     public ArmorType() {

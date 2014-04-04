@@ -1,9 +1,9 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Column;
-import javax.persistence.Id;
 
 /**
  *
@@ -11,24 +11,24 @@ import javax.persistence.Id;
  */
 public class EnemyRace implements Serializable {
 
-    @Id
-    @Column(name = "Código")
+    @NotCopiable
+    @ColumnName(name = "Código")
     private Long id;
-    @Column(name = "Titulo")
+    @ColumnName(name = "Titulo")
     private String raceName;
-    @Column(name = "Bonûs HP")
+    @ColumnName(name = "Bonûs HP")
     private Integer bonusHp;
-    @Column(name = "Bonûs Força")
+    @ColumnName(name = "Bonûs Força")
     private Integer bonusStr;
-    @Column(name = "Bonûs Destreza")
+    @ColumnName(name = "Bonûs Destreza")
     private Integer bonusDex;
-    @Column(name = "Bonûs Sabedoria")
+    @ColumnName(name = "Bonûs Sabedoria")
     private Integer bonusWis;
-    @Column(name = "Bonûs Resistencia")
+    @ColumnName(name = "Bonûs Resistencia")
     private Integer bonusRes;
-    @Column(name = "Bonûs sorte")
+    @ColumnName(name = "Bonûs sorte")
     private Integer bonusLuc;
-    @Column(name = "Vantagens")
+    @ColumnName(name = "Vantagens")
     private Collection<Perk> perkCollection;
 
     public EnemyRace() {

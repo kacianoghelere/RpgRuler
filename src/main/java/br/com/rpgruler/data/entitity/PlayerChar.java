@@ -1,9 +1,9 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Column;
-import javax.persistence.Id;
 
 /**
  *
@@ -11,29 +11,28 @@ import javax.persistence.Id;
  */
 public class PlayerChar implements Serializable {
 
-    @Id
-
-    @Column(name = "Código")
+    @NotCopiable
+    @ColumnName(name = "Código")
     private Long id;
-    @Column(name = "Nome")
+    @ColumnName(name = "Nome")
     private String charName;
-    @Column(name = "Jogador")
+    @ColumnName(name = "Jogador")
     private String playerName;
-    @Column(name = "Idade")
+    @ColumnName(name = "Idade")
     private Integer age;
-    @Column(name = "Sexo")
+    @ColumnName(name = "Sexo")
     private Character sex;
-    @Column(name = "Altura")
+    @ColumnName(name = "Altura")
     private Integer height;
-    @Column(name = "Peso")
+    @ColumnName(name = "Peso")
     private Integer weight;
-    @Column(name = "Classe")
+    @ColumnName(name = "Classe")
     private CharClass idCharClass;
-    @Column(name = "Raça")
+    @ColumnName(name = "Raça")
     private CharRace idCharRace;
-    @Column(name = "Informações")
+    @ColumnName(name = "Informações")
     private Collection<PlayerCharInfo> playerCharInfoCollection;
-    @Column(name = "Pericias")
+    @ColumnName(name = "Pericias")
     private Collection<Expertise> expertiseCollection;
 
     public PlayerChar() {

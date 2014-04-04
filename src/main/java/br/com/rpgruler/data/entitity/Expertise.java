@@ -1,9 +1,9 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
 import java.math.BigInteger;
-import javax.persistence.Column;
-import javax.persistence.Id;
 
 /**
  *
@@ -11,14 +11,14 @@ import javax.persistence.Id;
  */
 public class Expertise implements Serializable {
 
-    @Id
-    @Column(name = "Código")
+    @NotCopiable
+    @ColumnName(name = "Código")
     private Long id;
-    @Column(name = "title")
+    @ColumnName(name = "title")
     private String title;
-    @Column(name = "keyskill")
+    @ColumnName(name = "keyskill")
     private BigInteger keyskill;
-    @Column(name = "value")
+    @ColumnName(name = "value")
     private BigInteger value;
 
     public Expertise() {

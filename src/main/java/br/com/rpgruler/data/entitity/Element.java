@@ -1,8 +1,8 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Id;
 
 /**
  *
@@ -10,12 +10,12 @@ import javax.persistence.Id;
  */
 public class Element implements Serializable {
 
-    @Id
-    @Column(name = "Código")
+    @NotCopiable
+    @ColumnName(name = "Código")
     private Long id;
-    @Column(name = "Nome")
+    @ColumnName(name = "Nome")
     private String elementName;
-    @Column(name = "Simbolo")
+    @ColumnName(name = "Simbolo")
     private String elementSymbol;
 
     public Element() {

@@ -1,8 +1,8 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Id;
 
 /**
  *
@@ -10,24 +10,24 @@ import javax.persistence.Id;
  */
 public class PlayerCharInfo implements Serializable {
 
-    @Id
-    @Column(name = "Código")
+    @NotCopiable
+    @ColumnName(name = "Código")
     private Long id;
-    @Column(name = "Nivel")
+    @ColumnName(name = "Nivel")
     private long charLevel;
-    @Column(name = "HP")
+    @ColumnName(name = "HP")
     private Integer hp;
-    @Column(name = "Força")
+    @ColumnName(name = "Força")
     private Integer strength;
-    @Column(name = "Destreza")
+    @ColumnName(name = "Destreza")
     private Integer dexterity;
-    @Column(name = "Sabedoria")
+    @ColumnName(name = "Sabedoria")
     private Integer wisdom;
-    @Column(name = "Resistencia")
+    @ColumnName(name = "Resistencia")
     private Integer resistance;
-    @Column(name = "Sorte")
+    @ColumnName(name = "Sorte")
     private Integer lucky;
-    @Column(name = "Personagem")
+    @ColumnName(name = "Personagem")
     private PlayerChar playerChar;
 
     public PlayerCharInfo() {
