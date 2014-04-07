@@ -17,7 +17,7 @@ public class PrimeMaterial implements Serializable {
     @ColumnName(name = "Nome")
     private String materialName;
     @ColumnName(name = "Peso/Unidade")
-    private Double weight;    
+    private Double weight;
     @ColumnName(name = "Classe")
     private Integer materialClass;
     @ColumnName(name = "Resistencia/Unidade")
@@ -33,6 +33,14 @@ public class PrimeMaterial implements Serializable {
     public PrimeMaterial(Long id, Integer materialClass) {
         this.id = id;
         this.materialClass = materialClass;
+    }
+
+    public PrimeMaterial(Long id, String materialName, Double weight, Integer materialClass) {
+        this.id = id;
+        this.materialName = materialName;
+        this.weight = weight;
+        this.materialClass = materialClass;
+        this.resistence = (weight * materialClass);
     }
 
     public Long getId() {
