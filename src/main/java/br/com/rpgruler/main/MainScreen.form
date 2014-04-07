@@ -77,24 +77,6 @@
             <Property name="text" type="java.lang.String" value="Outros"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMTerms">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/RpgIcons/misc/slice1213_.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Termos"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMITermos">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Termos"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMITermosActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
             <Menu class="javax.swing.JMenu" name="jMPerk">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -145,6 +127,27 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMaterialsActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMTerms">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/misc/slice1213_.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Termos"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMIArmorTypes">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/RpgIcons/armor/DVK/DVK_3.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tipos de armaduras"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIArmorTypesActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

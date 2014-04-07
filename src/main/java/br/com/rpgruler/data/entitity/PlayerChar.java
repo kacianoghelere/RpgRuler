@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
 import java.util.Collection;
@@ -11,6 +12,7 @@ import java.util.Collection;
  */
 public class PlayerChar implements Serializable {
 
+    @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
@@ -27,19 +29,17 @@ public class PlayerChar implements Serializable {
     @ColumnName(name = "Peso")
     private Integer weight;
     @ColumnName(name = "Classe")
-    private CharClass idCharClass;
+    private CharClass charClass;
     @ColumnName(name = "Raça")
-    private CharRace idCharRace;
+    private CharRace charRace;
+    @Ignore
     @ColumnName(name = "Informações")
     private Collection<PlayerCharInfo> playerCharInfoCollection;
+    @Ignore
     @ColumnName(name = "Pericias")
     private Collection<Expertise> expertiseCollection;
 
     public PlayerChar() {
-    }
-
-    public PlayerChar(Long id) {
-        this.id = id;
     }
 
     public PlayerChar(String charName, String playerName, Integer age, Character sex, Integer height, Integer weight) {
@@ -115,20 +115,20 @@ public class PlayerChar implements Serializable {
         this.playerCharInfoCollection = playerCharInfoCollection;
     }
 
-    public CharClass getIdCharClass() {
-        return idCharClass;
+    public CharClass getCharClass() {
+        return charClass;
     }
 
-    public void setIdCharClass(CharClass idCharClass) {
-        this.idCharClass = idCharClass;
+    public void setCharClass(CharClass charClass) {
+        this.charClass = charClass;
     }
 
-    public CharRace getIdCharRace() {
-        return idCharRace;
+    public CharRace getCharRace() {
+        return charRace;
     }
 
-    public void setIdCharRace(CharRace idCharRace) {
-        this.idCharRace = idCharRace;
+    public void setCharRace(CharRace charRace) {
+        this.charRace = charRace;
     }
 
     public Collection<Expertise> getExpertiseCollection() {

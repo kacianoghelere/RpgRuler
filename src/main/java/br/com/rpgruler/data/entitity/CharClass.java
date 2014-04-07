@@ -1,9 +1,11 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  *
@@ -11,6 +13,7 @@ import java.util.Collection;
  */
 public class CharClass implements Serializable {
 
+    @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
@@ -29,6 +32,7 @@ public class CharClass implements Serializable {
     @ColumnName(name = "Bonûs sorte")
     private Integer bonusLuc;
     @ColumnName(name = "Vantagens")
+    @Ignore
     private Collection<Perk> perkCollection;
 
     public CharClass() {
@@ -122,27 +126,26 @@ public class CharClass implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CharClass)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        CharClass other = (CharClass) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final CharClass other = (CharClass) obj;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.CharClass[ id=" + id + " ]";
+        return title;
     }
 
 }

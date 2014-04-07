@@ -4,12 +4,11 @@ import br.com.rpgruler.main.bean.MainScreenBean;
 import br.com.rpgruler.main.interfaces.IMainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.view.ArmorTypeView;
 import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
 import br.com.rpgruler.main.view.MaterialsView;
 import br.com.rpgruler.main.view.PerkView;
-import br.com.rpgruler.main.view.TermsView;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -253,14 +252,14 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIRefresh = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
         jMOthers = new javax.swing.JMenu();
-        jMTerms = new javax.swing.JMenu();
-        jMITermos = new javax.swing.JMenuItem();
         jMPerk = new javax.swing.JMenu();
         jMIRegPerk = new javax.swing.JMenuItem();
         jMElement = new javax.swing.JMenu();
         jMIRegElement = new javax.swing.JMenuItem();
         jMMaterials = new javax.swing.JMenu();
         jMIMaterials = new javax.swing.JMenuItem();
+        jMTerms = new javax.swing.JMenu();
+        jMIArmorTypes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPG");
@@ -419,19 +418,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMOthers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
         jMOthers.setText("Outros");
 
-        jMTerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
-        jMTerms.setText("Termos");
-
-        jMITermos.setText("Termos");
-        jMITermos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMITermosActionPerformed(evt);
-            }
-        });
-        jMTerms.add(jMITermos);
-
-        jMOthers.add(jMTerms);
-
         jMPerk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
         jMPerk.setText("Vantagens");
 
@@ -470,6 +456,20 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMMaterials.add(jMIMaterials);
 
         jMOthers.add(jMMaterials);
+
+        jMTerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
+        jMTerms.setText("Termos");
+
+        jMIArmorTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
+        jMIArmorTypes.setText("Tipos de armaduras");
+        jMIArmorTypes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIArmorTypesActionPerformed(evt);
+            }
+        });
+        jMTerms.add(jMIArmorTypes);
+
+        jMOthers.add(jMTerms);
 
         jMenuBar.add(jMOthers);
 
@@ -548,10 +548,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         clear(evt);
     }//GEN-LAST:event_jBClearActionPerformed
 
-    private void jMITermosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMITermosActionPerformed
-        listener.insertView(new TermsView(this));
-    }//GEN-LAST:event_jMITermosActionPerformed
-
     private void jMIMaterialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMaterialsActionPerformed
         listener.insertView(new MaterialsView(this));
     }//GEN-LAST:event_jMIMaterialsActionPerformed
@@ -559,6 +555,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private void jLMsgsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMsgsMouseClicked
         clearMsg();
     }//GEN-LAST:event_jLMsgsMouseClicked
+
+    private void jMIArmorTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIArmorTypesActionPerformed
+        listener.insertView(new ArmorTypeView(this));
+    }//GEN-LAST:event_jMIArmorTypesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
@@ -570,6 +570,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMElement;
+    private javax.swing.JMenuItem jMIArmorTypes;
     private javax.swing.JMenuItem jMIDelete;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIMaterials;
@@ -578,7 +579,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuItem jMIRegElement;
     private javax.swing.JMenuItem jMIRegPerk;
     private javax.swing.JMenuItem jMISave;
-    private javax.swing.JMenuItem jMITermos;
     private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenu jMOthers;

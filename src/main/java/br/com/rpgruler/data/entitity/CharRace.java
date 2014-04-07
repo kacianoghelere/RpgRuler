@@ -144,7 +144,7 @@ public class CharRace implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.CharRace[ id=" + id + " ]";
+        return raceName;
     }
 
 }
