@@ -6,6 +6,9 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMOptions">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/RpgIcons/misc/slice1246_.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Op&#xe7;&#xf5;es"/>
           </Properties>
           <SubComponents>
@@ -68,11 +71,17 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMOthers">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/RpgIcons/misc/slice1214_.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Outros"/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMTerms">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/misc/slice1213_.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Termos"/>
               </Properties>
               <SubComponents>
@@ -88,6 +97,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMPerk">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/misc/slice1215_.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Vantagens"/>
               </Properties>
               <SubComponents>
@@ -103,6 +115,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMElement">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/misc/slice1399_@.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Elementos"/>
               </Properties>
               <SubComponents>
@@ -118,6 +133,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMMaterials">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/misc/slice1285_.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Materiais"/>
               </Properties>
               <SubComponents>
@@ -160,7 +178,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar" pref="778" max="32767" attributes="0"/>
+          <Component id="jToolBar" pref="889" max="32767" attributes="0"/>
           <Component id="desktop" alignment="0" max="32767" attributes="0"/>
           <Component id="jTBMsgs" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -287,7 +305,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="588" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="574" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

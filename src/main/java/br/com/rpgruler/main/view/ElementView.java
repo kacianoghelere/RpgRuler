@@ -140,6 +140,7 @@ public class ElementView extends DefaultView {
         setMaximizable(true);
         setResizable(true);
         setTitle("Elementos");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(628, 394));
         setPreferredSize(new java.awt.Dimension(628, 394));
         setVisible(true);

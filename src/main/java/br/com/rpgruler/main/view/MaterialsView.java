@@ -104,6 +104,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         setClosable(true);
         setIconifiable(true);
         setTitle("Materiais");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1285_.png"))); // NOI18N
         setMaximumSize(new java.awt.Dimension(650, 400));
         setMinimumSize(new java.awt.Dimension(650, 400));
         setPreferredSize(new java.awt.Dimension(650, 400));

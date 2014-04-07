@@ -41,6 +41,9 @@ public class PerkView extends DefaultView {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setTitle("Vantagens");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
+
         jScrollPane1.setViewportView(gMPTable1);
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);

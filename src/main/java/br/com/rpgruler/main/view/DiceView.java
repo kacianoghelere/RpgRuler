@@ -99,6 +99,7 @@ public class DiceView extends DefaultView {
         setClosable(true);
         setIconifiable(true);
         setTitle("Simulador de dados");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/dice.gif"))); // NOI18N
         setMaximumSize(new java.awt.Dimension(496, 333));
         setMinimumSize(new java.awt.Dimension(496, 333));
         setVisible(true);

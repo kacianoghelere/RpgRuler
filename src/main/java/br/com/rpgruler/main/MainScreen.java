@@ -350,7 +350,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGap(0, 574, Short.MAX_VALUE)
         );
 
         jTBMsgs.setFloatable(false);
@@ -366,6 +366,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jTBMsgs.add(jLMsgs);
 
+        jMOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1246_.png"))); // NOI18N
         jMOptions.setText("Opções");
 
         jMISave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
@@ -415,8 +416,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMenuBar.add(jMOptions);
 
+        jMOthers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
         jMOthers.setText("Outros");
 
+        jMTerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         jMTerms.setText("Termos");
 
         jMITermos.setText("Termos");
@@ -429,6 +432,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMOthers.add(jMTerms);
 
+        jMPerk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
         jMPerk.setText("Vantagens");
 
         jMIRegPerk.setText("Cadastro");
@@ -441,6 +445,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMOthers.add(jMPerk);
 
+        jMElement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
         jMElement.setText("Elementos");
 
         jMIRegElement.setText("Cadastro");
@@ -453,6 +458,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMOthers.add(jMElement);
 
+        jMMaterials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1285_.png"))); // NOI18N
         jMMaterials.setText("Materiais");
 
         jMIMaterials.setText("Registro");
@@ -473,7 +479,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
             .addComponent(desktop)
             .addComponent(jTBMsgs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
