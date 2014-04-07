@@ -9,7 +9,9 @@ import br.com.rpgruler.main.view.ElementView;
 import br.com.rpgruler.main.view.MaterialsView;
 import br.com.rpgruler.main.view.PerkView;
 import br.com.rpgruler.main.view.TermsView;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 
 /**
@@ -19,6 +21,14 @@ import javax.swing.JDesktopPane;
  */
 public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
+    public static int ERROR_MSG = 4;
+    public static int INFORMATIVE_MSG = 1;
+    public static int QUESTION_MSG = 2;
+    public static int WARNING_MSG = 3;
+    public static String ERROR_ICON = "/ComponentIcons/transition/toolbar/4.png";
+    public static String INFORMATIVE_ICON = "/ComponentIcons/transition/toolbar/1.png";
+    public static String QUESTION_ICON = "/ComponentIcons/transition/toolbar/2.png";
+    public static String WARNING_ICON = "/ComponentIcons/transition/toolbar/3.png";
     private MainListener listener;
 
     /**
@@ -32,9 +42,11 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * Metodo de inicialização
      */
     private void initialize() {
+        setIconImage(new ImageIcon(ERROR_ICON).getImage());
         initComponents();
         setControls(false, false, false, false, false);
         listener = new MainScreenBean(this);
+        printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
     }
 
     @Override
@@ -43,22 +55,22 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     @Override
-    public void delete(ActionEvent evt)  {
+    public void delete(ActionEvent evt) {
         listener.delete(new BeanEvent(this, evt));
     }
 
     @Override
-    public void process(ActionEvent evt)  {
+    public void process(ActionEvent evt) {
         listener.process(new BeanEvent(this, evt));
     }
 
     @Override
-    public void clear(ActionEvent evt)  {
+    public void clear(ActionEvent evt) {
         listener.clear(new BeanEvent(this, evt));
     }
 
     @Override
-    public void load(ActionEvent evt)  {
+    public void load(ActionEvent evt) {
         listener.load(new BeanEvent(this, evt));
     }
 
@@ -66,7 +78,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     /**
      * Retorna o listener
      *
-     * @return MainListener
+     * @return <code>MainListener</code> Listener do frame principal
      */
     public MainListener getListener() {
         return listener;
@@ -75,7 +87,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     /**
      * Modifica o listener
      *
-     * @param listener MainListener
+     * @param listener <code>MainListener</code> Listener do frame principal
      */
     public void setListener(MainListener listener) {
         this.listener = listener;
@@ -84,7 +96,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     /**
      * Retorno o desktop
      *
-     * @return JDesktopPane
+     * @return <code>JDesktopPane</code>
      */
     public JDesktopPane getDesktop() {
         return desktop;
@@ -93,7 +105,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     /**
      * Modifica o desktop
      *
-     * @param desktop JDesktopPane
+     * @param desktop <code>JDesktopPane</code>
      */
     public void setDesktop(JDesktopPane desktop) {
         this.desktop = desktop;
@@ -113,6 +125,109 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     /**
+     * <html>
+     * Imprime uma mensagem na barra de mensagens <br>
+     * Campos utilizados:<br>
+     * <table border="1">
+     * <thead>
+     * <tr>
+     * <th>Tipo de mensagem</th>
+     * <th>Variavel utilizada</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr style="color: cyan">
+     * <td>Mensagem de questionamento</td>
+     * <td>MainScreen.QUESTION_ICON</td>
+     * </tr>
+     * <tr style="color: blue">
+     * <td>Mensagem informativa</td>
+     * <td>MainScreen.INFORMATIVE_ICON</td>
+     * </tr>
+     * <tr style="color: orange">
+     * <td>Mensagem de aviso</td>
+     * <td>MainScreen.WARNING_ICON</td>
+     * </tr>
+     * <tr style="color: red">
+     * <td>Mensagem de erro</td>
+     * <td>MainScreen.ERROR_ICON</td>
+     * </tr>
+     * </tbody>
+     * </table>
+     * </html>
+     *
+     * @param text <code>String</code> Texto à ser impresso
+     * @param icon <code>String</code> Icone de tipo para a mensagem
+     */
+    private void printMsg(String text, String icon) {
+        ImageIcon ic = new javax.swing.ImageIcon(getClass().getResource(icon));
+        this.jLMsgs.setText(text);
+        this.jLMsgs.setIcon(ic);
+    }
+
+    /**
+     * <html>
+     * Imprime uma mensagem na barra de mensagens <br>
+     * Campos utilizados:<br>
+     * <table border="1">
+     * <thead>
+     * <tr>
+     * <th>Tipo de mensagem</th>
+     * <th>Mensagem</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr style="color: cyan">
+     * <td>1</td>
+     * <td>Mensagem de questionamento</td>
+     * </tr>
+     * <tr style="color: blue">
+     * <td>2</td>
+     * <td>Mensagem informativa</td>
+     * </tr>
+     * <tr style="color: orange">
+     * <td>3</td>
+     * <td>Mensagem de aviso</td>
+     * </tr>
+     * <tr style="color: red">
+     * <td>4</td>
+     * <td>Mensagem de erro</td>
+     * </tr>
+     * </tbody>
+     * </table>
+     * </html>
+     *
+     * @param text <code>String</code> Texto à ser impresso
+     * @param type <code>int</code> Tipo da mensagem
+     */
+    public void printTypedMsg(String text, int type) {
+        switch (type) {
+            case 1:
+                printMsg(text, INFORMATIVE_ICON);
+                break;
+            case 2:
+                printMsg(text, QUESTION_ICON);
+                break;
+            case 3:
+                printMsg(text, WARNING_ICON);
+                break;
+            case 4:
+                printMsg(text, ERROR_ICON);
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    /**
+     * Limpa as informações da barra de mensagem
+     */
+    public void clearMsg() {
+        this.jLMsgs.setText("");
+        this.jLMsgs.setIcon(null);
+    }
+
+    /**
      *
      */
     @SuppressWarnings("unchecked")
@@ -127,7 +242,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBRefresh = new javax.swing.JButton();
         jBDice = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
-        jLMsg = new javax.swing.JLabel();
+        jTBMsgs = new javax.swing.JToolBar();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
+        jLMsgs = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMOptions = new javax.swing.JMenu();
         jMISave = new javax.swing.JMenuItem();
@@ -146,6 +263,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIMaterials = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RPG");
 
         jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
@@ -232,15 +350,21 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 594, Short.MAX_VALUE)
+            .addGap(0, 588, Short.MAX_VALUE)
         );
 
-        jLMsg.setText("Mensagens");
-        jLMsg.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTBMsgs.setFloatable(false);
+        jTBMsgs.setRollover(true);
+        jTBMsgs.add(jSeparator1);
+
+        jLMsgs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/toolbar/1.png"))); // NOI18N
+        jLMsgs.setText("Mensagens");
+        jLMsgs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLMsgMouseClicked(evt);
+                jLMsgsMouseClicked(evt);
             }
         });
+        jTBMsgs.add(jLMsgs);
 
         jMOptions.setText("Opções");
 
@@ -351,7 +475,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
             .addComponent(desktop)
-            .addComponent(jLMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTBMsgs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,7 +484,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
                 .addGap(0, 0, 0)
                 .addComponent(desktop)
                 .addGap(0, 0, 0)
-                .addComponent(jLMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTBMsgs, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -418,10 +542,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         clear(evt);
     }//GEN-LAST:event_jBClearActionPerformed
 
-    private void jLMsgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMsgMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLMsgMouseClicked
-
     private void jMITermosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMITermosActionPerformed
         listener.insertView(new TermsView(this));
     }//GEN-LAST:event_jMITermosActionPerformed
@@ -429,6 +549,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private void jMIMaterialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMaterialsActionPerformed
         listener.insertView(new MaterialsView(this));
     }//GEN-LAST:event_jMIMaterialsActionPerformed
+
+    private void jLMsgsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMsgsMouseClicked
+        clearMsg();
+    }//GEN-LAST:event_jLMsgsMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
@@ -438,7 +562,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JButton jBProcess;
     private javax.swing.JButton jBRefresh;
     private javax.swing.JButton jBSave;
-    private javax.swing.JLabel jLMsg;
+    private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIDelete;
     private javax.swing.JMenuItem jMIDice;
@@ -455,6 +579,8 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenu jMPerk;
     private javax.swing.JMenu jMTerms;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar jTBMsgs;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
 }
