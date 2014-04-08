@@ -45,6 +45,11 @@ public class WearType {
         return Objects.equals(this.typeName, other.typeName);
     }
 
+    @Override
+    public String toString() {
+        return typeName;
+    }
+
     public Long getId() {
         return id;
     }

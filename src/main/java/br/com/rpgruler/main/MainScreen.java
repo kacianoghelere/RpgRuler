@@ -9,6 +9,7 @@ import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.ElementView;
 import br.com.rpgruler.main.view.MaterialsView;
 import br.com.rpgruler.main.view.PerkView;
+import br.com.rpgruler.main.view.TermsView;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -260,6 +261,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIMaterials = new javax.swing.JMenuItem();
         jMTerms = new javax.swing.JMenu();
         jMIArmorTypes = new javax.swing.JMenuItem();
+        jMITerms = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPG");
@@ -469,6 +471,15 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMTerms.add(jMIArmorTypes);
 
+        jMITerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
+        jMITerms.setText("Itens comuns");
+        jMITerms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMITermsActionPerformed(evt);
+            }
+        });
+        jMTerms.add(jMITerms);
+
         jMOthers.add(jMTerms);
 
         jMenuBar.add(jMOthers);
@@ -560,6 +571,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new ArmorTypeView(this));
     }//GEN-LAST:event_jMIArmorTypesActionPerformed
 
+    private void jMITermsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMITermsActionPerformed
+        listener.insertView(new TermsView(this));
+    }//GEN-LAST:event_jMITermsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jBClear;
@@ -579,6 +594,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuItem jMIRegElement;
     private javax.swing.JMenuItem jMIRegPerk;
     private javax.swing.JMenuItem jMISave;
+    private javax.swing.JMenuItem jMITerms;
     private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenu jMOthers;
