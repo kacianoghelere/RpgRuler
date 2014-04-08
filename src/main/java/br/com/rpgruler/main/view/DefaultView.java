@@ -6,6 +6,8 @@ import br.com.rpgruler.main.view.bean.DefaultViewBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.ViewListener;
 import br.com.rpgruler.main.view.object.ViewParameter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -123,27 +125,47 @@ public class DefaultView extends JInternalFrame implements ViewListener {
 
     @Override
     public void save() {
-        bean.save(new BeanEvent(this, null));
+        try {
+            getBean().save(new BeanEvent(this, null));
+        } catch (Exception ex) {
+            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void delete() {
-        bean.delete(new BeanEvent(this, null));
+        try {
+            bean.delete(new BeanEvent(this, null));
+        } catch (Exception ex) {
+            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void process() {
-        bean.process(new BeanEvent(this, null));
+        try {
+            bean.process(new BeanEvent(this, null));
+        } catch (Exception ex) {
+            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void clear() {
-        bean.clear(new BeanEvent(this, null));
+        try {
+            bean.clear(new BeanEvent(this, null));
+        } catch (Exception ex) {
+            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void load() {
-        bean.load(new BeanEvent(this, null));
+        try {
+            bean.load(new BeanEvent(this, null));
+        } catch (Exception ex) {
+            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

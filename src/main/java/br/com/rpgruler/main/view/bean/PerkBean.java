@@ -17,27 +17,27 @@ public class PerkBean extends DefaultViewBean<PerkView> {
     }
 
     @Override
-    public void save(BeanEvent evt) {
+    public void save(BeanEvent evt) throws Exception {
         super.save(evt);
     }
 
     @Override
-    public void delete(BeanEvent evt) {
+    public void delete(BeanEvent evt) throws Exception {
         super.delete(evt);
     }
 
     @Override
-    public void process(BeanEvent evt) {
+    public void process(BeanEvent evt) throws Exception {
         super.process(evt);
     }
 
     @Override
-    public void clear(BeanEvent evt) {
+    public void clear(BeanEvent evt) throws Exception {
         super.clear(evt);
     }
 
     @Override
-    public void load(BeanEvent evt) {
+    public void load(BeanEvent evt) throws Exception {
         super.load(evt);
     }
 

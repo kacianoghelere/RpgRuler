@@ -1,5 +1,6 @@
 package br.com.rpgruler.data.db.constant;
 
+import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class EntityMap {
         Map<Class<?>, String> map = new HashMap<>();
         map.put(Element.class, "ElementDB");
         map.put(PrimeMaterial.class, "MaterialsDB");
+        map.put(ArmorType.class, "ArmorTypeDB");
         return map;
     }
 

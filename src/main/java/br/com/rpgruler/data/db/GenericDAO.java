@@ -116,6 +116,19 @@ public class GenericDAO<T> {
     }
 
     /**
+     * Deleta todos os objetos do banco
+     */
+    public void deleteAll() {
+        ObjectContainer db = Db4o.openFile(database);
+        ObjectSet<T> query = db.query(objectClass);
+        for (T t : query) {
+            db.delete(t);
+        }
+        db.commit();
+        db.close();
+    }
+
+    /**
      * Deleta a entidade
      *
      * @param entity <code>T</code> Entidade

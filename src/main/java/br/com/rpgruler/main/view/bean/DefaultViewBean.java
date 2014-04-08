@@ -25,27 +25,27 @@ public class DefaultViewBean<T> implements BeanListener<T> {
     }
 
     @Override
-    public void save(BeanEvent evt) {
+    public void save(BeanEvent evt) throws Exception {
         System.out.println("Save not implemented yet.");
     }
 
     @Override
-    public void delete(BeanEvent evt) {
+    public void delete(BeanEvent evt) throws Exception {
         System.out.println("Delete not implemented yet.");
     }
 
     @Override
-    public void process(BeanEvent evt) {
+    public void process(BeanEvent evt) throws Exception {
         System.out.println("Process not implemented yet.");
     }
 
     @Override
-    public void clear(BeanEvent evt) {
+    public void clear(BeanEvent evt) throws Exception {
         System.out.println("Clear not implemented yet.");
     }
 
     @Override
-    public void load(BeanEvent evt) {
+    public void load(BeanEvent evt) throws Exception {
         System.out.println("Load not implemented yet.");
     }
 

@@ -1,16 +1,18 @@
 package br.com.rpgruler.main.view;
 
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
-import br.com.gmp.comps.table.GMPTable;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
+import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ArmorTypeBean;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.model.ArmorTypeModel;
 import br.com.rpgruler.main.view.object.ArmorTypeParameter;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -43,6 +45,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     private void initialize() {
         this.initComponents();
         this.setSize(600, 480);
+        this.setControls(new ViewParameter(true, false, false, false, false));
         this.bean = new ArmorTypeBean(this);
         this.model = new ArmorTypeModel();
         this.gTable.buildTable(this, 0, model);
@@ -50,7 +53,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
 
     @Override
     public List<ArmorType> getTableData() {
-        return new ArrayList<>();
+        return new ArmorTypeDAO().getList();
     }
 
     /**
@@ -129,6 +132,11 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
                         .log(Level.SEVERE, null, e);
             }
         }
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return bean;
     }
 
     /**

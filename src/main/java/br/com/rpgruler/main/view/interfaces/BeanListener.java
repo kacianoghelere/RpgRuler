@@ -13,41 +13,46 @@ public interface BeanListener<T> {
      * Metodo padrão para salvar
      *
      * @param evt <code>BeanEvent</code> Evento
+     * @throws java.lang.Exception Exceção
      * @see br.com.rpgruler.main.view.generic.DefaultView#save()
      */
-    void save(BeanEvent evt);
+    void save(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para deletar
      *
      * @param evt <code>BeanEvent</code> Evento
+     * @throws java.lang.Exception
      * @see br.com.rpgruler.main.view.generic.DefaultView#delete()
      */
-    void delete(BeanEvent evt);
+    void delete(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para processar os dados
      *
      * @param evt <code>BeanEvent</code> Evento
+     * @throws java.lang.Exception Exceção
      * @see br.com.rpgruler.main.view.generic.DefaultView#process()
      */
-    void process(BeanEvent evt);
+    void process(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para limpar a tela
      *
      * @param evt <code>BeanEvent</code> Evento
+     * @throws java.lang.Exception Exceção
      * @see br.com.rpgruler.main.view.generic.DefaultView#clear()
      */
-    void clear(BeanEvent evt);
+    void clear(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para carregar a tela
      *
      * @param evt <code>BeanEvent</code> Evento
+     * @throws java.lang.Exception Exceção
      * @see br.com.rpgruler.main.view.generic.DefaultView#load()
      */
-    void load(BeanEvent evt);
+    void load(BeanEvent evt) throws Exception;
 
     /**
      * Retorna a view do bean

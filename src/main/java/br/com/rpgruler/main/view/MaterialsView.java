@@ -9,6 +9,7 @@ import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.MaterialsBean;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.model.MaterialsModel;
 import br.com.rpgruler.main.view.object.MaterialsParameter;
 import java.util.ArrayList;
@@ -58,11 +59,6 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
      */
     public GTable getTable() {
         return gTable;
-    }
-
-    @Override
-    public MaterialsBean getBean() {
-        return bean;
     }
 
     /**
@@ -123,6 +119,11 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
                         .log(Level.SEVERE, null, e);
             }
         }
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return bean;
     }
 
     /**
