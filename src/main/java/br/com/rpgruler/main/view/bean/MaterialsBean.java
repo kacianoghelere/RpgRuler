@@ -1,10 +1,12 @@
 package br.com.rpgruler.main.view.bean;
 
+import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.MaterialsView;
 import br.com.rpgruler.main.view.model.MaterialsModel;
 import br.com.rpgruler.main.view.object.MaterialsParameter;
+import java.util.List;
 
 /**
  * Bean para controle da tela de materiais
@@ -14,13 +16,18 @@ import br.com.rpgruler.main.view.object.MaterialsParameter;
  */
 public class MaterialsBean extends DefaultViewBean<MaterialsView> {
 
+    private MaterialsDAO dao;
+
     public MaterialsBean(MaterialsView view) {
         super(view);
+        dao = new MaterialsDAO();
     }
 
     @Override
     public void save(BeanEvent evt) {
-
+        List<PrimeMaterial> data = getView().getModel().getData();
+        dao.deleteAll();
+        dao.insertAll(data);
     }
 
     @Override
@@ -52,7 +59,8 @@ public class MaterialsBean extends DefaultViewBean<MaterialsView> {
         MaterialsParameter param = (MaterialsParameter) evt.getValue();
         MaterialsModel model = getView().getModel();
         PrimeMaterial pm = new PrimeMaterial();
-        pm.setId(Long.MIN_VALUE);
+        Long nextID = getNextID();
+        pm.setId(nextID);
         pm.setMaterialName(param.getMaterialName());
         pm.setMaterialClass(param.getMaterialClass());
         pm.setWeight(param.getMaterialWeight());
@@ -65,8 +73,22 @@ public class MaterialsBean extends DefaultViewBean<MaterialsView> {
      *
      * @param evt <code>BeanEvent</code> Evento do bean
      */
-    public void remove(BeanEvent evt) {        
+    public void remove(BeanEvent evt) {
         getView().getModel().remove((PrimeMaterial[]) evt.getValue());
     }
 
+    /**
+     * Procura pelo próximo ID
+     *
+     * @return <code>Integer</code> Próximo ID
+     */
+    private Long getNextID() {
+        Long id = new Long(0);
+        for (PrimeMaterial mat : getView().getModel().getData()) {
+            if (mat.getId() > id) {
+                id = mat.getId();
+            }
+        }
+        return (id + 1);
+    }
 }

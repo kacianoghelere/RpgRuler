@@ -42,6 +42,15 @@ public class GenericDAO<T> {
     }
 
     /**
+     * Retorna a conexão com o banco de dados para buscas externas
+     *
+     * @return <code>ObjectContainer</code> Conexão com o banco
+     */
+    public ObjectContainer getDB() {
+        return Db4o.openFile(database);
+    }
+
+    /**
      * Busca todos os dados da entidade
      *
      * @return <code>T</code> Entidade

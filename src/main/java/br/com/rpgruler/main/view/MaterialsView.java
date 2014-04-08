@@ -4,7 +4,7 @@ import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
-import br.com.rpgruler.data.entitity.ArmorType;
+import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
@@ -12,6 +12,7 @@ import br.com.rpgruler.main.view.bean.MaterialsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.model.MaterialsModel;
 import br.com.rpgruler.main.view.object.MaterialsParameter;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -42,6 +43,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     private void initialize() {
         this.initComponents();
         this.setSize(650, 400);
+        this.setControls(new ViewParameter(true, false, false, false, false));
         this.bean = new MaterialsBean(this);
         this.model = new MaterialsModel();
         this.gTable.buildTable(this, 0, model);
@@ -49,13 +51,13 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
 
     @Override
     public List<PrimeMaterial> getTableData() {
-        return new ArrayList<>();
+        return new MaterialsDAO().getList();
     }
 
     /**
      * Retorna a tabela de materiais
      *
-     * @return GTable Tabela de materiais
+     * @return <code>GTable</code> Tabela de materiais
      */
     public GTable getTable() {
         return gTable;
@@ -64,7 +66,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     /**
      * Retorna o modelo da tabela de materiais
      *
-     * @return MaterialsModel Modelo da tabela de materiais
+     * @return <code>MaterialsModel</code> Modelo da tabela de materiais
      */
     public MaterialsModel getModel() {
         return model;
@@ -73,7 +75,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     /**
      * Modifica o modelo da tabela de materiais
      *
-     * @param model MaterialsModel Modelo da tabela de materiais
+     * @param model <code>MaterialsModel</code> Modelo da tabela de materiais
      */
     public void setModel(MaterialsModel model) {
         this.model = model;
