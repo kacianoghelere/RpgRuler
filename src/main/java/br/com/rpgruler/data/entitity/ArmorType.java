@@ -4,8 +4,10 @@ import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
+ * Tipo de armadura
  *
  * @author kaciano
  */
@@ -70,27 +72,38 @@ public class ArmorType implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.typeName);
+        hash = 89 * hash + Objects.hashCode(this.materialAmount1);
+        hash = 89 * hash + Objects.hashCode(this.materialAmount2);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ArmorType)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        ArmorType other = (ArmorType) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final ArmorType other = (ArmorType) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.typeName, other.typeName)) {
+            return false;
+        }
+        if (!Objects.equals(this.materialAmount1, other.materialAmount1)) {
+            return false;
+        }
+        return Objects.equals(this.materialAmount2, other.materialAmount2);
     }
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.ArmorType[ id=" + id + " ]";
+        return typeName;
     }
 
 }

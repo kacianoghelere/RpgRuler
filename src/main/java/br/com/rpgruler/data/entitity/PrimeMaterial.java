@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * Matérias primas
  *
  * @author kaciano
  */
@@ -88,7 +89,11 @@ public class PrimeMaterial implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 23 * hash + Objects.hashCode(this.id);
+        hash = 23 * hash + Objects.hashCode(this.materialName);
+        hash = 23 * hash + Objects.hashCode(this.weight);
+        hash = 23 * hash + Objects.hashCode(this.materialClass);
+        hash = 23 * hash + Objects.hashCode(this.resistence);
         return hash;
     }
 
@@ -104,12 +109,21 @@ public class PrimeMaterial implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return true;
+        if (!Objects.equals(this.materialName, other.materialName)) {
+            return false;
+        }
+        if (!Objects.equals(this.weight, other.weight)) {
+            return false;
+        }
+        if (!Objects.equals(this.materialClass, other.materialClass)) {
+            return false;
+        }
+        return Objects.equals(this.resistence, other.resistence);
     }
 
     @Override
     public String toString() {
-        return "PrimeMaterial{" + "id=" + id + ", materialName=" + materialName + '}';
+        return materialName;
     }
 
 }

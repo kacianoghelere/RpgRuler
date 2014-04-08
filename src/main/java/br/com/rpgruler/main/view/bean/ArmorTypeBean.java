@@ -3,11 +3,7 @@ package br.com.rpgruler.main.view.bean;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.ArmorTypeView;
-import br.com.rpgruler.main.view.model.ArmorTypeModel;
 import br.com.rpgruler.main.view.object.ArmorTypeParameter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -66,8 +62,7 @@ public class ArmorTypeBean extends DefaultViewBean<ArmorTypeView> {
      * @param evt <code>BeanEvent</code> Evento do bean
      */
     public void remove(BeanEvent evt) {
-        ArmorType type = (ArmorType) evt.getValue();
-        getView().getModel().remove(type);
+        getView().getModel().remove((ArmorType[]) evt.getValue());
     }
 
 }

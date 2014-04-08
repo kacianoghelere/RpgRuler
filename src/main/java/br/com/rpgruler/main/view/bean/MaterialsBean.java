@@ -65,9 +65,8 @@ public class MaterialsBean extends DefaultViewBean<MaterialsView> {
      *
      * @param evt <code>BeanEvent</code> Evento do bean
      */
-    public void remove(BeanEvent evt) {
-        MaterialsModel model = getView().getModel();
-        model.remove((PrimeMaterial) evt.getValue());
+    public void remove(BeanEvent evt) {        
+        getView().getModel().remove((PrimeMaterial[]) evt.getValue());
     }
 
 }

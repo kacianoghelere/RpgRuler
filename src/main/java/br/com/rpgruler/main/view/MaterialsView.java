@@ -1,8 +1,10 @@
 package br.com.rpgruler.main.view;
 
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
-import br.com.gmp.comps.table.GMPTable;
+import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.interact.WindowUtil;
+import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
@@ -26,7 +28,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     /**
      * Cria nova instancia de MaterialsView
      *
-     * @param mainScreen
+     * @param mainScreen <code>MainScreen</code> Tela principal
      */
     public MaterialsView(MainScreen mainScreen) {
         super(mainScreen);
@@ -37,12 +39,11 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
      * Método de inicialização
      */
     private void initialize() {
-        initComponents();
-        setSize(650, 400);
+        this.initComponents();
+        this.setSize(650, 400);
         this.bean = new MaterialsBean(this);
         this.model = new MaterialsModel();
-        this.gTabMaterials.setModel(model);
-        this.gTabMaterials.setSource(this);
+        this.gTable.buildTable(this, 0, model);
     }
 
     @Override
@@ -53,10 +54,10 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     /**
      * Retorna a tabela de materiais
      *
-     * @return GMPTable Tabela de materiais
+     * @return GTable Tabela de materiais
      */
-    public GMPTable getTable() {
-        return gTabMaterials;
+    public GTable getTable() {
+        return gTable;
     }
 
     @Override
@@ -83,14 +84,54 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     }
 
     /**
+     * Adiciona um item na tabela
+     */
+    private void add() {
+        try {
+            if (gTName.validateComponent()) {
+                if (nTWeight.validateComponent()) {
+                    MaterialsParameter param;
+                    param = new MaterialsParameter(gTName.getText(),
+                            (Integer) jSpClass.getValue(), nTWeight.getDouble());
+                    bean.add(new BeanEvent(this, param));
+                }
+            }
+        } catch (Exception e) {
+            Logger.getLogger(MaterialsView.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    /**
+     * Remove um item da tabela
+     */
+    private void remove() {
+        String text = "Deseja remover os itens selecionados?";
+        if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
+            try {
+                if (gTable.getSelectedRow() >= 0) {
+                    List<PrimeMaterial> types = new ArrayList<>();
+                    for (int i : gTable.getSelectedRows()) {
+                        System.out.println("Removendo a linha: " + i);
+                        types.add(model.getObject(i));
+                    }
+                    bean.remove(new BeanEvent(this, types.toArray(new PrimeMaterial[]{})));
+                } else {
+                    new BalloonUtil().showTimedBallon(gTable, "Nenhum item selecionado");
+                }
+            } catch (NumberFormatException e) {
+                Logger.getLogger(MaterialsView.class.getName())
+                        .log(Level.SEVERE, null, e);
+            }
+        }
+    }
+
+    /**
      *
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSPMaterials = new javax.swing.JScrollPane();
-        gTabMaterials = new br.com.gmp.comps.table.GMPTable(this, PrimeMaterial.class);
         jTBControls = new javax.swing.JToolBar();
         jLName = new javax.swing.JLabel();
         gTName = new br.com.gmp.comps.textfield.GMPTextField();
@@ -100,6 +141,8 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         nTWeight = new br.com.gmp.comps.textfield.NumericTextField();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gTable = new br.com.gmp.comps.table.GTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -108,17 +151,6 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         setMaximumSize(new java.awt.Dimension(650, 400));
         setMinimumSize(new java.awt.Dimension(650, 400));
         setPreferredSize(new java.awt.Dimension(650, 400));
-
-        gTabMaterials.setMaxRows(15);
-        gTabMaterials.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jSPMaterials.setViewportView(gTabMaterials);
 
         jTBControls.setFloatable(false);
         jTBControls.setRollover(true);
@@ -155,64 +187,46 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         });
         jTBControls.add(jBRemove);
 
+        jScrollPane1.setViewportView(gTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTBControls, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSPMaterials, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
-            .addComponent(jTBControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jTBControls, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSPMaterials, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
-        if (!gTName.getText().isEmpty()) {
-            if (!nTWeight.getText().isEmpty()) {
-                MaterialsParameter param;
-                param = new MaterialsParameter(gTName.getText(),
-                        (Integer) jSpClass.getValue(), nTWeight.getDouble());
-                bean.add(new BeanEvent(this, param));
-            } else {
-                new BalloonUtil().showTimedBallon(nTWeight, "O peso não foi digitado");
-            }
-        } else {
-            new BalloonUtil().showTimedBallon(gTName, "O nome não foi digitado");
-        }
+        add();
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
-        if (gTabMaterials.getSelectedRow() >= 0) {
-            try {
-                PrimeMaterial mat = model.getObject(gTabMaterials.getSelectedRow());
-                bean.remove(new BeanEvent(this, mat));
-            } catch (Exception e) {
-                Logger.getLogger(MaterialsView.class.getName()).log(Level.SEVERE, null, e);
-            }
-        } else {
-            new BalloonUtil().showTimedBallon(jBRemove, "Nenhum item selecionado");
-        }
+        remove();
     }//GEN-LAST:event_jBRemoveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textfield.GMPTextField gTName;
-    private br.com.gmp.comps.table.GMPTable gTabMaterials;
+    private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;
     private javax.swing.JLabel jLClass;
     private javax.swing.JLabel jLName;
     private javax.swing.JLabel jLWeight;
-    private javax.swing.JScrollPane jSPMaterials;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpClass;
     private javax.swing.JToolBar jTBControls;
     private br.com.gmp.comps.textfield.NumericTextField nTWeight;

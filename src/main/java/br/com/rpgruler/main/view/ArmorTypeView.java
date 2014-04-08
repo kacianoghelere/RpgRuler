@@ -2,7 +2,9 @@ package br.com.rpgruler.main.view;
 
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.comps.table.GMPTable;
+import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
@@ -28,7 +30,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     /**
      * Cria nova instancia de ArmorTypeView
      *
-     * @param mainScreen <code>MainScreen</code>
+     * @param mainScreen <code>MainScreen</code> Tela principal
      */
     public ArmorTypeView(MainScreen mainScreen) {
         super(mainScreen);
@@ -39,12 +41,11 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
      * Método de inicialização
      */
     private void initialize() {
-        initComponents();
-        setSize(600, 480);
+        this.initComponents();
+        this.setSize(600, 480);
         this.bean = new ArmorTypeBean(this);
         this.model = new ArmorTypeModel();
-        this.gTable.setModel(model);
-        this.gTable.setSource(this);
+        this.gTable.buildTable(this, 0, model);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
      *
      * @return <code>GMPTable</code>
      */
-    public GMPTable getTable() {
+    public GTable getTable() {
         return gTable;
     }
 
@@ -66,7 +67,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
      *
      * @param gTable <code>GMPTable</code>
      */
-    public void setTable(GMPTable gTable) {
+    public void setTable(GTable gTable) {
         this.gTable = gTable;
     }
 
@@ -89,6 +90,48 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     }
 
     /**
+     * Adiciona um item na tabela
+     */
+    private void add() {
+        try {
+            if (gTName.validateComponent()) {
+                ArmorTypeParameter type = new ArmorTypeParameter();
+                type.setTypeName(gTName.getText());
+                type.setMaterialAmount1(Double.parseDouble(jSpQtd1.getValue().toString()));
+                type.setMaterialAmount2(Double.parseDouble(jSpQtd2.getValue().toString()));
+                bean.add(new BeanEvent(this, type));
+            }
+        } catch (NumberFormatException e) {
+            Logger.getLogger(ArmorTypeView.class.getName())
+                    .log(Level.SEVERE, null, e);
+        }
+    }
+
+    /**
+     * Remove um item da tabela
+     */
+    private void remove() {
+        String text = "Deseja remover os itens selecionados?";
+        if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
+            try {
+                if (gTable.getSelectedRow() >= 0) {
+                    List<ArmorType> types = new ArrayList<>();
+                    for (int i : gTable.getSelectedRows()) {
+                        System.out.println("Removendo a linha: " + i);
+                        types.add(model.getObject(i));
+                    }
+                    bean.remove(new BeanEvent(this, types.toArray(new ArmorType[]{})));
+                } else {
+                    new BalloonUtil().showTimedBallon(gTable, "Nenhum item selecionado");
+                }
+            } catch (NumberFormatException e) {
+                Logger.getLogger(ArmorTypeView.class.getName())
+                        .log(Level.SEVERE, null, e);
+            }
+        }
+    }
+
+    /**
      *
      */
     @SuppressWarnings("unchecked")
@@ -108,8 +151,8 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         jSeparator4 = new javax.swing.JToolBar.Separator();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        gTable = new br.com.gmp.comps.table.GMPTable(this, ArmorType.class);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gTable = new br.com.gmp.comps.table.GTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -130,11 +173,15 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
 
         jLQtd1.setText("Qtd. Material 1:");
         jToolBar1.add(jLQtd1);
+
+        jSpQtd1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         jToolBar1.add(jSpQtd1);
         jToolBar1.add(jSeparator3);
 
         jLQtd2.setText("Qtd. Material 2:");
         jToolBar1.add(jLQtd2);
+
+        jSpQtd2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         jToolBar1.add(jSpQtd2);
         jToolBar1.add(jSeparator4);
 
@@ -160,7 +207,6 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         });
         jToolBar1.add(jBRemove);
 
-        gTable.setMaxRows(20);
         gTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -169,7 +215,8 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
 
             }
         ));
-        jScrollPane2.setViewportView(gTable);
+        gTable.setToolTipText("Matérias primas");
+        jScrollPane1.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,7 +225,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,51 +233,28 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
-        try {
-            if (!gTName.getText().isEmpty()) {
-                ArmorTypeParameter type = new ArmorTypeParameter();
-                type.setTypeName(gTName.getText());
-                type.setMaterialAmount1(Double.parseDouble(jSpQtd1.getValue().toString()));
-                type.setMaterialAmount2(Double.parseDouble(jSpQtd2.getValue().toString()));
-                bean.add(new BeanEvent(this, type));
-                model.reload();
-            } else {
-                new BalloonUtil().showTimedBallon(gTName, "O nome não foi digitado");
-            }
-        } catch (NumberFormatException e) {
-            Logger.getLogger(ArmorTypeView.class.getName())
-                    .log(Level.SEVERE, null, e);
-        }
+        add();
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
-        try {
-            if (gTable.getSelectedRow() >= 0) {
-                ArmorType type = model.getObject(gTable.getSelectedRow());
-                bean.remove(new BeanEvent(this, type));
-                model.reload();
-            }
-        } catch (NumberFormatException e) {
-            Logger.getLogger(ArmorTypeView.class.getName())
-                    .log(Level.SEVERE, null, e);
-        }
+        remove();
     }//GEN-LAST:event_jBRemoveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textfield.GMPTextField gTName;
-    private br.com.gmp.comps.table.GMPTable gTable;
+    private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;
     private javax.swing.JLabel jLName;
     private javax.swing.JLabel jLQtd1;
     private javax.swing.JLabel jLQtd2;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
