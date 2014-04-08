@@ -45,7 +45,6 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         this.model = new ArmorTypeModel();
         this.gTable.setModel(model);
         this.gTable.setSource(this);
-        this.gTable.setMaxRows(20);
     }
 
     @Override
@@ -161,6 +160,15 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         });
         jToolBar1.add(jBRemove);
 
+        gTable.setMaxRows(20);
+        gTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         jScrollPane2.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
