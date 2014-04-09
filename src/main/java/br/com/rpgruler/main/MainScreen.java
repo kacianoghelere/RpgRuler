@@ -114,9 +114,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      */
     public void setControls(Boolean... controls) {
         this.jBSave.setEnabled(controls[0]);        
-        this.jBProcess.setEnabled(controls[2]);
-        this.jBClear.setEnabled(controls[3]);
-        this.jBRefresh.setEnabled(controls[4]);
+        this.jBProcess.setEnabled(controls[1]);
+        this.jBClear.setEnabled(controls[2]);
+        this.jBRefresh.setEnabled(controls[3]);
     }
 
     /**
