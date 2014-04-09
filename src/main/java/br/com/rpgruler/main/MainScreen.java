@@ -29,6 +29,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     public static String INFORMATIVE_ICON = "/ComponentIcons/transition/toolbar/1.png";
     public static String QUESTION_ICON = "/ComponentIcons/transition/toolbar/2.png";
     public static String WARNING_ICON = "/ComponentIcons/transition/toolbar/3.png";
+    private String ICON = "/dices/d12-icon.png";
     private MainListener listener;
 
     /**
@@ -42,7 +43,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * Metodo de inicialização
      */
     private void initialize() {
-        setIconImage(new ImageIcon(ERROR_ICON).getImage());
+        setIconImage(new ImageIcon(getClass().getResource(ICON)).getImage());
         initComponents();
         setControls(false, false, false, false, false);
         listener = new MainScreenBean(this);

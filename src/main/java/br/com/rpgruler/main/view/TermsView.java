@@ -5,6 +5,7 @@ import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.TermsBean;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
@@ -69,6 +70,11 @@ public class TermsView extends DefaultView {
      */
     public GListModel<WearType> getWtModel() {
         return this.wtModel;
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return bean;
     }
 
     /**
