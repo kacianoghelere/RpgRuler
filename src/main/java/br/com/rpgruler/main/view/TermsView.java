@@ -35,7 +35,7 @@ public class TermsView extends DefaultView {
     private void initialize() {
         initComponents();
         this.setSize(460, 300);
-        this.setControls(new ViewParameter(true, false, false, false, false));
+        this.setControls(new ViewParameter(true, false, false, false));
         this.bean = new TermsBean(this);
         this.wtModel = new GListModel<>();
         this.jListWearTypes.setModel(wtModel);
@@ -59,6 +59,14 @@ public class TermsView extends DefaultView {
             wtModel.add(new WearType(Long.MIN_VALUE, gTWearTypes.getText()));
             gTWearTypes.setText("");
         }
+    }
+
+    /**
+     * Retorna o modelo 
+     * @return 
+     */
+    public GListModel<WearType> getWtModel() {
+        return this.wtModel;
     }
 
     /**

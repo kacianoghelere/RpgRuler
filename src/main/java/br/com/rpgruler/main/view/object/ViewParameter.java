@@ -8,15 +8,13 @@ package br.com.rpgruler.main.view.object;
 public class ViewParameter {
 
     private Boolean canSave;
-    private Boolean canDelete;
     private Boolean canProcess;
     private Boolean canClear;
     private Boolean canLoad;
 
-    public ViewParameter(Boolean canSave, Boolean canDelete, Boolean canProcces,
+    public ViewParameter(Boolean canSave, Boolean canProcces,
             Boolean canClear, Boolean canLoad) {
         this.canSave = canSave;
-        this.canDelete = canDelete;
         this.canProcess = canProcces;
         this.canClear = canClear;
         this.canLoad = canLoad;
@@ -26,7 +24,6 @@ public class ViewParameter {
     public String toString() {
         return "ViewParameter{\n"
                 + "canSave=" + canSave + ",\n"
-                + "canDelete=" + canDelete + ",\n"
                 + "canProcces=" + canProcess + ",\n"
                 + "canClear=" + canClear + ",\n"
                 + "canLoad=" + canLoad + "\n" + '}';
@@ -38,14 +35,6 @@ public class ViewParameter {
 
     public void setSave(Boolean canSave) {
         this.canSave = canSave;
-    }
-
-    public Boolean isDelete() {
-        return canDelete;
-    }
-
-    public void setDelete(Boolean canDelete) {
-        this.canDelete = canDelete;
     }
 
     public Boolean isProcess() {

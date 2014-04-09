@@ -20,11 +20,6 @@ public class CharacterBean extends DefaultViewBean<CharacterView> {
     }
 
     @Override
-    public void delete(BeanEvent evt) throws Exception {
-        super.delete(evt);
-    }
-
-    @Override
     public void process(BeanEvent evt) throws Exception {
         super.process(evt);
     }

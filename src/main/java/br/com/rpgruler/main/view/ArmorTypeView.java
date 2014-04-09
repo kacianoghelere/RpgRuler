@@ -45,7 +45,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     private void initialize() {
         this.initComponents();
         this.setSize(600, 480);
-        this.setControls(new ViewParameter(true, false, false, false, false));
+        this.setControls(new ViewParameter(true, false, false, false));
         this.bean = new ArmorTypeBean(this);
         this.model = new ArmorTypeModel();
         this.gTable.buildTable(this, 0, model);

@@ -28,11 +28,6 @@ public class ArmorTypeBean extends DefaultViewBean<ArmorTypeView> {
     }
 
     @Override
-    public void delete(BeanEvent evt) throws Exception {
-        super.delete(evt); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void process(BeanEvent evt) throws Exception {
         super.process(evt); //To change body of generated methods, choose Tools | Templates.
     }

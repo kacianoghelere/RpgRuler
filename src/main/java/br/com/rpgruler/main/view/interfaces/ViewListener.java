@@ -17,13 +17,6 @@ public interface ViewListener {
     Boolean canSave();
 
     /**
-     * Retorna se a View pode deletar
-     *
-     * @return <code>Boolean</code> Pode deletar
-     */
-    Boolean canDelete();
-
-    /**
      * Retorna se a View pode processar
      *
      * @return <code>Boolean</code> Pode processar
@@ -50,13 +43,6 @@ public interface ViewListener {
      * @param save <code>Boolean</code> Pode salvar
      */
     void setSave(boolean save);
-
-    /**
-     * Modifica a permissão para deletar
-     *
-     * @param delete <code>Boolean</code> Pode deletar
-     */
-    void setDelete(boolean delete);
 
     /**
      * Modifica a permissão para processar
@@ -86,15 +72,7 @@ public interface ViewListener {
      * br.com.rpgruler.main.view.bean.DefaultViewBean#save(br.com.rpgruler.main.object.BeanEvent)
      */
     void save();
-
-    /**
-     * Metodo padrão para deletar
-     *
-     * @see
-     * br.com.rpgruler.main.view.bean.DefaultViewBean#delete(br.com.rpgruler.main.object.BeanEvent)
-     */
-    void delete();
-
+    
     /**
      * Metodo padrão para processar os dados
      *

@@ -55,11 +55,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     @Override
-    public void delete(ActionEvent evt) {
-        listener.delete(new BeanEvent(this, evt));
-    }
-
-    @Override
     public void process(ActionEvent evt) {
         listener.process(new BeanEvent(this, evt));
     }
@@ -117,8 +112,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * @param controls <code>boolean[]</code> Array com as opções de controle
      */
     public void setControls(Boolean... controls) {
-        this.jBSave.setEnabled(controls[0]);
-        this.jBDelete.setEnabled(controls[1]);
+        this.jBSave.setEnabled(controls[0]);        
         this.jBProcess.setEnabled(controls[2]);
         this.jBClear.setEnabled(controls[3]);
         this.jBRefresh.setEnabled(controls[4]);
@@ -236,7 +230,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jToolBar = new javax.swing.JToolBar();
         jBSave = new javax.swing.JButton();
-        jBDelete = new javax.swing.JButton();
         jBProcess = new javax.swing.JButton();
         jBClear = new javax.swing.JButton();
         jBRefresh = new javax.swing.JButton();
@@ -248,7 +241,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMenuBar = new javax.swing.JMenuBar();
         jMOptions = new javax.swing.JMenu();
         jMISave = new javax.swing.JMenuItem();
-        jMIDelete = new javax.swing.JMenuItem();
         jMIProcess = new javax.swing.JMenuItem();
         jMIRefresh = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
@@ -280,18 +272,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             }
         });
         jToolBar.add(jBSave);
-
-        jBDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/trash-16.png"))); // NOI18N
-        jBDelete.setToolTipText("Deletar");
-        jBDelete.setFocusable(false);
-        jBDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBDeleteActionPerformed(evt);
-            }
-        });
-        jToolBar.add(jBDelete);
 
         jBProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
         jBProcess.setToolTipText("Processar");
@@ -378,15 +358,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             }
         });
         jMOptions.add(jMISave);
-
-        jMIDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/trash-16.png"))); // NOI18N
-        jMIDelete.setText("Deletar");
-        jMIDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIDeleteActionPerformed(evt);
-            }
-        });
-        jMOptions.add(jMIDelete);
 
         jMIProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
         jMIProcess.setText("Processar");
@@ -511,10 +482,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         save(evt);
     }//GEN-LAST:event_jBSaveActionPerformed
 
-    private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
-        delete(evt);
-    }//GEN-LAST:event_jBDeleteActionPerformed
-
     private void jBProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessActionPerformed
         process(evt);
     }//GEN-LAST:event_jBProcessActionPerformed
@@ -526,10 +493,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private void jMISaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISaveActionPerformed
         save(evt);
     }//GEN-LAST:event_jMISaveActionPerformed
-
-    private void jMIDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDeleteActionPerformed
-        delete(evt);
-    }//GEN-LAST:event_jMIDeleteActionPerformed
 
     private void jMIProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIProcessActionPerformed
         process(evt);
@@ -578,7 +541,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jBClear;
-    private javax.swing.JButton jBDelete;
     private javax.swing.JButton jBDice;
     private javax.swing.JButton jBProcess;
     private javax.swing.JButton jBRefresh;
@@ -586,7 +548,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIArmorTypes;
-    private javax.swing.JMenuItem jMIDelete;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIMaterials;
     private javax.swing.JMenuItem jMIProcess;

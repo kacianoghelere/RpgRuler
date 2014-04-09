@@ -31,11 +31,6 @@ public class MaterialsBean extends DefaultViewBean<MaterialsView> {
     }
 
     @Override
-    public void delete(BeanEvent evt) {
-
-    }
-
-    @Override
     public void process(BeanEvent evt) {
 
     }

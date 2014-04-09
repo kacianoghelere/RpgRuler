@@ -43,7 +43,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     private void initialize() {
         this.initComponents();
         this.setSize(650, 400);
-        this.setControls(new ViewParameter(true, false, false, false, false));
+        this.setControls(new ViewParameter(true, false, false, false));
         this.bean = new MaterialsBean(this);
         this.model = new MaterialsModel();
         this.gTable.buildTable(this, 0, model);

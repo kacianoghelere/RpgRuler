@@ -30,11 +30,6 @@ public class DefaultViewBean<T> implements BeanListener<T> {
     }
 
     @Override
-    public void delete(BeanEvent evt) throws Exception {
-        System.out.println("Delete not implemented yet.");
-    }
-
-    @Override
     public void process(BeanEvent evt) throws Exception {
         System.out.println("Process not implemented yet.");
     }

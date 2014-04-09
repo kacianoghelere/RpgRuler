@@ -17,13 +17,6 @@ public interface IMainScreen {
     void save(ActionEvent evt);
 
     /**
-     * Metodo padrão para deletar
-     *
-     * @param evt <code>ActionEvent</code>
-     */
-    void delete(ActionEvent evt);
-
-    /**
      * Metodo padrão para processar os dados
      *
      * @param evt <code>ActionEvent</code>

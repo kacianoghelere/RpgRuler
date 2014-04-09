@@ -19,13 +19,6 @@ public interface MainListener {
     void save(BeanEvent evt);
 
     /**
-     * Metodo padrão para deletar
-     *
-     * @param evt <code>BeanEvent</code> Evento
-     */
-    void delete(BeanEvent evt);
-
-    /**
      * Metodo padrão para processar os dados
      *
      * @param evt <code>BeanEvent</code> Evento

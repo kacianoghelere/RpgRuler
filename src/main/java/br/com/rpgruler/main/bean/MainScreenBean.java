@@ -40,13 +40,6 @@ public class MainScreenBean implements MainListener {
     }
 
     @Override
-    public void delete(BeanEvent evt) {
-        if (getActualView() != null) {
-            getActualView().delete();
-        }
-    }
-
-    @Override
     public void process(BeanEvent evt) {
         if (getActualView() != null) {
             getActualView().process();
@@ -77,7 +70,6 @@ public class MainScreenBean implements MainListener {
         this.actualView = view;
         this.screen.setControls(
                 this.actualView.canSave() != null ? actualView.canSave() : false,
-                this.actualView.canDelete() != null ? actualView.canDelete() : false,
                 this.actualView.canProcces() != null ? actualView.canProcces() : false,
                 this.actualView.canClear() != null ? actualView.canClear() : false,
                 this.actualView.canLoad() != null ? actualView.canLoad() : false

@@ -19,15 +19,6 @@ public interface BeanListener<T> {
     void save(BeanEvent evt) throws Exception;
 
     /**
-     * Metodo padrão para deletar
-     *
-     * @param evt <code>BeanEvent</code> Evento
-     * @throws java.lang.Exception
-     * @see br.com.rpgruler.main.view.generic.DefaultView#delete()
-     */
-    void delete(BeanEvent evt) throws Exception;
-
-    /**
      * Metodo padrão para processar os dados
      *
      * @param evt <code>BeanEvent</code> Evento

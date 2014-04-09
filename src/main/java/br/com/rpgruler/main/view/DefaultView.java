@@ -23,7 +23,6 @@ public class DefaultView extends JInternalFrame implements ViewListener {
     private final MainScreen mainScreen;
     private BeanListener bean;
     private Boolean canSave;
-    private Boolean canDelete;
     private Boolean canProcess;
     private Boolean canClear;
     private Boolean canLoad;
@@ -67,7 +66,6 @@ public class DefaultView extends JInternalFrame implements ViewListener {
      */
     public void setControls(ViewParameter param) {
         this.canSave = param.isSave();
-        this.canDelete = param.isDelete();
         this.canProcess = param.isProcess();
         this.canClear = param.isClear();
         this.canLoad = param.isLoad();
@@ -81,16 +79,6 @@ public class DefaultView extends JInternalFrame implements ViewListener {
     @Override
     public void setSave(boolean save) {
         canSave = save;
-    }
-
-    @Override
-    public Boolean canDelete() {
-        return canDelete;
-    }
-
-    @Override
-    public void setDelete(boolean delete) {
-        canDelete = delete;
     }
 
     @Override
@@ -127,15 +115,6 @@ public class DefaultView extends JInternalFrame implements ViewListener {
     public void save() {
         try {
             getBean().save(new BeanEvent(this, null));
-        } catch (Exception ex) {
-            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void delete() {
-        try {
-            bean.delete(new BeanEvent(this, null));
         } catch (Exception ex) {
             Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
         }
