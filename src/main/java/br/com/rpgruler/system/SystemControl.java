@@ -14,11 +14,8 @@ public class SystemControl {
      */
     public SystemControl() {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainScreen().setVisible(true);
         });
     }
 
