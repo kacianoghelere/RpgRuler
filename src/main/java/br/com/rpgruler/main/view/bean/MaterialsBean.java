@@ -30,21 +30,6 @@ public class MaterialsBean extends DefaultViewBean<MaterialsView> {
         dao.insertAll(data);
     }
 
-    @Override
-    public void process(BeanEvent evt) {
-
-    }
-
-    @Override
-    public void clear(BeanEvent evt) {
-
-    }
-
-    @Override
-    public void load(BeanEvent evt) {
-
-    }
-
     /**
      * Adiciona novo material na lista da tabela
      *

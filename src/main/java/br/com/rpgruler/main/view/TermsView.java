@@ -3,6 +3,7 @@ package br.com.rpgruler.main.view;
 import br.com.gmp.comps.model.GListModel;
 import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.TermsBean;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.event.KeyEvent;
@@ -54,16 +55,17 @@ public class TermsView extends DefaultView {
     /**
      * Adiciona novo elemento na lista de tipos de uso para armas
      */
-    public void add() {
+    public void addWearType() {
         if (gTWearTypes.validateComponent()) {
-            wtModel.add(new WearType(Long.MIN_VALUE, gTWearTypes.getText()));
+            bean.addWearType(new BeanEvent(this, gTWearTypes.getText()));
             gTWearTypes.setText("");
         }
     }
 
     /**
-     * Retorna o modelo 
-     * @return 
+     * Retorna o modelo de lista dos WearTypes
+     *
+     * @return <code>GListModel(WearType)</code>
      */
     public GListModel<WearType> getWtModel() {
         return this.wtModel;
@@ -102,6 +104,11 @@ public class TermsView extends DefaultView {
         jListWearTypes.setMaximumSize(new java.awt.Dimension(150, 125));
         jListWearTypes.setMinimumSize(new java.awt.Dimension(150, 125));
         jListWearTypes.setPreferredSize(new java.awt.Dimension(150, 125));
+        jListWearTypes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jListWearTypesKeyReleased(evt);
+            }
+        });
         jSP1.setViewportView(jListWearTypes);
 
         gTWearTypes.setMaximumSize(new java.awt.Dimension(150, 2147483647));
@@ -120,7 +127,7 @@ public class TermsView extends DefaultView {
             .addGroup(jPWearTypesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPWearTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                    .addComponent(jSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                     .addComponent(gTWearTypes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -128,7 +135,7 @@ public class TermsView extends DefaultView {
             jPWearTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPWearTypesLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(jSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTWearTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -143,12 +150,24 @@ public class TermsView extends DefaultView {
     private void gTWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTWearTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
-                add();
+                addWearType();
             } catch (Exception ex) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_gTWearTypesKeyReleased
+
+    private void jListWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListWearTypesKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                if (jListWearTypes.getSelectedIndex() >= 0) {
+                    wtModel.remove(null);
+                }
+            } catch (Exception e) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+    }//GEN-LAST:event_jListWearTypesKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

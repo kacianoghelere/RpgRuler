@@ -27,21 +27,6 @@ public class ArmorTypeBean extends DefaultViewBean<ArmorTypeView> {
         dao.insertAll(data);
     }
 
-    @Override
-    public void process(BeanEvent evt) throws Exception {
-        super.process(evt); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void clear(BeanEvent evt) throws Exception {
-        super.clear(evt); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void load(BeanEvent evt) throws Exception {
-        super.load(evt); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * Adiciona novo ArmorType na tabela
      *

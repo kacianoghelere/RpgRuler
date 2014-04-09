@@ -3,6 +3,7 @@ package br.com.rpgruler.data.db.constant;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
+import br.com.rpgruler.data.entitity.WearType;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ public class EntityMap {
         map.put(Element.class, "ElementDB");
         map.put(PrimeMaterial.class, "MaterialsDB");
         map.put(ArmorType.class, "ArmorTypeDB");
+        map.put(WearType.class, "WearTypeDB");
         return map;
     }
 

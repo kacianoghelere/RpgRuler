@@ -103,6 +103,9 @@
                   <Dimension value="[150, 125]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jListWearTypesKeyReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
