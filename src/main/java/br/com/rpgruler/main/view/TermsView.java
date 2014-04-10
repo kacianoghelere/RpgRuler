@@ -1,6 +1,7 @@
 package br.com.rpgruler.main.view;
 
 import br.com.gmp.comps.model.GListModel;
+import br.com.rpgruler.data.entitity.Effect;
 import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
@@ -20,6 +21,7 @@ public class TermsView extends DefaultView {
 
     private TermsBean bean;
     private GListModel<WearType> wtModel;
+    private GListModel<Effect> efModel;
 
     /**
      * Cria nova instancia de TermsView
@@ -37,11 +39,23 @@ public class TermsView extends DefaultView {
     private void initialize() {
         initComponents();
         this.setSize(460, 300);
-        this.setControls(new ViewParameter(true, false, false, false));
+        this.setControls(new ViewParameter(true, false, false, true));
         this.bean = new TermsBean(this);
         this.wtModel = new GListModel<>();
+        this.efModel = new GListModel<>();
         this.jListWearTypes.setModel(wtModel);
+        this.jListEffects.setModel(efModel);
         this.gTWearTypes.setPlaceholder("Tipo de uso");
+        try {
+            this.bean.load(null);
+        } catch (Exception ex) {
+            Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void load() {
+        super.load(); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -64,12 +78,51 @@ public class TermsView extends DefaultView {
     }
 
     /**
+     * Remove o WearType selecionado
+     */
+    private void removeWearType() {
+        if (jListWearTypes.getSelectedIndex() >= 0) {
+            WearType wt = wtModel.getElementAt(jListWearTypes.getSelectedIndex());
+            wtModel.remove(wt);
+        }
+    }
+
+    /**
+     * Adiciona novo elemento na lista de efeitos
+     */
+    public void addEffect() {
+        if (gTEffects.validateComponent()) {
+            bean.addEffect(new BeanEvent(this, gTEffects.getText()));
+            gTEffects.setText("");
+        }
+    }
+
+    /**
+     * Remove o Effect selecionado
+     */
+    private void removeEffect() {
+        if (jListEffects.getSelectedIndex() >= 0) {
+            Effect ef = efModel.getElementAt(jListEffects.getSelectedIndex());
+            efModel.remove(ef);
+        }
+    }
+
+    /**
      * Retorna o modelo de lista dos WearTypes
      *
      * @return <code>GListModel(WearType)</code>
      */
     public GListModel<WearType> getWtModel() {
         return this.wtModel;
+    }
+
+    /**
+     * Retorna o modelo de lista dos Effects
+     *
+     * @return <code>GListModel(Effect)</code>
+     */
+    public GListModel<Effect> getEfModel() {
+        return efModel;
     }
 
     @Override
@@ -88,7 +141,10 @@ public class TermsView extends DefaultView {
         jSP1 = new javax.swing.JScrollPane();
         jListWearTypes = new javax.swing.JList();
         gTWearTypes = new br.com.gmp.comps.textfield.GMPTextField();
-        jPShit = new javax.swing.JPanel();
+        jPEffects = new javax.swing.JPanel();
+        jSP2 = new javax.swing.JScrollPane();
+        jListEffects = new javax.swing.JList();
+        gTEffects = new br.com.gmp.comps.textfield.GMPTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -141,7 +197,7 @@ public class TermsView extends DefaultView {
             jPWearTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPWearTypesLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addComponent(jSP1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTWearTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -149,8 +205,54 @@ public class TermsView extends DefaultView {
 
         getContentPane().add(jPWearTypes);
 
-        jPShit.setBorder(javax.swing.BorderFactory.createTitledBorder("Qualquer outra merda..."));
-        getContentPane().add(jPShit);
+        jPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Efeitos"));
+
+        jListEffects.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListEffects.setMaximumSize(new java.awt.Dimension(150, 125));
+        jListEffects.setMinimumSize(new java.awt.Dimension(150, 125));
+        jListEffects.setPreferredSize(new java.awt.Dimension(150, 125));
+        jListEffects.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jListEffectsKeyReleased(evt);
+            }
+        });
+        jSP2.setViewportView(jListEffects);
+
+        gTEffects.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTEffects.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTEffects.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTEffects.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTEffectsKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPEffectsLayout = new javax.swing.GroupLayout(jPEffects);
+        jPEffects.setLayout(jPEffectsLayout);
+        jPEffectsLayout.setHorizontalGroup(
+            jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPEffectsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSP2)
+                    .addComponent(gTEffects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPEffectsLayout.setVerticalGroup(
+            jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPEffectsLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jSP2)
+                .addGap(6, 6, 6)
+                .addComponent(gTEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        getContentPane().add(jPEffects);
     }// </editor-fold>//GEN-END:initComponents
 
     private void gTWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTWearTypesKeyReleased
@@ -166,21 +268,42 @@ public class TermsView extends DefaultView {
     private void jListWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListWearTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             try {
-                if (jListWearTypes.getSelectedIndex() >= 0) {
-                    wtModel.remove(null);
-                }
+                removeWearType();
             } catch (Exception e) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }//GEN-LAST:event_jListWearTypesKeyReleased
 
+    private void jListEffectsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListEffectsKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                removeEffect();
+            } catch (Exception e) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+    }//GEN-LAST:event_jListEffectsKeyReleased
+
+    private void gTEffectsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTEffectsKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                addEffect();
+            } catch (Exception ex) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gTEffectsKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.textfield.GMPTextField gTEffects;
     private br.com.gmp.comps.textfield.GMPTextField gTWearTypes;
+    private javax.swing.JList jListEffects;
     private javax.swing.JList jListWearTypes;
-    private javax.swing.JPanel jPShit;
+    private javax.swing.JPanel jPEffects;
     private javax.swing.JPanel jPWearTypes;
     private javax.swing.JScrollPane jSP1;
+    private javax.swing.JScrollPane jSP2;
     // End of variables declaration//GEN-END:variables
 }

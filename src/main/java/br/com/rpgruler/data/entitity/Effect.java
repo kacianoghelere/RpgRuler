@@ -15,7 +15,7 @@ public class Effect implements Serializable {
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nome")
-    private String effectName;    
+    private String effectName;
     @ColumnName(name = "Proporção")
     private long strength;
 
@@ -24,6 +24,12 @@ public class Effect implements Serializable {
 
     public Effect(Long id) {
         this.id = id;
+    }
+
+    public Effect(Long id, String effectName) {
+        this.id = id;
+        this.effectName = effectName;
+        this.strength = (long) 0;
     }
 
     public Effect(Long id, String effectName, long strength) {

@@ -258,14 +258,17 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPG");
+        setName("Form"); // NOI18N
 
         jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
+        jToolBar.setName("jToolBar"); // NOI18N
 
         jBSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
         jBSave.setToolTipText("Salvar");
         jBSave.setFocusable(false);
         jBSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSave.setName("jBSave"); // NOI18N
         jBSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,6 +281,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBProcess.setToolTipText("Processar");
         jBProcess.setFocusable(false);
         jBProcess.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBProcess.setName("jBProcess"); // NOI18N
         jBProcess.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,6 +294,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBClear.setToolTipText("Limpar");
         jBClear.setFocusable(false);
         jBClear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBClear.setName("jBClear"); // NOI18N
         jBClear.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +307,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBRefresh.setToolTipText("Recarregar");
         jBRefresh.setFocusable(false);
         jBRefresh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRefresh.setName("jBRefresh"); // NOI18N
         jBRefresh.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +320,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jBDice.setToolTipText("Jogar dados");
         jBDice.setFocusable(false);
         jBDice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBDice.setName("jBDice"); // NOI18N
         jBDice.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBDice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,6 +330,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jToolBar.add(jBDice);
 
         desktop.setBackground(new java.awt.Color(204, 204, 204));
+        desktop.setName("desktop"); // NOI18N
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
@@ -332,15 +340,19 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         jTBMsgs.setFloatable(false);
         jTBMsgs.setRollover(true);
+        jTBMsgs.setName("jTBMsgs"); // NOI18N
+
+        jSeparator1.setName("jSeparator1"); // NOI18N
         jTBMsgs.add(jSeparator1);
 
         jLMsgs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/toolbar/1.png"))); // NOI18N
         jLMsgs.setText("Mensagens");
+        jLMsgs.setName("jLMsgs"); // NOI18N
         jLMsgs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLMsgsMouseClicked(evt);
@@ -348,11 +360,15 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jTBMsgs.add(jLMsgs);
 
+        jMenuBar.setName("jMenuBar"); // NOI18N
+
         jMOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1246_.png"))); // NOI18N
         jMOptions.setText("Opções");
+        jMOptions.setName("jMOptions"); // NOI18N
 
         jMISave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
         jMISave.setText("Salvar");
+        jMISave.setName("jMISave"); // NOI18N
         jMISave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMISaveActionPerformed(evt);
@@ -362,6 +378,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMIProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
         jMIProcess.setText("Processar");
+        jMIProcess.setName("jMIProcess"); // NOI18N
         jMIProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIProcessActionPerformed(evt);
@@ -371,6 +388,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMIRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
         jMIRefresh.setText("Recarregar");
+        jMIRefresh.setName("jMIRefresh"); // NOI18N
         jMIRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIRefreshActionPerformed(evt);
@@ -380,6 +398,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMIDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/dice.gif"))); // NOI18N
         jMIDice.setText("Jogar dados");
+        jMIDice.setName("jMIDice"); // NOI18N
         jMIDice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIDiceActionPerformed(evt);
@@ -391,11 +410,14 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMOthers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
         jMOthers.setText("Outros");
+        jMOthers.setName("jMOthers"); // NOI18N
 
         jMPerk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
         jMPerk.setText("Vantagens");
+        jMPerk.setName("jMPerk"); // NOI18N
 
         jMIRegPerk.setText("Cadastro");
+        jMIRegPerk.setName("jMIRegPerk"); // NOI18N
         jMIRegPerk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIRegPerkActionPerformed(evt);
@@ -407,8 +429,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMElement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
         jMElement.setText("Elementos");
+        jMElement.setName("jMElement"); // NOI18N
 
         jMIRegElement.setText("Cadastro");
+        jMIRegElement.setName("jMIRegElement"); // NOI18N
         jMIRegElement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIRegElementActionPerformed(evt);
@@ -420,8 +444,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMMaterials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1285_.png"))); // NOI18N
         jMMaterials.setText("Materiais");
+        jMMaterials.setName("jMMaterials"); // NOI18N
 
         jMIMaterials.setText("Registro");
+        jMIMaterials.setName("jMIMaterials"); // NOI18N
         jMIMaterials.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIMaterialsActionPerformed(evt);
@@ -433,9 +459,11 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMTerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         jMTerms.setText("Termos");
+        jMTerms.setName("jMTerms"); // NOI18N
 
         jMIArmorTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
         jMIArmorTypes.setText("Tipos de armaduras");
+        jMIArmorTypes.setName("jMIArmorTypes"); // NOI18N
         jMIArmorTypes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIArmorTypesActionPerformed(evt);
@@ -445,6 +473,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMITerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         jMITerms.setText("Itens comuns");
+        jMITerms.setName("jMITerms"); // NOI18N
         jMITerms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMITermsActionPerformed(evt);
@@ -462,7 +491,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
             .addComponent(desktop)
             .addComponent(jTBMsgs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -477,6 +506,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed

@@ -1,6 +1,8 @@
 package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.util.Random;
@@ -75,6 +77,11 @@ public class DiceView extends DefaultView {
      */
     private String throwDice(int type) {
         return String.valueOf(new Random().nextInt(type) + 1);
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return null;
     }
 
     /**

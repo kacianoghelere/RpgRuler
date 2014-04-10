@@ -1,6 +1,8 @@
 package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.view.bean.CharacterBean;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
 
 /**
  * View para controle e cadastro de personagens
@@ -9,6 +11,8 @@ import br.com.rpgruler.main.MainScreen;
  * @version 1.0
  */
 public class CharacterView extends DefaultView {
+
+    private CharacterBean bean;
 
     /**
      * Cria nova instancia de CharacterView
@@ -25,6 +29,12 @@ public class CharacterView extends DefaultView {
      */
     private void initialize() {
         initComponents();
+        this.bean = new CharacterBean(this);
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return this.bean;
     }
 
     /**

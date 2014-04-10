@@ -18,10 +18,9 @@ import javax.swing.event.InternalFrameEvent;
  * @author kaciano
  * @version 1.0
  */
-public class DefaultView extends JInternalFrame implements ViewListener {
+public abstract class DefaultView extends JInternalFrame implements ViewListener {
 
-    private final MainScreen mainScreen;
-    private BeanListener bean;
+    private final MainScreen mainScreen;    
     private Boolean canSave;
     private Boolean canProcess;
     private Boolean canClear;
@@ -34,7 +33,6 @@ public class DefaultView extends JInternalFrame implements ViewListener {
      */
     public DefaultView(MainScreen mainScreen) {
         this.mainScreen = mainScreen;
-        bean = new DefaultViewBean(this);
         initialize();
     }
 
@@ -123,7 +121,7 @@ public class DefaultView extends JInternalFrame implements ViewListener {
     @Override
     public void process() {
         try {
-            bean.process(new BeanEvent(this, null));
+            getBean().process(new BeanEvent(this, null));
         } catch (Exception ex) {
             Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,7 +130,7 @@ public class DefaultView extends JInternalFrame implements ViewListener {
     @Override
     public void clear() {
         try {
-            bean.clear(new BeanEvent(this, null));
+            getBean().clear(new BeanEvent(this, null));
         } catch (Exception ex) {
             Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -141,25 +139,14 @@ public class DefaultView extends JInternalFrame implements ViewListener {
     @Override
     public void load() {
         try {
-            bean.load(new BeanEvent(this, null));
+            getBean().load(new BeanEvent(this, null));
         } catch (Exception ex) {
             Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public BeanListener getBean() {
-        return bean;
-    }
-
-    /**
-     * Modifica o bean da view
-     *
-     * @param bean <code>BeanListener</code> Novo bean
-     */
-    public void setBean(BeanListener bean) {
-        this.bean = bean;
-    }
+    public abstract BeanListener getBean();
 
     @Override
     public MainScreen getMainScreen() {

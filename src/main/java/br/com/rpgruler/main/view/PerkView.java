@@ -1,7 +1,9 @@
 package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.view.bean.PerkBean;
 import br.com.rpgruler.main.view.dialog.PerkDialog;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
 
 /**
  * View de cadastro e manutenção de perks
@@ -9,6 +11,8 @@ import br.com.rpgruler.main.view.dialog.PerkDialog;
  * @author kaciano
  */
 public class PerkView extends DefaultView {
+
+    private PerkBean bean;
 
     /**
      * Cria nova instancia de PerkView
@@ -26,6 +30,12 @@ public class PerkView extends DefaultView {
     private void initialize() {
         setSize(320, 300);
         initComponents();
+        this.bean = new PerkBean(this);
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return this.bean;
     }
 
     /**

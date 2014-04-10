@@ -4,6 +4,7 @@ import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.model.ElementModel;
 import br.com.rpgruler.main.view.bean.ElementBean;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -50,14 +51,14 @@ public class ElementView extends DefaultView {
         }
         elementModel.setData(dao.getList());
         jTableElements.setModel(elementModel);
-        moldeTable();
+        buildTable();
         setSize(700, 394);
     }
 
     /**
-     * Modela os dados da tabela
+     * Monta os dados da tabela
      */
-    private void moldeTable() {
+    private void buildTable() {
         //----------------------------------------------------------------------
         // Adiciona o renderer
         jTableElements.getColumnModel().getColumn(SYMBOL_COLUMN).setCellRenderer((JTable table, Object value, boolean isSelected1, boolean hasFocus, int row, int column) -> {
@@ -77,15 +78,28 @@ public class ElementView extends DefaultView {
         });
     }
 
+    /**
+     * Retorna o modelo da tabela
+     *
+     * @return <code>ElementModel</code> Modelo da tabela
+     */
     public ElementModel getModel() {
         return (ElementModel) jTableElements.getModel();
     }
 
+    /**
+     * Adiciona novo elemento na tabela
+     */
     public void add() {
         String title = jTTitle.getText();
         int symbol = jCSymbol.getSelectedIndex();
         System.out.println(symbol);
         bean.addElement(title, symbol);
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return bean;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Get's & Set's">
