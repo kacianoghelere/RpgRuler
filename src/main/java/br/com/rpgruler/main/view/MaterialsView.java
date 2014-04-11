@@ -87,16 +87,22 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         String text = "Deseja remover os itens selecionados?";
         if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
             try {
-                if (gTable.getSelectedRow() >= 0) {
-                    List<PrimeMaterial> types = new ArrayList<>();
-                    for (int i : gTable.getSelectedRows()) {
-                        System.out.println("Removendo a linha: " + i);
-                        types.add(model.getObject(i));
-                    }
-                    bean.remove(new BeanEvent(this, types.toArray(new PrimeMaterial[]{})));
+//                if (gTable.getSelectedRow() >= 0) {
+//                    List<PrimeMaterial> types = new ArrayList<>();
+//                    for (int i : gTable.getSelectedRows()) {
+//                        System.out.println("Removendo a linha: " + i);
+//                        types.add(model.getObject(i));
+//                    }
+//                    bean.remove(new BeanEvent(this, types.toArray(new PrimeMaterial[]{})));
+//                } else {
+//                    new BalloonUtil().showTimedBallon(gTable, "Nenhum item selecionado");
+//                }
+                if (gTable.getSelectedObjects() != null) {
+                    bean.remove(new BeanEvent(this,gTable.getSelectedObjects()));
                 } else {
                     new BalloonUtil().showTimedBallon(gTable, "Nenhum item selecionado");
                 }
+                
             } catch (NumberFormatException e) {
                 Logger.getLogger(MaterialsView.class.getName())
                         .log(Level.SEVERE, null, e);
