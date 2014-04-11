@@ -220,7 +220,6 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         remove();
     }//GEN-LAST:event_jBRemoveActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textfield.GMPTextField gTName;
     private br.com.gmp.comps.table.GTable gTable;

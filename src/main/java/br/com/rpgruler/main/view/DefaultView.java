@@ -2,7 +2,6 @@ package br.com.rpgruler.main.view;
 
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.bean.DefaultViewBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.ViewListener;
 import br.com.rpgruler.main.view.object.ViewParameter;
@@ -20,7 +19,7 @@ import javax.swing.event.InternalFrameEvent;
  */
 public abstract class DefaultView extends JInternalFrame implements ViewListener {
 
-    private final MainScreen mainScreen;    
+    private final MainScreen mainScreen;
     private Boolean canSave;
     private Boolean canProcess;
     private Boolean canClear;
@@ -146,6 +145,11 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
     }
 
     @Override
+    public void showMessage(String msg, int type) {
+        getMainScreen().printTypedMsg(msg, type);
+    }
+
+    @Override
     public abstract BeanListener getBean();
 
     @Override
@@ -165,7 +169,6 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
         setPreferredSize(new java.awt.Dimension(498, 394));
         setVisible(true);
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

@@ -295,7 +295,6 @@ public class TermsView extends DefaultView {
         }
     }//GEN-LAST:event_gTEffectsKeyReleased
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textfield.GMPTextField gTEffects;
     private br.com.gmp.comps.textfield.GMPTextField gTWearTypes;

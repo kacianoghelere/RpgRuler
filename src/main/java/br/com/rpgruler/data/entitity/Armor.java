@@ -20,7 +20,6 @@ public class Armor implements Serializable {
     @ColumnName(name = "Material 2")
     private PrimeMaterial primeMaterial2;
 
-
     public Armor() {
     }
 

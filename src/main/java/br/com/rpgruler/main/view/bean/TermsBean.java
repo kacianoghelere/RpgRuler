@@ -7,7 +7,6 @@ import br.com.rpgruler.data.entitity.Effect;
 import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.TermsView;
-import java.util.List;
 
 /**
  * Bean para TermsView

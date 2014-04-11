@@ -213,7 +213,6 @@ public class CharacterView extends DefaultView {
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox1;
     private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox2;

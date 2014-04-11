@@ -8,6 +8,6 @@ import br.com.rpgruler.data.entitity.Element;
  *
  * @author kaciano
  */
-public class ElementModel extends DefaultTableModel<Element> {   
+public class ElementModel extends DefaultTableModel<Element> {
 
 }

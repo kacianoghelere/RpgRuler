@@ -72,7 +72,7 @@ public interface ViewListener {
      * br.com.rpgruler.main.view.bean.DefaultViewBean#save(br.com.rpgruler.main.object.BeanEvent)
      */
     void save();
-    
+
     /**
      * Metodo padrão para processar os dados
      *
@@ -110,4 +110,12 @@ public interface ViewListener {
      * @return <code>MainScreen</code>
      */
     MainScreen getMainScreen();
+
+    /**
+     * Mostra nova mensagem na barra de aplicações
+     *
+     * @param msg <code>String</code> Mensagem
+     * @param type <code></code> Tipo da mensagem
+     */
+    void showMessage(String msg, int type);
 }

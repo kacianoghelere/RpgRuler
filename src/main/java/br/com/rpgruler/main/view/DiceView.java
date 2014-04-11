@@ -199,7 +199,6 @@ public class DiceView extends DefaultView {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton D10;
     private javax.swing.JButton D12;

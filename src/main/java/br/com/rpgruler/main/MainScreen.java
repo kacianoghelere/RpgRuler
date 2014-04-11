@@ -113,14 +113,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * @param controls <code>boolean[]</code> Array com as opções de controle
      */
     public void setControls(Boolean... controls) {
-        this.jBSave.setEnabled(controls[0]);        
+        this.jBSave.setEnabled(controls[0]);
         this.jBProcess.setEnabled(controls[1]);
         this.jBClear.setEnabled(controls[2]);
         this.jBRefresh.setEnabled(controls[3]);
     }
 
     /**
-     * <html>
      * Imprime uma mensagem na barra de mensagens <br>
      * Campos utilizados:<br>
      * <table border="1">
@@ -149,7 +148,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * </tr>
      * </tbody>
      * </table>
-     * </html>
      *
      * @param text <code>String</code> Texto à ser impresso
      * @param icon <code>String</code> Icone de tipo para a mensagem
@@ -161,7 +159,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     /**
-     * <html>
      * Imprime uma mensagem na barra de mensagens <br>
      * Campos utilizados:<br>
      * <table border="1">
@@ -190,7 +187,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * </tr>
      * </tbody>
      * </table>
-     * </html>
      *
      * @param text <code>String</code> Texto à ser impresso
      * @param type <code>int</code> Tipo da mensagem
