@@ -29,7 +29,7 @@ public class PerkDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gMPTextField1 = new br.com.gmp.comps.textfield.GMPTextField();
+        gMPTextField1 = new br.com.gmp.comps.textfield.GTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         gMPTextArea1 = new br.com.gmp.comps.textarea.GMPTextArea();
@@ -139,7 +139,7 @@ public class PerkDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textarea.GMPTextArea gMPTextArea1;
-    private br.com.gmp.comps.textfield.GMPTextField gMPTextField1;
+    private br.com.gmp.comps.textfield.GTextField gMPTextField1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

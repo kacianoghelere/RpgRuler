@@ -177,7 +177,7 @@
                     <Property name="text" type="java.lang.String" value="Nome do personagem:"/>
                   </Properties>
                 </Component>
-                <Component class="br.com.gmp.comps.textfield.GMPTextField" name="gMPTextField1">
+                <Component class="br.com.gmp.comps.textfield.GTextField" name="gMPTextField1">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
@@ -191,7 +191,7 @@
                     <Property name="text" type="java.lang.String" value="Nome do Jogador:"/>
                   </Properties>
                 </Component>
-                <Component class="br.com.gmp.comps.textfield.GMPTextField" name="gMPTextField2">
+                <Component class="br.com.gmp.comps.textfield.GTextField" name="gMPTextField2">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>

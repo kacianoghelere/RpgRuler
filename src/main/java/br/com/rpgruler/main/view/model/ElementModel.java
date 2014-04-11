@@ -1,6 +1,6 @@
 package br.com.rpgruler.main.view.model;
 
-import br.com.gmp.comps.model.DefaultTableModel;
+import br.com.gmp.comps.model.GTableModel;
 import br.com.rpgruler.data.entitity.Element;
 
 /**
@@ -8,6 +8,6 @@ import br.com.rpgruler.data.entitity.Element;
  *
  * @author kaciano
  */
-public class ElementModel extends DefaultTableModel<Element> {
+public class ElementModel extends GTableModel<Element> {
 
 }

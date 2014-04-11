@@ -1,10 +1,12 @@
 package br.com.rpgruler.main.view;
 
+import br.com.gmp.comps.table.GTable;
 import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.model.ElementModel;
 import br.com.rpgruler.main.view.bean.ElementBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
+import br.com.rpgruler.main.view.interfaces.HasTable;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -18,7 +20,7 @@ import javax.swing.JTextField;
  *
  * @author kaciano
  */
-public class ElementView extends DefaultView {
+public class ElementView extends DefaultView implements HasTable {
 
     private ElementBean bean;
     private ElementModel elementModel;
@@ -50,7 +52,7 @@ public class ElementView extends DefaultView {
             dao.insertAll(bean.getElements());
         }
         elementModel.setData(dao.getList());
-        jTableElements.setModel(elementModel);
+        gTable.setModel(elementModel);
         buildTable();
         setSize(700, 394);
     }
@@ -61,7 +63,7 @@ public class ElementView extends DefaultView {
     private void buildTable() {
         //----------------------------------------------------------------------
         // Adiciona o renderer
-        jTableElements.getColumnModel().getColumn(SYMBOL_COLUMN).setCellRenderer((JTable table, Object value, boolean isSelected1, boolean hasFocus, int row, int column) -> {
+        gTable.getColumnModel().getColumn(SYMBOL_COLUMN).setCellRenderer((JTable table, Object value, boolean isSelected1, boolean hasFocus, int row, int column) -> {
             URL resource = getClass().getResource((String) value);
             ImageIcon ic = new ImageIcon(resource);
             JLabel jLabel = new JLabel(ic);
@@ -79,15 +81,6 @@ public class ElementView extends DefaultView {
     }
 
     /**
-     * Retorna o modelo da tabela
-     *
-     * @return <code>ElementModel</code> Modelo da tabela
-     */
-    public ElementModel getModel() {
-        return (ElementModel) jTableElements.getModel();
-    }
-
-    /**
      * Adiciona novo elemento na tabela
      */
     public void add() {
@@ -95,6 +88,21 @@ public class ElementView extends DefaultView {
         int symbol = jCSymbol.getSelectedIndex();
         System.out.println(symbol);
         bean.addElement(title, symbol);
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public GTable getTable() {
+        return gTable;
+    }
+
+    @Override
+    public ElementModel getModel() {
+        return elementModel;
     }
 
     @Override
@@ -119,14 +127,6 @@ public class ElementView extends DefaultView {
         this.jTTitle = jTTitle;
     }
 
-    public JTable getjTableElements() {
-        return jTableElements;
-    }
-
-    public void setjTableElements(JTable jTableElements) {
-        this.jTableElements = jTableElements;
-    }
-
     // </editor-fold>
     /**
      *
@@ -138,8 +138,6 @@ public class ElementView extends DefaultView {
         jToolBar = new javax.swing.JToolBar();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
-        jSP = new javax.swing.JScrollPane();
-        jTableElements = new javax.swing.JTable();
         jTTitle = new javax.swing.JTextField();
         jLTitle = new javax.swing.JLabel();
         jLSymbol = new javax.swing.JLabel();
@@ -148,6 +146,8 @@ public class ElementView extends DefaultView {
         jLWeak = new javax.swing.JLabel();
         jLBonus = new javax.swing.JLabel();
         jCBonus = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gTable = new br.com.gmp.comps.table.GTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -184,26 +184,6 @@ public class ElementView extends DefaultView {
         });
         jToolBar.add(jBRemove);
 
-        jTableElements.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jTableElements.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "Titulo", "Simbolo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTableElements.setRowHeight(36);
-        jSP.setViewportView(jTableElements);
-
         jLTitle.setText("Titulo");
 
         jLSymbol.setText("Simbolo");
@@ -219,6 +199,16 @@ public class ElementView extends DefaultView {
         jLBonus.setText("Bonus:");
 
         jCBonus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        gTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,8 +232,8 @@ public class ElementView extends DefaultView {
                 .addComponent(jLBonus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 94, Short.MAX_VALUE))
-            .addComponent(jSP, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(0, 21, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +251,7 @@ public class ElementView extends DefaultView {
                         .addComponent(jLBonus)
                         .addComponent(jCBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jCBonus, jCSymbol, jCWeak, jLBonus, jLSymbol, jLTitle, jLWeak, jTTitle});
@@ -277,6 +267,7 @@ public class ElementView extends DefaultView {
     }//GEN-LAST:event_jBRemoveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;
     private javax.swing.JComboBox jCBonus;
@@ -286,9 +277,9 @@ public class ElementView extends DefaultView {
     private javax.swing.JLabel jLSymbol;
     private javax.swing.JLabel jLTitle;
     private javax.swing.JLabel jLWeak;
-    private javax.swing.JScrollPane jSP;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTTitle;
-    private javax.swing.JTable jTableElements;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
+
 }

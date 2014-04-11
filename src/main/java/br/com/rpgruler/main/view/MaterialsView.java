@@ -10,6 +10,7 @@ import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.MaterialsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
+import br.com.rpgruler.main.view.interfaces.HasTable;
 import br.com.rpgruler.main.view.model.MaterialsModel;
 import br.com.rpgruler.main.view.object.MaterialsParameter;
 import br.com.rpgruler.main.view.object.ViewParameter;
@@ -19,10 +20,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * View de cadastro para matérias primas
  *
  * @author kaciano
+ * @version 1.0
  */
-public class MaterialsView extends DefaultView implements TableSource<PrimeMaterial> {
+public class MaterialsView extends DefaultView implements TableSource<PrimeMaterial>, HasTable {
 
     private MaterialsBean bean;
     private MaterialsModel model;
@@ -55,24 +58,6 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     }
 
     /**
-     * Retorna a tabela de materiais
-     *
-     * @return <code>GTable</code> Tabela de materiais
-     */
-    public GTable getTable() {
-        return gTable;
-    }
-
-    /**
-     * Retorna o modelo da tabela de materiais
-     *
-     * @return <code>MaterialsModel</code> Modelo da tabela de materiais
-     */
-    public MaterialsModel getModel() {
-        return model;
-    }
-
-    /**
      * Modifica o modelo da tabela de materiais
      *
      * @param model <code>MaterialsModel</code> Modelo da tabela de materiais
@@ -81,10 +66,8 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         this.model = model;
     }
 
-    /**
-     * Adiciona um item na tabela
-     */
-    private void add() {
+    @Override
+    public void add() {
         try {
             if (gTName.validateComponent()) {
                 if (nTWeight.validateComponent()) {
@@ -99,10 +82,8 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
         }
     }
 
-    /**
-     * Remove um item da tabela
-     */
-    private void remove() {
+    @Override
+    public void remove() {
         String text = "Deseja remover os itens selecionados?";
         if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
             try {
@@ -124,6 +105,16 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     }
 
     @Override
+    public GTable getTable() {
+        return gTable;
+    }
+
+    @Override
+    public MaterialsModel getModel() {
+        return model;
+    }
+
+    @Override
     public BeanListener getBean() {
         return bean;
     }
@@ -137,7 +128,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
 
         jTBControls = new javax.swing.JToolBar();
         jLName = new javax.swing.JLabel();
-        gTName = new br.com.gmp.comps.textfield.GMPTextField();
+        gTName = new br.com.gmp.comps.textfield.GTextField();
         jLClass = new javax.swing.JLabel();
         jSpClass = new javax.swing.JSpinner();
         jLWeight = new javax.swing.JLabel();
@@ -221,7 +212,7 @@ public class MaterialsView extends DefaultView implements TableSource<PrimeMater
     }//GEN-LAST:event_jBRemoveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.textfield.GMPTextField gTName;
+    private br.com.gmp.comps.textfield.GTextField gTName;
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;

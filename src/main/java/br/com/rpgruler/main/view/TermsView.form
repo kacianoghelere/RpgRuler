@@ -109,7 +109,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="br.com.gmp.comps.textfield.GMPTextField" name="gTWearTypes">
+        <Component class="br.com.gmp.comps.textfield.GTextField" name="gTWearTypes">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 2147483647]"/>
@@ -196,7 +196,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="br.com.gmp.comps.textfield.GMPTextField" name="gTEffects">
+        <Component class="br.com.gmp.comps.textfield.GTextField" name="gTEffects">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 2147483647]"/>

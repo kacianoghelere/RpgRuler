@@ -48,11 +48,11 @@ public class CharacterView extends DefaultView {
         jPMainInfo = new javax.swing.JPanel();
         jPCharData = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        gMPTextField1 = new br.com.gmp.comps.textfield.GMPTextField();
+        gMPTextField1 = new br.com.gmp.comps.textfield.GTextField();
         jLabel2 = new javax.swing.JLabel();
         gMPComboBox1 = new br.com.gmp.comps.combobox.GMPComboBox();
         jLabel3 = new javax.swing.JLabel();
-        gMPTextField2 = new br.com.gmp.comps.textfield.GMPTextField();
+        gMPTextField2 = new br.com.gmp.comps.textfield.GTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         numericTextField1 = new br.com.gmp.comps.textfield.NumericTextField();
@@ -217,8 +217,8 @@ public class CharacterView extends DefaultView {
     private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox1;
     private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox2;
     private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox3;
-    private br.com.gmp.comps.textfield.GMPTextField gMPTextField1;
-    private br.com.gmp.comps.textfield.GMPTextField gMPTextField2;
+    private br.com.gmp.comps.textfield.GTextField gMPTextField1;
+    private br.com.gmp.comps.textfield.GTextField gMPTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

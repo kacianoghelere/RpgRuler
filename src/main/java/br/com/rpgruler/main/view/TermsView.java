@@ -140,11 +140,11 @@ public class TermsView extends DefaultView {
         jPWearTypes = new javax.swing.JPanel();
         jSP1 = new javax.swing.JScrollPane();
         jListWearTypes = new javax.swing.JList();
-        gTWearTypes = new br.com.gmp.comps.textfield.GMPTextField();
+        gTWearTypes = new br.com.gmp.comps.textfield.GTextField();
         jPEffects = new javax.swing.JPanel();
         jSP2 = new javax.swing.JScrollPane();
         jListEffects = new javax.swing.JList();
-        gTEffects = new br.com.gmp.comps.textfield.GMPTextField();
+        gTEffects = new br.com.gmp.comps.textfield.GTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -296,8 +296,8 @@ public class TermsView extends DefaultView {
     }//GEN-LAST:event_gTEffectsKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.textfield.GMPTextField gTEffects;
-    private br.com.gmp.comps.textfield.GMPTextField gTWearTypes;
+    private br.com.gmp.comps.textfield.GTextField gTEffects;
+    private br.com.gmp.comps.textfield.GTextField gTWearTypes;
     private javax.swing.JList jListEffects;
     private javax.swing.JList jListWearTypes;
     private javax.swing.JPanel jPEffects;

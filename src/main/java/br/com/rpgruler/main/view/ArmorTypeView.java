@@ -10,6 +10,7 @@ import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ArmorTypeBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
+import br.com.rpgruler.main.view.interfaces.HasTable;
 import br.com.rpgruler.main.view.model.ArmorTypeModel;
 import br.com.rpgruler.main.view.object.ArmorTypeParameter;
 import br.com.rpgruler.main.view.object.ViewParameter;
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.0
  */
-public class ArmorTypeView extends DefaultView implements TableSource<ArmorType> {
+public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>, HasTable {
 
     private ArmorTypeBean bean;
     private ArmorTypeModel model;
@@ -57,33 +58,6 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     }
 
     /**
-     * Retorna a tabela
-     *
-     * @return <code>GMPTable</code>
-     */
-    public GTable getTable() {
-        return gTable;
-    }
-
-    /**
-     * Modifica a tabela
-     *
-     * @param gTable <code>GMPTable</code>
-     */
-    public void setTable(GTable gTable) {
-        this.gTable = gTable;
-    }
-
-    /**
-     * Retorna o modelo de tabela
-     *
-     * @return <code>ArmorTypeModel</code>
-     */
-    public ArmorTypeModel getModel() {
-        return model;
-    }
-
-    /**
      * Modifica o modelo de tabela
      *
      * @param model <code>ArmorTypeModel</code>
@@ -95,7 +69,8 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     /**
      * Adiciona um item na tabela
      */
-    private void add() {
+    @Override
+    public void add() {
         try {
             if (gTName.validateComponent()) {
                 ArmorTypeParameter type = new ArmorTypeParameter();
@@ -113,7 +88,8 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     /**
      * Remove um item da tabela
      */
-    private void remove() {
+    @Override
+    public void remove() {
         String text = "Deseja remover os itens selecionados?";
         if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
             try {
@@ -135,6 +111,16 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     }
 
     @Override
+    public GTable getTable() {
+        return gTable;
+    }
+
+    @Override
+    public ArmorTypeModel getModel() {
+        return model;
+    }
+
+    @Override
     public BeanListener getBean() {
         return bean;
     }
@@ -149,7 +135,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLName = new javax.swing.JLabel();
-        gTName = new br.com.gmp.comps.textfield.GMPTextField();
+        gTName = new br.com.gmp.comps.textfield.GTextField();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jLQtd1 = new javax.swing.JLabel();
         jSpQtd1 = new javax.swing.JSpinner();
@@ -255,7 +241,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     }//GEN-LAST:event_jBRemoveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.textfield.GMPTextField gTName;
+    private br.com.gmp.comps.textfield.GTextField gTName;
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;

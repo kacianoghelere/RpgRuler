@@ -1,6 +1,6 @@
 package br.com.rpgruler.main.view.model;
 
-import br.com.gmp.comps.model.DefaultTableModel;
+import br.com.gmp.comps.model.GTableModel;
 import br.com.rpgruler.data.entitity.ArmorType;
 
 /**
@@ -9,7 +9,7 @@ import br.com.rpgruler.data.entitity.ArmorType;
  * @author kaciano
  * @version 1.0
  */
-public class ArmorTypeModel extends DefaultTableModel<ArmorType> {
+public class ArmorTypeModel extends GTableModel<ArmorType> {
 
     public ArmorTypeModel() {
     }

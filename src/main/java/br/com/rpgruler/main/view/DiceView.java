@@ -1,11 +1,15 @@
 package br.com.rpgruler.main.view;
 
+import br.com.gmp.utils.image.ImageUtil;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -29,6 +33,10 @@ public class DiceView extends DefaultView {
      * Metodo de inicialização
      */
     private void initialize() {
+        ImageIcon ic = new ImageIcon(getClass().getResource("/dices/d12-icon.png"));
+        Image img = new ImageUtil().getScaledImage(ic.getImage(), 16, 16);
+        setFrameIcon(new ImageIcon(img));
+        setControls(new ViewParameter(false, false, false, true));
         setSize(496, 333);
         initComponents();
         for (Component c : jPDices.getComponents()) {
@@ -37,6 +45,16 @@ public class DiceView extends DefaultView {
                 bt.addActionListener((ActionEvent e) -> {
                     simulateDice(bt);
                 });
+            }
+        }
+    }
+
+    @Override
+    public void load() {
+        for (Component c : jPDices.getComponents()) {
+            if (c instanceof JButton) {
+                JButton bt = (JButton) c;
+                bt.setText(bt.getName());
             }
         }
     }
@@ -101,7 +119,7 @@ public class DiceView extends DefaultView {
         D12 = new javax.swing.JButton();
         D20 = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        jBRefresh = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -163,16 +181,16 @@ public class DiceView extends DefaultView {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
+        jBRefresh.setFocusable(false);
+        jBRefresh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRefresh.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBRefreshActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jToolBar1.add(jBRefresh);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,14 +208,9 @@ public class DiceView extends DefaultView {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for (Component c : jPDices.getComponents()) {
-            if (c instanceof JButton) {
-                JButton bt = (JButton) c;
-                bt.setText(bt.getName());
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRefreshActionPerformed
+        load();
+    }//GEN-LAST:event_jBRefreshActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton D10;
@@ -206,7 +219,7 @@ public class DiceView extends DefaultView {
     private javax.swing.JButton D4;
     private javax.swing.JButton D6;
     private javax.swing.JButton D8;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBRefresh;
     private javax.swing.JPanel jPDices;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
