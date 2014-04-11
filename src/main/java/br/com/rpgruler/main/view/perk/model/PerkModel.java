@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view.model;
+package br.com.rpgruler.main.view.perk.model;
 
 import br.com.gmp.comps.model.GTableModel;
 import br.com.rpgruler.data.entitity.Perk;

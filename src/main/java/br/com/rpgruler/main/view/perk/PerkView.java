@@ -1,7 +1,8 @@
-package br.com.rpgruler.main.view;
+package br.com.rpgruler.main.view.perk;
 
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.bean.PerkBean;
+import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.perk.bean.PerkBean;
 import br.com.rpgruler.main.view.dialog.PerkDialog;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 

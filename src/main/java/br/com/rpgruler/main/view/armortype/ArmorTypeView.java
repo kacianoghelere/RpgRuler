@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view;
+package br.com.rpgruler.main.view.armortype;
 
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.comps.table.GTable;
@@ -8,11 +8,12 @@ import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.bean.ArmorTypeBean;
+import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.armortype.bean.ArmorTypeBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.HasTable;
-import br.com.rpgruler.main.view.model.ArmorTypeModel;
-import br.com.rpgruler.main.view.object.ArmorTypeParameter;
+import br.com.rpgruler.main.view.armortype.model.ArmorTypeModel;
+import br.com.rpgruler.main.view.armortype.object.ArmorTypeParameter;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.ArrayList;
 import java.util.List;

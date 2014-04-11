@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view.object;
+package br.com.rpgruler.main.view.materials.object;
 
 /**
  * Wrapper para enviar dados de materiais

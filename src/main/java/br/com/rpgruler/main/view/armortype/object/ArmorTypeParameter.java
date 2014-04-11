@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view.object;
+package br.com.rpgruler.main.view.armortype.object;
 
 /**
  * Parametro de transferencia para ArmorType

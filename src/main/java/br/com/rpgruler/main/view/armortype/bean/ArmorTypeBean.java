@@ -1,10 +1,11 @@
-package br.com.rpgruler.main.view.bean;
+package br.com.rpgruler.main.view.armortype.bean;
 
 import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.ArmorTypeView;
-import br.com.rpgruler.main.view.object.ArmorTypeParameter;
+import br.com.rpgruler.main.view.armortype.ArmorTypeView;
+import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.armortype.object.ArmorTypeParameter;
 import java.util.List;
 
 /**

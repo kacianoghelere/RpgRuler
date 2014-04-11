@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view.bean;
+package br.com.rpgruler.main.view.terms.bean;
 
 import br.com.gmp.comps.model.GListModel;
 import br.com.rpgruler.data.db.dao.EffectDAO;
@@ -6,7 +6,8 @@ import br.com.rpgruler.data.db.dao.WearTypeDAO;
 import br.com.rpgruler.data.entitity.Effect;
 import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.TermsView;
+import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.terms.TermsView;
 
 /**
  * Bean para TermsView

@@ -1,8 +1,10 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -10,6 +12,7 @@ import java.io.Serializable;
  */
 public class Element implements Serializable {
 
+    @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
@@ -17,6 +20,10 @@ public class Element implements Serializable {
     private String elementName;
     @ColumnName(name = "Simbolo")
     private String elementSymbol;
+    @ColumnName(name = "Bonûs")
+    private Element bonus;
+    @ColumnName(name = "Fraqueza")
+    private Element weakness;
 
     public Element() {
     }
@@ -29,6 +36,14 @@ public class Element implements Serializable {
         this.id = id;
         this.elementName = elementName;
         this.elementSymbol = elementSymbol;
+    }
+
+    public Element(Long id, String elementName, String elementSymbol, Element bonus, Element weakness) {
+        this.id = id;
+        this.elementName = elementName;
+        this.elementSymbol = elementSymbol;
+        this.bonus = bonus;
+        this.weakness = weakness;
     }
 
     public Long getId() {
@@ -55,29 +70,60 @@ public class Element implements Serializable {
         this.elementSymbol = elementSymbol;
     }
 
+    public Element getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Element bonus) {
+        this.bonus = bonus;
+    }
+
+    public Element getWeakness() {
+        return weakness;
+    }
+
+    public void setWeakness(Element weakness) {
+        this.weakness = weakness;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.elementName);
+        hash = 53 * hash + Objects.hashCode(this.elementSymbol);
+        hash = 53 * hash + Objects.hashCode(this.bonus);
+        hash = 53 * hash + Objects.hashCode(this.weakness);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Element)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Element other = (Element) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Element other = (Element) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.elementName, other.elementName)) {
+            return false;
+        }
+        if (!Objects.equals(this.elementSymbol, other.elementSymbol)) {
+            return false;
+        }
+        if (!Objects.equals(this.bonus, other.bonus)) {
+            return false;
+        }
+        return Objects.equals(this.weakness, other.weakness);
     }
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.Element[ id=" + id + " ]";
+        return elementName;
     }
 
 }

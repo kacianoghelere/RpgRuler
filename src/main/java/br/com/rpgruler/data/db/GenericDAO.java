@@ -151,6 +151,16 @@ public class GenericDAO<T> {
     }
 
     /**
+     * Deleta todos os registros anteriores e insere os registros da lista
+     *
+     * @param entities <code>List(T)</code> Lista dos novos registros
+     */
+    public void replaceAll(List<T> entities) {
+        deleteAll();
+        insertAll(entities);
+    }
+
+    /**
      * Retorna a entidade a partir do ID
      *
      * @param id <code>Integer</code> ID
@@ -254,18 +264,4 @@ public class GenericDAO<T> {
         this.sufix = sufix;
     }
 
-//    /**
-//     *
-//     * @return
-//     */
-//    public ObjectServer getObjectServer() {
-//        return objectServer;
-//    }
-//    /**
-//     *
-//     * @param objectServer
-//     */
-//    public void setObjectServer(ObjectServer objectServer) {
-//        this.objectServer = objectServer;
-//    }
 }

@@ -1,19 +1,18 @@
-package br.com.rpgruler.main.view.bean;
+package br.com.rpgruler.main.view.character.bean;
 
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.PerkView;
+import br.com.rpgruler.main.view.character.CharacterView;
+import br.com.rpgruler.main.view.bean.DefaultViewBean;
 
 /**
+ * Bean de controle para a tela de personagens
  *
  * @author kaciano
  */
-public class PerkBean extends DefaultViewBean<PerkView> {
+public class CharacterBean extends DefaultViewBean<CharacterView> {
 
-    private PerkView view;
-
-    public PerkBean(PerkView view) {
+    public CharacterBean(CharacterView view) {
         super(view);
-        this.view = view;
     }
 
     @Override
@@ -34,20 +33,6 @@ public class PerkBean extends DefaultViewBean<PerkView> {
     @Override
     public void load(BeanEvent evt) throws Exception {
         super.load(evt);
-    }
-
-    @Override
-    public PerkView getView() {
-        return view;
-    }
-
-    /**
-     * Modifica a view do bean
-     *
-     * @param view <code>PerkView</code> Tela
-     */
-    public void setView(PerkView view) {
-        this.view = view;
     }
 
 }

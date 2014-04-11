@@ -1,6 +1,5 @@
-package br.com.rpgruler.main.view;
+package br.com.rpgruler.main.view.materials;
 
-import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
@@ -8,13 +7,13 @@ import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.bean.MaterialsBean;
+import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.materials.bean.MaterialsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.HasTable;
-import br.com.rpgruler.main.view.model.MaterialsModel;
-import br.com.rpgruler.main.view.object.MaterialsParameter;
+import br.com.rpgruler.main.view.materials.model.MaterialsModel;
+import br.com.rpgruler.main.view.materials.object.MaterialsParameter;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

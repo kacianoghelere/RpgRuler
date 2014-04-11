@@ -184,7 +184,7 @@
                     <Property name="text" type="java.lang.String" value="Ra&#xe7;a:"/>
                   </Properties>
                 </Component>
-                <Component class="br.com.gmp.comps.combobox.GMPComboBox" name="gMPComboBox1">
+                <Component class="br.com.gmp.comps.combobox.GComboBox" name="gMPComboBox1">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
@@ -219,7 +219,7 @@
                     <Property name="text" type="java.lang.String" value="Sexo:"/>
                   </Properties>
                 </Component>
-                <Component class="br.com.gmp.comps.combobox.GMPComboBox" name="gMPComboBox2">
+                <Component class="br.com.gmp.comps.combobox.GComboBox" name="gMPComboBox2">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -234,7 +234,7 @@
                     <Property name="text" type="java.lang.String" value="Tendencia:"/>
                   </Properties>
                 </Component>
-                <Component class="br.com.gmp.comps.combobox.GMPComboBox" name="gMPComboBox3">
+                <Component class="br.com.gmp.comps.combobox.GComboBox" name="gMPComboBox3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">

@@ -1,7 +1,8 @@
-package br.com.rpgruler.main.view;
+package br.com.rpgruler.main.view.character;
 
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.bean.CharacterBean;
+import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.character.bean.CharacterBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 
 /**
@@ -50,7 +51,7 @@ public class CharacterView extends DefaultView {
         jLabel1 = new javax.swing.JLabel();
         gMPTextField1 = new br.com.gmp.comps.textfield.GTextField();
         jLabel2 = new javax.swing.JLabel();
-        gMPComboBox1 = new br.com.gmp.comps.combobox.GMPComboBox();
+        gMPComboBox1 = new br.com.gmp.comps.combobox.GComboBox();
         jLabel3 = new javax.swing.JLabel();
         gMPTextField2 = new br.com.gmp.comps.textfield.GTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -60,9 +61,9 @@ public class CharacterView extends DefaultView {
         jLabel6 = new javax.swing.JLabel();
         numericTextField3 = new br.com.gmp.comps.textfield.NumericTextField();
         jLabel7 = new javax.swing.JLabel();
-        gMPComboBox2 = new br.com.gmp.comps.combobox.GMPComboBox();
+        gMPComboBox2 = new br.com.gmp.comps.combobox.GComboBox();
         jLabel8 = new javax.swing.JLabel();
-        gMPComboBox3 = new br.com.gmp.comps.combobox.GMPComboBox();
+        gMPComboBox3 = new br.com.gmp.comps.combobox.GComboBox();
         jLabel9 = new javax.swing.JLabel();
         numericTextField4 = new br.com.gmp.comps.textfield.NumericTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -214,9 +215,9 @@ public class CharacterView extends DefaultView {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox1;
-    private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox2;
-    private br.com.gmp.comps.combobox.GMPComboBox gMPComboBox3;
+    private br.com.gmp.comps.combobox.GComboBox gMPComboBox1;
+    private br.com.gmp.comps.combobox.GComboBox gMPComboBox2;
+    private br.com.gmp.comps.combobox.GComboBox gMPComboBox3;
     private br.com.gmp.comps.textfield.GTextField gMPTextField1;
     private br.com.gmp.comps.textfield.GTextField gMPTextField2;
     private javax.swing.JLabel jLabel1;
