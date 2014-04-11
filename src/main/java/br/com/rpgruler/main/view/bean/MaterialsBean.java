@@ -49,20 +49,6 @@ public class MaterialsBean extends DefaultViewBean<MaterialsView> {
     }
 
     /**
-     * Remove um material da lista da tabela
-     *
-     * @param evt <code>BeanEvent</code> Evento do bean
-     */
-    public void remove(BeanEvent evt) {
-        Object[] values = (Object[]) evt.getValue();
-        PrimeMaterial[] mats = new PrimeMaterial[values.length];
-        for (int i = 0; i < mats.length; i++) {
-            mats[i] = (PrimeMaterial) values[i];
-        }
-        getView().getModel().remove(mats);
-    }
-
-    /**
      * Procura pelo próximo ID
      *
      * @return <code>Integer</code> Próximo ID
