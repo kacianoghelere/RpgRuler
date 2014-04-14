@@ -1,13 +1,20 @@
 package br.com.rpgruler.main.util;
 
+import br.com.gmp.utils.reflection.ReflectionUtil;
 import br.com.rpgruler.data.db.dao.MenuDAO;
-import br.com.rpgruler.data.db.dao.MenuViewDAO;
+import br.com.rpgruler.data.db.dao.ViewItemDAO;
 import br.com.rpgruler.data.entitity.Menu;
+import br.com.rpgruler.data.entitity.ViewItem;
+import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.menu.MenuView;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  * Classe utilitária para construção de menus e dos respectivos itens
@@ -17,19 +24,22 @@ import javax.swing.JMenu;
  */
 public class MenuBuilder {
 
+    private MainScreen mainScreen;
     private JMenu root;
     private MenuDAO menuDAO;
-    private MenuViewDAO viewDAO;
+    private ViewItemDAO viewDAO;
 
     /**
      * Cria nova instancia de MenuBuilder
      *
+     * @param mainScreen <code>MainScreen</code> Tela principal
      * @param root <code>JMenu</code> Menu raiz
      */
-    public MenuBuilder(JMenu root) {
+    public MenuBuilder(MainScreen mainScreen, JMenu root) {
+        this.mainScreen = mainScreen;
         this.root = root;
         this.menuDAO = new MenuDAO();
-        this.viewDAO = new MenuViewDAO();
+        this.viewDAO = new ViewItemDAO();
     }
 
     /**
@@ -37,7 +47,8 @@ public class MenuBuilder {
      */
     public void build() {
         List<Menu> menus = menuDAO.getList();
-        List<MenuView> views = viewDAO.getList();
+        List<ViewItem> views = viewDAO.getList();
+        build(menus, views, true);
     }
 
     /**
@@ -45,9 +56,38 @@ public class MenuBuilder {
      *
      * @param menus <code>List(Menu)</code> Listas de Menus
      * @param views <code>List(MenuView)</code> Listas de MenuViews
+     * @param execute <code>boolean</code> O item deve executar a função?
      */
-    public void build(List<Menu> menus, List<MenuView> views) {
-
+    public void build(List<Menu> menus, List<ViewItem> views, boolean execute) {
+        root.removeAll();
+        menus.stream().forEach((Menu menu) -> {
+            if (menu.getParent() == 0) {
+                try {
+                    JMenu generated = generateMenu(menu);
+                    buildItem(generated, views, execute);
+                    root.add(generated);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MenuBuilder.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                menus.stream().filter((parent) -> (parent.getId().equals(menu.getId()))).forEach((Menu parent) -> {
+                    for (Component component : root.getComponents()) {
+                        if (component instanceof JMenu) {
+                            JMenu jmenu = (JMenu) component;
+                            if (jmenu.getText().equals(parent.toString())) {
+                                try {
+                                    JMenu generated = generateMenu(menu);
+                                    buildItem(generated, views, execute);
+                                    jmenu.add(generated);
+                                } catch (ClassNotFoundException ex) {
+                                    Logger.getLogger(MenuBuilder.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
     }
 
     /**
@@ -57,7 +97,7 @@ public class MenuBuilder {
      */
     public void buildMenu(List<Menu> menus) {
         root.removeAll();
-        menus.stream().forEach((menu) -> {
+        menus.stream().forEach((Menu menu) -> {
             if (menu.getParent() == 0) {
                 root.add(generateMenu(menu));
             } else {
@@ -76,9 +116,27 @@ public class MenuBuilder {
     }
 
     /**
-     * Retorna um JMenu cosntruido a partir de um Menu
+     * Constroi os items no Menu
      *
-     * @param menu <code>Menu</code> Objeto de MenuF
+     * @param menu <code>JMenu</code> Menu de base
+     * @param views <code>List(MenuView)</code> Lista de Views
+     * @param execute <code>boolean</code> O item deve executar a função?
+     * @throws java.lang.ClassNotFoundException Exceção de classe não encontrada
+     */
+    public void buildItem(JMenu menu, List<ViewItem> views, boolean execute) throws ClassNotFoundException {
+        for (ViewItem view : views) {
+            long menuid = Long.parseLong(menu.toString().split("-")[0]);
+            if (view.getId().equals(menuid)) {
+                JMenuItem item = generateItem(view, execute);
+                menu.add(item);
+            }
+        }
+    }
+
+    /**
+     * Retorna um JMenu construido a partir de um Menu
+     *
+     * @param menu <code>Menu</code> Objeto de Menu
      * @return <code>JMenu</code> JMenu gerado
      */
     public JMenu generateMenu(Menu menu) {
@@ -86,6 +144,35 @@ public class MenuBuilder {
         jmenu.setText(menu.toString());
         jmenu.setIcon(new ImageIcon(getClass().getResource(menu.getIcon())));
         return jmenu;
+    }
+
+    /**
+     * Retorna um JMenuItem construido a partir de um ViewItem
+     *
+     * @param view <code>ViewItem</code> Objeto da View
+     * @param execute <code>boolean</code> O item deve executar a função?
+     * @return <code>JMenuItem</code> Item criado
+     * @throws ClassNotFoundException Exceção de classe não encontrada
+     */
+    public JMenuItem generateItem(ViewItem view, boolean execute) throws ClassNotFoundException {
+        ReflectionUtil reflect = new ReflectionUtil();
+        JMenuItem item = new JMenuItem();
+        item.setText(view.toString());
+        item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
+        Class<?> objClass = Class.forName(view.getObjClass());
+        Class<?>[] argTypes = new Class[]{MainScreen.class};
+        Object[] arguments = new Object[]{mainScreen};
+        if (execute) {
+            item.addActionListener((ActionEvent e) -> {
+                try {
+                    reflect.newInstance(objClass, argTypes, arguments);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(MenuBuilder.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+            });
+        }
+        return item;
     }
 
     /**

@@ -8,8 +8,10 @@ import br.com.rpgruler.main.view.armortype.ArmorTypeView;
 import br.com.rpgruler.main.view.DiceView;
 import br.com.rpgruler.main.view.element.ElementView;
 import br.com.rpgruler.main.view.materials.MaterialsView;
+import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.terms.TermsView;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -47,6 +49,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         setIconImage(new ImageIcon(getClass().getResource(ICON)).getImage());
         initComponents();
         setControls(false, false, false, false, false);
+        setExtendedState(Frame.MAXIMIZED_BOTH);
         listener = new MainScreenBean(this);
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
     }
@@ -251,6 +254,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIProcess = new javax.swing.JMenuItem();
         jMIRefresh = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
+        jMControls = new javax.swing.JMenu();
+        jMIMenus = new javax.swing.JMenuItem();
+        jMIViews = new javax.swing.JMenuItem();
         jMInfo = new javax.swing.JMenu();
         jMPerk = new javax.swing.JMenu();
         jMIRegPerk = new javax.swing.JMenuItem();
@@ -411,6 +417,32 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             }
         });
         jMOptions.add(jMIDice);
+
+        jMControls.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/window/frame.png"))); // NOI18N
+        jMControls.setText("Cadastros");
+        jMControls.setName("jMControls"); // NOI18N
+
+        jMIMenus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar.png"))); // NOI18N
+        jMIMenus.setText("Menus");
+        jMIMenus.setName("jMIMenus"); // NOI18N
+        jMIMenus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIMenusActionPerformed(evt);
+            }
+        });
+        jMControls.add(jMIMenus);
+
+        jMIViews.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/window/dialog.png"))); // NOI18N
+        jMIViews.setText("Telas");
+        jMIViews.setName("jMIViews"); // NOI18N
+        jMIViews.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIViewsActionPerformed(evt);
+            }
+        });
+        jMControls.add(jMIViews);
+
+        jMOptions.add(jMControls);
 
         jMenuBar.add(jMOptions);
 
@@ -575,6 +607,14 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new TermsView(this));
     }//GEN-LAST:event_jMITermsActionPerformed
 
+    private void jMIMenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIMenusActionPerformed
+        listener.insertView(new MenuView(this));
+    }//GEN-LAST:event_jMIMenusActionPerformed
+
+    private void jMIViewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIViewsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMIViewsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jBClear;
@@ -583,16 +623,19 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JButton jBRefresh;
     private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLMsgs;
+    private javax.swing.JMenu jMControls;
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIArmorTypes;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIMaterials;
+    private javax.swing.JMenuItem jMIMenus;
     private javax.swing.JMenuItem jMIProcess;
     private javax.swing.JMenuItem jMIRefresh;
     private javax.swing.JMenuItem jMIRegElement;
     private javax.swing.JMenuItem jMIRegPerk;
     private javax.swing.JMenuItem jMISave;
     private javax.swing.JMenuItem jMITerms;
+    private javax.swing.JMenuItem jMIViews;
     private javax.swing.JMenu jMInfo;
     private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;

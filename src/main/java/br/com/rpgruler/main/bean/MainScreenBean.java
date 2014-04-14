@@ -6,8 +6,6 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.DefaultView;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
@@ -120,17 +118,17 @@ public class MainScreenBean implements MainListener {
      * @return Boolean Está na tela?
      */
     private Boolean isOnDesktop(JInternalFrame view) {
-        boolean inDesktop = false;
+        boolean indesktop = false;
         for (Component c : screen.getDesktop().getComponents()) {
             if (c instanceof JInternalFrame) {
                 JInternalFrame jif = (JInternalFrame) c;
-                if (jif.equals(view)) {
-                    inDesktop = true;
+                if (jif.getTitle().equals(view.getTitle())) {
+                    indesktop = true;
                     break;
                 }
             }
         }
-        return inDesktop;
+        return indesktop;
     }
 
     /**

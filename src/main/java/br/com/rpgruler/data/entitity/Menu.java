@@ -1,5 +1,6 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
 import java.util.Objects;
 
 /**
@@ -10,9 +11,13 @@ import java.util.Objects;
  */
 public class Menu {
 
+    @ColumnName(name = "ID")
     private Long id;
+    @ColumnName(name = "Menu Pai")
     private Long parent;
+    @ColumnName(name = "Titulo")
     private String title;
+    @ColumnName(name = "Icone")
     private String icon;
 
     /**
