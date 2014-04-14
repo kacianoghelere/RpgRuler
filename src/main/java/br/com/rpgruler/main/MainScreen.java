@@ -13,6 +13,7 @@ import br.com.rpgruler.main.view.terms.TermsView;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenu;
 
 /**
  * Tela principal
@@ -219,6 +220,15 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     /**
+     * Retorna o menu raiz
+     *
+     * @return <code>JMenu</code> Menu raiz
+     */
+    public JMenu getRoot() {
+        return jMInfo;
+    }
+
+    /**
      *
      */
     @SuppressWarnings("unchecked")
@@ -241,7 +251,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIProcess = new javax.swing.JMenuItem();
         jMIRefresh = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
-        jMOthers = new javax.swing.JMenu();
+        jMInfo = new javax.swing.JMenu();
         jMPerk = new javax.swing.JMenu();
         jMIRegPerk = new javax.swing.JMenuItem();
         jMElement = new javax.swing.JMenu();
@@ -404,9 +414,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
         jMenuBar.add(jMOptions);
 
-        jMOthers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
-        jMOthers.setText("Outros");
-        jMOthers.setName("jMOthers"); // NOI18N
+        jMInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
+        jMInfo.setText("Informações");
+        jMInfo.setName("jMInfo"); // NOI18N
 
         jMPerk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
         jMPerk.setText("Vantagens");
@@ -421,7 +431,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMPerk.add(jMIRegPerk);
 
-        jMOthers.add(jMPerk);
+        jMInfo.add(jMPerk);
 
         jMElement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
         jMElement.setText("Elementos");
@@ -436,7 +446,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMElement.add(jMIRegElement);
 
-        jMOthers.add(jMElement);
+        jMInfo.add(jMElement);
 
         jMMaterials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1285_.png"))); // NOI18N
         jMMaterials.setText("Materiais");
@@ -451,7 +461,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMMaterials.add(jMIMaterials);
 
-        jMOthers.add(jMMaterials);
+        jMInfo.add(jMMaterials);
 
         jMTerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         jMTerms.setText("Termos");
@@ -477,9 +487,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMTerms.add(jMITerms);
 
-        jMOthers.add(jMTerms);
+        jMInfo.add(jMTerms);
 
-        jMenuBar.add(jMOthers);
+        jMenuBar.add(jMInfo);
 
         setJMenuBar(jMenuBar);
 
@@ -583,9 +593,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuItem jMIRegPerk;
     private javax.swing.JMenuItem jMISave;
     private javax.swing.JMenuItem jMITerms;
+    private javax.swing.JMenu jMInfo;
     private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;
-    private javax.swing.JMenu jMOthers;
     private javax.swing.JMenu jMPerk;
     private javax.swing.JMenu jMTerms;
     private javax.swing.JMenuBar jMenuBar;

@@ -19,6 +19,8 @@ public class ArmorType implements Serializable {
     private Long id;
     @ColumnName(name = "Nome")
     private String typeName;
+    @ColumnName(name = "Base")
+    private Double base;
     @ColumnName(name = "Quantidade 1")
     private Double materialAmount1;
     @ColumnName(name = "Quantidade 2")
@@ -38,6 +40,14 @@ public class ArmorType implements Serializable {
         this.materialAmount2 = materialAmount2;
     }
 
+    public ArmorType(Long id, String typeName, Double base, Double materialAmount1, Double materialAmount2) {
+        this.id = id;
+        this.typeName = typeName;
+        this.base = base;
+        this.materialAmount1 = materialAmount1;
+        this.materialAmount2 = materialAmount2;
+    }
+
     public Long getId() {
         return id;
     }
@@ -52,6 +62,14 @@ public class ArmorType implements Serializable {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public Double getBase() {
+        return base;
+    }
+
+    public void setBase(Double base) {
+        this.base = base;
     }
 
     public Double getMaterialAmount1() {

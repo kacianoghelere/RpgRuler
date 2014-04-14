@@ -15,10 +15,12 @@ public class Armor implements Serializable {
     private Long id;
     @ColumnName(name = "Tipo de armadura")
     private ArmorType armorType;
+    @ColumnName(name = "Resistencia")
+    private Double resistence;
     @ColumnName(name = "Material 1")
-    private PrimeMaterial primeMaterial1;
+    private PrimeMaterial pMaterial1;
     @ColumnName(name = "Material 2")
-    private PrimeMaterial primeMaterial2;
+    private PrimeMaterial pMaterial2;
 
     public Armor() {
     }
@@ -32,8 +34,23 @@ public class Armor implements Serializable {
             Double materialAmount2) {
         this.id = id;
         this.armorType = armorType;
-        this.primeMaterial1 = primeMaterial1;
-        this.primeMaterial2 = primeMaterial2;
+        this.pMaterial1 = primeMaterial1;
+        this.pMaterial2 = primeMaterial2;
+    }
+
+    public Armor(Long id, ArmorType armorType, Double resistence, 
+            PrimeMaterial pMaterial1, PrimeMaterial pMaterial2) {
+        this.id = id;
+        this.armorType = armorType;
+        this.resistence = resistence;
+        this.pMaterial1 = pMaterial1;
+        this.pMaterial2 = pMaterial2;
+    }
+
+    public void calcResistence() {
+        this.resistence = (pMaterial1.getResistence()
+                + pMaterial2.getResistence() 
+                + armorType.getBase());
     }
 
     public Long getId() {
@@ -52,20 +69,28 @@ public class Armor implements Serializable {
         this.armorType = armorType;
     }
 
-    public PrimeMaterial getPrimeMaterial1() {
-        return primeMaterial1;
+    public Double getResistence() {
+        return resistence;
     }
 
-    public void setPrimeMaterial1(PrimeMaterial primeMaterial1) {
-        this.primeMaterial1 = primeMaterial1;
+    public void setResistence(Double resistence) {
+        this.resistence = resistence;
     }
 
-    public PrimeMaterial getPrimeMaterial2() {
-        return primeMaterial2;
+    public PrimeMaterial getpMaterial1() {
+        return pMaterial1;
     }
 
-    public void setPrimeMaterial2(PrimeMaterial primeMaterial2) {
-        this.primeMaterial2 = primeMaterial2;
+    public void setpMaterial1(PrimeMaterial pMaterial1) {
+        this.pMaterial1 = pMaterial1;
+    }
+
+    public PrimeMaterial getpMaterial2() {
+        return pMaterial2;
+    }
+
+    public void setpMaterial2(PrimeMaterial pMaterial2) {
+        this.pMaterial2 = pMaterial2;
     }
 
     @Override

@@ -26,7 +26,7 @@ public class MainScreenBean implements MainListener {
     /**
      * Cria nova instancia de MainScreenBean
      *
-     * @param mainScreen MainScreen
+     * @param mainScreen <code>MainScreen</code>
      */
     public MainScreenBean(MainScreen mainScreen) {
         this.screen = mainScreen;

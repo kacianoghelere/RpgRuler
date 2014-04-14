@@ -1,0 +1,80 @@
+    private void constructMenu(int id, final GMPScreen screen) {
+        GMPTaskContainer tc = fApp.getTaskContainer();
+        JXTaskPane task = new JXTaskPane();
+        //----------------------------------------------------------------------
+        // Varre lista de menus
+        for (GMPMenu menu : menuList) {
+            if (menu.getId() == id) {
+                boolean exist = false;
+                //--------------------------------------------------------------
+                // Varre lista de componentes do task container
+                for (Component c : tc.getComponents()) {
+                    //----------------------------------------------------------
+                    // Componente é um JXTaskPane?
+                    if (c instanceof JXTaskPane) {
+                        JXTaskPane t = (JXTaskPane) c;
+                        //------------------------------------------------------
+                        // Menu existe?
+                        System.out.println("\nComparando...");
+                        System.out.println(t.getTitle() + " e " + menu.toString());
+                        System.out.println("Comparação = " + t.getTitle().equals(menu.toString()));
+                        if (t.getTitle().equals(menu.toString())) {
+                            exist = true;
+                            task = (JXTaskPane) c;
+                            break;
+                        }
+                    }
+                }
+                //--------------------------------------------------------------
+                // Se existe ou não...
+                if (exist) {
+                    System.out.println("\nMenu " + menu.toString() + " já criado");
+                    System.out.println("Adicionando tela " + screen.getName());
+                    task.add(generateMenuItem(screen));
+                    //tc.addCustomTask(task);
+                } else {
+                    System.out.println("\nMenu " + menu.toString() + " será criado");
+                    System.out.println("Adicionando tela " + screen.getName());
+                    //----------------------------------------------------------
+                    // Set de titulo e icone do menu
+                    task.setTitle(menu.toString());
+                    task.setIcon(icon(menu.getIcon()));
+                    //----------------------------------------------------------
+                    // Adição dos componentes
+                    task.add(generateMenuItem(screen));
+                    //tc.addCustomTask(task);
+                    //----------------------------------------------------------
+                    // Verificação de parentesco
+                    if (menu.getParent() != 0 && menu.getParent() != 1) {
+                        JXTaskPane t;
+                        //------------------------------------------------------
+                        // Varre lista de componentes do task container
+                        for (Component c : tc.getComponents()) {
+                            //--------------------------------------------------
+                            // Componente é um JXTaskPane?
+                            if (c instanceof JXTaskPane) {
+                                t = (JXTaskPane) c;
+                                //----------------------------------------------
+                                // Menu pai existe?
+                                String menuId = t.getTitle().substring(0, 1);
+                                System.out.println("É parent? = "
+                                        + (menu.getParent() == Integer.parseInt(menuId)));
+                                if (menu.getParent() == Integer.parseInt(menuId)) {
+                                    System.out.println("\nMenu " + menuId
+                                            + " é o pai.");
+                                    System.out.println("Adicionando menu "
+                                            + menu.toString() + " ao menu "
+                                            + menuId);
+                                    GMPTaskContainer.generateCustomTask(t, task);
+                                    t.add(task);
+                                    break;
+                                }
+                            }
+                        }
+                    } else {
+                        tc.addCustomTask(task);
+                    }
+                }
+            }
+        }
+    }

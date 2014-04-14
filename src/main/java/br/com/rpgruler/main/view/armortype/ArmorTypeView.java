@@ -46,7 +46,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
      */
     private void initialize() {
         this.initComponents();
-        this.setSize(600, 480);
+        this.setSize(750, 480);
         this.setControls(new ViewParameter(true, false, false, false));
         this.bean = new ArmorTypeBean(this);
         this.model = new ArmorTypeModel();
@@ -138,6 +138,9 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         jLName = new javax.swing.JLabel();
         gTName = new br.com.gmp.comps.textfield.GTextField();
         jSeparator2 = new javax.swing.JToolBar.Separator();
+        jLabel1 = new javax.swing.JLabel();
+        numericTextField1 = new br.com.gmp.comps.textfield.NumericTextField();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
         jLQtd1 = new javax.swing.JLabel();
         jSpQtd1 = new javax.swing.JSpinner();
         jSeparator3 = new javax.swing.JToolBar.Separator();
@@ -154,8 +157,8 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         setResizable(true);
         setTitle("Tipos de armaduras");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
-        setMinimumSize(new java.awt.Dimension(600, 480));
-        setPreferredSize(new java.awt.Dimension(600, 480));
+        setMinimumSize(new java.awt.Dimension(750, 480));
+        setPreferredSize(new java.awt.Dimension(750, 480));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -165,6 +168,11 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         jToolBar1.add(jLName);
         jToolBar1.add(gTName);
         jToolBar1.add(jSeparator2);
+
+        jLabel1.setText("Res. Base:");
+        jToolBar1.add(jLabel1);
+        jToolBar1.add(numericTextField1);
+        jToolBar1.add(jSeparator5);
 
         jLQtd1.setText("Qtd. Material 1:");
         jToolBar1.add(jLQtd1);
@@ -217,7 +225,7 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -249,14 +257,17 @@ public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>
     private javax.swing.JLabel jLName;
     private javax.swing.JLabel jLQtd1;
     private javax.swing.JLabel jLQtd2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JSpinner jSpQtd1;
     private javax.swing.JSpinner jSpQtd2;
     private javax.swing.JToolBar jToolBar1;
+    private br.com.gmp.comps.textfield.NumericTextField numericTextField1;
     // End of variables declaration//GEN-END:variables
 
 }

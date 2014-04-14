@@ -66,13 +66,13 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMOthers">
+        <Menu class="javax.swing.JMenu" name="jMInfo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/RpgIcons/misc/slice1214_.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Outros"/>
-            <Property name="name" type="java.lang.String" value="jMOthers" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es"/>
+            <Property name="name" type="java.lang.String" value="jMInfo" noResource="true"/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMPerk">
