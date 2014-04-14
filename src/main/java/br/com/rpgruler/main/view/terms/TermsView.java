@@ -164,6 +164,7 @@ public class TermsView extends DefaultView {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jListWearTypes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListWearTypes.setMaximumSize(new java.awt.Dimension(150, 125));
         jListWearTypes.setMinimumSize(new java.awt.Dimension(150, 125));
         jListWearTypes.setPreferredSize(new java.awt.Dimension(150, 125));
@@ -213,6 +214,7 @@ public class TermsView extends DefaultView {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jListEffects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListEffects.setMaximumSize(new java.awt.Dimension(150, 125));
         jListEffects.setMinimumSize(new java.awt.Dimension(150, 125));
         jListEffects.setPreferredSize(new java.awt.Dimension(150, 125));
