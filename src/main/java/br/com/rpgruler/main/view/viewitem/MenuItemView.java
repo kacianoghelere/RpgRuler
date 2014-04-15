@@ -1,0 +1,245 @@
+package br.com.rpgruler.main.view.viewitem;
+
+import br.com.gmp.comps.combobox.model.GComboBoxModel;
+import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.interact.WindowUtil;
+import br.com.rpgruler.data.db.dao.MenuItemDAO;
+import br.com.rpgruler.data.entitity.Menu;
+import br.com.rpgruler.data.entitity.MenuItem;
+import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.view.View;
+import br.com.rpgruler.main.view.interfaces.BeanListener;
+import br.com.rpgruler.main.view.interfaces.HasTable;
+import br.com.rpgruler.main.view.object.ViewWrapper;
+import br.com.rpgruler.main.view.viewitem.bean.MenuItemBean;
+import br.com.rpgruler.main.view.viewitem.model.MenuItemModel;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+
+/**
+ * Tela de cadastro de itens de menu
+ *
+ * @author kaciano
+ * @version 1.0
+ */
+public class MenuItemView extends View implements HasTable, TableSource<MenuItem> {
+
+    private MenuItemBean bean;
+    private MenuItemModel model;
+    private GComboBoxModel<Menu> parentModel;
+    private GComboBoxModel<ImageIcon> iconModel;
+
+    /**
+     * Cria nova instancia de MenuItemView
+     *
+     * @param mainScreen <code>MainScreen</code> Tela principal
+     */
+    public MenuItemView(MainScreen mainScreen) {
+        super(mainScreen);
+        this.initialize();
+    }
+
+    /**
+     * Método de inicialização
+     */
+    private void initialize() {
+        this.initComponents();
+        this.setSize(WIDTH, WIDTH);
+        this.parentModel = new GComboBoxModel();
+        this.iconModel = new GComboBoxModel();
+        this.model = new MenuItemModel();
+        this.gTable.buildTable(this, 0, model);
+        this.bean = new MenuItemBean(this);
+    }
+
+    @Override
+    public void add() {
+        if (gTTitle.validateComponent()) {
+            if (gCBIcon.validateComponent()) {
+                if (gTClass.validateComponent()) {
+                    if (gCBMenu.validateComponent()) {
+                        ViewWrapper vw = new ViewWrapper(this);
+                        vw.addValue(gTTitle.getText());
+                        vw.addValue(gCBIcon.getSelectedIndex());
+                        vw.addValue(gTClass.getText());
+                        vw.addValue((Menu) gCBMenu.getSelectedItem());
+                        bean.add(new BeanEvent(this, vw));
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void remove() {
+        String text = "Deseja remover os itens selecionados?";
+        if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
+            try {
+                if (gTable.getSelectedRowCount() > 0) {
+                    model.remove(gTable.getSelectedRows());
+                }
+            } catch (NumberFormatException e) {
+                Logger.getLogger(MenuItemView.class.getName())
+                        .log(Level.SEVERE, null, e);
+            }
+        }
+    }
+
+    @Override
+    public GTable getTable() {
+        return this.gTable;
+    }
+
+    @Override
+    public MenuItemModel getModel() {
+        return this.model;
+    }
+
+    @Override
+    public List<MenuItem> getTableData() {
+        return new MenuItemDAO().getList();
+    }
+
+    @Override
+    public BeanListener getBean() {
+        return this.bean;
+    }
+
+    /**
+     * Retorna o modelo dos ícones
+     *
+     * @return <code>GComboBoxModel(ImageIcon)</code> Modelo dos ícones
+     */
+    public GComboBoxModel<ImageIcon> getIconModel() {
+        return this.iconModel;
+    }
+
+    /**
+     * Retorna o modelo dos menus
+     *
+     * @return <code>GComboBoxModel(Menu)</code> Modelo dos menus
+     */
+    public GComboBoxModel<Menu> getParentModel() {
+        return this.parentModel;
+    }
+
+    /**
+     *
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane = new javax.swing.JScrollPane();
+        gTable = new br.com.gmp.comps.table.GTable();
+        jLTitle = new javax.swing.JLabel();
+        gTTitle = new br.com.gmp.comps.textfield.GTextField();
+        gTClass = new br.com.gmp.comps.textfield.GTextField();
+        jLClass = new javax.swing.JLabel();
+        jLIcon = new javax.swing.JLabel();
+        gCBIcon = new br.com.gmp.comps.combobox.GComboBox();
+        jLMenu = new javax.swing.JLabel();
+        gCBMenu = new br.com.gmp.comps.combobox.GComboBox();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMPreview = new javax.swing.JMenu();
+
+        setTitle("Cadastro de telas");
+        setMinimumSize(new java.awt.Dimension(580, 410));
+        setPreferredSize(new java.awt.Dimension(580, 410));
+
+        gTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        gTable.setOpaque(false);
+        jScrollPane.setViewportView(gTable);
+
+        jLTitle.setText("Titulo:");
+
+        jLClass.setText("Classe:");
+
+        jLIcon.setText("Ícone:");
+
+        jLMenu.setText("Menu:");
+
+        jMPreview.setText("Pré-Visualização");
+        jMenuBar.add(jMPreview);
+
+        setJMenuBar(jMenuBar);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane)
+                        .addGap(14, 14, 14))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLMenu)
+                            .addComponent(jLClass)
+                            .addComponent(jLTitle))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLIcon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(gCBMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLTitle)
+                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLIcon)
+                    .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLClass))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLMenu)
+                    .addComponent(gCBMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.combobox.GComboBox gCBIcon;
+    private br.com.gmp.comps.combobox.GComboBox gCBMenu;
+    private br.com.gmp.comps.textfield.GTextField gTClass;
+    private br.com.gmp.comps.textfield.GTextField gTTitle;
+    private br.com.gmp.comps.table.GTable gTable;
+    private javax.swing.JLabel jLClass;
+    private javax.swing.JLabel jLIcon;
+    private javax.swing.JLabel jLMenu;
+    private javax.swing.JLabel jLTitle;
+    private javax.swing.JMenu jMPreview;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JScrollPane jScrollPane;
+    // End of variables declaration//GEN-END:variables
+}

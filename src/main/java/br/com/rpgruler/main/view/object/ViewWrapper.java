@@ -35,6 +35,16 @@ public class ViewWrapper {
     }
 
     /**
+     * Retorna o objeto carregado na posição indicada
+     *
+     * @param index <code>int</code> Posição do objeto
+     * @return <code>Object</code> Valor transportado
+     */
+    public Object getValue(int index) {
+        return values.get(index);
+    }
+
+    /**
      * Limpa os valores carregados
      */
     public void clear() {

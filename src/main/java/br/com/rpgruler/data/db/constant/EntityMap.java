@@ -4,7 +4,7 @@ import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.data.entitity.Effect;
 import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.data.entitity.Menu;
-import br.com.rpgruler.data.entitity.ViewItem;
+import br.com.rpgruler.data.entitity.MenuItem;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.data.entitity.WearType;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class EntityMap {
         map.put(WearType.class, "WearTypeDB");
         map.put(Effect.class, "EffectDB");
         map.put(Menu.class, "MenuDB");
-        map.put(ViewItem.class, "ViewItemDB");        
+        map.put(MenuItem.class, "MenuItemDB");        
         return map;
     }
 

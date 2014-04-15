@@ -2,9 +2,9 @@ package br.com.rpgruler.main.util;
 
 import br.com.gmp.utils.reflection.ReflectionUtil;
 import br.com.rpgruler.data.db.dao.MenuDAO;
-import br.com.rpgruler.data.db.dao.ViewItemDAO;
+import br.com.rpgruler.data.db.dao.MenuItemDAO;
 import br.com.rpgruler.data.entitity.Menu;
-import br.com.rpgruler.data.entitity.ViewItem;
+import br.com.rpgruler.data.entitity.MenuItem;
 import br.com.rpgruler.main.MainScreen;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -21,16 +21,16 @@ import javax.swing.JMenuItem;
  * @author kaciano
  * @version 1.0
  * @see br.com.rpgruler.data.db.dao.MenuDAO
- * @see br.com.rpgruler.data.db.dao.ViewItemDAO
+ * @see br.com.rpgruler.data.db.dao.MenuItemDAO
  * @see br.com.rpgruler.data.entitity.Menu
- * @see br.com.rpgruler.data.entitity.ViewItem
+ * @see br.com.rpgruler.data.entitity.MenuItem
  */
 public class MenuBuilder {
 
     private MainScreen mainScreen;
     private JMenu root;
     private MenuDAO menuDAO;
-    private ViewItemDAO viewDAO;
+    private MenuItemDAO viewDAO;
 
     /**
      * Cria nova instancia de MenuBuilder
@@ -42,7 +42,7 @@ public class MenuBuilder {
         this.mainScreen = mainScreen;
         this.root = root;
         this.menuDAO = new MenuDAO();
-        this.viewDAO = new ViewItemDAO();
+        this.viewDAO = new MenuItemDAO();
     }
 
     /**
@@ -50,7 +50,7 @@ public class MenuBuilder {
      */
     public void build() {
         List<Menu> menus = menuDAO.getList();
-        List<ViewItem> views = viewDAO.getList();
+        List<MenuItem> views = viewDAO.getList();
         build(menus, views, true);
     }
 
@@ -61,7 +61,7 @@ public class MenuBuilder {
      * @param views <code>List(MenuView)</code> Listas de MenuViews
      * @param execute <code>boolean</code> O item deve executar a função?
      */
-    public void build(List<Menu> menus, List<ViewItem> views, boolean execute) {
+    public void build(List<Menu> menus, List<MenuItem> views, boolean execute) {
         root.removeAll();
         menus.stream().forEach((Menu menu) -> {
             if (menu.getParent() == 0) {
@@ -128,8 +128,8 @@ public class MenuBuilder {
      * @param execute <code>boolean</code> O item deve executar a função?
      * @throws java.lang.ClassNotFoundException Exceção de classe não encontrada
      */
-    public void buildItem(JMenu menu, List<ViewItem> views, boolean execute) throws ClassNotFoundException {
-        for (ViewItem view : views) {
+    public void buildItem(JMenu menu, List<MenuItem> views, boolean execute) throws ClassNotFoundException {
+        for (MenuItem view : views) {
             long menuid = Long.parseLong(menu.toString().split("-")[0]);
             if (view.getId().equals(menuid)) {
                 JMenuItem item = generateItem(view, execute);
@@ -152,14 +152,14 @@ public class MenuBuilder {
     }
 
     /**
-     * Retorna um JMenuItem construido a partir de um ViewItem
+     * Retorna um JMenuItem construido a partir de um MenuItem
      *
-     * @param view <code>ViewItem</code> Objeto da View
+     * @param view <code>MenuItem</code> Objeto da View
      * @param execute <code>boolean</code> O item deve executar a função?
      * @return <code>JMenuItem</code> Item criado
      * @throws ClassNotFoundException Exceção de classe não encontrada
      */
-    public JMenuItem generateItem(ViewItem view, boolean execute) throws ClassNotFoundException {
+    public JMenuItem generateItem(MenuItem view, boolean execute) throws ClassNotFoundException {
         ReflectionUtil reflect = new ReflectionUtil();
         JMenuItem item = new JMenuItem();
         item.setText(view.toString());

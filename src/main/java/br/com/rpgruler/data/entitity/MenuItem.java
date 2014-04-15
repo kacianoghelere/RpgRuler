@@ -8,7 +8,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class ViewItem {
+public class MenuItem {
 
     @ColumnName(name = "ID")
     private Long id;
@@ -24,7 +24,7 @@ public class ViewItem {
     /**
      * Cria nova instancia de Menu
      */
-    public ViewItem() {
+    public MenuItem() {
     }
 
     /**
@@ -36,7 +36,7 @@ public class ViewItem {
      * @param title <code>String</code> Titulo do MenuView
      * @param icon <code>String</code> Icone do MenuViewMenuView
      */
-    public ViewItem(Long id, Long parent, String viewClass, String title, String icon) {
+    public MenuItem(Long id, Long parent, String viewClass, String title, String icon) {
         this.id = id;
         this.menu = parent;
         this.viewClass = viewClass;
@@ -63,7 +63,7 @@ public class ViewItem {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ViewItem other = (ViewItem) obj;
+        final MenuItem other = (MenuItem) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -85,18 +85,18 @@ public class ViewItem {
     }
 
     /**
-     * Retorna o ID do ViewItem
+     * Retorna o ID do MenuItem
      *
-     * @return <code>Long</code> ID do ViewItem
+     * @return <code>Long</code> ID do MenuItem
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do ViewItem
+     * Modifica o ID do MenuItem
      *
-     * @param id <code>Long</code> ID do ViewItem
+     * @param id <code>Long</code> ID do MenuItem
      */
     public void setId(Long id) {
         this.id = id;
@@ -121,54 +121,54 @@ public class ViewItem {
     }
 
     /**
-     * Retorna a classe do ViewItem
+     * Retorna a classe do MenuItem
      *
-     * @return <code>String</code> Classe do ViewItem
+     * @return <code>String</code> Classe do MenuItem
      */
     public String getViewClass() {
         return viewClass;
     }
 
     /**
-     * Retorna a classe do ViewItem
+     * Retorna a classe do MenuItem
      *
-     * @param viewClass <code>String</code> Classe do ViewItem
+     * @param viewClass <code>String</code> Classe do MenuItem
      */
     public void setViewClass(String viewClass) {
         this.viewClass = viewClass;
     }
 
     /**
-     * Retorna o titulo do ViewItem
+     * Retorna o titulo do MenuItem
      *
-     * @return <code>String</code> Titulo do ViewItem
+     * @return <code>String</code> Titulo do MenuItem
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Modifica o titulo do ViewItem
+     * Modifica o titulo do MenuItem
      *
-     * @param title <code>String</code> Titulo do ViewItem
+     * @param title <code>String</code> Titulo do MenuItem
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
     /**
-     * Retorna o icone do ViewItem
+     * Retorna o icone do MenuItem
      *
-     * @return <code>String</code> Icone do ViewItem
+     * @return <code>String</code> Icone do MenuItem
      */
     public String getIcon() {
         return icon;
     }
 
     /**
-     * Modifica o icone do ViewItem
+     * Modifica o icone do MenuItem
      *
-     * @param icon <code>String</code> Icone do ViewItem
+     * @param icon <code>String</code> Icone do MenuItem
      */
     public void setIcon(String icon) {
         this.icon = icon;
