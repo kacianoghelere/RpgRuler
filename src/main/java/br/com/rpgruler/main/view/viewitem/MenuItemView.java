@@ -2,6 +2,7 @@ package br.com.rpgruler.main.view.viewitem;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.MenuItemDAO;
@@ -32,7 +33,14 @@ public class MenuItemView extends View implements HasTable, TableSource<MenuItem
     private MenuItemModel model;
     private GComboBoxModel<Menu> parentModel;
     private GComboBoxModel<ImageIcon> iconModel;
-
+    private TableDecorator decorator;
+    private int count = 0;
+    private final int ID_COLUMN = count++;
+    private final int MENU_COLUMN = count++;
+    private final int TITLE_COLUMN = count++;
+    private final int CLASS_COLUMN = count++;
+    private final int ICON_COLUMN = count++;
+    
     /**
      * Cria nova instancia de MenuItemView
      *
@@ -56,6 +64,7 @@ public class MenuItemView extends View implements HasTable, TableSource<MenuItem
         this.bean = new MenuItemBean(this);
         this.gCBIcon.setModel(iconModel);
         this.gCBMenu.setModel(parentModel);
+        this.decorator = new TableDecorator(gTable).withIcon(ICON_COLUMN);
     }
 
     @Override
