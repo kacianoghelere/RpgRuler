@@ -10,7 +10,7 @@ import br.com.rpgruler.main.view.interfaces.BeanListener;
  * @version 1.0
  * @param <T>
  */
-public class DefaultViewBean<T> implements BeanListener<T> {
+public class ViewBean<T> implements BeanListener<T> {
 
     private final T view;
 
@@ -20,7 +20,7 @@ public class DefaultViewBean<T> implements BeanListener<T> {
      * @param view <code>DefaultView</code> View do bean
      * @see br.com.rpgruler.main.view.generic.DefaultView
      */
-    public DefaultViewBean(T view) {
+    public ViewBean(T view) {
         this.view = view;
     }
 

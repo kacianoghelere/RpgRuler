@@ -2,13 +2,13 @@ package br.com.rpgruler.main.view.perk.bean;
 
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.perk.PerkView;
-import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.bean.ViewBean;
 
 /**
  *
  * @author kaciano
  */
-public class PerkBean extends DefaultViewBean<PerkView> {
+public class PerkBean extends ViewBean<PerkView> {
 
     private PerkView view;
 

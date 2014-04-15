@@ -17,7 +17,7 @@ import javax.swing.JButton;
  *
  * @author kaciano
  */
-public class DiceView extends DefaultView {
+public class DiceView extends View {
 
     /**
      * Creates new form DiceView

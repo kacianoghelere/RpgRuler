@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.interfaces;
 
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.interfaces.ViewListener;
 
 /**
@@ -47,21 +47,21 @@ public interface MainListener {
     /**
      * Retorna a View selecionada
      *
-     * @return <code>DefaultView</code> View Selecionada
+     * @return <code>View</code> View Selecionada
      */
-    DefaultView getActualView();
+    View getActualView();
 
     /**
      * Modifica a view selecionada
      *
-     * @param view <code>DefaultView</code> View Selecionada
+     * @param view <code>View</code> View Selecionada
      */
-    void setActualView(DefaultView view);
+    void setActualView(View view);
 
     /**
      * Insere uma nova view no desktop
      *
-     * @param view <code>DefaultView</code> View
+     * @param view <code>View</code> View
      */
-    void insertView(DefaultView view);
+    void insertView(View view);
 }

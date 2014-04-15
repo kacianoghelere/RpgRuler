@@ -4,7 +4,7 @@ import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.materials.MaterialsView;
-import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.materials.model.MaterialsModel;
 import br.com.rpgruler.main.view.materials.object.MaterialsParameter;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  * @author kaciano
  * @version 1.0
  */
-public class MaterialsBean extends DefaultViewBean<MaterialsView> {
+public class MaterialsBean extends ViewBean<MaterialsView> {
 
     private MaterialsDAO dao;
 

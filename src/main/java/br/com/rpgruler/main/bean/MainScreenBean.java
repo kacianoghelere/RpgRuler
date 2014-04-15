@@ -3,7 +3,7 @@ package br.com.rpgruler.main.bean;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
@@ -18,7 +18,7 @@ import javax.swing.JInternalFrame;
  */
 public class MainScreenBean implements MainListener {
 
-    private DefaultView actualView;
+    private View actualView;
     private final MainScreen screen;
 
     /**
@@ -59,12 +59,12 @@ public class MainScreenBean implements MainListener {
     }
 
     @Override
-    public DefaultView getActualView() {
+    public View getActualView() {
         return actualView;
     }
 
     @Override
-    public void setActualView(DefaultView view) {
+    public void setActualView(View view) {
         this.actualView = view;
         this.screen.setControls(
                 this.actualView.canSave() != null ? actualView.canSave() : false,
@@ -83,7 +83,7 @@ public class MainScreenBean implements MainListener {
     }
 
     @Override
-    public void insertView(DefaultView view) {
+    public void insertView(View view) {
         if (!isOnDesktop(view)) {
             for (Component c : screen.getDesktop().getComponents()) {
                 if (c instanceof JInternalFrame) {
@@ -114,7 +114,7 @@ public class MainScreenBean implements MainListener {
     /**
      * Verifica se a View já está na tela
      *
-     * @param view DefaultView
+     * @param view View
      * @return Boolean Está na tela?
      */
     private Boolean isOnDesktop(JInternalFrame view) {

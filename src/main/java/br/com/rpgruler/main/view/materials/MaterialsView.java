@@ -7,7 +7,7 @@ import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.materials.bean.MaterialsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.HasTable;
@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.0
  */
-public class MaterialsView extends DefaultView implements TableSource<PrimeMaterial>, HasTable {
+public class MaterialsView extends View implements TableSource<PrimeMaterial>, HasTable {
 
     private MaterialsBean bean;
     private MaterialsModel model;

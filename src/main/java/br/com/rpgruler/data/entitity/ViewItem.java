@@ -1,5 +1,6 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
 import java.util.Objects;
 
 /**
@@ -9,10 +10,15 @@ import java.util.Objects;
  */
 public class ViewItem {
 
+    @ColumnName(name = "ID")
     private Long id;
-    private Long parent;
-    private String objClass;
-    private String title;
+    @ColumnName(name = "Menu")
+    private Long menu;
+    @ColumnName(name = "Titulo")
+    private String title;    
+    @ColumnName(name = "Classe")
+    private String viewClass;
+    @ColumnName(name = "Ícone")
     private String icon;
 
     /**
@@ -25,15 +31,15 @@ public class ViewItem {
      * Cria nova instancia de Menu
      *
      * @param id <code>Long</code> ID do MenuView
-     * @param parent <code>Long</code> ID do menu pai
-     * @param objClass <code>String</code> Classe do MenuView
+     * @param parent <code>Long</code> ID do menu
+     * @param viewClass <code>String</code> Classe do MenuView
      * @param title <code>String</code> Titulo do MenuView
      * @param icon <code>String</code> Icone do MenuViewMenuView
      */
-    public ViewItem(Long id, Long parent, String objClass, String title, String icon) {
+    public ViewItem(Long id, Long parent, String viewClass, String title, String icon) {
         this.id = id;
-        this.parent = parent;
-        this.objClass = objClass;
+        this.menu = parent;
+        this.viewClass = viewClass;
         this.title = title;
         this.icon = icon;
     }
@@ -42,8 +48,8 @@ public class ViewItem {
     public int hashCode() {
         int hash = 3;
         hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.parent);
-        hash = 89 * hash + Objects.hashCode(this.objClass);
+        hash = 89 * hash + Objects.hashCode(this.menu);
+        hash = 89 * hash + Objects.hashCode(this.viewClass);
         hash = 89 * hash + Objects.hashCode(this.title);
         hash = 89 * hash + Objects.hashCode(this.icon);
         return hash;
@@ -61,10 +67,10 @@ public class ViewItem {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.parent, other.parent)) {
+        if (!Objects.equals(this.menu, other.menu)) {
             return false;
         }
-        if (!Objects.equals(this.objClass, other.objClass)) {
+        if (!Objects.equals(this.viewClass, other.viewClass)) {
             return false;
         }
         if (!Objects.equals(this.title, other.title)) {
@@ -101,17 +107,17 @@ public class ViewItem {
      *
      * @return <code>Long</code> ID do menu pai
      */
-    public Long getParent() {
-        return parent;
+    public Long getMenu() {
+        return menu;
     }
 
     /**
      * Modifica o ID do menu pai
      *
-     * @param parent <code>Long</code> ID do menu pai
+     * @param menu <code>Long</code> ID do menu pai
      */
-    public void setParent(Long parent) {
-        this.parent = parent;
+    public void setMenu(Long menu) {
+        this.menu = menu;
     }
 
     /**
@@ -119,17 +125,17 @@ public class ViewItem {
      *
      * @return <code>String</code> Classe do ViewItem
      */
-    public String getObjClass() {
-        return objClass;
+    public String getViewClass() {
+        return viewClass;
     }
 
     /**
      * Retorna a classe do ViewItem
      *
-     * @param objClass <code>String</code> Classe do ViewItem
+     * @param viewClass <code>String</code> Classe do ViewItem
      */
-    public void setObjClass(String objClass) {
-        this.objClass = objClass;
+    public void setViewClass(String viewClass) {
+        this.viewClass = viewClass;
     }
 
     /**

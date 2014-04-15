@@ -5,7 +5,7 @@ import br.com.rpgruler.data.entitity.Effect;
 import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.terms.bean.TermsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.object.ViewParameter;
@@ -18,7 +18,7 @@ import javax.swing.JList;
  *
  * @author kaciano
  */
-public class TermsView extends DefaultView {
+public class TermsView extends View {
 
     private TermsBean bean;
     private GListModel<WearType> wtModel;

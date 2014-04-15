@@ -2,19 +2,26 @@ package br.com.rpgruler.main.view.menu;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.collections.Triad;
+import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.MenuDAO;
 import br.com.rpgruler.data.entitity.Menu;
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.HasTable;
 import br.com.rpgruler.main.view.menu.bean.MenuBean;
 import br.com.rpgruler.main.view.menu.model.MenuModel;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
+import javax.swing.SwingUtilities;
 
 /**
  * View para controle de menus
@@ -22,12 +29,18 @@ import javax.swing.JMenu;
  * @author kaciano
  * @version 1.0
  */
-public class MenuView extends DefaultView implements TableSource<Menu>, HasTable {
+public class MenuView extends View implements TableSource<Menu>, HasTable {
 
     private MenuBean bean;
     private MenuModel model;
     private GComboBoxModel<Menu> parentModel;
     private GComboBoxModel<ImageIcon> iconModel;
+    private int count = 0;
+    private final int ID_COLUMN = count++;
+    private final int PARENT_COLUMN = count++;
+    private final int TITLE_COLUMN = count++;
+    private final int ICON_COLUMN = count++;
+    private TableDecorator decorator;
 
     /**
      * Cria nova instancia de MenuView
@@ -43,7 +56,7 @@ public class MenuView extends DefaultView implements TableSource<Menu>, HasTable
      * Método de inicialização
      */
     private void initialize() {
-        initComponents();
+        this.initComponents();
         this.setControls(new ViewParameter(true, true, true, false));
         this.setSize(540, 415);
         this.iconModel = new GComboBoxModel<>();
@@ -53,6 +66,7 @@ public class MenuView extends DefaultView implements TableSource<Menu>, HasTable
         this.gCBIcon.setModel(iconModel);
         this.gCBParent.setModel(parentModel);
         this.bean = new MenuBean(this);
+        this.decorator = new TableDecorator(gTable).withIcon(ICON_COLUMN);
     }
 
     @Override
@@ -62,12 +76,32 @@ public class MenuView extends DefaultView implements TableSource<Menu>, HasTable
 
     @Override
     public void add() {
-
+        if (gTTitle.validateComponent()) {
+            if (gCBIcon.validateComponent()) {
+                if (gCBParent.validateComponent()) {
+                    Triad<String, Integer, Long> triad;
+                    Long parent = ((Menu) gCBParent.getSelectedItem()).getId();
+                    int index = gCBIcon.getSelectedIndex();
+                    triad = new Triad(gTTitle.getText(), index, parent);
+                    bean.add(new BeanEvent(this, triad));
+                }
+            }
+        }
     }
 
     @Override
     public void remove() {
-
+        String text = "Deseja remover os itens selecionados?";
+        if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
+            try {
+                if (gTable.getSelectedRowCount() > 0) {
+                    model.remove(gTable.getSelectedRows());
+                }
+            } catch (NumberFormatException e) {
+                Logger.getLogger(MenuView.class.getName())
+                        .log(Level.SEVERE, null, e);
+            }
+        }
     }
 
     @Override
@@ -83,6 +117,19 @@ public class MenuView extends DefaultView implements TableSource<Menu>, HasTable
     @Override
     public BeanListener getBean() {
         return this.bean;
+    }
+
+    /**
+     * Atualiza os dados nas comboboxes
+     */
+    public void refresh() {
+        gCBIcon.setModel(iconModel);
+        gCBIcon.repaint();
+        gCBIcon.revalidate();
+        gCBParent.setModel(parentModel);
+        gCBParent.repaint();
+        gCBParent.revalidate();
+        SwingUtilities.updateComponentTreeUI(this);
     }
 
     /**
@@ -152,6 +199,8 @@ public class MenuView extends DefaultView implements TableSource<Menu>, HasTable
 
             }
         ));
+        gTable.setOpaque(false);
+        gTable.setRowHeight(20);
         jScrollPane1.setViewportView(gTable);
 
         jLTitle.setText("Titulo:");
@@ -180,27 +229,26 @@ public class MenuView extends DefaultView implements TableSource<Menu>, HasTable
             jPMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPMenusLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLTitle)
-                    .addComponent(jLParent))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPMenusLayout.createSequentialGroup()
-                        .addComponent(gCBParent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLTitle)
+                            .addComponent(jLParent))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPMenusLayout.createSequentialGroup()
-                        .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLIcon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPMenusLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                        .addGroup(jPMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPMenusLayout.createSequentialGroup()
+                                .addComponent(gCBParent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPMenusLayout.createSequentialGroup()
+                                .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLIcon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPMenusLayout.setVerticalGroup(

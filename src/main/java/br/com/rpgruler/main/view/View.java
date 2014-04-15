@@ -1,5 +1,6 @@
 package br.com.rpgruler.main.view;
 
+import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
@@ -7,6 +8,7 @@ import br.com.rpgruler.main.view.interfaces.ViewListener;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -17,7 +19,7 @@ import javax.swing.event.InternalFrameEvent;
  * @author kaciano
  * @version 1.0
  */
-public abstract class DefaultView extends JInternalFrame implements ViewListener {
+public abstract class View extends JInternalFrame implements ViewListener {
 
     private final MainScreen mainScreen;
     private Boolean canSave;
@@ -30,7 +32,7 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
      *
      * @param mainScreen <code>MainScreen</code> Tela principal
      */
-    public DefaultView(MainScreen mainScreen) {
+    public View(MainScreen mainScreen) {
         this.mainScreen = mainScreen;
         initialize();
     }
@@ -44,7 +46,7 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
 
             @Override
             public void internalFrameActivated(InternalFrameEvent e) {
-                mainScreen.getListener().setActualView(DefaultView.this);
+                mainScreen.getListener().setActualView(View.this);
             }
 
             @Override
@@ -113,7 +115,7 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
         try {
             getBean().save(new BeanEvent(this, null));
         } catch (Exception ex) {
-            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -122,7 +124,7 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
         try {
             getBean().process(new BeanEvent(this, null));
         } catch (Exception ex) {
-            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -131,7 +133,7 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
         try {
             getBean().clear(new BeanEvent(this, null));
         } catch (Exception ex) {
-            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -140,13 +142,18 @@ public abstract class DefaultView extends JInternalFrame implements ViewListener
         try {
             getBean().load(new BeanEvent(this, null));
         } catch (Exception ex) {
-            Logger.getLogger(DefaultView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void showMessage(String msg, int type) {
         getMainScreen().printTypedMsg(msg, type);
+    }
+
+    @Override
+    public void showBalloon(JComponent component, String text) {
+        new BalloonUtil().showTimedBallon(component, text);
     }
 
     @Override

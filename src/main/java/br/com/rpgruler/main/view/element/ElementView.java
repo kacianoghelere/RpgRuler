@@ -8,24 +8,20 @@ import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.element.bean.ElementBean;
 import br.com.rpgruler.main.view.element.model.ElementModel;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.HasTable;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JTable;
 
 /**
@@ -33,7 +29,7 @@ import javax.swing.JTable;
  *
  * @author kaciano
  */
-public class ElementView extends DefaultView implements TableSource<Element>, HasTable {
+public class ElementView extends View implements TableSource<Element>, HasTable {
 
     private ElementBean bean;
     private ElementModel model;

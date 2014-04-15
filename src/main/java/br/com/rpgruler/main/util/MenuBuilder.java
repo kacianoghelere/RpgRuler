@@ -6,7 +6,6 @@ import br.com.rpgruler.data.db.dao.ViewItemDAO;
 import br.com.rpgruler.data.entitity.Menu;
 import br.com.rpgruler.data.entitity.ViewItem;
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.menu.MenuView;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -21,6 +20,10 @@ import javax.swing.JMenuItem;
  *
  * @author kaciano
  * @version 1.0
+ * @see br.com.rpgruler.data.db.dao.MenuDAO
+ * @see br.com.rpgruler.data.db.dao.ViewItemDAO
+ * @see br.com.rpgruler.data.entitity.Menu
+ * @see br.com.rpgruler.data.entitity.ViewItem
  */
 public class MenuBuilder {
 
@@ -67,7 +70,8 @@ public class MenuBuilder {
                     buildItem(generated, views, execute);
                     root.add(generated);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(MenuBuilder.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MenuBuilder.class.getName())
+                            .log(Level.SEVERE, null, ex);
                 }
             } else {
                 menus.stream().filter((parent) -> (parent.getId().equals(menu.getId()))).forEach((Menu parent) -> {
@@ -80,7 +84,8 @@ public class MenuBuilder {
                                     buildItem(generated, views, execute);
                                     jmenu.add(generated);
                                 } catch (ClassNotFoundException ex) {
-                                    Logger.getLogger(MenuBuilder.class.getName()).log(Level.SEVERE, null, ex);
+                                    Logger.getLogger(MenuBuilder.class.getName())
+                                            .log(Level.SEVERE, null, ex);
                                 }
                             }
                         }
@@ -159,7 +164,7 @@ public class MenuBuilder {
         JMenuItem item = new JMenuItem();
         item.setText(view.toString());
         item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
-        Class<?> objClass = Class.forName(view.getObjClass());
+        Class<?> objClass = Class.forName(view.getViewClass());
         Class<?>[] argTypes = new Class[]{MainScreen.class};
         Object[] arguments = new Object[]{mainScreen};
         if (execute) {

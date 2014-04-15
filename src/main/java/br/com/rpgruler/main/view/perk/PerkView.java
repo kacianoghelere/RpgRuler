@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.perk;
 
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.perk.bean.PerkBean;
 import br.com.rpgruler.main.view.dialog.PerkDialog;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
@@ -11,7 +11,7 @@ import br.com.rpgruler.main.view.interfaces.BeanListener;
  *
  * @author kaciano
  */
-public class PerkView extends DefaultView {
+public class PerkView extends View {
 
     private PerkBean bean;
 

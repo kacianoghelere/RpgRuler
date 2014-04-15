@@ -4,7 +4,7 @@ import br.com.gmp.utils.image.ImageUtil;
 import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.element.ElementView;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
  *
  * @author kaciano
  */
-public class ElementBean extends DefaultViewBean<ElementView> {
+public class ElementBean extends ViewBean<ElementView> {
 
     private ElementDAO dao;
     private ElementView elementView;

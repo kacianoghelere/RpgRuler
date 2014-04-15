@@ -4,7 +4,7 @@ import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
-import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.armortype.object.ArmorTypeParameter;
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author kaciano
  */
-public class ArmorTypeBean extends DefaultViewBean<ArmorTypeView> {
+public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
 
     private ArmorTypeDAO dao;
 

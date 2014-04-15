@@ -8,7 +8,7 @@ import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.armortype.bean.ArmorTypeBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.HasTable;
@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.0
  */
-public class ArmorTypeView extends DefaultView implements TableSource<ArmorType>, HasTable {
+public class ArmorTypeView extends View implements TableSource<ArmorType>, HasTable {
 
     private ArmorTypeBean bean;
     private ArmorTypeModel model;

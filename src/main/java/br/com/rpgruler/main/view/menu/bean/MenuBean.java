@@ -1,13 +1,13 @@
 package br.com.rpgruler.main.view.menu.bean;
 
+import br.com.gmp.utils.collections.Triad;
 import br.com.rpgruler.data.db.dao.MenuDAO;
 import br.com.rpgruler.data.entitity.Menu;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.MenuBuilder;
-import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.menu.MenuView;
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  * @author kaciano
  * @version 1.0
  */
-public class MenuBean extends DefaultViewBean<MenuView> {
+public class MenuBean extends ViewBean<MenuView> {
 
     private MenuDAO dao;
 
@@ -30,7 +30,18 @@ public class MenuBean extends DefaultViewBean<MenuView> {
     public MenuBean(MenuView view) {
         super(view);
         this.dao = new MenuDAO();
-        System.out.println( getMenuIcons().length);
+        getView().getIconModel().setData(getMenuIcons());
+        getView().getParentModel().setData(getParentMenus());
+    }
+
+    @Override
+    public void save(BeanEvent evt) throws Exception {
+        dao.deleteAll();
+        dao.insertAll(getView().getModel().getData());
+    }
+
+    @Override
+    public void load(BeanEvent evt) throws Exception {
         getView().getIconModel().setData(getMenuIcons());
         getView().getParentModel().setData(getParentMenus());
     }
@@ -49,6 +60,36 @@ public class MenuBean extends DefaultViewBean<MenuView> {
     }
 
     /**
+     * Constroi um objeto do tipo Menu
+     *
+     * @return <code>Menu</code> Menu gerado
+     */
+    private Menu buildNew(String title, String icon, Long parent) {
+        Menu menu = new Menu();
+        menu.setId(getNextID());
+        menu.setTitle(title);
+        menu.setParent(parent);
+        menu.setIcon(icon);
+        return menu;
+    }
+
+    /**
+     * Adiciona novo item na tabela
+     *
+     * @param evt <code>BeanEvent</code> Evento do Bean
+     */
+    public void add(BeanEvent evt) {
+        Triad<String, Integer, Long> triad = (Triad<String, Integer, Long>) evt.getValue();
+        String title = triad.getFirst();
+        String icon = getIcons()[triad.getSecond()];
+        Long parent = triad.getThird();
+        Menu menu = buildNew(title, icon, parent);
+        getView().getModel().add(menu);
+        getView().getParentModel().setData(getParentMenus());
+        getView().refresh();
+    }
+
+    /**
      * Retorna o próximo ID da lista
      *
      * @return <code>Long</code> Próximo ID
@@ -60,7 +101,7 @@ public class MenuBean extends DefaultViewBean<MenuView> {
                 id = menu.getId();
             }
         }
-        return id + 1;
+        return (id + 1);
     }
 
     /**
@@ -69,13 +110,26 @@ public class MenuBean extends DefaultViewBean<MenuView> {
      * @return <code>ImageIcon[]</code> Array de iconess
      */
     private ImageIcon[] getMenuIcons() {
-        String path = "/RpgIcons/misc/";
         List<ImageIcon> icons = new ArrayList<>();
-        File dir = new File(getClass().getResource(path).getFile());
-        for (File file : dir.listFiles()) {
-            icons.add(new ImageIcon(getClass().getResource(path + file.getName())));
+        for (String icon : getIcons()) {
+            icons.add(new ImageIcon(getClass().getResource(icon)));
         }
         return icons.toArray(new ImageIcon[]{});
+    }
+
+    /**
+     * Retorna os nomes dos icones
+     *
+     * @return <code>String[]</code> Nomes dos icones
+     */
+    private String[] getIcons() {
+        String path = "/RpgIcons/misc/";
+        List<String> list = new ArrayList<>();
+        File dir = new File(getClass().getResource(path).getFile());
+        for (File file : dir.listFiles()) {
+            list.add(path + file.getName());
+        }
+        return list.toArray(new String[]{});
     }
 
     /**
@@ -86,7 +140,7 @@ public class MenuBean extends DefaultViewBean<MenuView> {
     private List<Menu> getParentMenus() {
         List<Menu> parents = new ArrayList<>();
         parents.add(new Menu((long) 0, "Raiz", null));
-        dao.getList().stream().forEach((menu) -> {
+        getView().getModel().getData().stream().forEach((menu) -> {
             parents.add(menu);
         });
         return parents;

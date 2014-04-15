@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.character;
 
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.view.DefaultView;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.character.bean.CharacterBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 
@@ -11,7 +11,7 @@ import br.com.rpgruler.main.view.interfaces.BeanListener;
  * @author kaciano
  * @version 1.0
  */
-public class CharacterView extends DefaultView {
+public class CharacterView extends View {
 
     private CharacterBean bean;
 

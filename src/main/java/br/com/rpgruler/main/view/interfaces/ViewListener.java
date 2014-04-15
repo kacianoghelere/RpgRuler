@@ -1,6 +1,7 @@
 package br.com.rpgruler.main.view.interfaces;
 
 import br.com.rpgruler.main.MainScreen;
+import javax.swing.JComponent;
 
 /**
  * Interface para Views
@@ -115,7 +116,16 @@ public interface ViewListener {
      * Mostra nova mensagem na barra de aplicações
      *
      * @param msg <code>String</code> Mensagem
-     * @param type <code></code> Tipo da mensagem
+     * @param type <code>int</code> Tipo da mensagem
      */
     void showMessage(String msg, int type);
+
+    /**
+     * Mostra balão de mensagem com 5 segundos de duração
+     *
+     * @param component <code>JComponent</code> Componente que terá a mensagem
+     * @param text <code>String</code> Mensagem
+     */
+    void showBalloon(JComponent component, String text);
+
 }

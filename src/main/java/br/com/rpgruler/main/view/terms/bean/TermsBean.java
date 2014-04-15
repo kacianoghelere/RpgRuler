@@ -6,7 +6,7 @@ import br.com.rpgruler.data.db.dao.WearTypeDAO;
 import br.com.rpgruler.data.entitity.Effect;
 import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.object.BeanEvent;
-import br.com.rpgruler.main.view.bean.DefaultViewBean;
+import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.terms.TermsView;
 
 /**
@@ -15,7 +15,7 @@ import br.com.rpgruler.main.view.terms.TermsView;
  * @author kaciano
  * @version 1.0
  */
-public class TermsBean extends DefaultViewBean<TermsView> {
+public class TermsBean extends ViewBean<TermsView> {
 
     private WearTypeDAO wtDao;
     private EffectDAO effectDao;
