@@ -25,19 +25,40 @@ public class Element implements Serializable {
     @ColumnName(name = "Fraqueza")
     private Element weakness;
 
+    /**
+     *
+     */
     public Element() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Element(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param elementName
+     * @param elementSymbol
+     */
     public Element(Long id, String elementName, String elementSymbol) {
         this.id = id;
         this.elementName = elementName;
         this.elementSymbol = elementSymbol;
     }
 
+    /**
+     *
+     * @param id
+     * @param elementName
+     * @param elementSymbol
+     * @param bonus
+     * @param weakness
+     */
     public Element(Long id, String elementName, String elementSymbol, Element bonus, Element weakness) {
         this.id = id;
         this.elementName = elementName;
@@ -46,42 +67,82 @@ public class Element implements Serializable {
         this.weakness = weakness;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getElementName() {
         return elementName;
     }
 
+    /**
+     *
+     * @param elementName
+     */
     public void setElementName(String elementName) {
         this.elementName = elementName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getElementSymbol() {
         return elementSymbol;
     }
 
+    /**
+     *
+     * @param elementSymbol
+     */
     public void setElementSymbol(String elementSymbol) {
         this.elementSymbol = elementSymbol;
     }
 
+    /**
+     *
+     * @return
+     */
     public Element getBonus() {
         return bonus;
     }
 
+    /**
+     *
+     * @param bonus
+     */
     public void setBonus(Element bonus) {
         this.bonus = bonus;
     }
 
+    /**
+     *
+     * @return
+     */
     public Element getWeakness() {
         return weakness;
     }
 
+    /**
+     *
+     * @param weakness
+     */
     public void setWeakness(Element weakness) {
         this.weakness = weakness;
     }

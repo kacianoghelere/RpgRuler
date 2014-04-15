@@ -22,13 +22,29 @@ public class Armor implements Serializable {
     @ColumnName(name = "Material 2")
     private PrimeMaterial pMaterial2;
 
+    /**
+     *
+     */
     public Armor() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Armor(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param armorType
+     * @param primeMaterial1
+     * @param materialAmount1
+     * @param primeMaterial2
+     * @param materialAmount2
+     */
     public Armor(Long id, ArmorType armorType, PrimeMaterial primeMaterial1,
             Double materialAmount1, PrimeMaterial primeMaterial2,
             Double materialAmount2) {
@@ -38,6 +54,14 @@ public class Armor implements Serializable {
         this.pMaterial2 = primeMaterial2;
     }
 
+    /**
+     *
+     * @param id
+     * @param armorType
+     * @param resistence
+     * @param pMaterial1
+     * @param pMaterial2
+     */
     public Armor(Long id, ArmorType armorType, Double resistence, 
             PrimeMaterial pMaterial1, PrimeMaterial pMaterial2) {
         this.id = id;
@@ -47,48 +71,91 @@ public class Armor implements Serializable {
         this.pMaterial2 = pMaterial2;
     }
 
+    /**
+     *
+     */
     public void calcResistence() {
         this.resistence = (pMaterial1.getResistence()
                 + pMaterial2.getResistence() 
                 + armorType.getBase());
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArmorType getArmorType() {
         return armorType;
     }
 
+    /**
+     *
+     * @param armorType
+     */
     public void setArmorType(ArmorType armorType) {
         this.armorType = armorType;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getResistence() {
         return resistence;
     }
 
+    /**
+     *
+     * @param resistence
+     */
     public void setResistence(Double resistence) {
         this.resistence = resistence;
     }
 
+    /**
+     *
+     * @return
+     */
     public PrimeMaterial getpMaterial1() {
         return pMaterial1;
     }
 
+    /**
+     *
+     * @param pMaterial1
+     */
     public void setpMaterial1(PrimeMaterial pMaterial1) {
         this.pMaterial1 = pMaterial1;
     }
 
+    /**
+     *
+     * @return
+     */
     public PrimeMaterial getpMaterial2() {
         return pMaterial2;
     }
 
+    /**
+     *
+     * @param pMaterial2
+     */
     public void setpMaterial2(PrimeMaterial pMaterial2) {
         this.pMaterial2 = pMaterial2;
     }

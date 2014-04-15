@@ -34,7 +34,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     public static String QUESTION_ICON = "/ComponentIcons/transition/toolbar/2.png";
     public static String SUCCESS_ICON = "/ComponentIcons/transition/toolbar/5.png";
     public static String WARNING_ICON = "/ComponentIcons/transition/toolbar/3.png";
-    private String ICON = "/dices/d12-icon.png";
+    private final String ICON = "/dices/d12-icon.png";
     private MainListener listener;
 
     /**

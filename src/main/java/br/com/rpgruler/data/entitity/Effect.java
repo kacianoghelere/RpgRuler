@@ -19,50 +19,97 @@ public class Effect implements Serializable {
     @ColumnName(name = "Proporção")
     private long strength;
 
+    /**
+     *
+     */
     public Effect() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Effect(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param effectName
+     */
     public Effect(Long id, String effectName) {
         this.id = id;
         this.effectName = effectName;
         this.strength = (long) 0;
     }
 
+    /**
+     *
+     * @param id
+     * @param effectName
+     * @param strength
+     */
     public Effect(Long id, String effectName, long strength) {
         this.id = id;
         this.effectName = effectName;
         this.strength = strength;
     }
 
+    /**
+     *
+     * @param id
+     * @param strength
+     */
     public Effect(Long id, long strength) {
         this.id = id;
         this.strength = strength;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEffectName() {
         return effectName;
     }
 
+    /**
+     *
+     * @param effectName
+     */
     public void setEffectName(String effectName) {
         this.effectName = effectName;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getStrength() {
         return strength;
     }
 
+    /**
+     *
+     * @param strength
+     */
     public void setStrength(long strength) {
         this.strength = strength;
     }

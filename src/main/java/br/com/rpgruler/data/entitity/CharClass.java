@@ -35,13 +35,30 @@ public class CharClass implements Serializable {
     @Ignore
     private Collection<Perk> perkCollection;
 
+    /**
+     *
+     */
     public CharClass() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public CharClass(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param bonusHp
+     * @param bonusStr
+     * @param bonusDex
+     * @param bonusRes
+     * @param bonusWis
+     * @param bonusLuc
+     */
     public CharClass(Long id, Integer bonusHp, Integer bonusStr, Integer bonusDex, Integer bonusRes, Integer bonusWis, Integer bonusLuc) {
         this.id = id;
         this.bonusHp = bonusHp;
@@ -52,74 +69,146 @@ public class CharClass implements Serializable {
         this.bonusLuc = bonusLuc;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getBonusHp() {
         return bonusHp;
     }
 
+    /**
+     *
+     * @param bonusHp
+     */
     public void setBonusHp(Integer bonusHp) {
         this.bonusHp = bonusHp;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getBonusStr() {
         return bonusStr;
     }
 
+    /**
+     *
+     * @param bonusStr
+     */
     public void setBonusStr(Integer bonusStr) {
         this.bonusStr = bonusStr;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getBonusDex() {
         return bonusDex;
     }
 
+    /**
+     *
+     * @param bonusDex
+     */
     public void setBonusDex(Integer bonusDex) {
         this.bonusDex = bonusDex;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getBonusRes() {
         return bonusRes;
     }
 
+    /**
+     *
+     * @param bonusRes
+     */
     public void setBonusRes(Integer bonusRes) {
         this.bonusRes = bonusRes;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getBonusWis() {
         return bonusWis;
     }
 
+    /**
+     *
+     * @param bonusWis
+     */
     public void setBonusWis(Integer bonusWis) {
         this.bonusWis = bonusWis;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getBonusLuc() {
         return bonusLuc;
     }
 
+    /**
+     *
+     * @param bonusLuc
+     */
     public void setBonusLuc(Integer bonusLuc) {
         this.bonusLuc = bonusLuc;
     }
 
+    /**
+     *
+     * @return
+     */
     public Collection<Perk> getPerkCollection() {
         return perkCollection;
     }
 
+    /**
+     *
+     * @param perkCollection
+     */
     public void setPerkCollection(Collection<Perk> perkCollection) {
         this.perkCollection = perkCollection;
     }

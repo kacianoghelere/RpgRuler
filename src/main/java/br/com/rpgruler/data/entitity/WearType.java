@@ -17,6 +17,11 @@ public class WearType {
     @ColumnName(name = "Uso")
     private String typeName;
 
+    /**
+     *
+     * @param id
+     * @param typeName
+     */
     public WearType(Long id, String typeName) {
         this.id = id;
         this.typeName = typeName;
@@ -50,18 +55,34 @@ public class WearType {
         return typeName;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTypeName() {
         return typeName;
     }
 
+    /**
+     *
+     * @param typeName
+     */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }

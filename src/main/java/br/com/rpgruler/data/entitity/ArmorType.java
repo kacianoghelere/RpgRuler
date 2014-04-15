@@ -26,13 +26,27 @@ public class ArmorType implements Serializable {
     @ColumnName(name = "Quantidade 2")
     private Double materialAmount2;
 
+    /**
+     *
+     */
     public ArmorType() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public ArmorType(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param typeName
+     * @param materialAmount1
+     * @param materialAmount2
+     */
     public ArmorType(Long id, String typeName, Double materialAmount1, Double materialAmount2) {
         this.id = id;
         this.typeName = typeName;
@@ -40,6 +54,14 @@ public class ArmorType implements Serializable {
         this.materialAmount2 = materialAmount2;
     }
 
+    /**
+     *
+     * @param id
+     * @param typeName
+     * @param base
+     * @param materialAmount1
+     * @param materialAmount2
+     */
     public ArmorType(Long id, String typeName, Double base, Double materialAmount1, Double materialAmount2) {
         this.id = id;
         this.typeName = typeName;
@@ -48,42 +70,82 @@ public class ArmorType implements Serializable {
         this.materialAmount2 = materialAmount2;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTypeName() {
         return typeName;
     }
 
+    /**
+     *
+     * @param typeName
+     */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getBase() {
         return base;
     }
 
+    /**
+     *
+     * @param base
+     */
     public void setBase(Double base) {
         this.base = base;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getMaterialAmount1() {
         return materialAmount1;
     }
 
+    /**
+     *
+     * @param amount1
+     */
     public void setMaterialAmount1(Double amount1) {
         this.materialAmount1 = amount1;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getMaterialAmount2() {
         return materialAmount2;
     }
 
+    /**
+     *
+     * @param amount2
+     */
     public void setMaterialAmount2(Double amount2) {
         this.materialAmount2 = amount2;
     }

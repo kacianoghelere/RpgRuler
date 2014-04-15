@@ -22,49 +22,96 @@ public class Perk implements Serializable {
     @ColumnName(name = "Tipo")
     private PerkType perkType;
 
+    /**
+     *
+     */
     public Perk() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Perk(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPerkName() {
         return perkName;
     }
 
+    /**
+     *
+     * @param perkName
+     */
     public void setPerkName(String perkName) {
         this.perkName = perkName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPerkDescription() {
         return perkDescription;
     }
 
+    /**
+     *
+     * @param perkDescription
+     */
     public void setPerkDescription(String perkDescription) {
         this.perkDescription = perkDescription;
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean getInherited() {
         return inherited;
     }
 
+    /**
+     *
+     * @param inherited
+     */
     public void setInherited(Boolean inherited) {
         this.inherited = inherited;
     }
 
+    /**
+     *
+     * @return
+     */
     public PerkType getPerkType() {
         return perkType;
     }
 
+    /**
+     *
+     * @param perkType
+     */
     public void setPerkType(PerkType perkType) {
         this.perkType = perkType;
     }

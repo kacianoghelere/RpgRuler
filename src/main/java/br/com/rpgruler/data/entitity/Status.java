@@ -20,46 +20,90 @@ public class Status implements Serializable {
     @ColumnName(name = "Efeito")
     private Effect idEffect;
 
+    /**
+     *
+     */
     public Status() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public Status(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param duration
+     */
     public Status(Long id, long duration) {
         this.id = id;
         this.duration = duration;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStatusName() {
         return statusName;
     }
 
+    /**
+     *
+     * @param statusName
+     */
     public void setStatusName(String statusName) {
         this.statusName = statusName;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getDuration() {
         return duration;
     }
 
+    /**
+     *
+     * @param duration
+     */
     public void setDuration(long duration) {
         this.duration = duration;
     }
 
+    /**
+     *
+     * @return
+     */
     public Effect getIdEffect() {
         return idEffect;
     }
 
+    /**
+     *
+     * @param idEffect
+     */
     public void setIdEffect(Effect idEffect) {
         this.idEffect = idEffect;
     }

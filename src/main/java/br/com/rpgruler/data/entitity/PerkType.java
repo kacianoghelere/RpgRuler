@@ -16,25 +16,48 @@ public class PerkType implements Serializable {
     @ColumnName(name = "Nome")
     private String typeName;
 
+    /**
+     *
+     */
     public PerkType() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public PerkType(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTypeName() {
         return typeName;
     }
 
+    /**
+     *
+     * @param typeName
+     */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }

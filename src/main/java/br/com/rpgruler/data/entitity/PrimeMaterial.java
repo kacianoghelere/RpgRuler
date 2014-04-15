@@ -26,18 +26,37 @@ public class PrimeMaterial implements Serializable {
     @ColumnName(name = "Resistencia/Unidade")
     private Double resistence;
 
+    /**
+     *
+     */
     public PrimeMaterial() {
     }
 
+    /**
+     *
+     * @param id
+     */
     public PrimeMaterial(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param materialClass
+     */
     public PrimeMaterial(Long id, Integer materialClass) {
         this.id = id;
         this.materialClass = materialClass;
     }
 
+    /**
+     *
+     * @param id
+     * @param materialName
+     * @param weight
+     * @param materialClass
+     */
     public PrimeMaterial(Long id, String materialName, Double weight, Integer materialClass) {
         this.id = id;
         this.materialName = materialName;
@@ -46,42 +65,82 @@ public class PrimeMaterial implements Serializable {
         this.resistence = (weight * materialClass);
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMaterialName() {
         return materialName;
     }
 
+    /**
+     *
+     * @param materialName
+     */
     public void setMaterialName(String materialName) {
         this.materialName = materialName;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getWeight() {
         return weight;
     }
 
+    /**
+     *
+     * @param weight
+     */
     public void setWeight(Double weight) {
         this.weight = weight;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getMaterialClass() {
         return materialClass;
     }
 
+    /**
+     *
+     * @param materialClass
+     */
     public void setMaterialClass(Integer materialClass) {
         this.materialClass = materialClass;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getResistence() {
         return resistence;
     }
 
+    /**
+     *
+     * @param resistence
+     */
     public void setResistence(Double resistence) {
         this.resistence = resistence;
     }

@@ -30,9 +30,22 @@ public class WeaponType implements Serializable {
     @ColumnName(name = "Quantidade 2")
     private Double materialAmount2;
 
+    /**
+     *
+     */
     public WeaponType() {
     }
 
+    /**
+     *
+     * @param id
+     * @param typeName
+     * @param damageBase
+     * @param category
+     * @param wearType
+     * @param materialAmount1
+     * @param materialAmount2
+     */
     public WeaponType(Long id, String typeName, Double damageBase, Integer category, WearType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
         this.typeName = typeName;
@@ -43,58 +56,114 @@ public class WeaponType implements Serializable {
         this.materialAmount2 = materialAmount2;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTypeName() {
         return typeName;
     }
 
+    /**
+     *
+     * @param typeName
+     */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getMaterialAmount1() {
         return materialAmount1;
     }
 
+    /**
+     *
+     * @param amount1
+     */
     public void setMaterialAmount1(Double amount1) {
         this.materialAmount1 = amount1;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getMaterialAmount2() {
         return materialAmount2;
     }
 
+    /**
+     *
+     * @param amount2
+     */
     public void setMaterialAmount2(Double amount2) {
         this.materialAmount2 = amount2;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getDamageBase() {
         return damageBase;
     }
 
+    /**
+     *
+     * @param damageBase
+     */
     public void setDamageBase(Double damageBase) {
         this.damageBase = damageBase;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getCategory() {
         return category;
     }
 
+    /**
+     *
+     * @param category
+     */
     public void setCategory(Integer category) {
         this.category = category;
     }
 
+    /**
+     *
+     * @return
+     */
     public WearType getWearType() {
         return wearType;
     }
 
+    /**
+     *
+     * @param wearType
+     */
     public void setWearType(WearType wearType) {
         this.wearType = wearType;
     }
