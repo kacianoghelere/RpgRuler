@@ -27,10 +27,12 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     public static int ERROR_MSG = 4;
     public static int INFORMATIVE_MSG = 1;
     public static int QUESTION_MSG = 2;
+    public static int SUCCESS_MSG = 5;
     public static int WARNING_MSG = 3;
     public static String ERROR_ICON = "/ComponentIcons/transition/toolbar/4.png";
     public static String INFORMATIVE_ICON = "/ComponentIcons/transition/toolbar/1.png";
     public static String QUESTION_ICON = "/ComponentIcons/transition/toolbar/2.png";
+    public static String SUCCESS_ICON = "/ComponentIcons/transition/toolbar/5.png";
     public static String WARNING_ICON = "/ComponentIcons/transition/toolbar/3.png";
     private String ICON = "/dices/d12-icon.png";
     private MainListener listener;
@@ -150,6 +152,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * <td>Mensagem de erro</td>
      * <td>MainScreen.ERROR_ICON</td>
      * </tr>
+     * <tr style="color: green">
+     * <td>Mensagem de sucesso</td>
+     * <td>MainScreen.SUCCESS_ICON</td>
+     * </tr>
      * </tbody>
      * </table>
      *
@@ -188,6 +194,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      * <tr style="color: red">
      * <td>4</td>
      * <td>Mensagem de erro</td>
+     * </tr>
+     * <tr style="color: green">
+     * <td>4</td>
+     * <td>Mensagem de sucesso</td>
      * </tr>
      * </tbody>
      * </table>
