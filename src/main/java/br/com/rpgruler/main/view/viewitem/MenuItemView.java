@@ -48,12 +48,14 @@ public class MenuItemView extends View implements HasTable, TableSource<MenuItem
      */
     private void initialize() {
         this.initComponents();
-        this.setSize(WIDTH, WIDTH);
+        this.setSize(600, 420);
         this.parentModel = new GComboBoxModel();
         this.iconModel = new GComboBoxModel();
         this.model = new MenuItemModel();
         this.gTable.buildTable(this, 0, model);
         this.bean = new MenuItemBean(this);
+        this.gCBIcon.setModel(iconModel);
+        this.gCBMenu.setModel(parentModel);
     }
 
     @Override
@@ -147,9 +149,13 @@ public class MenuItemView extends View implements HasTable, TableSource<MenuItem
         jMenuBar = new javax.swing.JMenuBar();
         jMPreview = new javax.swing.JMenu();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Cadastro de telas");
-        setMinimumSize(new java.awt.Dimension(580, 410));
-        setPreferredSize(new java.awt.Dimension(580, 410));
+        setMinimumSize(new java.awt.Dimension(600, 420));
+        setPreferredSize(new java.awt.Dimension(600, 420));
 
         gTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -183,7 +189,7 @@ public class MenuItemView extends View implements HasTable, TableSource<MenuItem
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane)
+                        .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
                         .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -198,9 +204,7 @@ public class MenuItemView extends View implements HasTable, TableSource<MenuItem
                                 .addComponent(jLIcon)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(gTClass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(gCBMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -222,8 +226,8 @@ public class MenuItemView extends View implements HasTable, TableSource<MenuItem
                     .addComponent(jLMenu)
                     .addComponent(gCBMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                .addGap(17, 17, 17))
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

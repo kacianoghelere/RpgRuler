@@ -11,6 +11,7 @@ import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.terms.TermsView;
+import br.com.rpgruler.main.view.viewitem.MenuItemView;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -622,7 +623,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }//GEN-LAST:event_jMIMenusActionPerformed
 
     private void jMIViewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIViewsActionPerformed
-        // TODO add your handling code here:
+        listener.insertView(new MenuItemView(this));
     }//GEN-LAST:event_jMIViewsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
