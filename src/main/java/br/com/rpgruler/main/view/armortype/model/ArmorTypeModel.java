@@ -11,6 +11,9 @@ import br.com.rpgruler.data.entitity.ArmorType;
  */
 public class ArmorTypeModel extends GTableModel<ArmorType> {
 
+    /**
+     *
+     */
     public ArmorTypeModel() {
     }
 

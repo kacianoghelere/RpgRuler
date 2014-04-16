@@ -11,6 +11,10 @@ import br.com.rpgruler.main.view.bean.ViewBean;
  */
 public class CharacterBean extends ViewBean<CharacterView> {
 
+    /**
+     *
+     * @param view
+     */
     public CharacterBean(CharacterView view) {
         super(view);
     }

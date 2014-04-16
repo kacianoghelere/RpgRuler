@@ -19,6 +19,10 @@ public class SystemControl {
         });
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         SystemControl systemControl = new SystemControl();
     }

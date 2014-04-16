@@ -11,6 +11,9 @@ import br.com.rpgruler.data.entitity.PrimeMaterial;
  */
 public class MaterialsModel extends GTableModel<PrimeMaterial> {
 
+    /**
+     *
+     */
     public MaterialsModel() {
     }
 

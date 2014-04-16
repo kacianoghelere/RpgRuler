@@ -19,6 +19,10 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
 
     private MaterialsDAO dao;
 
+    /**
+     *
+     * @param view
+     */
     public MaterialsBean(MaterialsView view) {
         super(view);
         dao = new MaterialsDAO();

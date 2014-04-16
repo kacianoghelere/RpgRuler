@@ -13,6 +13,8 @@ public class PerkDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form PerkDialog
+     * @param parent
+     * @param modal
      */
     public PerkDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

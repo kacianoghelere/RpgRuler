@@ -16,6 +16,10 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
 
     private ArmorTypeDAO dao;
 
+    /**
+     *
+     * @param view
+     */
     public ArmorTypeBean(ArmorTypeView view) {
         super(view);
         dao = new ArmorTypeDAO();

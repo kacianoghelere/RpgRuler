@@ -24,26 +24,50 @@ public class MaterialsParameter {
         this.materialWeight = materialWeight;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMaterialName() {
         return materialName;
     }
 
+    /**
+     *
+     * @param materialName
+     */
     public void setMaterialName(String materialName) {
         this.materialName = materialName;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getMaterialClass() {
         return materialClass;
     }
 
+    /**
+     *
+     * @param materialClass
+     */
     public void setMaterialClass(Integer materialClass) {
         this.materialClass = materialClass;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getMaterialWeight() {
         return materialWeight;
     }
 
+    /**
+     *
+     * @param materialWeight
+     */
     public void setMaterialWeight(Double materialWeight) {
         this.materialWeight = materialWeight;
     }

@@ -12,6 +12,10 @@ public class PerkBean extends ViewBean<PerkView> {
 
     private PerkView view;
 
+    /**
+     *
+     * @param view
+     */
     public PerkBean(PerkView view) {
         super(view);
         this.view = view;

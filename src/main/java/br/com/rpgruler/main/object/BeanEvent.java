@@ -20,18 +20,34 @@ public class BeanEvent {
         this.value = value;
     }
 
+    /**
+     *
+     * @return
+     */
     public Object getFrame() {
         return frame;
     }
 
+    /**
+     *
+     * @param frame
+     */
     public void setFrame(Object frame) {
         this.frame = frame;
     }
 
+    /**
+     *
+     * @return
+     */
     public Object getValue() {
         return value;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setValue(Object value) {
         this.value = value;
     }
