@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view.viewitem.bean;
+package br.com.rpgruler.main.view.menuitem.bean;
 
 import br.com.rpgruler.data.db.dao.MenuDAO;
 import br.com.rpgruler.data.entitity.Menu;
@@ -6,7 +6,7 @@ import br.com.rpgruler.data.entitity.MenuItem;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.object.ViewWrapper;
-import br.com.rpgruler.main.view.viewitem.MenuItemView;
+import br.com.rpgruler.main.view.menuitem.MenuItemView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      */
     public MenuItem buildNew(String title, Integer icon, String itemClass, Long menu) {
         Long id = getNextID();
-        return new MenuItem(id, menu, itemClass, title, title);
+        return new MenuItem(id, menu, itemClass, title, getIcons()[icon]);
     }
 
     /**

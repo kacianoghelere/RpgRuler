@@ -11,7 +11,7 @@ import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.terms.TermsView;
-import br.com.rpgruler.main.view.viewitem.MenuItemView;
+import br.com.rpgruler.main.view.menuitem.MenuItemView;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -259,6 +259,8 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jTBMsgs = new javax.swing.JToolBar();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLMsgs = new javax.swing.JLabel();
+        jTBSearch = new javax.swing.JToolBar();
+        gTView = new br.com.gmp.comps.textfield.GTextField();
         jMenuBar = new javax.swing.JMenuBar();
         jMOptions = new javax.swing.JMenu();
         jMISave = new javax.swing.JMenuItem();
@@ -363,7 +365,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         jTBMsgs.setFloatable(false);
@@ -382,6 +384,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             }
         });
         jTBMsgs.add(jLMsgs);
+
+        jTBSearch.setFloatable(false);
+        jTBSearch.setRollover(true);
+        jTBSearch.setName("jTBSearch"); // NOI18N
+
+        gTView.setName("gTView"); // NOI18N
+        jTBSearch.add(gTView);
 
         jMenuBar.setName("jMenuBar"); // NOI18N
 
@@ -540,14 +549,19 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
             .addComponent(desktop)
             .addComponent(jTBMsgs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jTBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(desktop)
                 .addGap(0, 0, 0)
@@ -628,6 +642,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
+    private br.com.gmp.comps.textfield.GTextField gTView;
     private javax.swing.JButton jBClear;
     private javax.swing.JButton jBDice;
     private javax.swing.JButton jBProcess;
@@ -655,6 +670,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jTBMsgs;
+    private javax.swing.JToolBar jTBSearch;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
 }

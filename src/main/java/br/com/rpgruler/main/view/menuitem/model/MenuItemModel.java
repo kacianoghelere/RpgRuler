@@ -1,4 +1,4 @@
-package br.com.rpgruler.main.view.viewitem.model;
+package br.com.rpgruler.main.view.menuitem.model;
 
 import br.com.gmp.comps.model.GTableModel;
 import br.com.rpgruler.data.entitity.MenuItem;
