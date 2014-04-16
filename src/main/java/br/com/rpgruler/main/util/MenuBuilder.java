@@ -81,6 +81,7 @@ public class MenuBuilder {
      */
     public void buildMenu(List<Menu> menus) {
         root.removeAll();        
+        Collections.sort(menus);
         menus.stream().forEach((Menu menu) -> {
             if (menu.getParent() == 0) {
                 insertMenu(root, menu);
@@ -110,9 +111,10 @@ public class MenuBuilder {
      */
     private void recursiveMenus(JMenu parent, Menu menu) {
         for (Component comp : parent.getMenuComponents()) {
-            JMenu jmenu = (JMenu) comp;
+            JMenu jmenu = (JMenu) comp;            
             Long menuid = Long.parseLong(jmenu.getText().split("-")[0].trim());
             if (menu.getParent().equals(menuid)) {
+                System.out.println("(INFO) Inserindo em: " + jmenu.getText());
                 insertMenu(jmenu, menu);
                 break;
             } else {
@@ -129,6 +131,7 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      */
     public void buildItems(List<MenuItem> items, boolean execute) throws ClassNotFoundException {
+        Collections.sort(items);
         for (MenuItem item : items) {
             if (((long) 0) == item.getMenu()) {
                 insertItem(root, item, execute);
