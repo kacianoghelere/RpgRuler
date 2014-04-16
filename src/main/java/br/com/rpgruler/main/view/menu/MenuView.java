@@ -200,7 +200,7 @@ public class MenuView extends View implements TableSource<Menu>, HasTable {
             }
         ));
         gTable.setOpaque(false);
-        gTable.setRowHeight(20);
+        gTable.setRowHeight(26);
         jScrollPane1.setViewportView(gTable);
 
         jLTitle.setText("Titulo:");

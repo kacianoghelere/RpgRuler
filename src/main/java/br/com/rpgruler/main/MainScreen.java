@@ -52,7 +52,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         setIconImage(new ImageIcon(getClass().getResource(ICON)).getImage());
         initComponents();
         setControls(false, false, false, false, false);
-        setExtendedState(Frame.MAXIMIZED_BOTH);
+        //setExtendedState(Frame.MAXIMIZED_BOTH);
         listener = new MainScreenBean(this);
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
     }

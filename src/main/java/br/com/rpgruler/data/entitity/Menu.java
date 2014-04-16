@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author kaciano
  * @version 1.0
  */
-public class Menu {
+public class Menu implements Comparable<Menu> {
 
     @ColumnName(name = "ID")
     private Long id;
@@ -157,6 +157,11 @@ public class Menu {
      */
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    @Override
+    public int compareTo(Menu o) {
+        return this.id.compareTo(o.getId());
     }
 
 }

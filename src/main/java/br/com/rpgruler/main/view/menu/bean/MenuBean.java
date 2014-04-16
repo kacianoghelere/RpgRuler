@@ -32,6 +32,7 @@ public class MenuBean extends ViewBean<MenuView> {
         this.dao = new MenuDAO();
         getView().getIconModel().setData(getMenuIcons());
         getView().getParentModel().setData(getParentMenus());
+        buildPreview();
     }
 
     @Override
@@ -54,7 +55,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Constroi os dados no menu de pré-visualização
      */
-    public void buildPreview() {
+    private void buildPreview() {
         new MenuBuilder(getView().getMainScreen(), getView().getRoot())
                 .buildMenu(getView().getModel().getData());
     }
@@ -86,6 +87,7 @@ public class MenuBean extends ViewBean<MenuView> {
         Menu menu = buildNew(title, icon, parent);
         getView().getModel().add(menu);
         getView().getParentModel().setData(getParentMenus());
+        buildPreview();
         getView().refresh();
     }
 

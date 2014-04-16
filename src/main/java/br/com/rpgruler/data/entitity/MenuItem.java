@@ -8,14 +8,14 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class MenuItem {
+public class MenuItem implements Comparable<MenuItem> {
 
     @ColumnName(name = "ID")
     private Long id;
     @ColumnName(name = "Menu")
     private Long menu;
     @ColumnName(name = "Titulo")
-    private String title;    
+    private String title;
     @ColumnName(name = "Classe")
     private String viewClass;
     @ColumnName(name = "Ícone")
@@ -172,6 +172,11 @@ public class MenuItem {
      */
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    @Override
+    public int compareTo(MenuItem o) {
+        return this.id.compareTo(o.getId());
     }
 
 }

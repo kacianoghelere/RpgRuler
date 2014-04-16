@@ -8,12 +8,14 @@ import br.com.rpgruler.data.entitity.MenuItem;
 import br.com.rpgruler.main.MainScreen;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.SwingUtilities;
 
 /**
  * Classe utilitária para construção de menus e dos respectivos itens
@@ -47,8 +49,10 @@ public class MenuBuilder {
 
     /**
      * Inicia a construção do menu
+     *
+     * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      */
-    public void build() {
+    public void build() throws ClassNotFoundException {
         List<Menu> menus = menuDAO.getList();
         List<MenuItem> views = viewDAO.getList();
         build(menus, views, true);
@@ -58,41 +62,16 @@ public class MenuBuilder {
      * Inicia a construção do menu
      *
      * @param menus <code>List(Menu)</code> Listas de Menus
-     * @param views <code>List(MenuView)</code> Listas de MenuViews
+     * @param items <code>List(MenuItem)</code> Listas de MenuItems
      * @param execute <code>boolean</code> O item deve executar a função?
+     * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      */
-    public void build(List<Menu> menus, List<MenuItem> views, boolean execute) {
-        root.removeAll();
-        menus.stream().forEach((Menu menu) -> {
-            if (menu.getParent() == 0) {
-                try {
-                    JMenu generated = generateMenu(menu);
-                    buildItem(generated, views, execute);
-                    root.add(generated);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(MenuBuilder.class.getName())
-                            .log(Level.SEVERE, null, ex);
-                }
-            } else {
-                menus.stream().filter((parent) -> (parent.getId().equals(menu.getId()))).forEach((Menu parent) -> {
-                    for (Component component : root.getComponents()) {
-                        if (component instanceof JMenu) {
-                            JMenu jmenu = (JMenu) component;
-                            if (jmenu.getText().equals(parent.toString())) {
-                                try {
-                                    JMenu generated = generateMenu(menu);
-                                    buildItem(generated, views, execute);
-                                    jmenu.add(generated);
-                                } catch (ClassNotFoundException ex) {
-                                    Logger.getLogger(MenuBuilder.class.getName())
-                                            .log(Level.SEVERE, null, ex);
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        });
+    public void build(List<Menu> menus, List<MenuItem> items, boolean execute) throws ClassNotFoundException {
+        Collections.sort(menus);
+        Collections.sort(items);
+        buildMenu(menus);
+        buildItems(items, execute);
+        SwingUtilities.updateComponentTreeUI(root);
     }
 
     /**
@@ -101,41 +80,96 @@ public class MenuBuilder {
      * @param menus <code>List(Menu)</code> Listas de menus
      */
     public void buildMenu(List<Menu> menus) {
-        root.removeAll();
+        root.removeAll();        
         menus.stream().forEach((Menu menu) -> {
             if (menu.getParent() == 0) {
-                root.add(generateMenu(menu));
+                insertMenu(root, menu);
             } else {
-                menus.stream().filter((parent) -> (parent.getId().equals(menu.getId()))).forEach((parent) -> {
-                    for (Component component : root.getComponents()) {
-                        if (component instanceof JMenu) {
-                            JMenu jmenu = (JMenu) component;
-                            if (jmenu.getText().equals(parent.toString())) {
-                                jmenu.add(generateMenu(menu));
-                            }
-                        }
-                    }
-                });
+                recursiveMenus(root, menu);
             }
         });
+        SwingUtilities.updateComponentTreeUI(root);
     }
 
     /**
-     * Constroi os items no Menu
+     * Insere um novo menu no menu pai
+     *
+     * @param parent <code>JMenu</code> Menu pai
+     * @param menu <code>Menu</code> Menu à ser inserido
+     */
+    private void insertMenu(JMenu parent, Menu menu) {
+        JMenu jmenu = generateMenu(menu);
+        parent.add(jmenu);
+    }
+
+    /**
+     * Insere os menus recursivamente
+     *
+     * @param parent <code>JMenu</code> Menu pai
+     * @param menu <code>Menu</code> Menu à ser inserido
+     */
+    private void recursiveMenus(JMenu parent, Menu menu) {
+        for (Component comp : parent.getMenuComponents()) {
+            JMenu jmenu = (JMenu) comp;
+            Long menuid = Long.parseLong(jmenu.getText().split("-")[0].trim());
+            if (menu.getParent().equals(menuid)) {
+                insertMenu(jmenu, menu);
+                break;
+            } else {
+                recursiveMenus(jmenu, menu);
+            }
+        }
+    }
+
+    /**
+     * Constroi os itens nos menus
+     *
+     * @param items <code>List(MenuItem)</code> Listas de MenuItems
+     * @param execute <code>boolean</code> O item deve executar a função?
+     * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
+     */
+    public void buildItems(List<MenuItem> items, boolean execute) throws ClassNotFoundException {
+        for (MenuItem item : items) {
+            if (((long) 0) == item.getMenu()) {
+                insertItem(root, item, execute);
+            } else {
+                recursiveItems(root, item, execute);
+            }
+        }
+    }
+
+    /**
+     * Constroi os itens recursivamente nos menus
+     *
+     * @param jmenu <code>JMenu</code> Menu de base
+     * @param item <code>MenuItem</code> Item a ser inserido
+     * @param execute <code>boolean</code> O item deve executar a função?
+     * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
+     */
+    public void recursiveItems(JMenu jmenu, MenuItem item, boolean execute) throws ClassNotFoundException {
+        for (Component comp : jmenu.getMenuComponents()) {
+            JMenu menu = (JMenu) comp;
+            Long menuid = Long.parseLong(menu.toString().split("-")[0].trim());
+            if (item.getMenu().equals(menuid)) {
+                insertItem(menu, item, execute);
+                break;
+            } else {
+                recursiveItems(menu, item, execute);
+            }
+        }
+    }
+
+    /**
+     * Insere o item no Menu
      *
      * @param menu <code>JMenu</code> Menu de base
-     * @param views <code>List(MenuView)</code> Lista de Views
+     * @param item <code>List(MenuView)</code> Lista de Views
      * @param execute <code>boolean</code> O item deve executar a função?
      * @throws java.lang.ClassNotFoundException Exceção de classe não encontrada
      */
-    public void buildItem(JMenu menu, List<MenuItem> views, boolean execute) throws ClassNotFoundException {
-        for (MenuItem view : views) {
-            long menuid = Long.parseLong(menu.toString().split("-")[0]);
-            if (view.getId().equals(menuid)) {
-                JMenuItem item = generateItem(view, execute);
-                menu.add(item);
-            }
-        }
+    private void insertItem(JMenu menu, MenuItem item, boolean execute) throws ClassNotFoundException {
+        JMenuItem jitem = generateItem(item, execute);
+        menu.add(jitem);
     }
 
     /**
@@ -146,6 +180,7 @@ public class MenuBuilder {
      */
     public JMenu generateMenu(Menu menu) {
         JMenu jmenu = new JMenu();
+        jmenu.setName(menu.toString());
         jmenu.setText(menu.toString());
         jmenu.setIcon(new ImageIcon(getClass().getResource(menu.getIcon())));
         return jmenu;
@@ -196,6 +231,10 @@ public class MenuBuilder {
      */
     public void setRoot(JMenu root) {
         this.root = root;
+    }
+
+    private void generateItem(MenuItem menu) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
