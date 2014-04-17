@@ -49,10 +49,11 @@ public class TermsView extends View {
         this.wtModel = new GListModel<>();
         this.efModel = new GListModel<>();
         this.perkModel = new GListModel<>();
-        this.jListWearTypes.setModel(wtModel);
-        this.jListEffectTypes.setModel(efModel);
-        this.jListPerkTypes.setModel(perkModel);
+        this.gListWearTypes.setModel(wtModel);
+        this.gListEffectTypes.setModel(efModel);
+        this.gListPerkTypes.setModel(perkModel);
         this.gTWearTypes.setPlaceholder("Tipos de uso");
+        this.gTWearTypes.grabFocus();
         this.gTEffectTypes.setPlaceholder("Tipos de efeitos");
         this.gTPerkTypes.setPlaceholder("Tipos de vantagens");
         try {
@@ -60,6 +61,7 @@ public class TermsView extends View {
         } catch (Exception ex) {
             Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     @Override
@@ -73,7 +75,7 @@ public class TermsView extends View {
      * @return <code>JList</code> Lista de tipos de uso para armas
      */
     public JList getWearList() {
-        return jListWearTypes;
+        return gListWearTypes;
     }
 
     /**
@@ -90,8 +92,8 @@ public class TermsView extends View {
      * Remove o WearType selecionado
      */
     private void removeWearType() {
-        if (jListWearTypes.getModel().getSize() > 0 && jListWearTypes.getSelectedIndex() >= 0) {
-            WearType wt = wtModel.getElementAt(jListWearTypes.getSelectedIndex());
+        if (gListWearTypes.getModel().getSize() > 0 && gListWearTypes.getSelectedIndex() >= 0) {
+            WearType wt = wtModel.getElementAt(gListWearTypes.getSelectedIndex());
             wtModel.remove(wt);
         }
     }
@@ -110,8 +112,8 @@ public class TermsView extends View {
      * Remove o EffectType selecionado
      */
     private void removeEffectType() {
-        if (jListEffectTypes.getModel().getSize() > 0 && jListEffectTypes.getSelectedIndex() >= 0) {
-            EffectType ef = efModel.getElementAt(jListEffectTypes.getSelectedIndex());
+        if (gListEffectTypes.getModel().getSize() > 0 && gListEffectTypes.getSelectedIndex() >= 0) {
+            EffectType ef = efModel.getElementAt(gListEffectTypes.getSelectedIndex());
             efModel.remove(ef);
         }
     }
@@ -130,8 +132,8 @@ public class TermsView extends View {
      * Remove o PerkType selecionado
      */
     private void removePerkType() {
-        if (jListPerkTypes.getModel().getSize() > 0 && jListPerkTypes.getSelectedIndex() >= 0) {
-            PerkType type = perkModel.getElementAt(jListPerkTypes.getSelectedIndex());
+        if (gListPerkTypes.getModel().getSize() > 0 && gListPerkTypes.getSelectedIndex() >= 0) {
+            PerkType type = perkModel.getElementAt(gListPerkTypes.getSelectedIndex());
             perkModel.remove(type);
         }
     }
@@ -176,17 +178,17 @@ public class TermsView extends View {
     private void initComponents() {
 
         jPWearTypes = new javax.swing.JPanel();
-        jSP1 = new javax.swing.JScrollPane();
-        jListWearTypes = new javax.swing.JList();
         gTWearTypes = new br.com.gmp.comps.textfield.GTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gListWearTypes = new br.com.gmp.comps.list.GList();
         jPEffects = new javax.swing.JPanel();
-        jSP2 = new javax.swing.JScrollPane();
-        jListEffectTypes = new javax.swing.JList();
         gTEffectTypes = new br.com.gmp.comps.textfield.GTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        gListEffectTypes = new br.com.gmp.comps.list.GList();
         jPPerkTypes = new javax.swing.JPanel();
-        jSP3 = new javax.swing.JScrollPane();
-        jListPerkTypes = new javax.swing.JList();
         gTPerkTypes = new br.com.gmp.comps.textfield.GTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        gListPerkTypes = new br.com.gmp.comps.list.GList();
 
         setClosable(true);
         setIconifiable(true);
@@ -200,25 +202,9 @@ public class TermsView extends View {
 
         jPWearTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Usos de armas"));
 
-        jListWearTypes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jListWearTypes.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jListWearTypes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListWearTypes.setMaximumSize(new java.awt.Dimension(150, 125));
-        jListWearTypes.setMinimumSize(new java.awt.Dimension(150, 125));
-        jListWearTypes.setPreferredSize(new java.awt.Dimension(150, 125));
-        jListWearTypes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jListWearTypesKeyReleased(evt);
-            }
-        });
-        jSP1.setViewportView(jListWearTypes);
-
         gTWearTypes.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTWearTypes.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTWearTypes.setNextFocusableComponent(gTEffectTypes);
         gTWearTypes.setPreferredSize(new java.awt.Dimension(150, 28));
         gTWearTypes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -226,22 +212,34 @@ public class TermsView extends View {
             }
         });
 
+        gListWearTypes.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        gListWearTypes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gListWearTypesKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(gListWearTypes);
+
         javax.swing.GroupLayout jPWearTypesLayout = new javax.swing.GroupLayout(jPWearTypes);
         jPWearTypes.setLayout(jPWearTypesLayout);
         jPWearTypesLayout.setHorizontalGroup(
             jPWearTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPWearTypesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPWearTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(gTWearTypes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPWearTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(gTWearTypes, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
         jPWearTypesLayout.setVerticalGroup(
             jPWearTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPWearTypesLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTWearTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -251,31 +249,27 @@ public class TermsView extends View {
 
         jPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Efeitos"));
 
-        jListEffectTypes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jListEffectTypes.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jListEffectTypes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListEffectTypes.setMaximumSize(new java.awt.Dimension(150, 125));
-        jListEffectTypes.setMinimumSize(new java.awt.Dimension(150, 125));
-        jListEffectTypes.setPreferredSize(new java.awt.Dimension(150, 125));
-        jListEffectTypes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jListEffectTypesKeyReleased(evt);
-            }
-        });
-        jSP2.setViewportView(jListEffectTypes);
-
         gTEffectTypes.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTEffectTypes.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTEffectTypes.setNextFocusableComponent(gTPerkTypes);
         gTEffectTypes.setPreferredSize(new java.awt.Dimension(150, 28));
         gTEffectTypes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gTEffectTypesKeyReleased(evt);
             }
         });
+
+        gListEffectTypes.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        gListEffectTypes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gListEffectTypesKeyReleased(evt);
+            }
+        });
+        jScrollPane2.setViewportView(gListEffectTypes);
 
         javax.swing.GroupLayout jPEffectsLayout = new javax.swing.GroupLayout(jPEffects);
         jPEffects.setLayout(jPEffectsLayout);
@@ -284,16 +278,16 @@ public class TermsView extends View {
             .addGroup(jPEffectsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSP2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(gTEffectTypes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(gTEffectTypes, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPEffectsLayout.setVerticalGroup(
             jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPEffectsLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jSP2, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                .addGap(6, 6, 6)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTEffectTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
@@ -302,31 +296,27 @@ public class TermsView extends View {
 
         jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Vantagens"));
 
-        jListPerkTypes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jListPerkTypes.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jListPerkTypes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListPerkTypes.setMaximumSize(new java.awt.Dimension(150, 125));
-        jListPerkTypes.setMinimumSize(new java.awt.Dimension(150, 125));
-        jListPerkTypes.setPreferredSize(new java.awt.Dimension(150, 125));
-        jListPerkTypes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jListPerkTypesKeyReleased(evt);
-            }
-        });
-        jSP3.setViewportView(jListPerkTypes);
-
         gTPerkTypes.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTPerkTypes.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTPerkTypes.setNextFocusableComponent(gTWearTypes);
         gTPerkTypes.setPreferredSize(new java.awt.Dimension(150, 28));
         gTPerkTypes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gTPerkTypesKeyReleased(evt);
             }
         });
+
+        gListPerkTypes.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        gListPerkTypes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gListPerkTypesKeyReleased(evt);
+            }
+        });
+        jScrollPane3.setViewportView(gListPerkTypes);
 
         javax.swing.GroupLayout jPPerkTypesLayout = new javax.swing.GroupLayout(jPPerkTypes);
         jPPerkTypes.setLayout(jPPerkTypesLayout);
@@ -335,16 +325,16 @@ public class TermsView extends View {
             .addGroup(jPPerkTypesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSP3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(gTPerkTypes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(gTPerkTypes, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPPerkTypesLayout.setVerticalGroup(
             jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPPerkTypesLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jSP3, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                .addGap(6, 6, 6)
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTPerkTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
@@ -362,26 +352,6 @@ public class TermsView extends View {
         }
     }//GEN-LAST:event_gTWearTypesKeyReleased
 
-    private void jListWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListWearTypesKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            try {
-                removeWearType();
-            } catch (Exception e) {
-                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
-    }//GEN-LAST:event_jListWearTypesKeyReleased
-
-    private void jListEffectTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListEffectTypesKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            try {
-                removeEffectType();
-            } catch (Exception e) {
-                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
-    }//GEN-LAST:event_jListEffectTypesKeyReleased
-
     private void gTEffectTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTEffectTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
@@ -391,16 +361,6 @@ public class TermsView extends View {
             }
         }
     }//GEN-LAST:event_gTEffectTypesKeyReleased
-
-    private void jListPerkTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListPerkTypesKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            try {
-                removePerkType();
-            } catch (Exception e) {
-                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
-    }//GEN-LAST:event_jListPerkTypesKeyReleased
 
     private void gTPerkTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTPerkTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -412,18 +372,48 @@ public class TermsView extends View {
         }
     }//GEN-LAST:event_gTPerkTypesKeyReleased
 
+    private void gListWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gListWearTypesKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                removeWearType();
+            } catch (Exception ex) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gListWearTypesKeyReleased
+
+    private void gListEffectTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gListEffectTypesKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                removeEffectType();
+            } catch (Exception ex) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gListEffectTypesKeyReleased
+
+    private void gListPerkTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gListPerkTypesKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                removePerkType();
+            } catch (Exception ex) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gListPerkTypesKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.list.GList gListEffectTypes;
+    private br.com.gmp.comps.list.GList gListPerkTypes;
+    private br.com.gmp.comps.list.GList gListWearTypes;
     private br.com.gmp.comps.textfield.GTextField gTEffectTypes;
     private br.com.gmp.comps.textfield.GTextField gTPerkTypes;
     private br.com.gmp.comps.textfield.GTextField gTWearTypes;
-    private javax.swing.JList jListEffectTypes;
-    private javax.swing.JList jListPerkTypes;
-    private javax.swing.JList jListWearTypes;
     private javax.swing.JPanel jPEffects;
     private javax.swing.JPanel jPPerkTypes;
     private javax.swing.JPanel jPWearTypes;
-    private javax.swing.JScrollPane jSP1;
-    private javax.swing.JScrollPane jSP2;
-    private javax.swing.JScrollPane jSP3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

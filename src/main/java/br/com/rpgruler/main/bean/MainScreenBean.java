@@ -4,6 +4,7 @@ import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
@@ -66,19 +67,19 @@ public class MainScreenBean implements MainListener {
     @Override
     public void setActualView(View view) {
         this.actualView = view;
-        this.screen.setControls(
+        this.screen.setControls(new ViewParameter(
                 this.actualView.canSave() != null ? actualView.canSave() : false,
                 this.actualView.canProcces() != null ? actualView.canProcces() : false,
                 this.actualView.canClear() != null ? actualView.canClear() : false,
                 this.actualView.canLoad() != null ? actualView.canLoad() : false
-        );
+        ));
         System.out.println("View ativa: " + actualView.getClass().getSimpleName());
     }
 
     @Override
     public void clear() {
         if (screen.getDesktop().getComponentCount() == 0) {
-            this.screen.setControls(false, false, false, false, false);
+            this.screen.setControls(new ViewParameter(false, false, false, false));
         }
     }
 

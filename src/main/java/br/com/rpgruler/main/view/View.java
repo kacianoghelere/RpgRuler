@@ -113,7 +113,17 @@ public abstract class View extends JInternalFrame implements ViewListener {
     @Override
     public void save() {
         try {
-            getBean().save(new BeanEvent(this, null));
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().save(new BeanEvent(View.this, null));
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+            showMessage("Salvo.", MainScreen.SUCCESS_MSG);
         } catch (Exception ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,7 +132,17 @@ public abstract class View extends JInternalFrame implements ViewListener {
     @Override
     public void process() {
         try {
-            getBean().process(new BeanEvent(this, null));
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().process(new BeanEvent(View.this, null));
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+            showMessage("Dados processados.", MainScreen.INFORMATIVE_MSG);
         } catch (Exception ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -131,7 +151,17 @@ public abstract class View extends JInternalFrame implements ViewListener {
     @Override
     public void clear() {
         try {
-            getBean().clear(new BeanEvent(this, null));
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().clear(new BeanEvent(View.this, null));
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+            showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
         } catch (Exception ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -140,7 +170,17 @@ public abstract class View extends JInternalFrame implements ViewListener {
     @Override
     public void load() {
         try {
-            getBean().load(new BeanEvent(this, null));
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().load(new BeanEvent(View.this, null));
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+            showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
         } catch (Exception ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -148,7 +188,7 @@ public abstract class View extends JInternalFrame implements ViewListener {
 
     @Override
     public void showMessage(String msg, int type) {
-        getMainScreen().printTypedMsg(msg, type);
+        getMainScreen().printTypedMsg(msg, type);        
     }
 
     @Override

@@ -12,6 +12,7 @@ import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.terms.TermsView;
 import br.com.rpgruler.main.view.menuitem.MenuItemView;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -90,7 +91,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private void initialize() {
         setIconImage(new ImageIcon(getClass().getResource(ICON)).getImage());
         initComponents();
-        setControls(false, false, false, false, false);
+        setControls(new ViewParameter(false, false, false, false));
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         listener = new MainScreenBean(this);
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
@@ -163,6 +164,18 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         this.jBProcess.setEnabled(controls[1]);
         this.jBClear.setEnabled(controls[2]);
         this.jBRefresh.setEnabled(controls[3]);
+    }
+
+    /**
+     * Modifica os controles de acordo com a View ativa
+     *
+     * @param param <code>ViewParameter</code> Parametros das opções de controle
+     */
+    public void setControls(ViewParameter param) {
+        this.jBSave.setEnabled(param.isSave());
+        this.jBProcess.setEnabled(param.isProcess());
+        this.jBClear.setEnabled(param.isClear());
+        this.jBRefresh.setEnabled(param.isLoad());
     }
 
     /**
@@ -249,15 +262,19 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         switch (type) {
             case 1:
                 printMsg(text, INFORMATIVE_ICON);
+                System.out.println("(INFO) " + text);
                 break;
             case 2:
                 printMsg(text, QUESTION_ICON);
+                System.out.println("(QUESTION) " + text);
                 break;
             case 3:
                 printMsg(text, WARNING_ICON);
+                System.out.println("(WARNING) " + text);
                 break;
             case 4:
                 printMsg(text, ERROR_ICON);
+                System.out.println("(ERROR) " + text);
                 break;
             default:
                 throw new AssertionError();
