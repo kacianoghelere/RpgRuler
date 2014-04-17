@@ -275,6 +275,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
             case 4:
                 printMsg(text, ERROR_ICON);
                 System.out.println("(ERROR) " + text);
+            case 5:
+                printMsg(text, SUCCESS_ICON);
+                System.out.println("(SUCCESS) " + text);
                 break;
             default:
                 throw new AssertionError();
