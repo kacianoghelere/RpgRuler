@@ -90,7 +90,7 @@ public class TermsView extends View {
      * Remove o WearType selecionado
      */
     private void removeWearType() {
-        if (jListWearTypes.getSelectedIndex() >= 0) {
+        if (jListWearTypes.getModel().getSize() > 0 && jListWearTypes.getSelectedIndex() >= 0) {
             WearType wt = wtModel.getElementAt(jListWearTypes.getSelectedIndex());
             wtModel.remove(wt);
         }
@@ -110,7 +110,7 @@ public class TermsView extends View {
      * Remove o EffectType selecionado
      */
     private void removeEffectType() {
-        if (jListEffectTypes.getSelectedIndex() >= 0) {
+        if (jListEffectTypes.getModel().getSize() > 0 && jListEffectTypes.getSelectedIndex() >= 0) {
             EffectType ef = efModel.getElementAt(jListEffectTypes.getSelectedIndex());
             efModel.remove(ef);
         }
@@ -120,9 +120,9 @@ public class TermsView extends View {
      * Adiciona novo elemento na lista de PerkTypes
      */
     public void addPerkType() {
-        if (gTEffectTypes.validateComponent()) {
-            bean.addEffect(new BeanEvent(this, gTPerkTypes.getText()));
-            gTEffectTypes.setText("");
+        if (gTPerkTypes.validateComponent()) {
+            bean.addPerk(new BeanEvent(this, gTPerkTypes.getText()));
+            gTPerkTypes.setText("");
         }
     }
 
@@ -130,7 +130,7 @@ public class TermsView extends View {
      * Remove o PerkType selecionado
      */
     private void removePerkType() {
-        if (jListPerkTypes.getSelectedIndex() >= 0) {
+        if (jListPerkTypes.getModel().getSize() > 0 && jListPerkTypes.getSelectedIndex() >= 0) {
             PerkType type = perkModel.getElementAt(jListPerkTypes.getSelectedIndex());
             perkModel.remove(type);
         }
