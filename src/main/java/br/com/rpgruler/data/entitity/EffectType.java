@@ -6,11 +6,11 @@ import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
 /**
- * Entidade dos tipos de Perk
+ * Entidade dos tipos de Effects
  *
  * @author kaciano
  */
-public class PerkType {
+public class EffectType {
 
     @NotCopiable
     @Ignore
@@ -20,53 +20,53 @@ public class PerkType {
     private String title;
 
     /**
-     * Cria nova instancia de PerkType
+     * Cria nova instancia de EffectType
      */
-    public PerkType() {
+    public EffectType() {
     }
 
     /**
-     * Cria nova instancia de PerkType
+     * Cria nova instancia de EffectType
      *
      * @param id <code></code>
      * @param typeName <code></code>
      */
-    public PerkType(Long id, String typeName) {
+    public EffectType(Long id, String typeName) {
         this.id = id;
         this.title = typeName;
     }
 
     /**
-     * Retorna o ID do PerkType
+     * Retorna o ID do EffectType
      *
-     * @return <code>Long</code> ID do PerkType
+     * @return <code>Long</code> ID do EffectType
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do PerkType
+     * Modifica o ID do EffectType
      *
-     * @param id <code>Long</code> ID do PerkType
+     * @param id <code>Long</code> ID do EffectType
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Retorna o titulo do PerkType
+     * Retorna o titulo do EffectType
      *
-     * @return <code>String</code> Titulo do PerkType
+     * @return <code>String</code> Titulo do EffectType
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Modifica o titulo do PerkType
+     * Modifica o titulo do EffectType
      *
-     * @param title <code>String</code> Titulo do PerkType
+     * @param title <code>String</code> Titulo do EffectType
      */
     public void setTitle(String title) {
         this.title = title;
@@ -88,7 +88,7 @@ public class PerkType {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PerkType other = (PerkType) obj;
+        final EffectType other = (EffectType) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

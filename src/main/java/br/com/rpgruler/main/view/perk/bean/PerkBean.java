@@ -1,58 +1,56 @@
 package br.com.rpgruler.main.view.perk.bean;
 
+import br.com.rpgruler.data.db.dao.PerkDAO;
+import br.com.rpgruler.data.entitity.Perk;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.bean.ViewBean;
 
 /**
+ * Bean de controle para a PerkView
  *
  * @author kaciano
  */
 public class PerkBean extends ViewBean<PerkView> {
 
-    private PerkView view;
+    private PerkDAO dao;
 
     /**
+     * Cria nova instancia de PerkBean
      *
-     * @param view
+     * @param view <code>PerkView</code> View do Bean
      */
     public PerkBean(PerkView view) {
         super(view);
-        this.view = view;
+        this.dao = new PerkDAO();
     }
 
     @Override
     public void save(BeanEvent evt) throws Exception {
-        super.save(evt);
-    }
-
-    @Override
-    public void process(BeanEvent evt) throws Exception {
-        super.process(evt);
-    }
-
-    @Override
-    public void clear(BeanEvent evt) throws Exception {
-        super.clear(evt);
-    }
-
-    @Override
-    public void load(BeanEvent evt) throws Exception {
-        super.load(evt);
-    }
-
-    @Override
-    public PerkView getView() {
-        return view;
+        this.dao.replaceAll(getView().getModel().getData());
     }
 
     /**
-     * Modifica a view do bean
+     * Adiciona novo item na tabela
      *
-     * @param view <code>PerkView</code> Tela
+     * @param evt <code>BeanEvent</code> Evento
      */
-    public void setView(PerkView view) {
-        this.view = view;
+    public void add(BeanEvent evt) {
+
     }
 
+        /**
+     * Retorna o próximo ID da lista
+     *
+     * @return <code>Long</code> Próximo ID
+     */
+    public Long getNextID() {
+        Long id = (long) 0;
+        for (Perk perk : getView().getModel().getData()) {
+            if (id < perk.getId()) {
+                id = perk.getId();
+            }
+        }
+        return (id + 1);
+    }
 }

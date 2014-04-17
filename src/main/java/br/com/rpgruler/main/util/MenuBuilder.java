@@ -67,8 +67,8 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      */
     public void build(List<Menu> menus, List<MenuItem> items, boolean execute) throws ClassNotFoundException {
-        Collections.sort(menus);
-        Collections.sort(items);
+        //Collections.sort(menus);
+        //Collections.sort(items);
         buildMenu(menus);
         buildItems(items, execute);
         SwingUtilities.updateComponentTreeUI(root);
@@ -81,7 +81,7 @@ public class MenuBuilder {
      */
     public void buildMenu(List<Menu> menus) {
         root.removeAll();        
-        Collections.sort(menus);
+        //Collections.sort(menus);
         menus.stream().forEach((Menu menu) -> {
             if (menu.getParent() == 0) {
                 insertMenu(root, menu);
@@ -131,7 +131,7 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      */
     public void buildItems(List<MenuItem> items, boolean execute) throws ClassNotFoundException {
-        Collections.sort(items);
+        //Collections.sort(items);
         for (MenuItem item : items) {
             if (((long) 0) == item.getMenu()) {
                 insertItem(root, item, execute);

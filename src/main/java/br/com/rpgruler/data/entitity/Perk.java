@@ -1,144 +1,178 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
+ * Entidade de vantagens
  *
  * @author kaciano
+ * @version 1.0
  */
-public class Perk implements Serializable {
+public class Perk {
 
     @NotCopiable
+    @Ignore
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nome")
-    private String perkName;
+    private String title;
     @ColumnName(name = "Descrição")
-    private String perkDescription;
+    private String description;
     @ColumnName(name = "Herdado")
     private Boolean inherited;
     @ColumnName(name = "Tipo")
-    private PerkType perkType;
+    private PerkType type;
 
     /**
-     *
+     * Cria nova instancia de Perk
      */
     public Perk() {
     }
 
     /**
+     * Cria nova instancia de Perk
      *
-     * @param id
+     * @param id <code>Long</code> Código
+     * @param title <code>String</code> Titulo
+     * @param description <code>String</code> Descrição
+     * @param inherited <code>Boolean</code> Herdavel?
+     * @param type <code>PerkType</code> Tipo do perk
      */
-    public Perk(Long id) {
+    public Perk(Long id, String title, String description, Boolean inherited, PerkType type) {
         this.id = id;
+        this.title = title;
+        this.description = description;
+        this.inherited = inherited;
+        this.type = type;
     }
 
     /**
+     * Retorna o ID do Perk
      *
-     * @return
+     * @return <code>Long</code>
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o ID do Perk
      *
-     * @param id
+     * @param id <code>Long</code>
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o titulo do Perk
      *
-     * @return
+     * @return <code>String</code>
      */
-    public String getPerkName() {
-        return perkName;
+    public String getTitle() {
+        return title;
     }
 
     /**
+     * Modifica o titulo do Perk
      *
-     * @param perkName
+     * @param title <code>String</code>
      */
-    public void setPerkName(String perkName) {
-        this.perkName = perkName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
+     * Retorna a descrição do Perk
      *
-     * @return
+     * @return <code>String</code>
      */
-    public String getPerkDescription() {
-        return perkDescription;
+    public String getDescription() {
+        return description;
     }
 
     /**
+     * Modifica a descrição do Perk
      *
-     * @param perkDescription
+     * @param description <code>String</code>
      */
-    public void setPerkDescription(String perkDescription) {
-        this.perkDescription = perkDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
+     * O Perk é herdavel?
      *
-     * @return
+     * @return <code>Boolean</code> Herdavel?
      */
-    public Boolean getInherited() {
+    public Boolean isInherited() {
         return inherited;
     }
 
     /**
+     * Modifica o status de herdavel do Perk
      *
-     * @param inherited
+     * @param inherited <code>Boolean</code> Herdavel?
      */
     public void setInherited(Boolean inherited) {
         this.inherited = inherited;
     }
 
     /**
+     * Retorna o tipo do Perk
      *
-     * @return
+     * @return <code>PerkType</code>
      */
-    public PerkType getPerkType() {
-        return perkType;
+    public PerkType getType() {
+        return type;
     }
 
     /**
+     * Modifica o tipo do Perk
      *
-     * @param perkType
+     * @param type <code>PerkType</code>
      */
-    public void setPerkType(PerkType perkType) {
-        this.perkType = perkType;
+    public void setType(PerkType type) {
+        this.type = type;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        hash = 71 * hash + Objects.hashCode(this.title);
+        hash = 71 * hash + Objects.hashCode(this.inherited);
+        hash = 71 * hash + Objects.hashCode(this.type);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Perk)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Perk other = (Perk) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Perk other = (Perk) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.inherited, other.inherited)) {
+            return false;
+        }
+        return Objects.equals(this.type, other.type);
     }
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.Perk[ id=" + id + " ]";
+        return this.title;
     }
 
 }

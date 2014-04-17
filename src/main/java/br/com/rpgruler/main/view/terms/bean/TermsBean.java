@@ -1,9 +1,11 @@
 package br.com.rpgruler.main.view.terms.bean;
 
 import br.com.gmp.comps.model.GListModel;
-import br.com.rpgruler.data.db.dao.EffectDAO;
+import br.com.rpgruler.data.db.dao.EffectTypeDAO;
+import br.com.rpgruler.data.db.dao.PerkTypeDAO;
 import br.com.rpgruler.data.db.dao.WearTypeDAO;
-import br.com.rpgruler.data.entitity.Effect;
+import br.com.rpgruler.data.entitity.EffectType;
+import br.com.rpgruler.data.entitity.PerkType;
 import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
@@ -17,8 +19,9 @@ import br.com.rpgruler.main.view.terms.TermsView;
  */
 public class TermsBean extends ViewBean<TermsView> {
 
-    private WearTypeDAO wtDao;
-    private EffectDAO effectDao;
+    private WearTypeDAO wearTypeDao;
+    private EffectTypeDAO effectTypeDAO;
+    private PerkTypeDAO perkTypeDao;
 
     /**
      * Cria nova instancia de TermsBean
@@ -27,24 +30,24 @@ public class TermsBean extends ViewBean<TermsView> {
      */
     public TermsBean(TermsView view) {
         super(view);
-        this.wtDao = new WearTypeDAO();
-        this.effectDao = new EffectDAO();
+        this.wearTypeDao = new WearTypeDAO();
+        this.effectTypeDAO = new EffectTypeDAO();
+        this.perkTypeDao = new PerkTypeDAO();
     }
 
     @Override
     public void save(BeanEvent evt) throws Exception {
-        wtDao.deleteAll();
-        effectDao.deleteAll();
-        wtDao.insertAll(getView().getWtModel().getData());
-        effectDao.insertAll(getView().getEfModel().getData());
+        wearTypeDao.replaceAll(getView().getWtModel().getData());
+        effectTypeDAO.replaceAll(getView().getEfModel().getData());
+        perkTypeDao.replaceAll(getView().getPerkModel().getData());
     }
 
     @Override
     public void load(BeanEvent evt) throws Exception {
         GListModel<WearType> wtModel = getView().getWtModel();
-        wtModel.setData(wtDao.getList());
-        GListModel<Effect> efModel = getView().getEfModel();
-        efModel.setData(effectDao.getList());
+        wtModel.setData(wearTypeDao.getList());
+        GListModel<EffectType> efModel = getView().getEfModel();
+        efModel.setData(effectTypeDAO.getList());
     }
 
     /**
@@ -59,14 +62,25 @@ public class TermsBean extends ViewBean<TermsView> {
     }
 
     /**
-     * Adiciona novo elemento na lista de WearTypes
+     * Adiciona novo elemento na lista de efeitos
      *
      * @param evt <code>BeanEvent</code> Evento do Bean
      */
     public void addEffect(BeanEvent evt) {
         Long nextId = getNextEffectID();
-        Effect type = new Effect(nextId, (String) evt.getValue());
+        EffectType type = new EffectType(nextId, (String) evt.getValue());
         getView().getEfModel().add(type);
+    }
+
+    /**
+     * Adiciona novo elemento na lista de PerkTypes
+     *
+     * @param evt <code>BeanEvent</code> Evento do Bean
+     */
+    public void addPerk(BeanEvent evt) {
+        Long nextId = getNextPerkID();
+        PerkType type = new PerkType(nextId, (String) evt.getValue());
+        getView().getPerkModel().add(type);
     }
 
     /**
@@ -91,9 +105,24 @@ public class TermsBean extends ViewBean<TermsView> {
      */
     public Long getNextEffectID() {
         Long id = (long) 0;
-        for (Effect effect : getView().getEfModel().getData()) {
-            if (effect.getId() > id) {
-                id = effect.getId();
+        for (EffectType type : getView().getEfModel().getData()) {
+            if (type.getId() > id) {
+                id = type.getId();
+            }
+        }
+        return (id + 1);
+    }
+
+    /**
+     * Retorna o próximo ID dos PerkTypes
+     *
+     * @return <code>Long</code> Próximo ID para PerkType
+     */
+    public Long getNextPerkID() {
+        Long id = (long) 0;
+        for (PerkType type : getView().getPerkModel().getData()) {
+            if (type.getId() > id) {
+                id = type.getId();
             }
         }
         return (id + 1);

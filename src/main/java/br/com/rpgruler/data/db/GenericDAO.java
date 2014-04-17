@@ -1,10 +1,10 @@
 package br.com.rpgruler.data.db;
 
+import br.com.rpgruler.data.db.interfaces.DAO;
 import br.com.gmp.utils.object.ObjectCopy;
-import br.com.rpgruler.data.db.constant.EntityMap;
+import br.com.rpgruler.data.db.map.EntityMap;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
-import com.db4o.ObjectServer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Query;
 import java.io.File;
@@ -19,14 +19,12 @@ import java.util.List;
  * @version 1.0
  * @param <T> Classe de entidade
  */
-public class GenericDAO<T> {
+public class GenericDAO<T> implements DAO<T> {
 
     private Class<T> objectClass;
     private String prefix = "db/";
     private String database;
     private String sufix = ".yap";
-
-    private ObjectServer objectServer;
 
     /**
      * Cria nova instancia de GenericDAO
@@ -46,6 +44,7 @@ public class GenericDAO<T> {
      *
      * @return <code>ObjectContainer</code> Conexão com o banco
      */
+    @Override
     public ObjectContainer getDB() {
         return Db4o.openFile(database);
     }
@@ -55,10 +54,12 @@ public class GenericDAO<T> {
      *
      * @return <code>T</code> Entidade
      */
+    @Override
     public List<T> getList() {
         ObjectContainer db = Db4o.openFile(database);
         Query query = db.query();
         query.constrain(objectClass);
+        query.descend("id").orderAscending();
         ObjectSet os = query.execute();
         List<T> objs = new ArrayList<>();
         objs.addAll(os);
@@ -71,6 +72,7 @@ public class GenericDAO<T> {
      *
      * @param entity <code>T</code> Entidade
      */
+    @Override
     public void insert(T entity) {
         ObjectContainer db = Db4o.openFile(database);
         db.store(entity);
@@ -83,6 +85,7 @@ public class GenericDAO<T> {
      *
      * @param entities <code>List(T)</code> Entidades
      */
+    @Override
     public void insertAll(List<T> entities) {
         ObjectContainer db = Db4o.openFile(database);
         entities.stream().forEach((entity) -> {
@@ -98,6 +101,7 @@ public class GenericDAO<T> {
      * @param entity <code>T</code> Entidade
      * @throws java.lang.IllegalAccessException Acesso ilegal
      */
+    @Override
     public void update(T entity) throws IllegalArgumentException, IllegalAccessException {
         ObjectContainer db = Db4o.openFile(database);
         Query query = db.query();
@@ -114,6 +118,7 @@ public class GenericDAO<T> {
      *
      * @param entities <code>List(T)</code> Lista a ser deletada
      */
+    @Override
     public void deleteAll(List<T> entities) {
         ObjectContainer db = Db4o.openFile(database);
         entities.stream().forEach((entity) -> {
@@ -127,6 +132,7 @@ public class GenericDAO<T> {
     /**
      * Deleta todos os objetos do banco
      */
+    @Override
     public void deleteAll() {
         ObjectContainer db = Db4o.openFile(database);
         ObjectSet<T> query = db.query(objectClass);
@@ -142,6 +148,7 @@ public class GenericDAO<T> {
      *
      * @param entity <code>T</code> Entidade
      */
+    @Override
     public void delete(T entity) {
         ObjectContainer db = Db4o.openFile(database);
         ObjectSet<T> os = db.queryByExample(entity);
@@ -155,6 +162,7 @@ public class GenericDAO<T> {
      *
      * @param entities <code>List(T)</code> Lista dos novos registros
      */
+    @Override
     public void replaceAll(List<T> entities) {
         deleteAll();
         insertAll(entities);
@@ -166,11 +174,12 @@ public class GenericDAO<T> {
      * @param id <code>Integer</code> ID
      * @return <code>T</code> Entidade
      */
+    @Override
     public T queryByID(int id) {
         ObjectContainer db = Db4o.openFile(database);
         Query query = db.query();
         query.constrain(objectClass);
-        query.descend("id").constrain(id);
+        query.descend("id").orderAscending();
         ObjectSet<T> os = query.execute();
         List<T> list = new ArrayList<>();
         list.addAll(os);
@@ -188,6 +197,7 @@ public class GenericDAO<T> {
      * @param value <code>Object</code> Valor da busca
      * @return <code>List(T)</code> Lista contendo o resultado
      */
+    @Override
     public List<T> queryByField(String field, Object value) {
         List<T> list = new ArrayList<>();
         ObjectContainer db = Db4o.openFile(database);
@@ -201,65 +211,82 @@ public class GenericDAO<T> {
     }
 
     /**
+     * Retorna a classe do objeto que aplica o DAO
      *
-     * @return
+     * @return <code>Class(?)</code> Classe do DAO
      */
+    @Override
     public Class<T> getObjectClass() {
         return objectClass;
     }
 
     /**
+     * Modifica a classe do objeto que aplica o DAO
      *
-     * @param oClass
+     * @param oClass <code>Class(?)</code> Classe do DAO
      */
+    @Override
     public void setObjectClass(Class<T> oClass) {
         this.objectClass = oClass;
     }
 
     /**
+     * Retorna o prefixo da base de dados (Caminho do arquivo)
      *
-     * @return
+     * @return <code>String</code> Prefixo da base de dados
      */
+    @Override
     public String getPrefix() {
         return prefix;
     }
 
     /**
+     * Modifica o prefixo da base de dados (Caminho do arquivo)
      *
-     * @param prefix
+     * @param prefix <code>String</code> Prefixo da base de dados
      */
+    @Override
     public void setPrefix(String prefix) {
         this.prefix = prefix;
     }
 
     /**
+     * Retorna o nome da base de dados
      *
-     * @return
+     * @return <code>String</code> Nome da base de dados
      */
+    @Override
     public String getDatabase() {
         return database;
     }
 
     /**
+     * Modifica o nome da base de dados
      *
-     * @param database
+     * @param database <code>String</code> Nome da base de dados
      */
+    @Override
     public void setDatabase(String database) {
         this.database = database;
     }
 
     /**
+     * Retorna o sufixo da base de dados (Extensão do arquivo)
      *
-     * @return
+     * @return <code>String</code> sufixo da base de dados (Extensão do arquivo)
      */
+    @Override
     public String getSufix() {
         return sufix;
     }
 
     /**
+     * Modifica o sufixo da base de dados (Extensão do arquivo)
      *
-     * @param sufix
+     * @param sufix <code>String</code> Sufixo da base de dados (Extensão do
+     * arquivo)
      */
+    @Override
     public void setSufix(String sufix) {
         this.sufix = sufix;
     }

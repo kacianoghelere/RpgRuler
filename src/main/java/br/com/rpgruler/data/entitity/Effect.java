@@ -1,142 +1,169 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
+ * Entidade para registro de efeitos
  *
  * @author kaciano
  */
 public class Effect implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @NotCopiable
+    @Ignore
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nome")
-    private String effectName;
+    private String title;
     @ColumnName(name = "Proporção")
-    private long strength;
+    private Long strength;
+    @ColumnName(name = "Tipo")
+    private EffectType type;
 
     /**
-     *
+     * Cria nova instancia de efeito
      */
     public Effect() {
     }
 
     /**
+     * Cria nova instancia de efeito
      *
-     * @param id
+     * @param id <code>Long</code> ID do efeito
+     * @param title <code>String</code> Titulo do efeito
+     * @param strength <code>Long</code> Força do efeito
      */
-    public Effect(Long id) {
+    public Effect(Long id, String title, Long strength) {
         this.id = id;
-    }
-
-    /**
-     *
-     * @param id
-     * @param effectName
-     */
-    public Effect(Long id, String effectName) {
-        this.id = id;
-        this.effectName = effectName;
-        this.strength = (long) 0;
-    }
-
-    /**
-     *
-     * @param id
-     * @param effectName
-     * @param strength
-     */
-    public Effect(Long id, String effectName, long strength) {
-        this.id = id;
-        this.effectName = effectName;
+        this.title = title;
         this.strength = strength;
     }
 
     /**
+     * Cria nova instancia de efeito
      *
-     * @param id
-     * @param strength
+     * @param id <code>Long</code> ID do efeito
+     * @param title <code>String</code> Titulo do efeito
+     * @param strength <code>Long</code> Força do efeito
+     * @param type <code>EffectType</code> Tipo do efeito
      */
-    public Effect(Long id, long strength) {
+    public Effect(Long id, String title, Long strength, EffectType type) {
         this.id = id;
+        this.title = title;
         this.strength = strength;
+        this.type = type;
     }
 
     /**
+     * Retorna o ID do efeito
      *
-     * @return
+     * @return <code>Long</code> ID do efeito
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o ID do efeito
      *
-     * @param id
+     * @param id <code>Long</code> ID do efeito
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o titulo do efeito
      *
-     * @return
+     * @return <code>String</code> Titulo do efeito
      */
-    public String getEffectName() {
-        return effectName;
+    public String getTitle() {
+        return title;
     }
 
     /**
+     * Modifica o titulo do efeito
      *
-     * @param effectName
+     * @param title <code>String</code> Titulo do efeito
      */
-    public void setEffectName(String effectName) {
-        this.effectName = effectName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
+     * Retorna a força do efeito
      *
-     * @return
+     * @return <code>Long</code> Força do efeito
      */
     public long getStrength() {
         return strength;
     }
 
     /**
+     * Modifica a força do efeito
      *
-     * @param strength
+     * @param strength <code>Long</code> Força do efeito
      */
     public void setStrength(long strength) {
         this.strength = strength;
     }
 
+    /**
+     * Retorna o Tipo do efeito
+     *
+     * @return <code>EffectType</code> Tipo do efeito
+     */
+    public EffectType getType() {
+        return type;
+    }
+
+    /**
+     * Modifica o Tipo do efeito
+     *
+     * @param type <code>EffectType</code> Tipo do efeito
+     */
+    public void setType(EffectType type) {
+        this.type = type;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.title);
+        hash = 53 * hash + (int) (this.strength ^ (this.strength >>> 32));
+        hash = 53 * hash + Objects.hashCode(this.type);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Effect)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Effect other = (Effect) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Effect other = (Effect) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.strength, other.strength)) {
+            return false;
+        }
+        return Objects.equals(this.type, other.type);
     }
 
     @Override
     public String toString() {
-        return effectName;
+        return title;
     }
 
 }
