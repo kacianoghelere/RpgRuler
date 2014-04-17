@@ -200,6 +200,7 @@ public class TermsView extends View {
 
         jPWearTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Usos de armas"));
 
+        jListWearTypes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jListWearTypes.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -250,6 +251,7 @@ public class TermsView extends View {
 
         jPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Efeitos"));
 
+        jListEffectTypes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jListEffectTypes.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -298,8 +300,9 @@ public class TermsView extends View {
 
         getContentPane().add(jPEffects);
 
-        jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Efeitos"));
+        jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Vantagens"));
 
+        jListPerkTypes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jListPerkTypes.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }

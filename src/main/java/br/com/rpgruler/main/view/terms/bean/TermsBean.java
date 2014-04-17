@@ -44,10 +44,9 @@ public class TermsBean extends ViewBean<TermsView> {
 
     @Override
     public void load(BeanEvent evt) throws Exception {
-        GListModel<WearType> wtModel = getView().getWtModel();
-        wtModel.setData(wearTypeDao.getList());
-        GListModel<EffectType> efModel = getView().getEfModel();
-        efModel.setData(effectTypeDAO.getList());
+        getView().getWtModel().setData(wearTypeDao.getList());
+        getView().getEfModel().setData(effectTypeDAO.getList());
+        getView().getPerkModel().setData(perkTypeDao.getList());
     }
 
     /**
