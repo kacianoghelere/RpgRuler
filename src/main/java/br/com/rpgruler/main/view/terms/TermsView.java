@@ -61,7 +61,7 @@ public class TermsView extends View {
         } catch (Exception ex) {
             Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @Override
@@ -80,8 +80,10 @@ public class TermsView extends View {
 
     /**
      * Adiciona novo elemento na lista de tipos de uso para armas
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
      */
-    public void addWearType() {
+    public void addWearType(KeyEvent evt) {
         if (gTWearTypes.validateComponent()) {
             bean.addWearType(new BeanEvent(this, gTWearTypes.getText()));
             gTWearTypes.setText("");
@@ -90,8 +92,10 @@ public class TermsView extends View {
 
     /**
      * Remove o WearType selecionado
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
      */
-    private void removeWearType() {
+    private void removeWearType(KeyEvent evt) {
         if (gListWearTypes.getModel().getSize() > 0 && gListWearTypes.getSelectedIndex() >= 0) {
             WearType wt = wtModel.getElementAt(gListWearTypes.getSelectedIndex());
             wtModel.remove(wt);
@@ -100,8 +104,10 @@ public class TermsView extends View {
 
     /**
      * Adiciona novo elemento na lista de efeitos
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
      */
-    public void addEffectType() {
+    public void addEffectType(KeyEvent evt) {
         if (gTEffectTypes.validateComponent()) {
             bean.addEffect(new BeanEvent(this, gTEffectTypes.getText()));
             gTEffectTypes.setText("");
@@ -110,8 +116,10 @@ public class TermsView extends View {
 
     /**
      * Remove o EffectType selecionado
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
      */
-    private void removeEffectType() {
+    private void removeEffectType(KeyEvent evt) {
         if (gListEffectTypes.getModel().getSize() > 0 && gListEffectTypes.getSelectedIndex() >= 0) {
             EffectType ef = efModel.getElementAt(gListEffectTypes.getSelectedIndex());
             efModel.remove(ef);
@@ -120,8 +128,10 @@ public class TermsView extends View {
 
     /**
      * Adiciona novo elemento na lista de PerkTypes
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
      */
-    public void addPerkType() {
+    public void addPerkType(KeyEvent evt) {
         if (gTPerkTypes.validateComponent()) {
             bean.addPerk(new BeanEvent(this, gTPerkTypes.getText()));
             gTPerkTypes.setText("");
@@ -130,8 +140,10 @@ public class TermsView extends View {
 
     /**
      * Remove o PerkType selecionado
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
      */
-    private void removePerkType() {
+    private void removePerkType(KeyEvent evt) {
         if (gListPerkTypes.getModel().getSize() > 0 && gListPerkTypes.getSelectedIndex() >= 0) {
             PerkType type = perkModel.getElementAt(gListPerkTypes.getSelectedIndex());
             perkModel.remove(type);
@@ -198,7 +210,7 @@ public class TermsView extends View {
         setMaximumSize(new java.awt.Dimension(620, 300));
         setMinimumSize(new java.awt.Dimension(620, 300));
         setPreferredSize(new java.awt.Dimension(620, 300));
-        getContentPane().setLayout(new java.awt.GridLayout(1, 3));
+        getContentPane().setLayout(new java.awt.GridLayout());
 
         jPWearTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Usos de armas"));
 
@@ -345,7 +357,7 @@ public class TermsView extends View {
     private void gTWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTWearTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
-                addWearType();
+                addWearType(evt);
             } catch (Exception ex) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -355,7 +367,7 @@ public class TermsView extends View {
     private void gTEffectTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTEffectTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
-                addEffectType();
+                addEffectType(evt);
             } catch (Exception ex) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -365,7 +377,7 @@ public class TermsView extends View {
     private void gTPerkTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTPerkTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
-                addPerkType();
+                addPerkType(evt);
             } catch (Exception ex) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -375,7 +387,7 @@ public class TermsView extends View {
     private void gListWearTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gListWearTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             try {
-                removeWearType();
+                removeWearType(evt);
             } catch (Exception ex) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -385,7 +397,7 @@ public class TermsView extends View {
     private void gListEffectTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gListEffectTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             try {
-                removeEffectType();
+                removeEffectType(evt);
             } catch (Exception ex) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -395,7 +407,7 @@ public class TermsView extends View {
     private void gListPerkTypesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gListPerkTypesKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             try {
-                removePerkType();
+                removePerkType(evt);
             } catch (Exception ex) {
                 Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
             }
