@@ -161,7 +161,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMIMaterials">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Registro"/>
+                    <Property name="text" type="java.lang.String" value="Cadastro"/>
                     <Property name="name" type="java.lang.String" value="jMIMaterials" noResource="true"/>
                   </Properties>
                   <Events>
@@ -201,6 +201,26 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMITermsActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMEffects">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/status/slice1390_@.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Efeitos"/>
+                <Property name="name" type="java.lang.String" value="jMEffects" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMIEffects">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cadastro"/>
+                    <Property name="name" type="java.lang.String" value="jMIEffects" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIEffectsActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

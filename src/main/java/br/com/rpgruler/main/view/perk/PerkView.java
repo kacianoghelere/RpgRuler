@@ -10,7 +10,7 @@ import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.perk.bean.PerkBean;
 import br.com.rpgruler.main.view.perk.dialog.PerkDialog;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
-import br.com.rpgruler.main.view.interfaces.HasTable;
+import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.perk.model.PerkModel;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author kaciano
  */
-public class PerkView extends View implements TableSource<Perk>, HasTable {
+public class PerkView extends View implements TableSource<Perk>, TableView {
 
     private PerkBean bean;
     private PerkModel model;

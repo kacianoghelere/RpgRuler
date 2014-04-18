@@ -10,7 +10,7 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.materials.bean.MaterialsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
-import br.com.rpgruler.main.view.interfaces.HasTable;
+import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.materials.model.MaterialsModel;
 import br.com.rpgruler.main.view.materials.object.MaterialsParameter;
 import br.com.rpgruler.main.view.object.ViewParameter;
@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.0
  */
-public class MaterialsView extends View implements TableSource<PrimeMaterial>, HasTable {
+public class MaterialsView extends View implements TableSource<PrimeMaterial>, TableView {
 
     private MaterialsBean bean;
     private MaterialsModel model;

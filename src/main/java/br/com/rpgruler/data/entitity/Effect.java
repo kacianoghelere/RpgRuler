@@ -20,7 +20,7 @@ public class Effect implements Serializable {
     @ColumnName(name = "Nome")
     private String title;
     @ColumnName(name = "Proporção")
-    private Long strength;
+    private Double strength;
     @ColumnName(name = "Tipo")
     private EffectType type;
 
@@ -35,9 +35,9 @@ public class Effect implements Serializable {
      *
      * @param id <code>Long</code> ID do efeito
      * @param title <code>String</code> Titulo do efeito
-     * @param strength <code>Long</code> Força do efeito
+     * @param strength <code>Double</code> Força do efeito
      */
-    public Effect(Long id, String title, Long strength) {
+    public Effect(Long id, String title, Double strength) {
         this.id = id;
         this.title = title;
         this.strength = strength;
@@ -48,10 +48,10 @@ public class Effect implements Serializable {
      *
      * @param id <code>Long</code> ID do efeito
      * @param title <code>String</code> Titulo do efeito
-     * @param strength <code>Long</code> Força do efeito
+     * @param strength <code>Double</code> Força do efeito
      * @param type <code>EffectType</code> Tipo do efeito
      */
-    public Effect(Long id, String title, Long strength, EffectType type) {
+    public Effect(Long id, String title, Double strength, EffectType type) {
         this.id = id;
         this.title = title;
         this.strength = strength;
@@ -97,18 +97,18 @@ public class Effect implements Serializable {
     /**
      * Retorna a força do efeito
      *
-     * @return <code>Long</code> Força do efeito
+     * @return <code>Double</code> Força do efeito
      */
-    public long getStrength() {
+    public Double getStrength() {
         return strength;
     }
 
     /**
      * Modifica a força do efeito
      *
-     * @param strength <code>Long</code> Força do efeito
+     * @param strength <code>Double</code> Força do efeito
      */
-    public void setStrength(long strength) {
+    public void setStrength(Double strength) {
         this.strength = strength;
     }
 
@@ -133,10 +133,9 @@ public class Effect implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.title);
-        hash = 53 * hash + (int) (this.strength ^ (this.strength >>> 32));
-        hash = 53 * hash + Objects.hashCode(this.type);
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.strength);
+        hash = 37 * hash + Objects.hashCode(this.type);
         return hash;
     }
 
@@ -150,9 +149,6 @@ public class Effect implements Serializable {
         }
         final Effect other = (Effect) obj;
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
             return false;
         }
         if (!Objects.equals(this.strength, other.strength)) {

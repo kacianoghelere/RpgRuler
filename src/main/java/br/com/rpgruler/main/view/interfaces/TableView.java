@@ -9,7 +9,7 @@ import br.com.gmp.comps.table.GTable;
  * @author kaciano
  * @version 1.0
  */
-public interface HasTable {
+public interface TableView {
 
     /**
      * Adiciona um item na tabela

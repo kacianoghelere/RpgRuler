@@ -6,6 +6,7 @@ import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
 import br.com.rpgruler.main.view.DiceView;
+import br.com.rpgruler.main.view.effect.EffectView;
 import br.com.rpgruler.main.view.element.ElementView;
 import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.menu.MenuView;
@@ -339,6 +340,8 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMTerms = new javax.swing.JMenu();
         jMIArmorTypes = new javax.swing.JMenuItem();
         jMITerms = new javax.swing.JMenuItem();
+        jMEffects = new javax.swing.JMenu();
+        jMIEffects = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPG");
@@ -563,7 +566,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMMaterials.setText("Materiais");
         jMMaterials.setName("jMMaterials"); // NOI18N
 
-        jMIMaterials.setText("Registro");
+        jMIMaterials.setText("Cadastro");
         jMIMaterials.setName("jMIMaterials"); // NOI18N
         jMIMaterials.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -599,6 +602,21 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMTerms.add(jMITerms);
 
         jMInfo.add(jMTerms);
+
+        jMEffects.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/status/slice1390_@.png"))); // NOI18N
+        jMEffects.setText("Efeitos");
+        jMEffects.setName("jMEffects"); // NOI18N
+
+        jMIEffects.setText("Cadastro");
+        jMIEffects.setName("jMIEffects"); // NOI18N
+        jMIEffects.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIEffectsActionPerformed(evt);
+            }
+        });
+        jMEffects.add(jMIEffects);
+
+        jMInfo.add(jMEffects);
 
         jMenuBar.add(jMInfo);
 
@@ -699,6 +717,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new MenuItemView(this));
     }//GEN-LAST:event_jMIViewsActionPerformed
 
+    private void jMIEffectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIEffectsActionPerformed
+        listener.insertView(new EffectView(this));
+    }//GEN-LAST:event_jMIEffectsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -709,9 +731,11 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMControls;
+    private javax.swing.JMenu jMEffects;
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIArmorTypes;
     private javax.swing.JMenuItem jMIDice;
+    private javax.swing.JMenuItem jMIEffects;
     private javax.swing.JMenuItem jMIMaterials;
     private javax.swing.JMenuItem jMIMenus;
     private javax.swing.JMenuItem jMIProcess;

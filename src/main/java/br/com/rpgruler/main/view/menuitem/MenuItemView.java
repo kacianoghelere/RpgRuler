@@ -12,7 +12,7 @@ import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
-import br.com.rpgruler.main.view.interfaces.HasTable;
+import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewWrapper;
 import br.com.rpgruler.main.view.menuitem.bean.MenuItemBean;
 import br.com.rpgruler.main.view.menuitem.model.MenuItemModel;
@@ -27,7 +27,7 @@ import javax.swing.ImageIcon;
  * @author kaciano
  * @version 1.0
  */
-public class MenuItemView extends View implements HasTable, TableSource<MenuItem> {
+public class MenuItemView extends View implements TableView, TableSource<MenuItem> {
 
     private MenuItemBean bean;
     private MenuItemModel model;

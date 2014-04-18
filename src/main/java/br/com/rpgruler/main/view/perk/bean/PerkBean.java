@@ -35,6 +35,7 @@ public class PerkBean extends ViewBean<PerkView> {
      *
      * @param evt <code>BeanEvent</code> Evento
      */
+    @Override
     public void add(BeanEvent evt) {
 
     }

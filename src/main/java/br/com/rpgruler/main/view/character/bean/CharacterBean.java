@@ -19,24 +19,4 @@ public class CharacterBean extends ViewBean<CharacterView> {
         super(view);
     }
 
-    @Override
-    public void save(BeanEvent evt) throws Exception {
-        super.save(evt);
-    }
-
-    @Override
-    public void process(BeanEvent evt) throws Exception {
-        super.process(evt);
-    }
-
-    @Override
-    public void clear(BeanEvent evt) throws Exception {
-        super.clear(evt);
-    }
-
-    @Override
-    public void load(BeanEvent evt) throws Exception {
-        super.load(evt);
-    }
-
 }

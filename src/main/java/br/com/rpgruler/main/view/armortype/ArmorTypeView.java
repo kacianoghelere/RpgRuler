@@ -11,9 +11,10 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.armortype.bean.ArmorTypeBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
-import br.com.rpgruler.main.view.interfaces.HasTable;
+import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.armortype.model.ArmorTypeModel;
 import br.com.rpgruler.main.view.armortype.object.ArmorTypeParameter;
+import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.0
  */
-public class ArmorTypeView extends View implements TableSource<ArmorType>, HasTable {
+public class ArmorTypeView extends View implements TableSource<ArmorType>, TableView {
 
     private ArmorTypeBean bean;
     private ArmorTypeModel model;
@@ -94,15 +95,8 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, HasTa
         String text = "Deseja remover os itens selecionados?";
         if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
             try {
-                if (gTable.getSelectedRow() >= 0) {
-                    List<ArmorType> types = new ArrayList<>();
-                    for (int i : gTable.getSelectedRows()) {
-                        System.out.println("Removendo a linha: " + i);
-                        types.add(model.getObject(i));
-                    }
-                    bean.remove(new BeanEvent(this, types.toArray(new ArmorType[]{})));
-                } else {
-                    new BalloonUtil().showTimedBallon(gTable, "Nenhum item selecionado");
+                if (gTable.getSelectedRowCount() > 0) {
+                    model.remove(gTable.getSelectedRows());
                 }
             } catch (NumberFormatException e) {
                 Logger.getLogger(ArmorTypeView.class.getName())

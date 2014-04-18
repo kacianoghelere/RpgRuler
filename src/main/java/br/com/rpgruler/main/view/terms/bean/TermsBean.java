@@ -1,6 +1,5 @@
 package br.com.rpgruler.main.view.terms.bean;
 
-import br.com.gmp.comps.model.GListModel;
 import br.com.rpgruler.data.db.dao.EffectTypeDAO;
 import br.com.rpgruler.data.db.dao.PerkTypeDAO;
 import br.com.rpgruler.data.db.dao.WearTypeDAO;
@@ -10,6 +9,7 @@ import br.com.rpgruler.data.entitity.WearType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.terms.TermsView;
+import br.com.rpgruler.main.view.terms.object.TermsParameter;
 
 /**
  * Bean para TermsView
@@ -19,9 +19,9 @@ import br.com.rpgruler.main.view.terms.TermsView;
  */
 public class TermsBean extends ViewBean<TermsView> {
 
-    private WearTypeDAO wearTypeDao;
-    private EffectTypeDAO effectTypeDAO;
-    private PerkTypeDAO perkTypeDao;
+    private final WearTypeDAO wearTypeDao;
+    private final EffectTypeDAO effectTypeDAO;
+    private final PerkTypeDAO perkTypeDao;
 
     /**
      * Cria nova instancia de TermsBean

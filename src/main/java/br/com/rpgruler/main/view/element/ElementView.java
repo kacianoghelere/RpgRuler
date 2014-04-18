@@ -8,12 +8,14 @@ import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.data.entitity.Element;
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.element.bean.ElementBean;
 import br.com.rpgruler.main.view.element.model.ElementModel;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
-import br.com.rpgruler.main.view.interfaces.HasTable;
+import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
+import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
@@ -29,7 +31,7 @@ import javax.swing.JTable;
  *
  * @author kaciano
  */
-public class ElementView extends View implements TableSource<Element>, HasTable {
+public class ElementView extends View implements TableSource<Element>, TableView {
 
     private ElementBean bean;
     private ElementModel model;
@@ -106,11 +108,12 @@ public class ElementView extends View implements TableSource<Element>, HasTable 
             if (gTTitle.validateComponent() && (gCBSymbol.getSelectedIndex() >= 0)
                     && (gCBBonus.getSelectedIndex() >= 0)
                     && (gCBWeak.getSelectedIndex() >= 0)) {
-                String get = gTTitle.getText();
-                int symbol = gCBSymbol.getSelectedIndex();
-                Element bonus = bonusModel.getSelectedItem();
-                Element weak = weakModel.getSelectedItem();
-                bean.add(get, symbol, bonus, weak);
+                ViewWrapper vw = new ViewWrapper(this);
+                vw.addValue(gTTitle.getText());
+                vw.addValue(gCBSymbol.getSelectedIndex());
+                vw.addValue(bonusModel.getSelectedItem());
+                vw.addValue(weakModel.getSelectedItem());
+                bean.add(new BeanEvent(this, vw));
             }
         } catch (Exception e) {
             Logger.getLogger(ElementView.class.getName()).log(Level.SEVERE, null, e);

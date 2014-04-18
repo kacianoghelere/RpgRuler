@@ -37,6 +37,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
      *
      * @param evt <code>BeanEvent</code> Evento do bean
      */
+    @Override
     public void add(BeanEvent evt) {
         ArmorTypeParameter param = (ArmorTypeParameter) evt.getValue();
         ArmorType type = new ArmorType(Long.MIN_VALUE, param.getTypeName(),
@@ -64,7 +65,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
      * @return <code>Integer</code> Próximo ID
      */
     private Long getNextID() {
-        Long id = new Long(0);
+        Long id = (long) 0;
         for (ArmorType type : getView().getModel().getData()) {
             if (type.getId() > id) {
                 id = type.getId();

@@ -79,6 +79,7 @@ public class MenuBean extends ViewBean<MenuView> {
      *
      * @param evt <code>BeanEvent</code> Evento do Bean
      */
+    @Override
     public void add(BeanEvent evt) {
         Triad<String, Integer, Long> triad = (Triad<String, Integer, Long>) evt.getValue();
         String title = triad.getFirst();

@@ -36,6 +36,7 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      *
      * @param evt <code>BeanEvent</code> Evento do bean
      */
+    @Override
     public void add(BeanEvent evt) {
         ViewWrapper vw = (ViewWrapper) evt.getValue();
         String title = (String) vw.getValue(0);
