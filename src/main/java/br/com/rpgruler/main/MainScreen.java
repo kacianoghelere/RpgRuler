@@ -5,7 +5,7 @@ import br.com.rpgruler.main.interfaces.IMainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
-import br.com.rpgruler.main.view.DiceView;
+import br.com.rpgruler.main.view.dice.DiceView;
 import br.com.rpgruler.main.view.effect.EffectView;
 import br.com.rpgruler.main.view.element.ElementView;
 import br.com.rpgruler.main.view.materials.MaterialsView;

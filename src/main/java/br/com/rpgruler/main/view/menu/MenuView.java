@@ -63,8 +63,8 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
         this.parentModel = new GComboBoxModel<>();
         this.model = new MenuModel();
         this.gTable.buildTable(this, 0, model);
-        this.gCBIcon.setModel(iconModel);
-        this.gCBParent.setModel(parentModel);
+        this.gCBIcon.setGModel(iconModel);
+        this.gCBParent.setGModel(parentModel);
         this.bean = new MenuBean(this);
         this.decorator = new TableDecorator(gTable).withIcon(ICON_COLUMN);
     }
@@ -123,12 +123,12 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
      * Atualiza os dados nas comboboxes
      */
     public void refresh() {
-        gCBIcon.setModel(iconModel);
-        gCBIcon.repaint();
-        gCBIcon.revalidate();
-        gCBParent.setModel(parentModel);
-        gCBParent.repaint();
-        gCBParent.revalidate();
+        this.gCBIcon.setGModel(iconModel);
+        this.gCBIcon.repaint();
+        this.gCBIcon.revalidate();
+        this.gCBParent.setGModel(parentModel);
+        this.gCBParent.repaint();
+        this.gCBParent.revalidate();
         SwingUtilities.updateComponentTreeUI(this);
     }
 

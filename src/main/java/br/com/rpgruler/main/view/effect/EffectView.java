@@ -52,7 +52,7 @@ public class EffectView extends br.com.rpgruler.main.view.View implements TableV
         this.model = new EffectModel();
         this.typeModel = new GComboBoxModel<>();
         this.gTable.setModel(model);
-        this.gCBType.setModel(typeModel);
+        this.gCBType.setGModel(typeModel);
         this.bean = new EffectBean(this);
     }
 

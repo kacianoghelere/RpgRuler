@@ -47,20 +47,15 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
      */
     private void initialize() {
         this.initComponents();
-        this.setSize(700, 480);
+        this.setSize(630, 400);
         this.setControls(new ViewParameter(true, false, false, false));
-        initComponents();
+        this.initComponents();
         this.model = new WeaponTypeModel();
         this.wearModel = new GComboBoxModel<>();
-        this.gTable.buildTable(this, 0, model);
-        this.gCBWear.setModel(wearModel);
+        this.gTable.buildTable(this, 0, model);        
         this.tableUtil = new TableUtil(this);
-        this.bean = new WeaponTypeBean(this);
-        try {
-            this.bean.load(null);
-        } catch (Exception ex) {
-            Logger.getLogger(WeaponTypeView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.bean = new WeaponTypeBean(this);   
+        this.gCBWear.setGModel(wearModel);
     }
 
     @Override
@@ -262,9 +257,9 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                     .addComponent(jBRemove)
                     .addComponent(jLQtd2)
                     .addComponent(jSpQtd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jSpQtd1, jSpQtd2});

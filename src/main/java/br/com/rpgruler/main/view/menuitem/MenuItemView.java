@@ -62,8 +62,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         this.model = new MenuItemModel();
         this.gTable.buildTable(this, 0, model);
         this.bean = new MenuItemBean(this);
-        this.gCBIcon.setModel(iconModel);
-        this.gCBMenu.setModel(parentModel);
+        this.gCBIcon.setGModel(iconModel);
+        this.gCBMenu.setGModel(parentModel);
         this.decorator = new TableDecorator(gTable).withIcon(ICON_COLUMN);
     }
 

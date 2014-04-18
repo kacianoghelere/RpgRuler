@@ -42,7 +42,7 @@ public class PerkDialog extends GDialog {
         this.setSize(400, 236);
         this.initComponents();
         this.typeModel = new GComboBoxModel<>(new PerkTypeDAO().getList());
-        this.gCBType.setModel(typeModel);
+        this.gCBType.setGModel(typeModel);
         this.setPerk(perk);
         this.setVisible(true);
     }

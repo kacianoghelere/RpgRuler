@@ -1,14 +1,14 @@
-package br.com.rpgruler.main.view;
+package br.com.rpgruler.main.view.dice;
 
 import br.com.gmp.utils.image.ImageUtil;
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.util.DiceTool;
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -94,7 +94,7 @@ public class DiceView extends View {
      * @return <code>String</code> Valor do dado
      */
     private String throwDice(int type) {
-        return String.valueOf(new Random().nextInt(type) + 1);
+        return String.valueOf(DiceTool.throwDice(type));
     }
 
     @Override
@@ -118,8 +118,6 @@ public class DiceView extends View {
         D10 = new javax.swing.JButton();
         D12 = new javax.swing.JButton();
         D20 = new javax.swing.JButton();
-        jToolBar1 = new javax.swing.JToolBar();
-        jBRefresh = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -178,39 +176,17 @@ public class DiceView extends View {
         D20.setName("D20"); // NOI18N
         jPDices.add(D20);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-
-        jBRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
-        jBRefresh.setFocusable(false);
-        jBRefresh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBRefresh.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRefreshActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBRefresh);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPDices, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPDices, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPDices, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRefreshActionPerformed
-        load();
-    }//GEN-LAST:event_jBRefreshActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton D10;
@@ -219,8 +195,6 @@ public class DiceView extends View {
     private javax.swing.JButton D4;
     private javax.swing.JButton D6;
     private javax.swing.JButton D8;
-    private javax.swing.JButton jBRefresh;
     private javax.swing.JPanel jPDices;
-    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
