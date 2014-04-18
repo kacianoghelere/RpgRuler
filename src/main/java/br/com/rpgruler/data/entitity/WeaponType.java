@@ -25,9 +25,9 @@ public class WeaponType implements Serializable {
     @ColumnName(name = "Dano base")
     private Double damageBase;
     @Editable
-    @ColumnName(name = "Classificação")
+    @ColumnName(name = "Categoria")
     private Integer category;
-    @ColumnName(name = "Uso")
+    @ColumnName(name = "Porte")
     private WearType wearType;
     @Editable
     @ColumnName(name = "Quantidade 1")
