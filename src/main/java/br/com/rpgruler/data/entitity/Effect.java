@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
@@ -17,8 +18,10 @@ public class Effect implements Serializable {
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
+    @Editable
     @ColumnName(name = "Nome")
     private String title;
+    @Editable
     @ColumnName(name = "Proporção")
     private Double strength;
     @ColumnName(name = "Tipo")

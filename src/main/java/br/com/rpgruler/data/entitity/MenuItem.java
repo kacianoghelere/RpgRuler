@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import java.util.Objects;
 
 /**
@@ -12,10 +13,13 @@ public class MenuItem implements Comparable<MenuItem> {
 
     @ColumnName(name = "ID")
     private Long id;
+    @Editable
     @ColumnName(name = "Menu")
     private Long menu;
+    @Editable
     @ColumnName(name = "Titulo")
     private String title;
+    @Editable
     @ColumnName(name = "Classe")
     private String viewClass;
     @ColumnName(name = "Ícone")

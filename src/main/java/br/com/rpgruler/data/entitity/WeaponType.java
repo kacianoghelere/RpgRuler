@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
@@ -17,16 +18,21 @@ public class WeaponType implements Serializable {
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
+    @Editable
     @ColumnName(name = "Nome")
     private String typeName;
+    @Editable
     @ColumnName(name = "Dano base")
     private Double damageBase;
+    @Editable
     @ColumnName(name = "Classificação")
     private Integer category;
     @ColumnName(name = "Uso")
     private WearType wearType;
+    @Editable
     @ColumnName(name = "Quantidade 1")
     private Double materialAmount1;
+    @Editable
     @ColumnName(name = "Quantidade 2")
     private Double materialAmount2;
 

@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ public class WearType {
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
+    @Editable
     @ColumnName(name = "Uso")
     private String typeName;
 

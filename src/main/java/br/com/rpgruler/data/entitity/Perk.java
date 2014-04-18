@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
@@ -14,13 +15,15 @@ import java.util.Objects;
 public class Perk {
 
     @NotCopiable
-    @Ignore
+    @Ignore    
     @ColumnName(name = "Código")
     private Long id;
+    @Editable
     @ColumnName(name = "Nome")
     private String title;
     @ColumnName(name = "Descrição")
     private String description;
+    @Editable
     @ColumnName(name = "Herdado")
     private Boolean inherited;
     @ColumnName(name = "Tipo")

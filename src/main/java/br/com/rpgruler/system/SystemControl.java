@@ -1,6 +1,10 @@
 package br.com.rpgruler.system;
 
 import br.com.rpgruler.main.MainScreen;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * Classe de inicialização da aplicação
@@ -24,6 +28,11 @@ public class SystemControl {
      * @param args
      */
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(SystemControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         SystemControl systemControl = new SystemControl();
     }
 }

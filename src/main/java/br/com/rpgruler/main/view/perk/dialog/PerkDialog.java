@@ -1,7 +1,14 @@
 package br.com.rpgruler.main.view.perk.dialog;
 
+import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.dialog.GDialog;
+import br.com.rpgruler.data.db.dao.PerkTypeDAO;
+import br.com.rpgruler.data.entitity.Perk;
+import br.com.rpgruler.data.entitity.PerkType;
 import br.com.rpgruler.main.view.perk.PerkView;
+import br.com.rpgruler.main.view.perk.bean.PerkBean;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Janela de dialogo para cadastro de perks
@@ -11,27 +18,86 @@ import br.com.rpgruler.main.view.perk.PerkView;
  */
 public class PerkDialog extends GDialog {
 
+    private Perk perk;
     private PerkView perks;
+    private GComboBoxModel<PerkType> typeModel;
 
     /**
      * Cria nova instancia de PerkDialog
      *
-     * @param perks
-     * @param modal
+     * @param perks <code>PerkView</code> Tela de Perks
+     * @param perk <code>Perk</code> Perk a ser editado
+     * @param modal <code>boolean</code> Modal?
      */
-    public PerkDialog(PerkView perks, boolean modal) {
+    public PerkDialog(PerkView perks, Perk perk, boolean modal) {
         super(perks.getMainScreen(), modal);
         this.perks = perks;
-        initialize();
+        initialize(perk);
     }
 
     /**
      * Método de inicialização
      */
-    private void initialize() {
-        setSize(400, 236);        
-        initComponents();
-        setVisible(true);
+    private void initialize(Perk perk) {
+        this.setSize(400, 236);
+        this.initComponents();
+        this.typeModel = new GComboBoxModel<>(new PerkTypeDAO().getList());
+        this.gCBType.setModel(typeModel);
+        this.setPerk(perk);
+        this.setVisible(true);
+    }
+
+    /**
+     * Constroi os dados do Perk na tela caso ele exista
+     *
+     * @param perk <code>Perk</code> Perk a ser editado
+     */
+    public void setPerk(Perk perk) {
+        try {
+            if (perk != null) {
+                this.perk = perk;
+                this.gTID.setLong(this.perk.getId());
+                this.gTTitle.setText(this.perk.getTitle());
+                this.gTADesc.setText(this.perk.getDescription());
+                this.jChInherited.setSelected(this.perk.isInherited());
+                if (typeModel.contains(this.perk.getType())) {
+                    this.gCBType.setSelectedItem(this.perk.getType());
+                }
+            } else {
+                PerkBean bean = (PerkBean) this.perks.getBean();
+                this.perk = new Perk();
+                this.perk.setId(bean.getNextID());
+                this.gTID.setLong(this.perk.getId());
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PerkDialog.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    /**
+     * Retorna o Perk que está em edição
+     *
+     * @return <code>Perk</code> Perk em edição
+     */
+    public Perk getPerk() {
+        try {            
+            if (gTTitle.validateComponent()) {
+                if (gCBType.validateComponent()) {
+                    if (gTADesc.validateComponent()) {                        
+                        perk.setId(gTID.getLong());
+                        perk.setTitle(gTTitle.getText());
+                        perk.setInherited(jChInherited.isSelected());
+                        perk.setDescription(gTADesc.getText());
+                        perk.setType(typeModel.getSelectedItem());
+                        return perk;
+                    }
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            Logger.getLogger(PerkDialog.class.getName()).log(Level.SEVERE, null, e);
+            return null;
+        }
     }
 
     /**
@@ -47,8 +113,11 @@ public class PerkDialog extends GDialog {
         gTADesc = new br.com.gmp.comps.textarea.GMPTextArea();
         jBAdd = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
-        jLLevel = new javax.swing.JLabel();
-        jSpinLevel = new javax.swing.JSpinner();
+        jChInherited = new javax.swing.JCheckBox();
+        jLType = new javax.swing.JLabel();
+        gCBType = new br.com.gmp.comps.combobox.GComboBox();
+        gTID = new br.com.gmp.comps.textfield.GTextField();
+        jLID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,7 +129,7 @@ public class PerkDialog extends GDialog {
         gTADesc.setRows(5);
         jScrollPane2.setViewportView(gTADesc);
 
-        jBAdd.setText("Adicionar");
+        jBAdd.setText("Salvar");
         jBAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAddActionPerformed(evt);
@@ -74,9 +143,13 @@ public class PerkDialog extends GDialog {
             }
         });
 
-        jLLevel.setText("Nivel:");
+        jChInherited.setText("Herdavel");
 
-        jSpinLevel.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        jLType.setText("Tipo:");
+
+        gTID.setEnabled(false);
+
+        jLID.setText("Código:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,59 +158,82 @@ public class PerkDialog extends GDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLID)
+                            .addComponent(jLTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLLevel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLType)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jChInherited))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLTitle)
-                    .addComponent(jLLevel)
-                    .addComponent(jSpinLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLType)
+                    .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jChInherited))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAdd)
                     .addComponent(jBCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
-        // TODO add your handling code here:
+        if (getPerk() != null) {
+            dispose();
+        }
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jBCancelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textarea.GMPTextArea gTADesc;
+    private br.com.gmp.comps.textfield.GTextField gTID;
     private br.com.gmp.comps.textfield.GTextField gTTitle;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBCancel;
-    private javax.swing.JLabel jLLevel;
+    private javax.swing.JCheckBox jChInherited;
+    private javax.swing.JLabel jLID;
     private javax.swing.JLabel jLTitle;
+    private javax.swing.JLabel jLType;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinLevel;
     // End of variables declaration//GEN-END:variables
 }

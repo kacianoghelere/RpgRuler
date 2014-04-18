@@ -37,10 +37,11 @@ public class PerkBean extends ViewBean<PerkView> {
      */
     @Override
     public void add(BeanEvent evt) {
-
+        Perk perk = (Perk) evt.getValue();
+        getView().getModel().add(perk);
     }
 
-        /**
+    /**
      * Retorna o próximo ID da lista
      *
      * @return <code>Long</code> Próximo ID

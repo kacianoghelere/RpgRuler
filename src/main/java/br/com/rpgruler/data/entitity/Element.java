@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
@@ -16,8 +17,9 @@ public class Element implements Serializable {
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
+    @Editable
     @ColumnName(name = "Nome")
-    private String elementName;
+    private String title;    
     @ColumnName(name = "Simbolo")
     private String elementSymbol;
     @ColumnName(name = "Bonûs")
@@ -47,7 +49,7 @@ public class Element implements Serializable {
      */
     public Element(Long id, String elementName, String elementSymbol) {
         this.id = id;
-        this.elementName = elementName;
+        this.title = elementName;
         this.elementSymbol = elementSymbol;
     }
 
@@ -61,7 +63,7 @@ public class Element implements Serializable {
      */
     public Element(Long id, String elementName, String elementSymbol, Element bonus, Element weakness) {
         this.id = id;
-        this.elementName = elementName;
+        this.title = elementName;
         this.elementSymbol = elementSymbol;
         this.bonus = bonus;
         this.weakness = weakness;
@@ -87,16 +89,16 @@ public class Element implements Serializable {
      *
      * @return
      */
-    public String getElementName() {
-        return elementName;
+    public String getTitle() {
+        return title;
     }
 
     /**
      *
-     * @param elementName
+     * @param title
      */
-    public void setElementName(String elementName) {
-        this.elementName = elementName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
@@ -151,7 +153,7 @@ public class Element implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.elementName);
+        hash = 53 * hash + Objects.hashCode(this.title);
         hash = 53 * hash + Objects.hashCode(this.elementSymbol);
         hash = 53 * hash + Objects.hashCode(this.bonus);
         hash = 53 * hash + Objects.hashCode(this.weakness);
@@ -170,7 +172,7 @@ public class Element implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.elementName, other.elementName)) {
+        if (!Objects.equals(this.title, other.title)) {
             return false;
         }
         if (!Objects.equals(this.elementSymbol, other.elementSymbol)) {
@@ -184,7 +186,7 @@ public class Element implements Serializable {
 
     @Override
     public String toString() {
-        return elementName;
+        return title;
     }
 
 }

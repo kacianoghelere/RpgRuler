@@ -6,12 +6,15 @@ import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.PerkDAO;
 import br.com.rpgruler.data.entitity.Perk;
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.util.TableUtil;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.perk.bean.PerkBean;
 import br.com.rpgruler.main.view.perk.dialog.PerkDialog;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.menu.MenuView;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import br.com.rpgruler.main.view.perk.model.PerkModel;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,6 +29,7 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
 
     private PerkBean bean;
     private PerkModel model;
+    private TableUtil tableUtil;
 
     /**
      * Cria nova instancia de PerkView
@@ -41,9 +45,12 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
      * Metodo de inicialização
      */
     private void initialize() {
-        setSize(320, 300);
-        initComponents();
+        this.setControls(new ViewParameter(true, false, false, false));
+        this.setSize(320, 300);
+        this.initComponents();
         this.model = new PerkModel();
+        this.gTable.buildTable(this, 0, model);
+        this.tableUtil = new TableUtil(this);
         this.bean = new PerkBean(this);
     }
 
@@ -54,22 +61,28 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
 
     @Override
     public void add() {
-        
+        PerkDialog dialog = new PerkDialog(this, null, true);
+        if (dialog.getPerk() != null) {
+            bean.add(new BeanEvent(this, dialog.getPerk()));
+        }
+    }
+
+    /**
+     * Edita o Perk
+     */
+    private void edit() {
+        if (gTable.getSelectedRowCount() > 0) {            
+            Integer row = (Integer) gTable.getSelectedRows()[0];
+            PerkDialog dialog = new PerkDialog(this, model.getObject(row), true);
+            if (dialog.getPerk() != null) {
+                model.update(row, dialog.getPerk());
+            }
+        }
     }
 
     @Override
     public void remove() {
-        String text = "Deseja remover os itens selecionados?";
-        if (WindowUtil.confirmation(this, "Remover", text, "Sim", "Não")) {
-            try {
-                if (gTable.getSelectedRowCount() > 0) {
-                    model.remove(gTable.getSelectedRows());
-                }
-            } catch (NumberFormatException e) {
-                Logger.getLogger(MenuView.class.getName())
-                        .log(Level.SEVERE, null, e);
-            }
-        }
+        tableUtil.remove(null);
     }
 
     @Override
@@ -97,6 +110,7 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
         jToolBar = new javax.swing.JToolBar();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
+        jBEdit = new javax.swing.JButton();
         jSP = new javax.swing.JScrollPane();
         gTable = new br.com.gmp.comps.table.GTable();
 
@@ -132,6 +146,17 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
         });
         jToolBar.add(jBRemove);
 
+        jBEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/edit.png"))); // NOI18N
+        jBEdit.setFocusable(false);
+        jBEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBEdit);
+
         jSP.setBorder(javax.swing.BorderFactory.createTitledBorder("Vantagens"));
 
         gTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,6 +168,11 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
             }
         ));
         gTable.setOpaque(false);
+        gTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gTableMouseClicked(evt);
+            }
+        });
         jSP.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,16 +196,27 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
-        PerkDialog jDialog = new PerkDialog(this, true);
+        add();
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
-        // TODO add your handling code here:
+        remove();
     }//GEN-LAST:event_jBRemoveActionPerformed
+
+    private void jBEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditActionPerformed
+        edit();
+    }//GEN-LAST:event_jBEditActionPerformed
+
+    private void gTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTableMouseClicked
+        if (evt.getClickCount() == 2) {
+            edit();
+        }
+    }//GEN-LAST:event_gTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
+    private javax.swing.JButton jBEdit;
     private javax.swing.JButton jBRemove;
     private javax.swing.JScrollPane jSP;
     private javax.swing.JToolBar jToolBar;
