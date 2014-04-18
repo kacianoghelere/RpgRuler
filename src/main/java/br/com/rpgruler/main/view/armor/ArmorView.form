@@ -33,7 +33,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                  <Component id="jBNameGen1" pref="177" max="32767" attributes="0"/>
+                  <Component id="jBNew" pref="177" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -44,7 +44,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jPCaracteristics" max="32767" attributes="0"/>
-                  <Component id="jPTotal" max="32767" attributes="0"/>
+                  <Component id="jPRestrictions" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -56,24 +56,26 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jBNameGen1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPBasics" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPModifiers" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPDescription" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jPCaracteristics" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPCaracteristics" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPRestrictions" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPDescription" pref="117" max="32767" attributes="0"/>
-                          <Component id="jPTotal" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jBNew" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -122,36 +124,36 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="JLType" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLName" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="gTextField1" max="32767" attributes="0"/>
+                                  <Component id="gTName" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="jBNameGen" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="gComboBox3" max="32767" attributes="0"/>
+                              <Component id="gCBType" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLMat1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLMat2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLPrice" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jSpinner1" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jSpinPrice" min="-2" pref="80" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="gComboBox2" max="32767" attributes="0"/>
-                                      <Component id="gComboBox1" max="32767" attributes="0"/>
+                                      <Component id="gCBMat2" max="32767" attributes="0"/>
+                                      <Component id="gCBMat1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -168,29 +170,29 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jBNameGen" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gTextField1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="gTName" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="gComboBox3" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JLType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gCBType" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="gComboBox1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLMat1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gCBMat1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="gComboBox2" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gCBMat2" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLMat2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinPrice" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
               </Group>
@@ -198,40 +200,40 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="br.com.gmp.comps.textfield.GTextField" name="gTextField1">
+        <Component class="br.com.gmp.comps.textfield.GTextField" name="gTName">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jLMat1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Material 1:"/>
           </Properties>
         </Component>
-        <Component class="br.com.gmp.comps.combobox.GComboBox" name="gComboBox1">
+        <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBMat1">
         </Component>
-        <Component class="br.com.gmp.comps.combobox.GComboBox" name="gComboBox2">
+        <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBMat2">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="jLMat2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Material 2:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="JLType">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tipo:"/>
           </Properties>
         </Component>
-        <Component class="br.com.gmp.comps.combobox.GComboBox" name="gComboBox3">
+        <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBType">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jLName">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="jLPrice">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner1">
+        <Component class="javax.swing.JSpinner" name="jSpinPrice">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
@@ -269,10 +271,10 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="207" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -285,9 +287,18 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="br.com.gmp.comps.table.GTable" name="gTable">
+            <Component class="br.com.gmp.comps.table.GTable" name="gTblCaracteristics">
               <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="0" rowCount="0"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0"/>
+                </Property>
                 <Property name="opaque" type="boolean" value="false"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -303,9 +314,25 @@
         </Property>
       </Properties>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-        <Property name="columns" type="int" value="0"/>
-        <Property name="rows" type="int" value="1"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -315,7 +342,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="br.com.gmp.comps.textarea.GMPTextArea" name="gMPTextArea1">
+            <Component class="br.com.gmp.comps.textarea.GMPTextArea" name="gTADesc">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -341,43 +368,43 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel6" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="JLStr" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSpinner2" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinStr" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel8" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLDex" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSpinner3" linkSize="5" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="jSpinDex" linkSize="5" min="-2" pref="58" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel9" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLInt" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSpinner4" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinInt" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel12" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLWis" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSpinner7" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinWis" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel11" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLCon" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSpinner6" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinCon" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel10" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLChar" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSpinner5" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinChar" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel15" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLHP" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSpinner10" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinHP" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel14" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLDef" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSpinner9" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinDef" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel13" linkSize="6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLEva" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSpinner8" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jSpinEva" linkSize="5" min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -389,30 +416,30 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner3" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner4" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="JLStr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinStr" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLDex" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinDex" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLInt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinInt" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner6" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner5" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLWis" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinWis" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLCon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinCon" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLChar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinChar" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner10" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner9" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner8" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLHP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinHP" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLDef" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinDef" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLEva" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinEva" linkSize="7" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -420,133 +447,133 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="JLStr">
           <Properties>
             <Property name="text" type="java.lang.String" value="FOR:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner2">
+        <Component class="javax.swing.JSpinner" name="jSpinStr">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="jLDex">
           <Properties>
             <Property name="text" type="java.lang.String" value="DES:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner3">
+        <Component class="javax.swing.JSpinner" name="jSpinDex">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner4">
+        <Component class="javax.swing.JSpinner" name="jSpinInt">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class="javax.swing.JLabel" name="jLInt">
           <Properties>
             <Property name="text" type="java.lang.String" value="INT:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner5">
+        <Component class="javax.swing.JSpinner" name="jSpinChar">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner6">
+        <Component class="javax.swing.JSpinner" name="jSpinCon">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
+        <Component class="javax.swing.JLabel" name="jLChar">
           <Properties>
             <Property name="text" type="java.lang.String" value="CAR:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
+        <Component class="javax.swing.JLabel" name="jLCon">
           <Properties>
             <Property name="text" type="java.lang.String" value="CON:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner7">
+        <Component class="javax.swing.JSpinner" name="jSpinWis">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
+        <Component class="javax.swing.JLabel" name="jLWis">
           <Properties>
             <Property name="text" type="java.lang.String" value="SAB:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner8">
+        <Component class="javax.swing.JSpinner" name="jSpinEva">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner9">
+        <Component class="javax.swing.JSpinner" name="jSpinDef">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel13">
+        <Component class="javax.swing.JLabel" name="jLEva">
           <Properties>
             <Property name="text" type="java.lang.String" value="EVA:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel14">
+        <Component class="javax.swing.JLabel" name="jLDef">
           <Properties>
             <Property name="text" type="java.lang.String" value="DEF:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner10">
+        <Component class="javax.swing.JSpinner" name="jSpinHP">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="0" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel15">
+        <Component class="javax.swing.JLabel" name="jLHP">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ATK:"/>
+            <Property name="text" type="java.lang.String" value="HP:"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jBNameGen1">
+    <Component class="javax.swing.JButton" name="jBNew">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ComponentIcons/controlers/new.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Adicionar"/>
+        <Property name="text" type="java.lang.String" value="Novo"/>
         <Property name="toolTipText" type="java.lang.String" value="Gerar nome"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBNameGen1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBNewActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPTotal">
+    <Container class="javax.swing.JPanel" name="jPRestrictions">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Total"/>
+            <TitledBorder title="Restri&#xe7;&#xf5;es"/>
           </Border>
         </Property>
       </Properties>

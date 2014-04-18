@@ -36,44 +36,44 @@ public class ArmorView extends View {
         jScrollPane1 = new javax.swing.JScrollPane();
         gListArmors = new br.com.gmp.comps.list.GList();
         jPBasics = new javax.swing.JPanel();
-        gTextField1 = new br.com.gmp.comps.textfield.GTextField();
-        jLabel2 = new javax.swing.JLabel();
-        gComboBox1 = new br.com.gmp.comps.combobox.GComboBox();
-        gComboBox2 = new br.com.gmp.comps.combobox.GComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        gComboBox3 = new br.com.gmp.comps.combobox.GComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        gTName = new br.com.gmp.comps.textfield.GTextField();
+        jLMat1 = new javax.swing.JLabel();
+        gCBMat1 = new br.com.gmp.comps.combobox.GComboBox();
+        gCBMat2 = new br.com.gmp.comps.combobox.GComboBox();
+        jLMat2 = new javax.swing.JLabel();
+        JLType = new javax.swing.JLabel();
+        gCBType = new br.com.gmp.comps.combobox.GComboBox();
+        jLName = new javax.swing.JLabel();
+        jLPrice = new javax.swing.JLabel();
+        jSpinPrice = new javax.swing.JSpinner();
         jBNameGen = new javax.swing.JButton();
         jPCaracteristics = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        gTable = new br.com.gmp.comps.table.GTable();
+        gTblCaracteristics = new br.com.gmp.comps.table.GTable();
         jPDescription = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        gMPTextArea1 = new br.com.gmp.comps.textarea.GMPTextArea();
+        gTADesc = new br.com.gmp.comps.textarea.GMPTextArea();
         jPModifiers = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel8 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
-        jLabel9 = new javax.swing.JLabel();
-        jSpinner5 = new javax.swing.JSpinner();
-        jSpinner6 = new javax.swing.JSpinner();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jSpinner7 = new javax.swing.JSpinner();
-        jLabel12 = new javax.swing.JLabel();
-        jSpinner8 = new javax.swing.JSpinner();
-        jSpinner9 = new javax.swing.JSpinner();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jSpinner10 = new javax.swing.JSpinner();
-        jLabel15 = new javax.swing.JLabel();
-        jBNameGen1 = new javax.swing.JButton();
-        jPTotal = new javax.swing.JPanel();
+        JLStr = new javax.swing.JLabel();
+        jSpinStr = new javax.swing.JSpinner();
+        jLDex = new javax.swing.JLabel();
+        jSpinDex = new javax.swing.JSpinner();
+        jSpinInt = new javax.swing.JSpinner();
+        jLInt = new javax.swing.JLabel();
+        jSpinChar = new javax.swing.JSpinner();
+        jSpinCon = new javax.swing.JSpinner();
+        jLChar = new javax.swing.JLabel();
+        jLCon = new javax.swing.JLabel();
+        jSpinWis = new javax.swing.JSpinner();
+        jLWis = new javax.swing.JLabel();
+        jSpinEva = new javax.swing.JSpinner();
+        jSpinDef = new javax.swing.JSpinner();
+        jLEva = new javax.swing.JLabel();
+        jLDef = new javax.swing.JLabel();
+        jSpinHP = new javax.swing.JSpinner();
+        jLHP = new javax.swing.JLabel();
+        jBNew = new javax.swing.JButton();
+        jPRestrictions = new javax.swing.JPanel();
 
         setClosable(true);
         setIconifiable(true);
@@ -91,17 +91,17 @@ public class ArmorView extends View {
 
         jPBasics.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações basicas"));
 
-        jLabel2.setText("Material 1:");
+        jLMat1.setText("Material 1:");
 
-        jLabel3.setText("Material 2:");
+        jLMat2.setText("Material 2:");
 
-        jLabel4.setText("Tipo:");
+        JLType.setText("Tipo:");
 
-        jLabel1.setText("Nome:");
+        jLName.setText("Nome:");
 
-        jLabel5.setText("Preço:");
+        jLPrice.setText("Preço:");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinPrice.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
         jBNameGen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
         jBNameGen.setToolTipText("Gerar nome");
@@ -116,30 +116,30 @@ public class ArmorView extends View {
                     .addGroup(jPBasicsLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1))
+                            .addComponent(JLType)
+                            .addComponent(jLName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPBasicsLayout.createSequentialGroup()
-                                .addComponent(gTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gTName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBNameGen, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(gComboBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(gCBType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(jPBasicsLayout.createSequentialGroup()
                         .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
+                            .addComponent(jLMat1)
+                            .addComponent(jLMat2)
+                            .addComponent(jLPrice))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPBasicsLayout.createSequentialGroup()
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSpinPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPBasicsLayout.createSequentialGroup()
                                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(gComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(gComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(gCBMat2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(gCBMat1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())))))
         );
         jPBasicsLayout.setVerticalGroup(
@@ -149,33 +149,41 @@ public class ArmorView extends View {
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBNameGen)
                     .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(gTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLName)
+                        .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(4, 4, 4)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(gComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JLType)
+                    .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(gComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLMat1)
+                    .addComponent(gCBMat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(gCBMat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLMat2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLPrice)
+                    .addComponent(jSpinPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gComboBox1, gComboBox2, gComboBox3, gTextField1, jBNameGen, jSpinner1});
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBMat1, gCBMat2, gCBType, gTName, jBNameGen, jSpinPrice});
 
         jPCaracteristics.setBorder(javax.swing.BorderFactory.createTitledBorder("Caracteristicas"));
 
-        gTable.setOpaque(false);
-        jScrollPane2.setViewportView(gTable);
+        gTblCaracteristics.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        gTblCaracteristics.setOpaque(false);
+        jScrollPane2.setViewportView(gTblCaracteristics);
 
         javax.swing.GroupLayout jPCaracteristicsLayout = new javax.swing.GroupLayout(jPCaracteristics);
         jPCaracteristics.setLayout(jPCaracteristicsLayout);
@@ -188,58 +196,72 @@ public class ArmorView extends View {
         );
         jPCaracteristicsLayout.setVerticalGroup(
             jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCaracteristicsLayout.createSequentialGroup()
+            .addGroup(jPCaracteristicsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPDescription.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
-        jPDescription.setLayout(new java.awt.GridLayout(1, 0));
 
-        gMPTextArea1.setColumns(20);
-        gMPTextArea1.setRows(5);
-        jScrollPane3.setViewportView(gMPTextArea1);
+        gTADesc.setColumns(20);
+        gTADesc.setRows(5);
+        jScrollPane3.setViewportView(gTADesc);
 
-        jPDescription.add(jScrollPane3);
+        javax.swing.GroupLayout jPDescriptionLayout = new javax.swing.GroupLayout(jPDescription);
+        jPDescription.setLayout(jPDescriptionLayout);
+        jPDescriptionLayout.setHorizontalGroup(
+            jPDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDescriptionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        jPDescriptionLayout.setVerticalGroup(
+            jPDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDescriptionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
 
         jPModifiers.setBorder(javax.swing.BorderFactory.createTitledBorder("Modificadores"));
 
-        jLabel6.setText("FOR:");
+        JLStr.setText("FOR:");
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinStr.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jLabel8.setText("DES:");
+        jLDex.setText("DES:");
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinDex.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinInt.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jLabel9.setText("INT:");
+        jLInt.setText("INT:");
 
-        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinChar.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jSpinner6.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinCon.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jLabel10.setText("CAR:");
+        jLChar.setText("CAR:");
 
-        jLabel11.setText("CON:");
+        jLCon.setText("CON:");
 
-        jSpinner7.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinWis.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jLabel12.setText("SAB:");
+        jLWis.setText("SAB:");
 
-        jSpinner8.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinEva.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jSpinner9.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinDef.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jLabel13.setText("EVA:");
+        jLEva.setText("EVA:");
 
-        jLabel14.setText("DEF:");
+        jLDef.setText("DEF:");
 
-        jSpinner10.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
+        jSpinHP.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0)));
 
-        jLabel15.setText("ATK:");
+        jLHP.setText("HP:");
 
         javax.swing.GroupLayout jPModifiersLayout = new javax.swing.GroupLayout(jPModifiers);
         jPModifiers.setLayout(jPModifiersLayout);
@@ -249,97 +271,99 @@ public class ArmorView extends View {
                 .addContainerGap()
                 .addGroup(jPModifiersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPModifiersLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(JLStr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinStr, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addComponent(jLDex)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinDex, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
+                        .addComponent(jLInt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSpinInt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPModifiersLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(jLWis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinWis, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
+                        .addComponent(jLCon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinCon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)
+                        .addComponent(jLChar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSpinChar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPModifiersLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addComponent(jLHP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinHP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
+                        .addComponent(jLDef)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinDef, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)
+                        .addComponent(jLEva)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSpinEva, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        jPModifiersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jSpinner2, jSpinner3, jSpinner4, jSpinner5, jSpinner6, jSpinner7});
+        jPModifiersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jSpinChar, jSpinCon, jSpinDef, jSpinDex, jSpinEva, jSpinHP, jSpinInt, jSpinStr, jSpinWis});
 
-        jPModifiersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel6, jLabel8, jLabel9});
+        jPModifiersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {JLStr, jLChar, jLCon, jLDef, jLDex, jLEva, jLHP, jLInt, jLWis});
 
         jPModifiersLayout.setVerticalGroup(
             jPModifiersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPModifiersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPModifiersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JLStr)
+                    .addComponent(jSpinStr, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLDex)
+                    .addComponent(jSpinDex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLInt)
+                    .addComponent(jSpinInt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPModifiersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLWis)
+                    .addComponent(jSpinWis, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLCon)
+                    .addComponent(jSpinCon, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLChar)
+                    .addComponent(jSpinChar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPModifiersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jSpinner10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLHP)
+                    .addComponent(jSpinHP, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLDef)
+                    .addComponent(jSpinDef, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLEva)
+                    .addComponent(jSpinEva, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jBNameGen1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
-        jBNameGen1.setText("Adicionar");
-        jBNameGen1.setToolTipText("Gerar nome");
-        jBNameGen1.addActionListener(new java.awt.event.ActionListener() {
+        jPModifiersLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jSpinChar, jSpinCon, jSpinDef, jSpinDex, jSpinEva, jSpinHP, jSpinInt, jSpinStr, jSpinWis});
+
+        jBNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
+        jBNew.setText("Novo");
+        jBNew.setToolTipText("Gerar nome");
+        jBNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBNameGen1ActionPerformed(evt);
+                jBNewActionPerformed(evt);
             }
         });
 
-        jPTotal.setBorder(javax.swing.BorderFactory.createTitledBorder("Total"));
+        jPRestrictions.setBorder(javax.swing.BorderFactory.createTitledBorder("Restrições"));
 
-        javax.swing.GroupLayout jPTotalLayout = new javax.swing.GroupLayout(jPTotal);
-        jPTotal.setLayout(jPTotalLayout);
-        jPTotalLayout.setHorizontalGroup(
-            jPTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPRestrictionsLayout = new javax.swing.GroupLayout(jPRestrictions);
+        jPRestrictions.setLayout(jPRestrictionsLayout);
+        jPRestrictionsLayout.setHorizontalGroup(
+            jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPTotalLayout.setVerticalGroup(
-            jPTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPRestrictionsLayout.setVerticalGroup(
+            jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -351,7 +375,7 @@ public class ArmorView extends View {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jBNameGen1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                    .addComponent(jBNew, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPBasics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -360,7 +384,7 @@ public class ArmorView extends View {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPCaracteristics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPRestrictions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -369,70 +393,72 @@ public class ArmorView extends View {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBNameGen1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPBasics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPModifiers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPCaracteristics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jPModifiers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jPCaracteristics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPRestrictions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(jPTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jBNew)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBNameGen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNameGen1ActionPerformed
+    private void jBNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jBNameGen1ActionPerformed
+    }//GEN-LAST:event_jBNewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.combobox.GComboBox gComboBox1;
-    private br.com.gmp.comps.combobox.GComboBox gComboBox2;
-    private br.com.gmp.comps.combobox.GComboBox gComboBox3;
+    private javax.swing.JLabel JLStr;
+    private javax.swing.JLabel JLType;
+    private br.com.gmp.comps.combobox.GComboBox gCBMat1;
+    private br.com.gmp.comps.combobox.GComboBox gCBMat2;
+    private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.list.GList gListArmors;
-    private br.com.gmp.comps.textarea.GMPTextArea gMPTextArea1;
-    private br.com.gmp.comps.table.GTable gTable;
-    private br.com.gmp.comps.textfield.GTextField gTextField1;
+    private br.com.gmp.comps.textarea.GMPTextArea gTADesc;
+    private br.com.gmp.comps.textfield.GTextField gTName;
+    private br.com.gmp.comps.table.GTable gTblCaracteristics;
     private javax.swing.JButton jBNameGen;
-    private javax.swing.JButton jBNameGen1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jBNew;
+    private javax.swing.JLabel jLChar;
+    private javax.swing.JLabel jLCon;
+    private javax.swing.JLabel jLDef;
+    private javax.swing.JLabel jLDex;
+    private javax.swing.JLabel jLEva;
+    private javax.swing.JLabel jLHP;
+    private javax.swing.JLabel jLInt;
+    private javax.swing.JLabel jLMat1;
+    private javax.swing.JLabel jLMat2;
+    private javax.swing.JLabel jLName;
+    private javax.swing.JLabel jLPrice;
+    private javax.swing.JLabel jLWis;
     private javax.swing.JPanel jPBasics;
     private javax.swing.JPanel jPCaracteristics;
     private javax.swing.JPanel jPDescription;
     private javax.swing.JPanel jPModifiers;
-    private javax.swing.JPanel jPTotal;
+    private javax.swing.JPanel jPRestrictions;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
+    private javax.swing.JSpinner jSpinChar;
+    private javax.swing.JSpinner jSpinCon;
+    private javax.swing.JSpinner jSpinDef;
+    private javax.swing.JSpinner jSpinDex;
+    private javax.swing.JSpinner jSpinEva;
+    private javax.swing.JSpinner jSpinHP;
+    private javax.swing.JSpinner jSpinInt;
+    private javax.swing.JSpinner jSpinPrice;
+    private javax.swing.JSpinner jSpinStr;
+    private javax.swing.JSpinner jSpinWis;
     // End of variables declaration//GEN-END:variables
 }

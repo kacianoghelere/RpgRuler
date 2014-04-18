@@ -27,6 +27,8 @@ public class Armor {
     private PrimeMaterial material1;
     @ColumnName(name = "Material 2")
     private PrimeMaterial material2;
+    @ColumnName(name = "Atributos")
+    private Attributes attributes;
 
     /**
      * Cria nova instancia de Armor
@@ -43,14 +45,16 @@ public class Armor {
      * @param type <code>ArmorType</code> Tipo da armadura
      * @param material1 <code>PrimeMaterial</code> Material 1
      * @param material2 <code>PrimeMaterial</code> Material 2
+     * @param attributes <code>Attributes</code> Atributos da armadura
      */
-    public Armor(Long id, String name, String description, ArmorType type, PrimeMaterial material1, PrimeMaterial material2) {
+    public Armor(Long id, String name, String description, ArmorType type, PrimeMaterial material1, PrimeMaterial material2, Attributes attributes) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.type = type;
         this.material1 = material1;
         this.material2 = material2;
+        this.attributes = attributes;
     }
 
     /**
@@ -187,6 +191,24 @@ public class Armor {
      */
     public void setMaterial2(PrimeMaterial material2) {
         this.material2 = material2;
+    }
+
+    /**
+     * Retorna os atributos
+     *
+     * @return <code>Attributes</code> Atributos
+     */
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    /**
+     * Modifica os atributos
+     *
+     * @param attributes <code>Attributes</code> Atributos
+     */
+    public void setAttributes(Attributes attributes) {
+        this.attributes = attributes;
     }
 
     @Override
