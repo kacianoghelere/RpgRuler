@@ -10,6 +10,7 @@ public class ArmorTypeParameter {
     private String typeName;
     private Double materialAmount1;
     private Double materialAmount2;
+    private Double base;
 
     /**
      *
@@ -27,6 +28,13 @@ public class ArmorTypeParameter {
         this.typeName = typeName;
         this.materialAmount1 = materialAmount1;
         this.materialAmount2 = materialAmount2;
+    }
+
+    public ArmorTypeParameter(String typeName, Double materialAmount1, Double materialAmount2, Double base) {
+        this.typeName = typeName;
+        this.materialAmount1 = materialAmount1;
+        this.materialAmount2 = materialAmount2;
+        this.base = base;
     }
 
     /**
@@ -75,6 +83,22 @@ public class ArmorTypeParameter {
      */
     public void setMaterialAmount2(Double materialAmount2) {
         this.materialAmount2 = materialAmount2;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getBase() {
+        return base;
+    }
+
+    /**
+     *
+     * @param base
+     */
+    public void setBase(Double base) {
+        this.base = base;
     }
 
 }

@@ -2,7 +2,6 @@ package br.com.rpgruler.main.view.perk;
 
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
-import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.PerkDAO;
 import br.com.rpgruler.data.entitity.Perk;
 import br.com.rpgruler.main.MainScreen;
@@ -13,12 +12,9 @@ import br.com.rpgruler.main.view.perk.bean.PerkBean;
 import br.com.rpgruler.main.view.perk.dialog.PerkDialog;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
-import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import br.com.rpgruler.main.view.perk.model.PerkModel;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * View de cadastro e manutenção de perks

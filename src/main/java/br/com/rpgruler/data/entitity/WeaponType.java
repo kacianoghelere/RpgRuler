@@ -37,20 +37,21 @@ public class WeaponType implements Serializable {
     private Double materialAmount2;
 
     /**
-     *
+     * Cria nova instancia de WeaponType
      */
     public WeaponType() {
     }
 
     /**
+     * Cria nova instancia de WeaponType
      *
-     * @param id
-     * @param typeName
-     * @param damageBase
-     * @param category
-     * @param wearType
-     * @param materialAmount1
-     * @param materialAmount2
+     * @param id <code>Long</code> Código do tipo de arma
+     * @param typeName <code>String</code> Titulo do tipo de arma
+     * @param damageBase <code>Double</code> Dano base do tipo
+     * @param category <code>Integer</code> Classificação do tipo
+     * @param wearType <code>WearType</code> Tipo de porte
+     * @param materialAmount1 <code>Double</code> Qtd. do material 1
+     * @param materialAmount2 <code>Double</code> Qtd. do material 2
      */
     public WeaponType(Long id, String typeName, Double damageBase, Integer category, WearType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
@@ -63,112 +64,126 @@ public class WeaponType implements Serializable {
     }
 
     /**
+     * Retorna o Código do tipo de arma
      *
-     * @return
+     * @return <code>Long</code> Código do tipo de arma
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o Código do tipo de arma
      *
-     * @param id
+     * @param id <code>Long</code> Código do tipo de arma
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o Titulo do tipo de arma
      *
-     * @return
+     * @return <code>String</code> Titulo do tipo de arma
      */
     public String getTypeName() {
         return typeName;
     }
 
     /**
+     * Modifica o Titulo do tipo de arma
      *
-     * @param typeName
+     * @param typeName <code>String</code> Titulo do tipo de arma
      */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
 
     /**
+     * Retorna a Qtd. do material 1
      *
-     * @return
+     * @return <code>Double</code> Qtd. do material 1
      */
     public Double getMaterialAmount1() {
         return materialAmount1;
     }
 
     /**
+     * Modifica a Qtd. do material 1
      *
-     * @param amount1
+     * @param amount1 <code>Double</code> Qtd. do material 1
      */
     public void setMaterialAmount1(Double amount1) {
         this.materialAmount1 = amount1;
     }
 
     /**
+     * Retorna a Qtd. do material 2
      *
-     * @return
+     * @return <code>Double</code> Qtd. do material 2
      */
     public Double getMaterialAmount2() {
         return materialAmount2;
     }
 
     /**
+     * Modifica a Qtd. do material 2
      *
-     * @param amount2
+     * @param amount2 <code>Double</code> Qtd. do material 2
      */
     public void setMaterialAmount2(Double amount2) {
         this.materialAmount2 = amount2;
     }
 
     /**
+     * Retorna o Dano base do tipo
      *
-     * @return
+     * @return <code>Double</code> Dano base do tipo
      */
     public Double getDamageBase() {
         return damageBase;
     }
 
     /**
+     * Modifica o Dano base do tipo
      *
-     * @param damageBase
+     * @param damageBase <code>Double</code> Dano base do tipo
      */
     public void setDamageBase(Double damageBase) {
         this.damageBase = damageBase;
     }
 
     /**
+     * Retorna a Classificação do tipo
      *
-     * @return
+     * @return <code>Integer</code> Classificação do tipo
      */
     public Integer getCategory() {
         return category;
     }
 
     /**
+     * Modifica a Classificação do tipo
      *
-     * @param category
+     * @param category <code>Integer</code> Classificação do tipo
      */
     public void setCategory(Integer category) {
         this.category = category;
     }
 
     /**
+     * Retorna o Tipo de porte
      *
-     * @return
+     * @return <code>WearType</code> Tipo de porte
      */
     public WearType getWearType() {
         return wearType;
     }
 
     /**
+     * Modifica o Tipo de porte
      *
-     * @param wearType
+     * @param wearType <code>WearType</code> Tipo de porte
      */
     public void setWearType(WearType wearType) {
         this.wearType = wearType;

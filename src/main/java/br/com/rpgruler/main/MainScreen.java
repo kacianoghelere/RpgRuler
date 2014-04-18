@@ -14,7 +14,7 @@ import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.terms.TermsView;
 import br.com.rpgruler.main.view.menuitem.MenuItemView;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import java.awt.Frame;
+import br.com.rpgruler.main.view.weapontype.WeaponTypeView;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -338,10 +338,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMMaterials = new javax.swing.JMenu();
         jMIMaterials = new javax.swing.JMenuItem();
         jMTerms = new javax.swing.JMenu();
-        jMIArmorTypes = new javax.swing.JMenuItem();
         jMITerms = new javax.swing.JMenuItem();
         jMEffects = new javax.swing.JMenu();
         jMIEffects = new javax.swing.JMenuItem();
+        jMWeapons = new javax.swing.JMenu();
+        jMIWeaponTypes = new javax.swing.JMenuItem();
+        jMArmors = new javax.swing.JMenu();
+        jMIArmorTypes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPG");
@@ -581,16 +584,6 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMTerms.setText("Termos");
         jMTerms.setName("jMTerms"); // NOI18N
 
-        jMIArmorTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
-        jMIArmorTypes.setText("Tipos de armaduras");
-        jMIArmorTypes.setName("jMIArmorTypes"); // NOI18N
-        jMIArmorTypes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIArmorTypesActionPerformed(evt);
-            }
-        });
-        jMTerms.add(jMIArmorTypes);
-
         jMITerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         jMITerms.setText("Itens comuns");
         jMITerms.setName("jMITerms"); // NOI18N
@@ -617,6 +610,38 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMEffects.add(jMIEffects);
 
         jMInfo.add(jMEffects);
+
+        jMWeapons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
+        jMWeapons.setText("Armas");
+        jMWeapons.setName("jMWeapons"); // NOI18N
+
+        jMIWeaponTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
+        jMIWeaponTypes.setText("Tipos de armas");
+        jMIWeaponTypes.setName("jMIWeaponTypes"); // NOI18N
+        jMIWeaponTypes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIWeaponTypesActionPerformed(evt);
+            }
+        });
+        jMWeapons.add(jMIWeaponTypes);
+
+        jMInfo.add(jMWeapons);
+
+        jMArmors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
+        jMArmors.setText("Armaduras");
+        jMArmors.setName("jMArmors"); // NOI18N
+
+        jMIArmorTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
+        jMIArmorTypes.setText("Tipos de armaduras");
+        jMIArmorTypes.setName("jMIArmorTypes"); // NOI18N
+        jMIArmorTypes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIArmorTypesActionPerformed(evt);
+            }
+        });
+        jMArmors.add(jMIArmorTypes);
+
+        jMInfo.add(jMArmors);
 
         jMenuBar.add(jMInfo);
 
@@ -721,6 +746,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new EffectView(this));
     }//GEN-LAST:event_jMIEffectsActionPerformed
 
+    private void jMIWeaponTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIWeaponTypesActionPerformed
+        listener.insertView(new WeaponTypeView(this));
+    }//GEN-LAST:event_jMIWeaponTypesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -730,6 +759,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JButton jBRefresh;
     private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLMsgs;
+    private javax.swing.JMenu jMArmors;
     private javax.swing.JMenu jMControls;
     private javax.swing.JMenu jMEffects;
     private javax.swing.JMenu jMElement;
@@ -745,11 +775,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuItem jMISave;
     private javax.swing.JMenuItem jMITerms;
     private javax.swing.JMenuItem jMIViews;
+    private javax.swing.JMenuItem jMIWeaponTypes;
     private javax.swing.JMenu jMInfo;
     private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenu jMPerk;
     private javax.swing.JMenu jMTerms;
+    private javax.swing.JMenu jMWeapons;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jTBMsgs;

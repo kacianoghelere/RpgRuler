@@ -179,18 +179,6 @@
                 <Property name="name" type="java.lang.String" value="jMTerms" noResource="true"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIArmorTypes">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/RpgIcons/armor/DVK/DVK_3.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tipos de armaduras"/>
-                    <Property name="name" type="java.lang.String" value="jMIArmorTypes" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIArmorTypesActionPerformed"/>
-                  </Events>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMITerms">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -221,6 +209,52 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIEffectsActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMWeapons">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/weapons/DK/DK_4.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Armas"/>
+                <Property name="name" type="java.lang.String" value="jMWeapons" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMIWeaponTypes">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/RpgIcons/weapons/DK/DK_4.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tipos de armas"/>
+                    <Property name="name" type="java.lang.String" value="jMIWeaponTypes" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIWeaponTypesActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMArmors">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/armor/DVK/DVK_3.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Armaduras"/>
+                <Property name="name" type="java.lang.String" value="jMArmors" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMIArmorTypes">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/RpgIcons/armor/DVK/DVK_3.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tipos de armaduras"/>
+                    <Property name="name" type="java.lang.String" value="jMIArmorTypes" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIArmorTypesActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

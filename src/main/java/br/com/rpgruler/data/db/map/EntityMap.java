@@ -28,6 +28,7 @@ public class EntityMap {
         map.put(MenuItem.class, "MenuItemDB");        
         map.put(Perk.class, "PerkDB");        
         map.put(PerkType.class, "PerkTypeDB");        
+        map.put(WeaponType.class, "WeaponTypeDB");        
         return map;
     }
 

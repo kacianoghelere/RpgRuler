@@ -5,7 +5,7 @@ import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
 import br.com.rpgruler.main.view.bean.ViewBean;
-import br.com.rpgruler.main.view.armortype.object.ArmorTypeParameter;
+import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 
 /**
@@ -38,15 +38,15 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
      * @param evt <code>BeanEvent</code> Evento do bean
      */
     @Override
-    public void add(BeanEvent evt) {
-        ArmorTypeParameter param = (ArmorTypeParameter) evt.getValue();
-        ArmorType type = new ArmorType(Long.MIN_VALUE, param.getTypeName(),
-                param.getMaterialAmount1(), param.getMaterialAmount2());
+    public void add(BeanEvent evt) {        
+        ViewWrapper vw = evt.getWrapper();
+        ArmorType type = new ArmorType();
         Long nextID = getNextID();
         type.setId(nextID);
-        type.setTypeName(param.getTypeName());
-        type.setMaterialAmount1(param.getMaterialAmount1());
-        type.setMaterialAmount2(param.getMaterialAmount2());
+        type.setTypeName((String) vw.getValue(0));
+        type.setMaterialAmount1((Double) vw.getValue(1));
+        type.setMaterialAmount2((Double) vw.getValue(2));
+        type.setBase((Double) vw.getValue(3));
         getView().getModel().add(type);
     }
 
