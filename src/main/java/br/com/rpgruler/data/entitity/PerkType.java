@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class PerkType {
+public class PerkType extends Type {
 
     @NotCopiable
     @Ignore

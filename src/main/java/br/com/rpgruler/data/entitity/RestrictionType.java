@@ -1,74 +1,70 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
-import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
 /**
- * Entidade dos tipos de Effects
+ * Entidade dos tipos de restrição
  *
  * @author kaciano
  */
-public class EffectType extends Type {
+public class RestrictionType extends Type {
 
-    @NotCopiable
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
-    @Editable
-    @ColumnName(name = "Nome")
+    @ColumnName(name = "Titulo")
     private String title;
 
     /**
-     * Cria nova instancia de EffectType
+     * Cria nova instancia de RestrictionType
      */
-    public EffectType() {
+    public RestrictionType() {
     }
 
     /**
-     * Cria nova instancia de EffectType
+     * Cria nova instancia de RestrictionType
      *
-     * @param id <code></code>
-     * @param typeName <code></code>
+     * @param id <code>Long</code> Código do tipo
+     * @param title <code>String</code> Titulo do tipo
      */
-    public EffectType(Long id, String typeName) {
+    public RestrictionType(Long id, String title) {
         this.id = id;
-        this.title = typeName;
+        this.title = title;
     }
 
     /**
-     * Retorna o ID do EffectType
+     * Retorna o código
      *
-     * @return <code>Long</code> ID do EffectType
+     * @return <code>Long</code> Código do tipo
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do EffectType
+     * Modifica o código
      *
-     * @param id <code>Long</code> ID do EffectType
+     * @param id <code>Long</code> Código do tipo
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Retorna o titulo do EffectType
+     * Retorna o titulo
      *
-     * @return <code>String</code> Titulo do EffectType
+     * @return <code>String</code> Titulo do tipo
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Modifica o titulo do EffectType
+     * Modifica o titulo
      *
-     * @param title <code>String</code> Titulo do EffectType
+     * @param title <code>String</code> Titulo do tipo
      */
     public void setTitle(String title) {
         this.title = title;
@@ -76,9 +72,9 @@ public class EffectType extends Type {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.title);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.title);
         return hash;
     }
 
@@ -90,7 +86,7 @@ public class EffectType extends Type {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final EffectType other = (EffectType) obj;
+        final RestrictionType other = (RestrictionType) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

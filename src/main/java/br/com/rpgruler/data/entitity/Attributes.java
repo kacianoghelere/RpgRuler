@@ -1,7 +1,6 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
-import br.com.gmp.utils.annotations.Editable;
 
 /**
  * Entidade dos atributos para personagens, classes, raças, inimigos e
@@ -11,24 +10,26 @@ import br.com.gmp.utils.annotations.Editable;
  */
 public class Attributes {
 
-    @Editable
     @ColumnName(name = "FOR")
     private Integer strength;
-    @Editable
     @ColumnName(name = "DES")
     private Integer dexterity;
-    @Editable
     @ColumnName(name = "CON")
     private Integer constitution;
-    @Editable
     @ColumnName(name = "INT")
     private Integer intelligence;
-    @Editable
     @ColumnName(name = "WIS")
     private Integer wisdom;
-    @Editable
     @ColumnName(name = "CHA")
     private Integer charisma;
+    @ColumnName(name = "HP")
+    private Integer health;
+    @ColumnName(name = "ATK")
+    private Integer attack;
+    @ColumnName(name = "DEF")
+    private Integer defense;
+    @ColumnName(name = "EVA")
+    private Integer evasion;
 
     /**
      * Constroi nova instancia de Attributes
@@ -53,6 +54,33 @@ public class Attributes {
         this.intelligence = intel;
         this.wisdom = wis;
         this.charisma = charm;
+    }
+
+    /**
+     * Constroi nova instancia de Attributes
+     *
+     * @param str <code>Integer</code> Força
+     * @param dex <code>Integer</code> Destreza
+     * @param con <code>Integer</code> Constituição
+     * @param intel <code>Integer</code> Inteligencia
+     * @param wis <code>Integer</code> Sabedoria
+     * @param charm <code>Integer</code> Carisma
+     * @param hp <code>Integer</code> Pontos de vida
+     * @param atk <code>Integer</code> Ataque
+     * @param def <code>Integer</code> Defesa
+     * @param eva <code>Integer</code> Evasão
+     */
+    public Attributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva) {
+        this.strength = str;
+        this.dexterity = dex;
+        this.constitution = con;
+        this.intelligence = intel;
+        this.wisdom = wis;
+        this.charisma = charm;
+        this.health = hp;
+        this.attack = atk;
+        this.defense = def;
+        this.evasion = eva;
     }
 
     /**
@@ -161,6 +189,78 @@ public class Attributes {
      */
     public void setCharisma(Integer charisma) {
         this.charisma = charisma;
+    }
+
+    /**
+     * Retorna os Pontos de vida
+     *
+     * @return <code>Integer</code> Pontos de vida
+     */
+    public Integer getHealth() {
+        return health;
+    }
+
+    /**
+     * Modifica os Pontos de vida
+     *
+     * @param health <code>Integer</code> Pontos de vida
+     */
+    public void setHealth(Integer health) {
+        this.health = health;
+    }
+
+    /**
+     * Retorna o Ataque
+     *
+     * @return <code>Integer</code> Ataque
+     */
+    public Integer getAttack() {
+        return attack;
+    }
+
+    /**
+     * Modifica o Ataque
+     *
+     * @param attack <code>Integer</code> Ataque
+     */
+    public void setAttack(Integer attack) {
+        this.attack = attack;
+    }
+
+    /**
+     * Retorna a defesa
+     *
+     * @return <code>Integer</code> Defesa
+     */
+    public Integer getDefense() {
+        return defense;
+    }
+
+    /**
+     * Modifica a defesa
+     *
+     * @param defense <code>Integer</code> Defesa
+     */
+    public void setDefense(Integer defense) {
+        this.defense = defense;
+    }
+
+    /**
+     * Retorna a Evasão
+     *
+     * @return <code>Integer</code> Evasão
+     */
+    public Integer getEvasion() {
+        return evasion;
+    }
+
+    /**
+     * Modifica a Evasão
+     *
+     * @param evasion <code>Integer</code> Evasão
+     */
+    public void setEvasion(Integer evasion) {
+        this.evasion = evasion;
     }
 
 }

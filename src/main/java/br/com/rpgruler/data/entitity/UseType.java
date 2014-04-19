@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class WearType {
+public class UseType extends Type {
 
     @NotCopiable
     @ColumnName(name = "Código")
@@ -20,11 +20,18 @@ public class WearType {
     private String typeName;
 
     /**
-     *
-     * @param id
-     * @param typeName
+     * Cria nova instancia de WearType
      */
-    public WearType(Long id, String typeName) {
+    public UseType() {
+    }
+
+    /**
+     * Cria nova instancia de WearType
+     *
+     * @param id <code>Long</code> Código do tipo
+     * @param typeName <code>String</code> Titulo do tipo
+     */
+    public UseType(Long id, String typeName) {
         this.id = id;
         this.typeName = typeName;
     }
@@ -45,7 +52,7 @@ public class WearType {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final WearType other = (WearType) obj;
+        final UseType other = (UseType) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -58,32 +65,36 @@ public class WearType {
     }
 
     /**
+     * Retorna o Código do tipo
      *
-     * @return
+     * @return <code>Long</code> Código do tipo
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o Código do tipo
      *
-     * @param id
+     * @param id <code>Long</code> Código do tipo
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o Titulo do tipo
      *
-     * @return
+     * @return <code>String</code> Titulo do tipo
      */
     public String getTypeName() {
         return typeName;
     }
 
     /**
+     * Modifica o Titulo do tipo
      *
-     * @param typeName
+     * @param typeName <code>String</code> Titulo do tipo
      */
     public void setTypeName(String typeName) {
         this.typeName = typeName;

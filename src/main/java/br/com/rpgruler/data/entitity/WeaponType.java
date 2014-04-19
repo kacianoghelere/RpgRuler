@@ -4,7 +4,6 @@ import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class WeaponType implements Serializable {
+public class WeaponType extends Type {
 
     @Ignore
     @NotCopiable
@@ -28,7 +27,7 @@ public class WeaponType implements Serializable {
     @ColumnName(name = "Categoria")
     private Integer category;
     @ColumnName(name = "Porte")
-    private WearType wearType;
+    private UseType wearType;
     @Editable
     @ColumnName(name = "Quantidade 1")
     private Double materialAmount1;
@@ -53,7 +52,7 @@ public class WeaponType implements Serializable {
      * @param materialAmount1 <code>Double</code> Qtd. do material 1
      * @param materialAmount2 <code>Double</code> Qtd. do material 2
      */
-    public WeaponType(Long id, String typeName, Double damageBase, Integer category, WearType wearType, Double materialAmount1, Double materialAmount2) {
+    public WeaponType(Long id, String typeName, Double damageBase, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
         this.typeName = typeName;
         this.damageBase = damageBase;
@@ -176,7 +175,7 @@ public class WeaponType implements Serializable {
      *
      * @return <code>WearType</code> Tipo de porte
      */
-    public WearType getWearType() {
+    public UseType getWearType() {
         return wearType;
     }
 
@@ -185,7 +184,7 @@ public class WeaponType implements Serializable {
      *
      * @param wearType <code>WearType</code> Tipo de porte
      */
-    public void setWearType(WearType wearType) {
+    public void setWearType(UseType wearType) {
         this.wearType = wearType;
     }
 

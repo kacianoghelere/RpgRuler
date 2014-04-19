@@ -1,7 +1,10 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -29,6 +32,12 @@ public class Armor {
     private PrimeMaterial material2;
     @ColumnName(name = "Atributos")
     private Attributes attributes;
+    @Ignore
+    @ColumnName(name = "Restrições")
+    private List<Restriction> restriction;
+    @Ignore
+    @ColumnName(name = "Efeitos")
+    private List<Effect> effects;
 
     /**
      * Cria nova instancia de Armor
@@ -55,6 +64,8 @@ public class Armor {
         this.material1 = material1;
         this.material2 = material2;
         this.attributes = attributes;
+        this.effects = new ArrayList<>();
+        this.restriction = new ArrayList<>();
     }
 
     /**
@@ -209,6 +220,42 @@ public class Armor {
      */
     public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
+    }
+
+    /**
+     * Modifica as restrições
+     *
+     * @return <code>List(Restriction)</code> Restrições
+     */
+    public List<Restriction> getRestriction() {
+        return restriction;
+    }
+
+    /**
+     * Retorna as restrições
+     *
+     * @param restriction <code>List(Restriction)</code> Restrições
+     */
+    public void setRestriction(List<Restriction> restriction) {
+        this.restriction = restriction;
+    }
+
+    /**
+     * Modifica os efeitos
+     *
+     * @return <code>List(Effect)</code> Efeitos
+     */
+    public List<Effect> getEffects() {
+        return effects;
+    }
+
+    /**
+     * Retorna os efeitos
+     *
+     * @param effects <code>List(Effect)</code> Efeitos
+     */
+    public void setEffects(List<Effect> effects) {
+        this.effects = effects;
     }
 
     @Override

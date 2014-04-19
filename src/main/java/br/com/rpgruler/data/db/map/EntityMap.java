@@ -21,7 +21,7 @@ public class EntityMap {
         map.put(Element.class, "ElementDB");
         map.put(PrimeMaterial.class, "MaterialsDB");
         map.put(ArmorType.class, "ArmorTypeDB");
-        map.put(WearType.class, "WearTypeDB");
+        map.put(UseType.class, "UseTypeDB");
         map.put(Effect.class, "EffectDB");
         map.put(EffectType.class, "EffectTypeDB");
         map.put(Menu.class, "MenuDB");
@@ -29,6 +29,7 @@ public class EntityMap {
         map.put(Perk.class, "PerkDB");        
         map.put(PerkType.class, "PerkTypeDB");        
         map.put(WeaponType.class, "WeaponTypeDB");        
+        map.put(RestrictionType.class, "RestrictionTypeDB");                
         return map;
     }
 

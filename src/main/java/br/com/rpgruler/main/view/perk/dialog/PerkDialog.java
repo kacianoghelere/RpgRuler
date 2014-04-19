@@ -32,7 +32,7 @@ public class PerkDialog extends GDialog {
     public PerkDialog(PerkView perks, Perk perk, boolean modal) {
         super(perks.getMainScreen(), modal);
         this.perks = perks;
-        initialize(perk);
+        this.initialize(perk);
     }
 
     /**

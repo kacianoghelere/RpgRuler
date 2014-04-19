@@ -2,14 +2,15 @@ package br.com.rpgruler.main.view.terms.bean;
 
 import br.com.rpgruler.data.db.dao.EffectTypeDAO;
 import br.com.rpgruler.data.db.dao.PerkTypeDAO;
-import br.com.rpgruler.data.db.dao.WearTypeDAO;
+import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
+import br.com.rpgruler.data.db.dao.UseTypeDAO;
 import br.com.rpgruler.data.entitity.EffectType;
 import br.com.rpgruler.data.entitity.PerkType;
-import br.com.rpgruler.data.entitity.WearType;
+import br.com.rpgruler.data.entitity.RestrictionType;
+import br.com.rpgruler.data.entitity.UseType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.terms.TermsView;
-import br.com.rpgruler.main.view.terms.object.TermsParameter;
 
 /**
  * Bean para TermsView
@@ -19,9 +20,10 @@ import br.com.rpgruler.main.view.terms.object.TermsParameter;
  */
 public class TermsBean extends ViewBean<TermsView> {
 
-    private final WearTypeDAO wearTypeDao;
+    private final UseTypeDAO useTypeDao;
     private final EffectTypeDAO effectTypeDAO;
     private final PerkTypeDAO perkTypeDao;
+    private final RestrictionTypeDAO restDao;
 
     /**
      * Cria nova instancia de TermsBean
@@ -30,34 +32,37 @@ public class TermsBean extends ViewBean<TermsView> {
      */
     public TermsBean(TermsView view) {
         super(view);
-        this.wearTypeDao = new WearTypeDAO();
+        this.useTypeDao = new UseTypeDAO();
         this.effectTypeDAO = new EffectTypeDAO();
         this.perkTypeDao = new PerkTypeDAO();
+        this.restDao = new RestrictionTypeDAO();
     }
 
     @Override
     public void save(BeanEvent evt) throws Exception {
-        wearTypeDao.replaceAll(getView().getWtModel().getData());
+        useTypeDao.replaceAll(getView().getUseModel().getData());
         effectTypeDAO.replaceAll(getView().getEfModel().getData());
         perkTypeDao.replaceAll(getView().getPerkModel().getData());
+        restDao.replaceAll(getView().getRestModel().getData());
     }
 
     @Override
     public void load(BeanEvent evt) throws Exception {
-        getView().getWtModel().setData(wearTypeDao.getList());
+        getView().getUseModel().setData(useTypeDao.getList());
         getView().getEfModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
+        getView().getRestModel().setData(restDao.getList());
     }
 
     /**
-     * Adiciona novo elemento na lista de WearTypes
+     * Adiciona novo elemento na lista de UseTypes
      *
      * @param evt <code>BeanEvent</code> Evento do Bean
      */
-    public void addWearType(BeanEvent evt) {
-        Long nextId = getNextWTID();
-        WearType type = new WearType(nextId, (String) evt.getValue());
-        getView().getWtModel().add(type);
+    public void addUseTp(BeanEvent evt) {
+        Long nextId = getNextUseID();
+        UseType type = new UseType(nextId, (String) evt.getValue());
+        getView().getUseModel().add(type);
     }
 
     /**
@@ -65,7 +70,7 @@ public class TermsBean extends ViewBean<TermsView> {
      *
      * @param evt <code>BeanEvent</code> Evento do Bean
      */
-    public void addEffect(BeanEvent evt) {
+    public void addEffectTp(BeanEvent evt) {
         Long nextId = getNextEffectID();
         EffectType type = new EffectType(nextId, (String) evt.getValue());
         getView().getEfModel().add(type);
@@ -76,20 +81,31 @@ public class TermsBean extends ViewBean<TermsView> {
      *
      * @param evt <code>BeanEvent</code> Evento do Bean
      */
-    public void addPerk(BeanEvent evt) {
+    public void addPerkTp(BeanEvent evt) {
         Long nextId = getNextPerkID();
         PerkType type = new PerkType(nextId, (String) evt.getValue());
         getView().getPerkModel().add(type);
     }
 
     /**
-     * Retorna o próximo ID dos WearTypes
+     * Adiciona novo elemento na lista de RestrictionType
      *
-     * @return <code>Long</code> Próximo ID para WearType
+     * @param evt <code>BeanEvent</code> Evento do Bean
      */
-    public Long getNextWTID() {
+    public void addRestTp(BeanEvent evt) {
+        Long nextId = getNextRestID();
+        RestrictionType type = new RestrictionType(nextId, (String) evt.getValue());
+        getView().getRestModel().add(type);
+    }
+
+    /**
+     * Retorna o próximo ID dos UseTypes
+     *
+     * @return <code>Long</code> Próximo ID para UseType
+     */
+    public Long getNextUseID() {
         Long id = (long) 0;
-        for (WearType type : getView().getWtModel().getData()) {
+        for (UseType type : getView().getUseModel().getData()) {
             if (type.getId() > id) {
                 id = type.getId();
             }
@@ -98,9 +114,9 @@ public class TermsBean extends ViewBean<TermsView> {
     }
 
     /**
-     * Retorna o próximo ID dos Effect
+     * Retorna o próximo ID dos EffectType
      *
-     * @return <code>Long</code> Próximo ID para Effect
+     * @return <code>Long</code> Próximo ID para EffectType
      */
     public Long getNextEffectID() {
         Long id = (long) 0;
@@ -120,6 +136,21 @@ public class TermsBean extends ViewBean<TermsView> {
     public Long getNextPerkID() {
         Long id = (long) 0;
         for (PerkType type : getView().getPerkModel().getData()) {
+            if (type.getId() > id) {
+                id = type.getId();
+            }
+        }
+        return (id + 1);
+    }
+
+    /**
+     * Retorna o próximo ID dos RestrictionTypes
+     *
+     * @return <code>Long</code> Próximo ID para RestrictionType
+     */
+    public Long getNextRestID() {
+        Long id = (long) 0;
+        for (RestrictionType type : getView().getRestModel().getData()) {
             if (type.getId() > id) {
                 id = type.getId();
             }

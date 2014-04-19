@@ -1,7 +1,7 @@
 package br.com.rpgruler.data.db.dao;
 
 import br.com.rpgruler.data.db.GenericDAO;
-import br.com.rpgruler.data.entitity.WearType;
+import br.com.rpgruler.data.entitity.UseType;
 
 /**
  * DAO para controle dos WearTypes
@@ -9,6 +9,6 @@ import br.com.rpgruler.data.entitity.WearType;
  * @author kaciano
  * @version 1.0
  */
-public class WearTypeDAO extends GenericDAO<WearType> {
+public class UseTypeDAO extends GenericDAO<UseType> {
 
 }

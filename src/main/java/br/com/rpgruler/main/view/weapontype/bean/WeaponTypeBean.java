@@ -1,9 +1,9 @@
 package br.com.rpgruler.main.view.weapontype.bean;
 
 import br.com.rpgruler.data.db.dao.WeaponTypeDAO;
-import br.com.rpgruler.data.db.dao.WearTypeDAO;
+import br.com.rpgruler.data.db.dao.UseTypeDAO;
 import br.com.rpgruler.data.entitity.WeaponType;
-import br.com.rpgruler.data.entitity.WearType;
+import br.com.rpgruler.data.entitity.UseType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.object.ViewWrapper;
@@ -26,7 +26,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     public WeaponTypeBean(WeaponTypeView view) {
         super(view);
         this.dao = new WeaponTypeDAO();
-        getView().getWearModel().setData(new WearTypeDAO().getList());
+        getView().getUseModel().setData(new UseTypeDAO().getList());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
 
     @Override
     public void load(BeanEvent evt) throws Exception {
-        getView().getWearModel().setData(new WearTypeDAO().getList());
+        getView().getUseModel().setData(new UseTypeDAO().getList());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
         type.setTypeName((String) vw.getValue(0));
         type.setCategory((Integer) vw.getValue(1));
         type.setDamageBase((Double) vw.getValue(2));
-        type.setWearType((WearType) vw.getValue(3));
+        type.setWearType((UseType) vw.getValue(3));
         type.setMaterialAmount1((Double) vw.getValue(4));
         type.setMaterialAmount2((Double) vw.getValue(5));
         getView().getModel().add(type);

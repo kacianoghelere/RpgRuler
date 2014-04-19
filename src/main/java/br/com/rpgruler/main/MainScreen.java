@@ -4,6 +4,8 @@ import br.com.rpgruler.main.bean.MainScreenBean;
 import br.com.rpgruler.main.interfaces.IMainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.util.MenuBuilder;
+import br.com.rpgruler.main.view.armor.ArmorView;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
 import br.com.rpgruler.main.view.dice.DiceView;
 import br.com.rpgruler.main.view.effect.EffectView;
@@ -16,6 +18,8 @@ import br.com.rpgruler.main.view.menuitem.MenuItemView;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import br.com.rpgruler.main.view.weapontype.WeaponTypeView;
 import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
@@ -28,52 +32,52 @@ import javax.swing.JMenu;
 public class MainScreen extends javax.swing.JFrame implements IMainScreen {
 
     /**
-     *
+     * Tipo de mensagem para erros
      */
     public static int ERROR_MSG = 4;
 
     /**
-     *
+     * Tipo de mensagem para informação
      */
     public static int INFORMATIVE_MSG = 1;
 
     /**
-     *
+     * Tipo de mensagem para questionamento
      */
     public static int QUESTION_MSG = 2;
 
     /**
-     *
+     * Tipo de mensagem para secesso
      */
     public static int SUCCESS_MSG = 5;
 
     /**
-     *
+     * Tipo de mensagem para avisos
      */
     public static int WARNING_MSG = 3;
 
     /**
-     *
+     * Icone de mensagem para erros
      */
     public static String ERROR_ICON = "/ComponentIcons/transition/toolbar/4.png";
 
     /**
-     *
+     * Icone de mensagem para informação
      */
     public static String INFORMATIVE_ICON = "/ComponentIcons/transition/toolbar/1.png";
 
     /**
-     *
+     * Icone de mensagem para questionamento
      */
     public static String QUESTION_ICON = "/ComponentIcons/transition/toolbar/2.png";
 
     /**
-     *
+     * Icone de mensagem para secesso
      */
     public static String SUCCESS_ICON = "/ComponentIcons/transition/toolbar/5.png";
 
     /**
-     *
+     * Icone de mensagem para avisos
      */
     public static String WARNING_ICON = "/ComponentIcons/transition/toolbar/3.png";
     private final String ICON = "/dices/d12-icon.png";
@@ -84,6 +88,11 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
      */
     public MainScreen() {
         initialize();
+        try {
+            new MenuBuilder(this, jMRoot).build();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -344,7 +353,9 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMWeapons = new javax.swing.JMenu();
         jMIWeaponTypes = new javax.swing.JMenuItem();
         jMArmors = new javax.swing.JMenu();
+        jMIArmors = new javax.swing.JMenuItem();
         jMIArmorTypes = new javax.swing.JMenuItem();
+        jMRoot = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPG");
@@ -631,6 +642,16 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMArmors.setText("Armaduras");
         jMArmors.setName("jMArmors"); // NOI18N
 
+        jMIArmors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/P/P_50.png"))); // NOI18N
+        jMIArmors.setText("Armaduras");
+        jMIArmors.setName("jMIArmors"); // NOI18N
+        jMIArmors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIArmorsActionPerformed(evt);
+            }
+        });
+        jMArmors.add(jMIArmors);
+
         jMIArmorTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
         jMIArmorTypes.setText("Tipos de armaduras");
         jMIArmorTypes.setName("jMIArmorTypes"); // NOI18N
@@ -644,6 +665,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMInfo.add(jMArmors);
 
         jMenuBar.add(jMInfo);
+
+        jMRoot.setText("Root");
+        jMRoot.setName("jMRoot"); // NOI18N
+        jMenuBar.add(jMRoot);
 
         setJMenuBar(jMenuBar);
 
@@ -750,6 +775,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new WeaponTypeView(this));
     }//GEN-LAST:event_jMIWeaponTypesActionPerformed
 
+    private void jMIArmorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIArmorsActionPerformed
+        listener.insertView(new ArmorView(this));
+    }//GEN-LAST:event_jMIArmorsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -764,6 +793,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenu jMEffects;
     private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIArmorTypes;
+    private javax.swing.JMenuItem jMIArmors;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIEffects;
     private javax.swing.JMenuItem jMIMaterials;
@@ -780,6 +810,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenu jMPerk;
+    private javax.swing.JMenu jMRoot;
     private javax.swing.JMenu jMTerms;
     private javax.swing.JMenu jMWeapons;
     private javax.swing.JMenuBar jMenuBar;

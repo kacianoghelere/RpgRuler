@@ -54,6 +54,16 @@ public class ViewBean<T> implements BeanListener<T> {
         System.out.println("Add not implemented yet.");
     }
 
+    /**
+     * Método para construção de conteúdos
+     *
+     * @param evt <code>BeanEvent</code> Evento do Bean
+     * @throws java.lang.Exception Propagação de exceção
+     */
+    public void build(BeanEvent evt) throws Exception {
+        System.out.println("Build not implemented yet.");
+    }
+
     @Override
     public T getView() {
         return view;

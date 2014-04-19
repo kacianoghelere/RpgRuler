@@ -5,7 +5,7 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.rpgruler.data.db.dao.WeaponTypeDAO;
 import br.com.rpgruler.data.entitity.WeaponType;
-import br.com.rpgruler.data.entitity.WearType;
+import br.com.rpgruler.data.entitity.UseType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
@@ -29,7 +29,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
 
     private WeaponTypeBean bean;
     private WeaponTypeModel model;
-    private GComboBoxModel<WearType> wearModel;
+    private GComboBoxModel<UseType> useModel;
     private TableUtil tableUtil;
 
     /**
@@ -51,11 +51,11 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         this.setControls(new ViewParameter(true, false, false, false));
         this.initComponents();
         this.model = new WeaponTypeModel();
-        this.wearModel = new GComboBoxModel<>();
-        this.gTable.buildTable(this, 0, model);        
+        this.useModel = new GComboBoxModel<>();
+        this.gTable.buildTable(this, 0, model);
         this.tableUtil = new TableUtil(this);
-        this.bean = new WeaponTypeBean(this);   
-        this.gCBWear.setGModel(wearModel);
+        this.bean = new WeaponTypeBean(this);
+        this.gCBWear.setGModel(useModel);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                         vw.addValue(gTTitle.getText());
                         vw.addValue((Integer) jSpinCategory.getValue());
                         vw.addValue(nTBaseDmg.getDouble());
-                        vw.addValue(wearModel.getSelectedItem());
+                        vw.addValue(useModel.getSelectedItem());
                         vw.addValue((Double) jSpQtd1.getValue());
                         vw.addValue((Double) jSpQtd2.getValue());
                         bean.add(new BeanEvent(vw));
@@ -106,12 +106,12 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     }
 
     /**
-     * Retorna o modelo dos WearTypes
+     * Retorna o modelo dos UseTypes
      *
-     * @return <code>WearType</code> Modelo dos WearTypes
+     * @return <code>UseType</code> Modelo dos UseTypes
      */
-    public GComboBoxModel<WearType> getWearModel() {
-        return wearModel;
+    public GComboBoxModel<UseType> getUseModel() {
+        return useModel;
     }
 
     /**

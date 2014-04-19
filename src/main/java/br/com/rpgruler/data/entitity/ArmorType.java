@@ -4,7 +4,6 @@ import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class ArmorType implements Serializable {
+public class ArmorType extends Type {
 
     @Ignore
     @NotCopiable
