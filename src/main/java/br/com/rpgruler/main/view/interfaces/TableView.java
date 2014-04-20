@@ -22,6 +22,11 @@ public interface TableView {
     void remove();
 
     /**
+     * Inicia edição de um item na tabela
+     */
+    void edit();
+
+    /**
      * Retorna a tabela
      *
      * @return <code>GTable</code>

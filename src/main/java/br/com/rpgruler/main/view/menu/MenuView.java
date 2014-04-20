@@ -105,6 +105,11 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     }
 
     @Override
+    public void edit() {
+
+    }
+
+    @Override
     public GTable getTable() {
         return this.gTable;
     }

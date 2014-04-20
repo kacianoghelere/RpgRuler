@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.ArrayList;
@@ -16,16 +17,21 @@ import java.util.Objects;
 public class Armor {
 
     @NotCopiable
+    @Ignore
     @ColumnName(name = "Código")
     private Long id;
+    @Editable
     @ColumnName(name = "Nome")
     private String name;
+    @Editable
     @ColumnName(name = "Descrição")
     private String description;
     @ColumnName(name = "Tipo de armadura")
     private ArmorType type;
     @ColumnName(name = "Resistencia")
     private Double resistence;
+    @ColumnName(name = "Preço")
+    private Double price;
     @ColumnName(name = "Material 1")
     private PrimeMaterial material1;
     @ColumnName(name = "Material 2")
@@ -52,15 +58,17 @@ public class Armor {
      * @param name <code>String</code> Nome da armadura
      * @param description <code>String</code> Descrição da armadura
      * @param type <code>ArmorType</code> Tipo da armadura
+     * @param price <code>Double</code> Preço da armadura
      * @param material1 <code>PrimeMaterial</code> Material 1
      * @param material2 <code>PrimeMaterial</code> Material 2
      * @param attributes <code>Attributes</code> Atributos da armadura
      */
-    public Armor(Long id, String name, String description, ArmorType type, PrimeMaterial material1, PrimeMaterial material2, Attributes attributes) {
+    public Armor(Long id, String name, String description, ArmorType type, Double price, PrimeMaterial material1, PrimeMaterial material2, Attributes attributes) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.type = type;
+        this.price = price;
         this.material1 = material1;
         this.material2 = material2;
         this.attributes = attributes;
@@ -166,6 +174,24 @@ public class Armor {
      */
     public void setResistence(Double resistence) {
         this.resistence = resistence;
+    }
+
+    /**
+     * Retorna o preço da armadura
+     *
+     * @return <code>Double</code> Preço da armadura
+     */
+    public Double getPrice() {
+        return price;
+    }
+
+    /**
+     * Modifica o preço da armadura
+     *
+     * @param price <code>Double</code> Preço da armadura
+     */
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     /**
@@ -297,5 +323,4 @@ public class Armor {
     public String toString() {
         return this.name;
     }
-
 }

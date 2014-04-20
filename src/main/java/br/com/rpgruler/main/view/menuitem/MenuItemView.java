@@ -40,7 +40,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     private final int TITLE_COLUMN = count++;
     private final int CLASS_COLUMN = count++;
     private final int ICON_COLUMN = count++;
-    
+
     /**
      * Cria nova instancia de MenuItemView
      *
@@ -98,6 +98,11 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                         .log(Level.SEVERE, null, e);
             }
         }
+    }
+
+    @Override
+    public void edit() {
+
     }
 
     @Override

@@ -1,5 +1,7 @@
 package br.com.rpgruler.data.entitity;
 
+import br.com.gmp.comps.annotations.ColumnName;
+
 /**
  * Restrição de uso para equipamentos
  *
@@ -7,7 +9,9 @@ package br.com.rpgruler.data.entitity;
  */
 public class Restriction {
 
+    @ColumnName(name = "Tipo")
     private RestrictionType type;
+    @ColumnName(name = "Valor")
     private Integer value;
 
     /**

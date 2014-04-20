@@ -5,6 +5,7 @@ import br.com.rpgruler.data.entitity.Perk;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.bean.ViewBean;
+import br.com.rpgruler.main.view.perk.dialog.PerkDialog;
 
 /**
  * Bean de controle para a PerkView
@@ -30,15 +31,21 @@ public class PerkBean extends ViewBean<PerkView> {
         this.dao.replaceAll(getView().getModel().getData());
     }
 
-    /**
-     * Adiciona novo item na tabela
-     *
-     * @param evt <code>BeanEvent</code> Evento
-     */
     @Override
     public void add(BeanEvent evt) {
         Perk perk = (Perk) evt.getValue();
         getView().getModel().add(perk);
+    }
+
+    @Override
+    public void edit(BeanEvent evt) throws Exception {
+        if (getView().getTable().getSelectedRowCount() > 0) {
+            Integer row = (Integer) getView().getTable().getSelectedRows()[0];
+            PerkDialog dialog = new PerkDialog(getView(), getView().getModel().getObject(row), true);
+            if (dialog.getPerk() != null) {
+                getView().getModel().update(row, dialog.getPerk());
+            }
+        }
     }
 
     /**

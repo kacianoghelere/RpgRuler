@@ -136,6 +136,11 @@ public class ElementView extends View implements TableSource<Element>, TableView
     }
 
     @Override
+    public void edit() {
+
+    }
+
+    @Override
     public GTable getTable() {
         return gTable;
     }

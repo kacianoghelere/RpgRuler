@@ -88,12 +88,17 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
             try {
                 if (gTable.getSelectedRowCount() > 0) {
                     model.remove(gTable.getSelectedRows());
-                }               
+                }
             } catch (NumberFormatException e) {
                 Logger.getLogger(MaterialsView.class.getName())
                         .log(Level.SEVERE, null, e);
             }
         }
+    }
+
+    @Override
+    public void edit() {
+
     }
 
     @Override
@@ -179,7 +184,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTBControls, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+            .addComponent(jTBControls, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -190,8 +195,8 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jTBControls, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 

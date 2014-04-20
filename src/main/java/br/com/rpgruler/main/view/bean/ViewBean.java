@@ -55,6 +55,16 @@ public class ViewBean<T> implements BeanListener<T> {
     }
 
     /**
+     * Método para edição de conteúdos
+     *
+     * @param evt <code>BeanEvent</code> Evento do Bean
+     * @throws java.lang.Exception Propagação de exceção
+     */
+    public void edit(BeanEvent evt) throws Exception {
+        System.out.println("Edit not implemented yet.");
+    }
+
+    /**
      * Método para construção de conteúdos
      *
      * @param evt <code>BeanEvent</code> Evento do Bean

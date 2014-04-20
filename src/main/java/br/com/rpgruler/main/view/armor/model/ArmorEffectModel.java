@@ -4,6 +4,7 @@ import br.com.gmp.comps.model.GTableModel;
 import br.com.rpgruler.data.entitity.Effect;
 
 /**
+ * Modelo de tabelas para efeitos de armadura
  *
  * @author kaciano
  */

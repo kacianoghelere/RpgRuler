@@ -30,6 +30,7 @@ public class EntityMap {
         map.put(PerkType.class, "PerkTypeDB");        
         map.put(WeaponType.class, "WeaponTypeDB");        
         map.put(RestrictionType.class, "RestrictionTypeDB");                
+        map.put(Armor.class, "ArmorDB");                
         return map;
     }
 

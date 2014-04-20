@@ -86,6 +86,11 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     }
 
     @Override
+    public void edit() {
+
+    }
+
+    @Override
     public GTable getTable() {
         return this.gTable;
     }

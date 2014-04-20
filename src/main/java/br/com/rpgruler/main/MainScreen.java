@@ -642,7 +642,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMArmors.setText("Armaduras");
         jMArmors.setName("jMArmors"); // NOI18N
 
-        jMIArmors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/P/P_50.png"))); // NOI18N
+        jMIArmors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/P/P_21.png"))); // NOI18N
         jMIArmors.setText("Armaduras");
         jMIArmors.setName("jMIArmors"); // NOI18N
         jMIArmors.addActionListener(new java.awt.event.ActionListener() {

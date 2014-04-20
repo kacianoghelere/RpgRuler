@@ -83,6 +83,20 @@ public class Attributes {
         this.evasion = eva;
     }
 
+    @Override
+    public String toString() {
+        return "FOR: " + strength
+                + ", DES: " + dexterity
+                + ", CON: " + constitution
+                + ", INT: " + intelligence
+                + ", SAB: " + wisdom
+                + ", CAR: " + charisma
+                + ", HP: " + health
+                + ", ATK: " + attack
+                + ", DEF: " + defense
+                + ", EVA: " + evasion;
+    }
+
     /**
      * Retorna a Força
      *

@@ -51,7 +51,7 @@ public class EffectView extends br.com.rpgruler.main.view.View implements TableV
         this.tableUtil = new TableUtil(this);
         this.model = new EffectModel();
         this.typeModel = new GComboBoxModel<>();
-        this.gTable.setModel(model);
+        this.gTable.buildTable(this, 0, model);
         this.gCBType.setGModel(typeModel);
         this.bean = new EffectBean(this);
     }
@@ -82,6 +82,11 @@ public class EffectView extends br.com.rpgruler.main.view.View implements TableV
     @Override
     public void remove() {
         this.tableUtil.remove(null);
+    }
+
+    @Override
+    public void edit() {
+        
     }
 
     @Override

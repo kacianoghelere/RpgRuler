@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.rpgruler.main.view.armor.dialog;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
@@ -10,7 +5,6 @@ import br.com.gmp.comps.dialog.GDialog;
 import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
 import br.com.rpgruler.data.entitity.Restriction;
 import br.com.rpgruler.data.entitity.RestrictionType;
-import br.com.rpgruler.main.view.armor.ArmorView;
 
 /**
  * Tela auxiliar para resgistro de restrições
@@ -19,20 +13,20 @@ import br.com.rpgruler.main.view.armor.ArmorView;
  */
 public class RestrictionDialog extends GDialog {
 
-    private ArmorView view;
+    private ArmorDialog dialog;
     private Restriction restriction;
     private GComboBoxModel<RestrictionType> restModel;
 
     /**
      * Cria nova instancia de RestrictionDialog
      *
-     * @param view <code>ArmorView</code>
+     * @param dialog <code>ArmorDialog</code>
      * @param restriction <code>Restriction</code> Restrição
      * @param modal <code>boolean</code> Modal?
      */
-    public RestrictionDialog(ArmorView view, Restriction restriction, boolean modal) {
-        super(view.getMainScreen(), modal);
-        this.view = view;
+    public RestrictionDialog(ArmorDialog dialog, Restriction restriction, boolean modal) {
+        super(dialog, modal);
+        this.dialog = dialog;
         this.restriction = restriction;
         this.initialize(restriction);
     }
@@ -44,10 +38,12 @@ public class RestrictionDialog extends GDialog {
      */
     private void initialize(Restriction restriction) {
         setSize(275, 120);
+        setVisible(true);
         initComponents();
         this.restModel = new GComboBoxModel<>();
         this.restModel.setData(new RestrictionTypeDAO().getList());
         this.gCBType.setModel(restModel);
+        this.setRestriction(restriction);
     }
 
     /**
@@ -56,6 +52,8 @@ public class RestrictionDialog extends GDialog {
      * @return <code>Restriction</code> Restrição
      */
     public Restriction getRestriction() {
+        restriction.setType(restModel.getSelectedItem());
+        restriction.setValue(nTValue.getInteger());
         return restriction;
     }
 
@@ -68,8 +66,9 @@ public class RestrictionDialog extends GDialog {
         try {
             if (restriction != null) {
                 this.restriction = restriction;
-
-            }
+                this.gCBType.setSelectedItem(this.restriction.getType());
+                this.nTValue.setInt(this.restriction.getValue());
+            } 
         } catch (Exception e) {
         }
     }
@@ -154,11 +153,13 @@ public class RestrictionDialog extends GDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
-        // TODO add your handling code here:
+        if (gCBType.validateComponent() && nTValue.validateComponent()) {
+            dispose();
+        }
     }//GEN-LAST:event_jBSaveActionPerformed
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jBCancelActionPerformed
 
 

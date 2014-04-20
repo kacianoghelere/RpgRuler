@@ -132,9 +132,6 @@
       </Properties>
     </Component>
     <Component class="br.com.gmp.comps.textfield.NumericTextField" name="nTStrength">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=""/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLType">
       <Properties>

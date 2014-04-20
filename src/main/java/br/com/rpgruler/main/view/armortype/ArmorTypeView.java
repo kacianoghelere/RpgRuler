@@ -104,6 +104,11 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
     }
 
     @Override
+    public void edit() {
+
+    }
+
+    @Override
     public GTable getTable() {
         return gTable;
     }

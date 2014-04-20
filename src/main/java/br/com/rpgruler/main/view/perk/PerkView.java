@@ -66,14 +66,9 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
     /**
      * Edita o Perk
      */
-    private void edit() {
-        if (gTable.getSelectedRowCount() > 0) {            
-            Integer row = (Integer) gTable.getSelectedRows()[0];
-            PerkDialog dialog = new PerkDialog(this, model.getObject(row), true);
-            if (dialog.getPerk() != null) {
-                model.update(row, dialog.getPerk());
-            }
-        }
+    @Override
+    public void edit() {
+
     }
 
     @Override
