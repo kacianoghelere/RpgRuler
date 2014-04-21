@@ -37,13 +37,13 @@ public class RestrictionDialog extends GDialog {
      * @param restriction <code>Restriction</code> Restrição
      */
     private void initialize(Restriction restriction) {
-        setSize(275, 120);
-        setVisible(true);
+        setSize(275, 150);
         initComponents();
         this.restModel = new GComboBoxModel<>();
         this.restModel.setData(new RestrictionTypeDAO().getList());
         this.gCBType.setModel(restModel);
         this.setRestriction(restriction);
+        setVisible(true);
     }
 
     /**
@@ -52,6 +52,9 @@ public class RestrictionDialog extends GDialog {
      * @return <code>Restriction</code> Restrição
      */
     public Restriction getRestriction() {
+        if (restriction == null) {
+            restriction = new Restriction();
+        }
         restriction.setType(restModel.getSelectedItem());
         restriction.setValue(nTValue.getInteger());
         return restriction;
@@ -68,7 +71,7 @@ public class RestrictionDialog extends GDialog {
                 this.restriction = restriction;
                 this.gCBType.setSelectedItem(this.restriction.getType());
                 this.nTValue.setInt(this.restriction.getValue());
-            } 
+            }
         } catch (Exception e) {
         }
     }
@@ -83,18 +86,18 @@ public class RestrictionDialog extends GDialog {
         jLType = new javax.swing.JLabel();
         gCBType = new br.com.gmp.comps.combobox.GComboBox();
         jLValue = new javax.swing.JLabel();
-        nTValue = new br.com.gmp.comps.textfield.NumericTextField();
         jBSave = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
+        nTValue = new br.com.gmp.comps.textfield.NumericTextField();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(275, 120));
         setMinimumSize(new java.awt.Dimension(275, 120));
+        setResizable(false);
 
         jLType.setText("Tipo:");
 
         jLValue.setText("Valor:");
-
-        nTValue.setText("numericTextField1");
 
         jBSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
         jBSave.setText("Salvar");
@@ -109,6 +112,12 @@ public class RestrictionDialog extends GDialog {
         jBCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelActionPerformed(evt);
+            }
+        });
+
+        nTValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nTValueActionPerformed(evt);
             }
         });
 
@@ -141,9 +150,9 @@ public class RestrictionDialog extends GDialog {
                     .addComponent(jLType)
                     .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nTValue, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jLValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLValue, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nTValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBSave)
@@ -161,6 +170,10 @@ public class RestrictionDialog extends GDialog {
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBCancelActionPerformed
+
+    private void nTValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nTValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nTValueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

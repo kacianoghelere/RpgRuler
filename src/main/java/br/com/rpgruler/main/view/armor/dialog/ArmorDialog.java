@@ -6,6 +6,7 @@ import br.com.rpgruler.data.entitity.Armor;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.data.entitity.Attributes;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
+import br.com.rpgruler.main.util.TableUtil;
 import br.com.rpgruler.main.view.armor.ArmorView;
 import br.com.rpgruler.main.view.armor.bean.ArmorBean;
 import br.com.rpgruler.main.view.armor.model.ArmorEffectModel;
@@ -25,7 +26,7 @@ public class ArmorDialog extends GDialog {
     private Armor armor;
     private ArmorBean bean;
     private ArmorView view;
-    private RestrictionModel restrictionModel;
+    private RestrictionModel restModel;
     private ArmorEffectModel effectModel;
     private GComboBoxModel<ArmorType> armorTypeModel;
     private GComboBoxModel<PrimeMaterial> materialModel1;
@@ -50,15 +51,15 @@ public class ArmorDialog extends GDialog {
      * @param armor <code>Armor</code> Armadura
      */
     private void initialize(Armor armor) {
-        setSize(680, 541);
+        setSize(680, 545);
         initComponents();
         this.bean = (ArmorBean) view.getBean();
-        this.restrictionModel = new RestrictionModel();
+        this.restModel = new RestrictionModel();
         this.effectModel = new ArmorEffectModel();
         this.armorTypeModel = new GComboBoxModel<>(bean.getArmorTypeDAO().getList());
         this.materialModel1 = new GComboBoxModel<>(bean.getMaterialsDAO().getList());
         this.materialModel2 = new GComboBoxModel<>(bean.getMaterialsDAO().getList());
-        this.gTblRestrictions.setModel(restrictionModel);
+        this.gTblRestrictions.setModel(restModel);
         this.gTblEffects.setModel(effectModel);
         this.gCBType.setModel(armorTypeModel);
         this.gCBMat1.setModel(materialModel1);
@@ -113,7 +114,7 @@ public class ArmorDialog extends GDialog {
                 this.gCBMat2.setSelectedItem(this.armor.getMaterial2());
                 this.jSpinPrice.setValue(this.armor.getPrice());
                 if (this.armor.getRestriction() != null) {
-                    this.restrictionModel.setData(this.armor.getRestriction());
+                    this.restModel.setData(this.armor.getRestriction());
                 }
                 if (this.armor.getEffects() != null) {
                     this.effectModel.setData(this.armor.getEffects());
@@ -164,7 +165,7 @@ public class ArmorDialog extends GDialog {
         this.armor.setMaterial1(materialModel1.getSelectedItem());
         this.armor.setMaterial2(materialModel2.getSelectedItem());
         this.armor.setEffects(effectModel.getData());
-        this.armor.setRestriction(restrictionModel.getData());
+        this.armor.setRestriction(restModel.getData());
         this.armor.calcResistence();
     }
 
@@ -188,12 +189,35 @@ public class ArmorDialog extends GDialog {
     }
 
     /**
+     * Adiciona nova restrição
+     */
+    private void addRestriction() {
+        RestrictionDialog dialog = new RestrictionDialog(this, null, true);
+        if (dialog.getRestriction() != null) {
+            restModel.add(dialog.getRestriction());
+        }
+    }
+
+    /**
+     * Edita a restrição selecionada
+     */
+    private void editRestriction() {
+        if (gTblRestrictions.getSelectedRowCount() > 0) {
+            Integer row = (Integer) gTblRestrictions.getSelectedRows()[0];
+            RestrictionDialog dialog = new RestrictionDialog(this, restModel.getObject(row), true);
+            if (dialog.getRestriction() != null) {
+                restModel.update(row, dialog.getRestriction());
+            }
+        }
+    }
+
+    /**
      * Retorna o Modelo das restrições
      *
      * @return <code>RestrictionModel</code> Modelo das restrições
      */
-    public RestrictionModel getRestrictionModel() {
-        return restrictionModel;
+    public RestrictionModel getRestModel() {
+        return restModel;
     }
 
     /**
@@ -233,6 +257,15 @@ public class ArmorDialog extends GDialog {
     }
 
     /**
+     * Retorna o ArmorView
+     *
+     * @return <code>ArmorView</code>
+     */
+    public ArmorView getView() {
+        return view;
+    }
+
+    /**
      *
      */
     @SuppressWarnings("unchecked")
@@ -240,7 +273,7 @@ public class ArmorDialog extends GDialog {
     private void initComponents() {
 
         jPCaracteristics = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jSPEffects = new javax.swing.JScrollPane();
         gTblEffects = new br.com.gmp.comps.table.GTable();
         jBAddEffect = new javax.swing.JButton();
         jBRemoveEffect = new javax.swing.JButton();
@@ -256,11 +289,11 @@ public class ArmorDialog extends GDialog {
         jLPrice = new javax.swing.JLabel();
         jSpinPrice = new javax.swing.JSpinner();
         jPRestrictions = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        jSPRestrictions = new javax.swing.JScrollPane();
         gTblRestrictions = new br.com.gmp.comps.table.GTable();
         jBRemoveRest = new javax.swing.JButton();
         jBAddRest = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jSPModifiers = new javax.swing.JScrollPane();
         jPModifiers = new javax.swing.JPanel();
         JLStr = new javax.swing.JLabel();
         jSpinStr = new javax.swing.JSpinner();
@@ -280,19 +313,18 @@ public class ArmorDialog extends GDialog {
         jLDef = new javax.swing.JLabel();
         jSpinHP = new javax.swing.JSpinner();
         jLHP = new javax.swing.JLabel();
-        jPDescription = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        gTADesc = new br.com.gmp.comps.textarea.GMPTextArea();
-        jToolBar1 = new javax.swing.JToolBar();
         jBAdd = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
+        jSPDesc = new javax.swing.JScrollPane();
+        gTADesc = new br.com.gmp.comps.textarea.GMPTextArea();
 
         setUndecorated(true);
         setMinimumSize(new java.awt.Dimension(680, 511));
         setResizable(false);
 
-        jPCaracteristics.setBorder(javax.swing.BorderFactory.createTitledBorder("Caracteristicas"));
+        jSPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Efeitos"));
 
+        gTblEffects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         gTblEffects.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -302,7 +334,12 @@ public class ArmorDialog extends GDialog {
             }
         ));
         gTblEffects.setOpaque(false);
-        jScrollPane2.setViewportView(gTblEffects);
+        gTblEffects.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gTblEffectsMouseClicked(evt);
+            }
+        });
+        jSPEffects.setViewportView(gTblEffects);
 
         jBAddEffect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
         jBAddEffect.setFocusable(false);
@@ -328,21 +365,17 @@ public class ArmorDialog extends GDialog {
             jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCaracteristicsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                    .addGroup(jPCaracteristicsLayout.createSequentialGroup()
-                        .addComponent(jBAddEffect)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBRemoveEffect)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jBAddEffect)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBRemoveEffect)
+                .addContainerGap(153, Short.MAX_VALUE))
+            .addComponent(jSPEffects, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPCaracteristicsLayout.setVerticalGroup(
             jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCaracteristicsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSPEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAddEffect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBRemoveEffect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -431,8 +464,9 @@ public class ArmorDialog extends GDialog {
 
         jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBMat1, gCBMat2, gCBType, gTName, jSpinPrice});
 
-        jPRestrictions.setBorder(javax.swing.BorderFactory.createTitledBorder("Restrições"));
+        jSPRestrictions.setBorder(javax.swing.BorderFactory.createTitledBorder("Restrições"));
 
+        gTblRestrictions.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         gTblRestrictions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -442,7 +476,12 @@ public class ArmorDialog extends GDialog {
             }
         ));
         gTblRestrictions.setOpaque(false);
-        jScrollPane5.setViewportView(gTblRestrictions);
+        gTblRestrictions.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gTblRestrictionsMouseClicked(evt);
+            }
+        });
+        jSPRestrictions.setViewportView(gTblRestrictions);
 
         jBRemoveRest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
         jBRemoveRest.setFocusable(false);
@@ -468,20 +507,16 @@ public class ArmorDialog extends GDialog {
             jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRestrictionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                    .addGroup(jPRestrictionsLayout.createSequentialGroup()
-                        .addComponent(jBAddRest)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBRemoveRest)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jBAddRest)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBRemoveRest)
+                .addContainerGap(153, Short.MAX_VALUE))
+            .addComponent(jSPRestrictions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPRestrictionsLayout.setVerticalGroup(
             jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRestrictionsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(jSPRestrictions, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAddRest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,7 +524,7 @@ public class ArmorDialog extends GDialog {
                 .addContainerGap())
         );
 
-        jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder("Modificadores"));
+        jSPModifiers.setBorder(javax.swing.BorderFactory.createTitledBorder("Modificadores"));
 
         JLStr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         JLStr.setText("FOR:");
@@ -618,33 +653,7 @@ public class ArmorDialog extends GDialog {
 
         jPModifiersLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jSpinChar, jSpinCon, jSpinDef, jSpinDex, jSpinEva, jSpinHP, jSpinInt, jSpinStr, jSpinWis});
 
-        jScrollPane4.setViewportView(jPModifiers);
-
-        jPDescription.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
-
-        gTADesc.setColumns(20);
-        gTADesc.setRows(5);
-        jScrollPane3.setViewportView(gTADesc);
-
-        javax.swing.GroupLayout jPDescriptionLayout = new javax.swing.GroupLayout(jPDescription);
-        jPDescription.setLayout(jPDescriptionLayout);
-        jPDescriptionLayout.setHorizontalGroup(
-            jPDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDescriptionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-        );
-        jPDescriptionLayout.setVerticalGroup(
-            jPDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPDescriptionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-        );
-
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
+        jSPModifiers.setViewportView(jPModifiers);
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
         jBAdd.setText("Salvar");
@@ -655,7 +664,6 @@ public class ArmorDialog extends GDialog {
                 jBAddActionPerformed(evt);
             }
         });
-        jToolBar1.add(jBAdd);
 
         jBCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
         jBCancel.setText("Cancelar");
@@ -666,42 +674,57 @@ public class ArmorDialog extends GDialog {
                 jBCancelActionPerformed(evt);
             }
         });
-        jToolBar1.add(jBCancel);
+
+        jSPDesc.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
+
+        gTADesc.setColumns(20);
+        gTADesc.setRows(5);
+        jSPDesc.setViewportView(gTADesc);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane4)
-                    .addComponent(jPBasics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPRestrictions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPCaracteristics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSPModifiers)
+                            .addComponent(jPBasics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSPDesc))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPRestrictions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPCaracteristics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCancel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPBasics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSPModifiers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSPDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPCaracteristics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPCaracteristics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPRestrictions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPRestrictions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBAdd)
+                    .addComponent(jBCancel))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -717,20 +740,41 @@ public class ArmorDialog extends GDialog {
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBAddEffectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddEffectActionPerformed
-        
+        EffectDialog dialog = new EffectDialog(this, null, true);
+        if (dialog.getEffect() != null) {
+            effectModel.add(dialog.getEffect());
+        }
     }//GEN-LAST:event_jBAddEffectActionPerformed
 
     private void jBRemoveEffectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveEffectActionPerformed
-        // TODO add your handling code here:
+        new TableUtil(view, gTblEffects, effectModel).remove(null);
     }//GEN-LAST:event_jBRemoveEffectActionPerformed
 
     private void jBRemoveRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveRestActionPerformed
-        // TODO add your handling code here:
+        new TableUtil(view, gTblRestrictions, restModel).remove(null);
     }//GEN-LAST:event_jBRemoveRestActionPerformed
 
     private void jBAddRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddRestActionPerformed
-        RestrictionDialog dialog = new RestrictionDialog(this, null, true);
+        addRestriction();
     }//GEN-LAST:event_jBAddRestActionPerformed
+
+    private void gTblRestrictionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTblRestrictionsMouseClicked
+        if (evt.getClickCount() == 2) {
+            editRestriction();
+        }
+    }//GEN-LAST:event_gTblRestrictionsMouseClicked
+
+    private void gTblEffectsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTblEffectsMouseClicked
+        if (evt.getClickCount() == 2) {
+            if (gTblEffects.getSelectedRowCount() > 0) {
+                Integer row = (Integer) gTblEffects.getSelectedRows()[0];
+                EffectDialog dialog = new EffectDialog(this, effectModel.getObject(row), true);
+                if (dialog.getEffect() != null) {
+                    effectModel.update(row, dialog.getEffect());
+                }
+            }
+        }
+    }//GEN-LAST:event_gTblEffectsMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -763,13 +807,12 @@ public class ArmorDialog extends GDialog {
     private javax.swing.JLabel jLWis;
     private javax.swing.JPanel jPBasics;
     private javax.swing.JPanel jPCaracteristics;
-    private javax.swing.JPanel jPDescription;
     private javax.swing.JPanel jPModifiers;
     private javax.swing.JPanel jPRestrictions;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jSPDesc;
+    private javax.swing.JScrollPane jSPEffects;
+    private javax.swing.JScrollPane jSPModifiers;
+    private javax.swing.JScrollPane jSPRestrictions;
     private javax.swing.JSpinner jSpinChar;
     private javax.swing.JSpinner jSpinCon;
     private javax.swing.JSpinner jSpinDef;
@@ -780,6 +823,5 @@ public class ArmorDialog extends GDialog {
     private javax.swing.JSpinner jSpinPrice;
     private javax.swing.JSpinner jSpinStr;
     private javax.swing.JSpinner jSpinWis;
-    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

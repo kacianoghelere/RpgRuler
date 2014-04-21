@@ -3,13 +3,18 @@ package br.com.rpgruler.main.view;
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.view.dialog.DescriptionDialog;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.ViewListener;
 import br.com.rpgruler.main.view.object.ViewParameter;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
+import javax.swing.KeyStroke;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
@@ -26,6 +31,8 @@ public abstract class View extends JInternalFrame implements ViewListener {
     private Boolean canProcess;
     private Boolean canClear;
     private Boolean canLoad;
+    private String alias = "";
+    private String description = "<html><b>View</b> padrão!</html>";
 
     /**
      * Cria nova instancia de DefaultView
@@ -55,6 +62,9 @@ public abstract class View extends JInternalFrame implements ViewListener {
             }
 
         });
+        DescribeAction describe = new DescribeAction();
+        getRootPane().getActionMap().put("describe", describe);
+        getRootPane().getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "describe");
     }
 
     /**
@@ -68,6 +78,49 @@ public abstract class View extends JInternalFrame implements ViewListener {
         this.canProcess = param.isProcess();
         this.canClear = param.isClear();
         this.canLoad = param.isLoad();
+    }
+
+    /**
+     * Descreve o uso da view e suas funções
+     *
+     * @throws java.lang.Exception Exceção padrão
+     */
+    public void describe() throws Exception {
+        new DescriptionDialog(this, getDescription());        
+    }
+
+    /**
+     * Classe privada para uso da descrição
+     */
+    private class DescribeAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                describe();
+            } catch (Exception ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    /**
+     * Retorna a descrição da tela
+     *
+     * @return <code>String</code> Descrição da tela
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Modifica a descrição da tela
+     *
+     * @param description <code>String</code> Descrição da tela
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -188,7 +241,7 @@ public abstract class View extends JInternalFrame implements ViewListener {
 
     @Override
     public void showMessage(String msg, int type) {
-        getMainScreen().printTypedMsg(msg, type);        
+        getMainScreen().printTypedMsg(msg, type);
     }
 
     @Override

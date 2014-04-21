@@ -55,7 +55,10 @@ public class ArmorView extends View implements TableView, TableSource<Armor> {
         } catch (Exception ex) {
             Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        setDescription("<html><b>Cadastro de armaduras</b><br>"
+                + "Esta View tem como propósito catalogar, organizar e controlar<br>"
+                + "as armaduras registradas."
+                + "</html>");
     }
 
     @Override

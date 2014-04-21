@@ -36,6 +36,7 @@ public class Armor {
     private PrimeMaterial material1;
     @ColumnName(name = "Material 2")
     private PrimeMaterial material2;
+    @Ignore    
     @ColumnName(name = "Atributos")
     private Attributes attributes;
     @Ignore
