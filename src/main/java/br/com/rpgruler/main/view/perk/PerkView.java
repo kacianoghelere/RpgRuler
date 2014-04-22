@@ -9,12 +9,14 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.perk.bean.PerkBean;
-import br.com.rpgruler.main.view.perk.dialog.PerkDialog;
+import br.com.rpgruler.main.view.perk.sub.PerkSubView;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import br.com.rpgruler.main.view.perk.model.PerkModel;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * View de cadastro e manutenção de perks
@@ -57,7 +59,8 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
 
     @Override
     public void add() {
-        PerkDialog dialog = new PerkDialog(this, null, true);
+        PerkSubView dialog = new PerkSubView(this, null);
+        getMainScreen().getListener().insertView(dialog);
         if (dialog.getPerk() != null) {
             bean.add(new BeanEvent(this, dialog.getPerk()));
         }
@@ -68,7 +71,11 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
      */
     @Override
     public void edit() {
-
+        try {
+            bean.edit(null);
+        } catch (Exception ex) {
+            Logger.getLogger(PerkView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -87,7 +94,7 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
     }
 
     @Override
-    public BeanListener getBean() {
+    public PerkBean getBean() {
         return this.bean;
     }
 

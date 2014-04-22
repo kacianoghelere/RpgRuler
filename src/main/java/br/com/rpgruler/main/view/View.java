@@ -33,6 +33,7 @@ public abstract class View extends JInternalFrame implements ViewListener {
     private Boolean canLoad;
     private String alias = "";
     private String description = "<html><b>View</b> padrão!</html>";
+    private Object parameter;
 
     /**
      * Cria nova instancia de DefaultView
@@ -86,7 +87,7 @@ public abstract class View extends JInternalFrame implements ViewListener {
      * @throws java.lang.Exception Exceção padrão
      */
     public void describe() throws Exception {
-        new DescriptionDialog(this, getDescription());        
+        DescriptionDialog desc = new DescriptionDialog(this, getDescription());
     }
 
     /**
@@ -103,6 +104,24 @@ public abstract class View extends JInternalFrame implements ViewListener {
             }
         }
 
+    }
+
+    /**
+     * Instrução padrão para retorno de parametros da View
+     *
+     * @return <code>Object</code> Parametro
+     */
+    public Object getParameter() {
+        return parameter;
+    }
+
+    /**
+     * Instrução padrão para modificar parametros da View
+     *
+     * @param parameter <code>Object</code> Parametro
+     */
+    public void setParameter(Object parameter) {
+        this.parameter = parameter;
     }
 
     /**

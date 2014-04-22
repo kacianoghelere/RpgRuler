@@ -1,5 +1,6 @@
 package br.com.rpgruler.main.view.armor.dialog;
 
+import br.com.rpgruler.main.view.armor.sub.ArmorSubView;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.dialog.GDialog;
 import br.com.rpgruler.data.db.dao.EffectDAO;
@@ -13,17 +14,17 @@ import br.com.rpgruler.data.entitity.Effect;
 public class EffectDialog extends GDialog {
 
     private Effect effect;
-    private ArmorDialog dialog;
+    private ArmorSubView dialog;
     private GComboBoxModel<Effect> effectModel;
 
     /**
      * Cria nova instancia de EffectDialog
      *
-     * @param dialog <code>ArmorDialog</code> Tela de edição de armaduras
+     * @param dialog <code>ArmorSubView</code> Tela de edição de armaduras
      * @param effect <code>Effect</code> Efeito da caixa de dialogo
      * @param modal <code>boolean</code> Modal?
      */
-    public EffectDialog(ArmorDialog dialog, Effect effect, boolean modal) {
+    public EffectDialog(ArmorSubView dialog, Effect effect, boolean modal) {
         super(dialog, modal);
         this.dialog = dialog;
         initialize(effect);

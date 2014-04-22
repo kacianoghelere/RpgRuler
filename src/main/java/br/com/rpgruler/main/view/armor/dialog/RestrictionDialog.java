@@ -1,5 +1,6 @@
 package br.com.rpgruler.main.view.armor.dialog;
 
+import br.com.rpgruler.main.view.armor.sub.ArmorSubView;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.dialog.GDialog;
 import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
@@ -13,18 +14,18 @@ import br.com.rpgruler.data.entitity.RestrictionType;
  */
 public class RestrictionDialog extends GDialog {
 
-    private ArmorDialog dialog;
+    private ArmorSubView dialog;
     private Restriction restriction;
     private GComboBoxModel<RestrictionType> restModel;
 
     /**
      * Cria nova instancia de RestrictionDialog
      *
-     * @param dialog <code>ArmorDialog</code>
+     * @param dialog <code>ArmorSubView</code>
      * @param restriction <code>Restriction</code> Restrição
      * @param modal <code>boolean</code> Modal?
      */
-    public RestrictionDialog(ArmorDialog dialog, Restriction restriction, boolean modal) {
+    public RestrictionDialog(ArmorSubView dialog, Restriction restriction, boolean modal) {
         super(dialog, modal);
         this.dialog = dialog;
         this.restriction = restriction;

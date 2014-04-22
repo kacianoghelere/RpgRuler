@@ -10,7 +10,7 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.armor.bean.ArmorBean;
-import br.com.rpgruler.main.view.armor.dialog.ArmorDialog;
+import br.com.rpgruler.main.view.armor.sub.ArmorSubView;
 import br.com.rpgruler.main.view.armor.model.ArmorModel;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
@@ -62,7 +62,7 @@ public class ArmorView extends View implements TableView, TableSource<Armor> {
     }
 
     @Override
-    public BeanListener getBean() {
+    public ArmorBean getBean() {
         return this.bean;
     }
 
@@ -73,11 +73,12 @@ public class ArmorView extends View implements TableView, TableSource<Armor> {
 
     @Override
     public void add() {
-        ArmorDialog armorDialog = new ArmorDialog(this, null, true);
-        if (armorDialog.getArmor() != null) {
+        ArmorSubView dialog = new ArmorSubView(this, null);
+        getMainScreen().getListener().insertView(dialog);
+        if (dialog.getArmor() != null) {
             try {
-                System.out.println(new ObjectDescript().describeValues(armorDialog.getArmor()));
-                bean.add(new BeanEvent(this, armorDialog.getArmor()));
+                
+                bean.add(new BeanEvent(this, dialog.getArmor()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
                 Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {

@@ -1,14 +1,17 @@
-package br.com.rpgruler.main.view.armor.dialog;
+package br.com.rpgruler.main.view.armor.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.gmp.comps.dialog.GDialog;
 import br.com.rpgruler.data.entitity.Armor;
 import br.com.rpgruler.data.entitity.ArmorType;
 import br.com.rpgruler.data.entitity.Attributes;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
+import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
+import br.com.rpgruler.main.view.SubView;
 import br.com.rpgruler.main.view.armor.ArmorView;
 import br.com.rpgruler.main.view.armor.bean.ArmorBean;
+import br.com.rpgruler.main.view.armor.dialog.EffectDialog;
+import br.com.rpgruler.main.view.armor.dialog.RestrictionDialog;
 import br.com.rpgruler.main.view.armor.model.ArmorEffectModel;
 import br.com.rpgruler.main.view.armor.model.RestrictionModel;
 import java.awt.event.ActionEvent;
@@ -21,7 +24,7 @@ import javax.swing.JMenuItem;
  *
  * @author kaciano
  */
-public class ArmorDialog extends GDialog {
+public class ArmorSubView extends SubView {
 
     private Armor armor;
     private ArmorBean bean;
@@ -33,14 +36,13 @@ public class ArmorDialog extends GDialog {
     private GComboBoxModel<PrimeMaterial> materialModel2;
 
     /**
-     * Cria nova instancia de ArmorDialog
+     * Cria nova instancia de ArmorSubView
      *
      * @param view <code>ArmorView</code> Tela das Armaduras
      * @param armor <code>Armor</code> Armadura
-     * @param modal <code>boolean</code> Modal?
      */
-    public ArmorDialog(ArmorView view, Armor armor, boolean modal) {
-        super(view.getMainScreen(), modal);
+    public ArmorSubView(ArmorView view, Armor armor) {
+        super(view);
         this.view = view;
         initialize(armor);
     }
@@ -133,7 +135,7 @@ public class ArmorDialog extends GDialog {
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(ArmorDialog.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ArmorSubView.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -318,9 +320,11 @@ public class ArmorDialog extends GDialog {
         jSPDesc = new javax.swing.JScrollPane();
         gTADesc = new br.com.gmp.comps.textarea.GMPTextArea();
 
-        setUndecorated(true);
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Editar armadura");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/P/P_21.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(680, 511));
-        setResizable(false);
 
         jSPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Efeitos"));
 
@@ -735,6 +739,11 @@ public class ArmorDialog extends GDialog {
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         if (validateFields()) {
             buildArmor();
+            try {
+                view.getBean().add(new BeanEvent(view, armor));
+            } catch (Exception ex) {
+                Logger.getLogger(ArmorSubView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.dispose();
         }
     }//GEN-LAST:event_jBAddActionPerformed

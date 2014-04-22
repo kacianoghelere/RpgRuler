@@ -5,7 +5,7 @@ import br.com.rpgruler.data.entitity.Perk;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.bean.ViewBean;
-import br.com.rpgruler.main.view.perk.dialog.PerkDialog;
+import br.com.rpgruler.main.view.perk.sub.PerkSubView;
 
 /**
  * Bean de controle para a PerkView
@@ -41,9 +41,10 @@ public class PerkBean extends ViewBean<PerkView> {
     public void edit(BeanEvent evt) throws Exception {
         if (getView().getTable().getSelectedRowCount() > 0) {
             Integer row = (Integer) getView().getTable().getSelectedRows()[0];
-            PerkDialog dialog = new PerkDialog(getView(), getView().getModel().getObject(row), true);
-            if (dialog.getPerk() != null) {
-                getView().getModel().update(row, dialog.getPerk());
+            PerkSubView subview = new PerkSubView(getView(), getView().getModel().getObject(row));
+            getView().getMainScreen().getListener().insertView(subview);
+            if (subview.getPerk() != null) {
+                getView().getModel().update(row, subview.getPerk());
             }
         }
     }

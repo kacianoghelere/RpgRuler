@@ -6,7 +6,7 @@ import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entitity.Armor;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armor.ArmorView;
-import br.com.rpgruler.main.view.armor.dialog.ArmorDialog;
+import br.com.rpgruler.main.view.armor.sub.ArmorSubView;
 import br.com.rpgruler.main.view.bean.ViewBean;
 
 /**
@@ -52,7 +52,8 @@ public class ArmorBean extends ViewBean<ArmorView> {
     public void edit(BeanEvent evt) throws Exception {
         if (getView().getTable().getSelectedRowCount() > 0) {
             Integer row = (Integer) getView().getTable().getSelectedRows()[0];
-            ArmorDialog dialog = new ArmorDialog(getView(), getView().getModel().getObject(row), true);
+            ArmorSubView dialog = new ArmorSubView(getView(), getView().getModel().getObject(row));
+            getView().getMainScreen().getListener().insertView(dialog);
             if (dialog.getArmor() != null) {
                 getView().getModel().update(row, dialog.getArmor());
             }

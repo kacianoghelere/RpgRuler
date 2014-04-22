@@ -1,37 +1,37 @@
-package br.com.rpgruler.main.view.perk.dialog;
+package br.com.rpgruler.main.view.perk.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.gmp.comps.dialog.GDialog;
 import br.com.rpgruler.data.db.dao.PerkTypeDAO;
 import br.com.rpgruler.data.entitity.Perk;
 import br.com.rpgruler.data.entitity.PerkType;
+import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.view.SubView;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.perk.bean.PerkBean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Janela de dialogo para cadastro de perks
+ * Janela auxiliar para cadastro de perks
  *
  * @author kaciano
  * @version 1.0
  */
-public class PerkDialog extends GDialog {
+public class PerkSubView extends SubView {
 
     private Perk perk;
-    private PerkView perks;
+    private PerkView view;
     private GComboBoxModel<PerkType> typeModel;
 
     /**
-     * Cria nova instancia de PerkDialog
+     * Cria nova instancia de PerkSubView
      *
      * @param perks <code>PerkView</code> Tela de Perks
-     * @param perk <code>Perk</code> Perk a ser editado
-     * @param modal <code>boolean</code> Modal?
+     * @param perk <code>Perk</code> Perk a ser editado     
      */
-    public PerkDialog(PerkView perks, Perk perk, boolean modal) {
-        super(perks.getMainScreen(), modal);
-        this.perks = perks;
+    public PerkSubView(PerkView perks, Perk perk) {
+        super(perks);
+        this.view = perks;
         this.initialize(perk);
     }
 
@@ -64,13 +64,13 @@ public class PerkDialog extends GDialog {
                     this.gCBType.setSelectedItem(this.perk.getType());
                 }
             } else {
-                PerkBean bean = (PerkBean) this.perks.getBean();
+                PerkBean bean = (PerkBean) this.view.getBean();
                 this.perk = new Perk();
                 this.perk.setId(bean.getNextID());
                 this.gTID.setLong(this.perk.getId());
             }
         } catch (Exception e) {
-            Logger.getLogger(PerkDialog.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PerkSubView.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -95,7 +95,7 @@ public class PerkDialog extends GDialog {
             }
             return null;
         } catch (Exception e) {
-            Logger.getLogger(PerkDialog.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(PerkSubView.class.getName()).log(Level.SEVERE, null, e);
             return null;
         }
     }
@@ -119,7 +119,10 @@ public class PerkDialog extends GDialog {
         gTID = new br.com.gmp.comps.textfield.GTextField();
         jLID = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Editar vantagem");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
 
         jLTitle.setText("Titulo:");
 
@@ -129,6 +132,7 @@ public class PerkDialog extends GDialog {
         gTADesc.setRows(5);
         jScrollPane2.setViewportView(gTADesc);
 
+        jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
         jBAdd.setText("Salvar");
         jBAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +140,7 @@ public class PerkDialog extends GDialog {
             }
         });
 
+        jBCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
         jBCancel.setText("Cancelar");
         jBCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,19 +165,17 @@ public class PerkDialog extends GDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLID)
-                            .addComponent(jLTitle))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLID)
+                                    .addComponent(jLTitle))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
+                                .addGap(13, 13, 13)
                                 .addComponent(jLType)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +191,7 @@ public class PerkDialog extends GDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLID))
@@ -215,6 +218,7 @@ public class PerkDialog extends GDialog {
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         if (getPerk() != null) {
+            view.getBean().add(new BeanEvent(view, getPerk()));
             dispose();
         }
     }//GEN-LAST:event_jBAddActionPerformed
