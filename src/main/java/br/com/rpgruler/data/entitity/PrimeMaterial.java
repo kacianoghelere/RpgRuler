@@ -3,7 +3,6 @@ package br.com.rpgruler.data.entitity;
 import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -11,14 +10,14 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class PrimeMaterial implements Serializable {
+public class PrimeMaterial {
 
     @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nome")
-    private String materialName;
+    private String name;
     @ColumnName(name = "Peso/Unidade")
     private Double weight;
     @ColumnName(name = "Classe")
@@ -27,119 +26,120 @@ public class PrimeMaterial implements Serializable {
     private Double resistence;
 
     /**
-     *
+     * Cria nova instancia de PrimeMaterial
      */
     public PrimeMaterial() {
     }
 
     /**
+     * Cria nova instancia de PrimeMaterial
      *
-     * @param id
+     * @param id <code>Long</code> Código do material
+     * @param name <code>String</code> Nome do material
+     * @param weight <code>Double</code> Peso do material
+     * @param materialClass <code>Integer</code> Classificação do material
      */
-    public PrimeMaterial(Long id) {
+    public PrimeMaterial(Long id, String name, Double weight, Integer materialClass) {
         this.id = id;
-    }
-
-    /**
-     *
-     * @param id
-     * @param materialClass
-     */
-    public PrimeMaterial(Long id, Integer materialClass) {
-        this.id = id;
-        this.materialClass = materialClass;
-    }
-
-    /**
-     *
-     * @param id
-     * @param materialName
-     * @param weight
-     * @param materialClass
-     */
-    public PrimeMaterial(Long id, String materialName, Double weight, Integer materialClass) {
-        this.id = id;
-        this.materialName = materialName;
+        this.name = name;
         this.weight = weight;
         this.materialClass = materialClass;
         this.resistence = (weight * materialClass);
     }
 
     /**
+     * Método para calculo da resistencia
+     */
+    public void calcResistence() {
+        this.resistence = (weight * materialClass);
+    }
+
+    /**
+     * Retorna o Código do material
      *
-     * @return
+     * @return <code>Long</code> Código do material
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o Código do material
      *
-     * @param id
+     * @param id <code>Long</code> Código do material
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o Nome do material
      *
-     * @return
+     * @return <code>String</code> Nome do material
      */
-    public String getMaterialName() {
-        return materialName;
+    public String getName() {
+        return name;
     }
 
     /**
+     * Modifica o Nome do material
      *
-     * @param materialName
+     * @param name <code>String</code> Nome do material
      */
-    public void setMaterialName(String materialName) {
-        this.materialName = materialName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
+     * Retorna o Peso do material
      *
-     * @return
+     * @return <code>Double</code> Peso do material
      */
     public Double getWeight() {
         return weight;
     }
 
     /**
+     * Modifica o Peso do material
      *
-     * @param weight
+     * @param weight <code>Double</code> Peso do material
      */
     public void setWeight(Double weight) {
         this.weight = weight;
     }
 
     /**
+     * Retorna a Classificação do material
      *
-     * @return
+     * @return <code>Integer</code> Classificação do material
      */
     public Integer getMaterialClass() {
         return materialClass;
     }
 
     /**
+     * Modifica a Classificação do material
      *
-     * @param materialClass
+     * @param materialClass <code>Integer</code> Classificação do material
      */
     public void setMaterialClass(Integer materialClass) {
         this.materialClass = materialClass;
     }
 
     /**
+     * Retorna a Resistencia do material
      *
-     * @return
+     * @return <code>Double</code> Resistencia do material
      */
     public Double getResistence() {
+        resistence = (weight * materialClass);
         return resistence;
     }
 
     /**
+     * Modifica a Resistencia do material
      *
-     * @param resistence
+     * @param resistence <code>Double</code> Resistencia do material
      */
     public void setResistence(Double resistence) {
         this.resistence = resistence;
@@ -149,7 +149,7 @@ public class PrimeMaterial implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.materialName);
+        hash = 23 * hash + Objects.hashCode(this.name);
         hash = 23 * hash + Objects.hashCode(this.weight);
         hash = 23 * hash + Objects.hashCode(this.materialClass);
         hash = 23 * hash + Objects.hashCode(this.resistence);
@@ -168,7 +168,7 @@ public class PrimeMaterial implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.materialName, other.materialName)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         if (!Objects.equals(this.weight, other.weight)) {
@@ -182,7 +182,7 @@ public class PrimeMaterial implements Serializable {
 
     @Override
     public String toString() {
-        return materialName;
+        return name;
     }
 
 }

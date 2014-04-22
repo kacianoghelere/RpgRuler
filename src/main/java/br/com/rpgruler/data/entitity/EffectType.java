@@ -30,12 +30,12 @@ public class EffectType extends Type {
     /**
      * Cria nova instancia de EffectType
      *
-     * @param id <code></code>
-     * @param typeName <code></code>
+     * @param id <code>Long</code> Código do tipo
+     * @param title <code>String</code> Titulo do tipo
      */
-    public EffectType(Long id, String typeName) {
+    public EffectType(Long id, String title) {
         this.id = id;
-        this.title = typeName;
+        this.title = title;
     }
 
     /**

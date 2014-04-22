@@ -5,7 +5,7 @@ import br.com.rpgruler.main.object.BeanEvent;
 /**
  *
  * @author kaciano
- * @param <T>
+ * @param <T> Tipo da View
  */
 public interface BeanListener<T> {
 
@@ -14,7 +14,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.generic.DefaultView#save()
+     * @see br.com.rpgruler.main.view.View#save()
      */
     void save(BeanEvent evt) throws Exception;
 
@@ -23,7 +23,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.generic.DefaultView#process()
+     * @see br.com.rpgruler.main.view.View#process()
      */
     void process(BeanEvent evt) throws Exception;
 
@@ -32,7 +32,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.generic.DefaultView#clear()
+     * @see br.com.rpgruler.main.view.View#clear()
      */
     void clear(BeanEvent evt) throws Exception;
 
@@ -41,7 +41,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.generic.DefaultView#load()
+     * @see br.com.rpgruler.main.view.View#load()
      */
     void load(BeanEvent evt) throws Exception;
 

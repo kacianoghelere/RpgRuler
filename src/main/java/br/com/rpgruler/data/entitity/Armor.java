@@ -36,9 +36,9 @@ public class Armor {
     private PrimeMaterial material1;
     @ColumnName(name = "Material 2")
     private PrimeMaterial material2;
-    @Ignore    
+    @Ignore
     @ColumnName(name = "Atributos")
-    private Attributes attributes;
+    private MainAttributes attributes;
     @Ignore
     @ColumnName(name = "Restrições")
     private List<Restriction> restriction;
@@ -62,9 +62,9 @@ public class Armor {
      * @param price <code>Double</code> Preço da armadura
      * @param material1 <code>PrimeMaterial</code> Material 1
      * @param material2 <code>PrimeMaterial</code> Material 2
-     * @param attributes <code>Attributes</code> Atributos da armadura
+     * @param attributes <code>MainAttributes</code> Atributos da armadura
      */
-    public Armor(Long id, String name, String description, ArmorType type, Double price, PrimeMaterial material1, PrimeMaterial material2, Attributes attributes) {
+    public Armor(Long id, String name, String description, ArmorType type, Double price, PrimeMaterial material1, PrimeMaterial material2, MainAttributes attributes) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -82,8 +82,8 @@ public class Armor {
      * basica
      */
     public void calcResistence() {
-        this.resistence = (material1.getResistence()
-                + material2.getResistence()
+        this.resistence = ((material1.getResistence() * type.getMaterialAmount1())
+                + (material2.getResistence() * type.getMaterialAmount2())
                 + type.getBase());
     }
 
@@ -234,18 +234,18 @@ public class Armor {
     /**
      * Retorna os atributos
      *
-     * @return <code>Attributes</code> Atributos
+     * @return <code>MainAttributes</code> Atributos
      */
-    public Attributes getAttributes() {
+    public MainAttributes getAttributes() {
         return attributes;
     }
 
     /**
      * Modifica os atributos
      *
-     * @param attributes <code>Attributes</code> Atributos
+     * @param attributes <code>MainAttributes</code> Atributos
      */
-    public void setAttributes(Attributes attributes) {
+    public void setAttributes(MainAttributes attributes) {
         this.attributes = attributes;
     }
 

@@ -5,8 +5,7 @@ import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.bean.ViewBean;
-import br.com.rpgruler.main.view.materials.model.MaterialsModel;
-import br.com.rpgruler.main.view.materials.object.MaterialsParameter;
+import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 
 /**
@@ -20,8 +19,9 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
     private MaterialsDAO dao;
 
     /**
+     * Cria nova instancia de MaterialsBean
      *
-     * @param view
+     * @param view <code>MaterialsView</code> View do Bean
      */
     public MaterialsBean(MaterialsView view) {
         super(view);
@@ -42,16 +42,14 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
      */
     @Override
     public void add(BeanEvent evt) {
-        MaterialsParameter param = (MaterialsParameter) evt.getValue();
-        MaterialsModel model = getView().getModel();
+        ViewWrapper vw = evt.getWrapper();
         PrimeMaterial pm = new PrimeMaterial();
-        Long nextID = getNextID();
-        pm.setId(nextID);
-        pm.setMaterialName(param.getMaterialName());
-        pm.setMaterialClass(param.getMaterialClass());
-        pm.setWeight(param.getMaterialWeight());
+        pm.setId(getNextID());
+        pm.setName((String) vw.getValue(0));
+        pm.setMaterialClass((Integer) vw.getValue(1));
+        pm.setWeight((Double) vw.getValue(2));
         pm.setResistence(pm.getWeight() * pm.getMaterialClass());
-        model.add(pm);
+        getView().getModel().add(pm);
     }
 
     /**

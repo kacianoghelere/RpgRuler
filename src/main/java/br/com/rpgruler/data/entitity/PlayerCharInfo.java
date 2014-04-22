@@ -1,8 +1,10 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -10,65 +12,45 @@ import java.io.Serializable;
  */
 public class PlayerCharInfo implements Serializable {
 
+    @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nivel")
-    private long charLevel;
-    @ColumnName(name = "HP")
-    private Integer hp;
-    @ColumnName(name = "Força")
-    private Integer strength;
-    @ColumnName(name = "Destreza")
-    private Integer dexterity;
-    @ColumnName(name = "Sabedoria")
-    private Integer wisdom;
-    @ColumnName(name = "Resistencia")
-    private Integer resistance;
-    @ColumnName(name = "Sorte")
-    private Integer lucky;
+    private Long charLevel;
+    @Ignore
+    @ColumnName(name = "Atributos")
+    private MainAttributes attributes;
     @ColumnName(name = "Personagem")
     private PlayerChar playerChar;
+    @ColumnName(name = "Ativo")
+    private Boolean active;
 
     /**
-     *
+     * Cria nova instancia de PlayerCharInfo
      */
     public PlayerCharInfo() {
     }
 
     /**
+     * Cria nova instancia de PlayerCharInfo
      *
-     * @param id
+     * @param id <code>Long</code> ID do Info
+     * @param charLevel <code>Long</code> Nivel do personagem
+     * @param attributes <code>MainAttributes</code> Atributos principais
+     * @param playerChar <code>PlayerChar</code> Personagem
      */
-    public PlayerCharInfo(Long id) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @param id
-     * @param charLevel
-     * @param hp
-     * @param strength
-     * @param dexterity
-     * @param resistance
-     * @param wisdom
-     * @param lucky
-     */
-    public PlayerCharInfo(Long id, long charLevel, Integer hp, Integer strength, Integer dexterity, Integer resistance, Integer wisdom, Integer lucky) {
+    public PlayerCharInfo(Long id, Long charLevel, MainAttributes attributes, PlayerChar playerChar) {
         this.id = id;
         this.charLevel = charLevel;
-        this.hp = hp;
-        this.strength = strength;
-        this.dexterity = dexterity;
-        this.resistance = resistance;
-        this.wisdom = wisdom;
-        this.lucky = lucky;
+        this.attributes = attributes;
+        this.playerChar = playerChar;
+        this.active = true;
     }
 
     /**
      *
-     * @return
+     * @return <code>Long</code> ID do Info
      */
     public Long getId() {
         return id;
@@ -76,7 +58,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @param id
+     * @param id <code>Long</code> ID do Info
      */
     public void setId(Long id) {
         this.id = id;
@@ -84,155 +66,108 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @return
+     * @return <code>Long</code> Nivel do personagem
      */
-    public long getCharLevel() {
+    public Long getCharLevel() {
         return charLevel;
     }
 
     /**
      *
-     * @param charLevel
+     * @param charLevel <code>Long</code> Nivel do personagem
      */
-    public void setCharLevel(long charLevel) {
+    public void setCharLevel(Long charLevel) {
         this.charLevel = charLevel;
     }
 
     /**
      *
-     * @return
+     * @return <code>MainAttributes</code> Atributos principais
      */
-    public Integer getHp() {
-        return hp;
+    public MainAttributes getAttributes() {
+        return attributes;
     }
 
     /**
      *
-     * @param hp
+     * @param attributes <code>MainAttributes</code> Atributos principais
      */
-    public void setHp(Integer hp) {
-        this.hp = hp;
+    public void setAttributes(MainAttributes attributes) {
+        this.attributes = attributes;
     }
 
     /**
      *
-     * @return
+     * @return <code>PlayerChar</code> Personagem
      */
-    public Integer getStrength() {
-        return strength;
-    }
-
-    /**
-     *
-     * @param strength
-     */
-    public void setStrength(Integer strength) {
-        this.strength = strength;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Integer getDexterity() {
-        return dexterity;
-    }
-
-    /**
-     *
-     * @param dexterity
-     */
-    public void setDexterity(Integer dexterity) {
-        this.dexterity = dexterity;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Integer getResistance() {
-        return resistance;
-    }
-
-    /**
-     *
-     * @param resistance
-     */
-    public void setResistance(Integer resistance) {
-        this.resistance = resistance;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Integer getWisdom() {
-        return wisdom;
-    }
-
-    /**
-     *
-     * @param wisdom
-     */
-    public void setWisdom(Integer wisdom) {
-        this.wisdom = wisdom;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Integer getLucky() {
-        return lucky;
-    }
-
-    /**
-     *
-     * @param lucky
-     */
-    public void setLucky(Integer lucky) {
-        this.lucky = lucky;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public PlayerChar getIdPlayerChar() {
+    public PlayerChar getPlayerChar() {
         return playerChar;
     }
 
     /**
      *
-     * @param idPlayerChar
+     * @param playerChar <code>PlayerChar</code> Personagem
      */
-    public void setIdPlayerChar(PlayerChar idPlayerChar) {
-        this.playerChar = idPlayerChar;
+    public void setPlayerChar(PlayerChar playerChar) {
+        this.playerChar = playerChar;
+    }
+
+    /**
+     *
+     * @return <code>Boolean</code> Info ativo?
+     */
+    public Boolean isActive() {
+        return active;
+    }
+
+    /**
+     *
+     * @param active <code>Boolean</code> Info ativo?
+     */
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.charLevel);
+        hash = 29 * hash + Objects.hashCode(this.attributes);
+        hash = 29 * hash + Objects.hashCode(this.playerChar);
+        hash = 29 * hash + Objects.hashCode(this.active);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PlayerCharInfo)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        PlayerCharInfo other = (PlayerCharInfo) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final PlayerCharInfo other = (PlayerCharInfo) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.charLevel, other.charLevel)) {
+            return false;
+        }
+        if (!Objects.equals(this.attributes, other.attributes)) {
+            return false;
+        }
+        if (!Objects.equals(this.playerChar, other.playerChar)) {
+            return false;
+        }
+        return Objects.equals(this.active, other.active);
     }
+
+
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.PlayerCharInfo[ id=" + id + " ]";
+        return id + " - " + playerChar.getName() + " - " + charLevel;
     }
 
 }

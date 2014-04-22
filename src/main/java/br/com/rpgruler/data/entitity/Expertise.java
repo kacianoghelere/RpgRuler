@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 /**
+ * Entidade das perícias
  *
  * @author kaciano
  */
@@ -16,8 +17,8 @@ public class Expertise implements Serializable {
     private Long id;
     @ColumnName(name = "title")
     private String title;
-    @ColumnName(name = "keyskill")
-    private BigInteger keyskill;
+    @ColumnName(name = "Atributo chave")
+    private String attribute;
     @ColumnName(name = "value")
     private BigInteger value;
 
@@ -25,78 +26,6 @@ public class Expertise implements Serializable {
      *
      */
     public Expertise() {
-    }
-
-    /**
-     *
-     * @param id
-     */
-    public Expertise(Long id) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     *
-     * @param id
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     *
-     * @param title
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public BigInteger getKeyskill() {
-        return keyskill;
-    }
-
-    /**
-     *
-     * @param keyskill
-     */
-    public void setKeyskill(BigInteger keyskill) {
-        this.keyskill = keyskill;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public BigInteger getValue() {
-        return value;
-    }
-
-    /**
-     *
-     * @param value
-     */
-    public void setValue(BigInteger value) {
-        this.value = value;
     }
 
     @Override

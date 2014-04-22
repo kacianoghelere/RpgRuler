@@ -189,38 +189,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     /**
-     * Imprime uma mensagem na barra de mensagens <br>
-     * Campos utilizados:<br>
-     * <table border="1">
-     * <thead>
-     * <tr>
-     * <th>Tipo de mensagem</th>
-     * <th>Variavel utilizada</th>
-     * </tr>
-     * </thead>
-     * <tbody>
-     * <tr style="color: cyan">
-     * <td>Mensagem de questionamento</td>
-     * <td>MainScreen.QUESTION_ICON</td>
-     * </tr>
-     * <tr style="color: blue">
-     * <td>Mensagem informativa</td>
-     * <td>MainScreen.INFORMATIVE_ICON</td>
-     * </tr>
-     * <tr style="color: orange">
-     * <td>Mensagem de aviso</td>
-     * <td>MainScreen.WARNING_ICON</td>
-     * </tr>
-     * <tr style="color: red">
-     * <td>Mensagem de erro</td>
-     * <td>MainScreen.ERROR_ICON</td>
-     * </tr>
-     * <tr style="color: green">
-     * <td>Mensagem de sucesso</td>
-     * <td>MainScreen.SUCCESS_ICON</td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * Imprime uma mensagem na barra de mensagens <br><br>
+     * Tipo de mensagem : Variavel utilizada<br>
+     * Mensagem de questionamento : MainScreen.QUESTION_ICON<br>
+     * Mensagem informativa : MainScreen.INFORMATIVE_ICON<br>
+     * Mensagem de aviso : MainScreen.WARNING_ICON<br>
+     * Mensagem de erro : MainScreen.ERROR_ICON<br>
+     * Mensagem de sucesso : MainScreen.SUCCESS_ICON<br>
      *
      * @param text <code>String</code> Texto à ser impresso
      * @param icon <code>String</code> Icone de tipo para a mensagem
@@ -232,38 +207,13 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     }
 
     /**
-     * Imprime uma mensagem na barra de mensagens <br>
-     * Campos utilizados:<br>
-     * <table border="1">
-     * <thead>
-     * <tr>
-     * <th>Tipo de mensagem</th>
-     * <th>Mensagem</th>
-     * </tr>
-     * </thead>
-     * <tbody>
-     * <tr style="color: cyan">
-     * <td>1</td>
-     * <td>Mensagem de questionamento</td>
-     * </tr>
-     * <tr style="color: blue">
-     * <td>2</td>
-     * <td>Mensagem informativa</td>
-     * </tr>
-     * <tr style="color: orange">
-     * <td>3</td>
-     * <td>Mensagem de aviso</td>
-     * </tr>
-     * <tr style="color: red">
-     * <td>4</td>
-     * <td>Mensagem de erro</td>
-     * </tr>
-     * <tr style="color: green">
-     * <td>4</td>
-     * <td>Mensagem de sucesso</td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * Imprime uma mensagem na barra de mensagens<br><br>
+     * Tipo de mensagem : Mensagem<br>
+     * Mensagem informativa : 1 <br>
+     * Mensagem de questionamento : 2<br>
+     * Mensagem de aviso : 3<br>
+     * Mensagem de erro : 4<br>
+     * Mensagem de sucesso : 5<br>
      *
      * @param text <code>String</code> Texto à ser impresso
      * @param type <code>int</code> Tipo da mensagem

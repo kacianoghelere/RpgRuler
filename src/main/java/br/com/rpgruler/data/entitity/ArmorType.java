@@ -19,7 +19,7 @@ public class ArmorType extends Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String typeName;
+    private String name;
     @Editable
     @ColumnName(name = "Base")
     private Double base;
@@ -31,124 +31,112 @@ public class ArmorType extends Type {
     private Double materialAmount2;
 
     /**
-     *
+     * Cria nova instancia de ArmorType
      */
     public ArmorType() {
     }
 
     /**
+     * Cria nova instancia de ArmorType
      *
-     * @param id
-     */
-    public ArmorType(Long id) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @param id
-     * @param typeName
-     * @param materialAmount1
-     * @param materialAmount2
+     * @param id <code>Long</code> Código do tipo
+     * @param typeName <code>String</code> Nome do tipo
+     * @param materialAmount1 <code>Double</code> Quantidade do material 1
+     * @param materialAmount2 <code>Double</code> Quantidade do material 2
      */
     public ArmorType(Long id, String typeName, Double materialAmount1, Double materialAmount2) {
         this.id = id;
-        this.typeName = typeName;
+        this.name = typeName;
+        this.base = (double) 0;
         this.materialAmount1 = materialAmount1;
         this.materialAmount2 = materialAmount2;
     }
 
     /**
+     * Retorna o Código do tipo
      *
-     * @param id
-     * @param typeName
-     * @param base
-     * @param materialAmount1
-     * @param materialAmount2
-     */
-    public ArmorType(Long id, String typeName, Double base, Double materialAmount1, Double materialAmount2) {
-        this.id = id;
-        this.typeName = typeName;
-        this.base = base;
-        this.materialAmount1 = materialAmount1;
-        this.materialAmount2 = materialAmount2;
-    }
-
-    /**
-     *
-     * @return
+     * @return <code>Long</code> Código do tipo
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o Código do tipo
      *
-     * @param id
+     * @param id <code>Long</code> Código do tipo
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o Nome do tipo
      *
-     * @return
+     * @return <code>String</code> Nome do tipo
      */
-    public String getTypeName() {
-        return typeName;
+    public String getName() {
+        return name;
     }
 
     /**
+     * Modifica o Nome do tipo
      *
-     * @param typeName
+     * @param name <code>String</code> Nome do tipo
      */
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
+     * Retorna a Resistencia base
      *
-     * @return
+     * @return <code>Double</code> Resistencia base
      */
     public Double getBase() {
         return base;
     }
 
     /**
+     * Modifica a Resistencia base
      *
-     * @param base
+     * @param base <code>Double</code> Resistencia base
      */
     public void setBase(Double base) {
         this.base = base;
     }
 
     /**
+     * Retorna a Quantidade do material 1
      *
-     * @return
+     * @return <code>Double</code> Quantidade do material 1
      */
     public Double getMaterialAmount1() {
         return materialAmount1;
     }
 
     /**
+     * Modifica a Quantidade do material 1
      *
-     * @param amount1
+     * @param amount1 <code>Double</code> Quantidade do material 1
      */
     public void setMaterialAmount1(Double amount1) {
         this.materialAmount1 = amount1;
     }
 
     /**
+     * Retorna a Quantidade do material 2
      *
-     * @return
+     * @return <code>Double</code> Quantidade do material 2
      */
     public Double getMaterialAmount2() {
         return materialAmount2;
     }
 
     /**
+     * Modifica a Quantidade do material 2
      *
-     * @param amount2
+     * @param amount2 <code>Double</code> Quantidade do material 2
      */
     public void setMaterialAmount2(Double amount2) {
         this.materialAmount2 = amount2;
@@ -158,7 +146,7 @@ public class ArmorType extends Type {
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.typeName);
+        hash = 89 * hash + Objects.hashCode(this.name);
         hash = 89 * hash + Objects.hashCode(this.materialAmount1);
         hash = 89 * hash + Objects.hashCode(this.materialAmount2);
         return hash;
@@ -176,7 +164,7 @@ public class ArmorType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.typeName, other.typeName)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         if (!Objects.equals(this.materialAmount1, other.materialAmount1)) {
@@ -187,7 +175,7 @@ public class ArmorType extends Type {
 
     @Override
     public String toString() {
-        return typeName;
+        return name;
     }
 
 }

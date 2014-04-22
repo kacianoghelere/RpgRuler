@@ -3,29 +3,30 @@ package br.com.rpgruler.data.entitity;
 import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
+ * Entidade dos personagens de jogadores
  *
  * @author kaciano
  */
-public class PlayerChar implements Serializable {
+public class PlayerChar {
 
     @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nome")
-    private String charName;
+    private String name;
     @ColumnName(name = "Jogador")
-    private String playerName;
+    private String player;
     @ColumnName(name = "Idade")
     private Integer age;
     @ColumnName(name = "Sexo")
     private Character sex;
     @ColumnName(name = "Altura")
-    private Integer height;
+    private Double height;
     @ColumnName(name = "Peso")
     private Integer weight;
     @ColumnName(name = "Classe")
@@ -40,23 +41,28 @@ public class PlayerChar implements Serializable {
     private Collection<Expertise> expertiseCollection;
 
     /**
-     *
+     * Cria nova instancia de PlayerChar
      */
     public PlayerChar() {
     }
 
     /**
+     * Cria nova instancia de PlayerChar
      *
-     * @param charName
-     * @param playerName
-     * @param age
-     * @param sex
-     * @param height
-     * @param weight
+     * @param id <code>Long</code> ID do personagem
+     * @param charName <code>String</code> Nome do personagem
+     * @param playerName <code>String</code> Nome do jogador
+     * @param age <code>Integer</code> Idade do personagem
+     * @param sex <code>Character</code> Sexo do personagem
+     * @param height <code>Double</code> Altura do personagem
+     * @param weight <code>Integer</code> Peso do personagem
+     * @param charClass <code>CharClass</code> Classe do personagem
+     * @param charRace <code>CharRace</code> Raça do personagem
      */
-    public PlayerChar(String charName, String playerName, Integer age, Character sex, Integer height, Integer weight) {
-        this.charName = charName;
-        this.playerName = playerName;
+    public PlayerChar(Long id, String charName, String playerName, Integer age, Character sex, Double height, Integer weight, CharClass charClass, CharRace charRace) {
+        this.id = id;
+        this.name = charName;
+        this.player = playerName;
         this.age = age;
         this.sex = sex;
         this.height = height;
@@ -64,176 +70,200 @@ public class PlayerChar implements Serializable {
     }
 
     /**
+     * Retorna o ID do personagem
      *
-     * @return
+     * @return <code>Long</code> ID do personagem
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o ID do personagem
      *
-     * @param id
+     * @param id <code>Long</code> ID do personagem
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o Nome do personagem
      *
-     * @return
+     * @return <code>String</code> Nome do personagem
      */
-    public String getCharName() {
-        return charName;
+    public String getName() {
+        return name;
     }
 
     /**
+     * Modifica o Nome do personagem
      *
-     * @param charName
+     * @param name <code>String</code> Nome do personagem
      */
-    public void setCharName(String charName) {
-        this.charName = charName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
+     * Retorna o Nome do jogador
      *
-     * @return
+     * @return <code>String</code> Nome do jogador
      */
-    public String getPlayerName() {
-        return playerName;
+    public String getPlayer() {
+        return player;
     }
 
     /**
+     * Modifica o Nome do jogador
      *
-     * @param playerName
+     * @param player <code>String</code> Nome do jogador
      */
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setPlayer(String player) {
+        this.player = player;
     }
 
     /**
+     * Retorna a Idade do personagem
      *
-     * @return
+     * @return <code>Integer</code> Idade do personagem
      */
     public Integer getAge() {
         return age;
     }
 
     /**
+     * Modifica a Idade do personagem
      *
-     * @param age
+     * @param age <code>Integer</code> Idade do personagem
      */
     public void setAge(Integer age) {
         this.age = age;
     }
 
     /**
+     * Retorna o Sexo do personagem
      *
-     * @return
+     * @return <code>Character</code> Sexo do personagem
      */
     public Character getSex() {
         return sex;
     }
 
     /**
+     * Modifica o Sexo do personagem
      *
-     * @param sex
+     * @param sex <code>Character</code> Sexo do personagem
      */
     public void setSex(Character sex) {
         this.sex = sex;
     }
 
     /**
+     * Retorna a Altura do personagem
      *
-     * @return
+     * @return <code>Double</code> Altura do personagem
      */
-    public Integer getHeight() {
+    public Double getHeight() {
         return height;
     }
 
     /**
+     * Modifica a Altura do personagem
      *
-     * @param height
+     * @param height <code>Double</code> Altura do personagem
      */
-    public void setHeight(Integer height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 
     /**
+     * Retorna o Peso do personagem
      *
-     * @return
+     * @return <code>Integer</code> Peso do personagem
      */
     public Integer getWeight() {
         return weight;
     }
 
     /**
+     * Modifica o Peso do personagem
      *
-     * @param weight
+     * @param weight <code>Integer</code> Peso do personagem
      */
     public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
     /**
+     * Retorna os Infos do personagem
      *
-     * @return
+     * @return <code>Collection(PlayerCharInfo)</code> Infos do personagem
      */
     public Collection<PlayerCharInfo> getPlayerCharInfoCollection() {
         return playerCharInfoCollection;
     }
 
     /**
+     * Modifica os Infos do personagem
      *
-     * @param playerCharInfoCollection
+     * @param playerCharInfoCollection <code>Collection(PlayerCharInfo)</code>
+     * Infos do personagem
      */
     public void setPlayerCharInfoCollection(Collection<PlayerCharInfo> playerCharInfoCollection) {
         this.playerCharInfoCollection = playerCharInfoCollection;
     }
 
     /**
+     * Retorna a Classe do personagem
      *
-     * @return
+     * @return <code>CharClass</code> Classe do personagem
      */
     public CharClass getCharClass() {
         return charClass;
     }
 
     /**
+     * Modifica a Classe do personagem
      *
-     * @param charClass
+     * @param charClass <code>CharClass</code> Classe do personagem
      */
     public void setCharClass(CharClass charClass) {
         this.charClass = charClass;
     }
 
     /**
+     * Retorna a Raça do personagem
      *
-     * @return
+     * @return <code>CharClass</code> Raça do personagem
      */
     public CharRace getCharRace() {
         return charRace;
     }
 
     /**
+     * Modifica a Raça do personagem
      *
-     * @param charRace
+     * @param charRace <code>CharClass</code> Raça do personagem
      */
     public void setCharRace(CharRace charRace) {
         this.charRace = charRace;
     }
 
     /**
+     * Retorna as Perícias do personagem
      *
-     * @return
+     * @return <code>Collection(Expertise)</code> Perícias do personagem
      */
     public Collection<Expertise> getExpertiseCollection() {
         return expertiseCollection;
     }
 
     /**
+     * Modifica as Perícias do personagem
      *
-     * @param expertiseCollection
+     * @param expertiseCollection <code>Collection(Expertise)</code> Perícias do
+     * personagem
      */
     public void setExpertiseCollection(Collection<Expertise> expertiseCollection) {
         this.expertiseCollection = expertiseCollection;
@@ -241,27 +271,58 @@ public class PlayerChar implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        hash = 71 * hash + Objects.hashCode(this.name);
+        hash = 71 * hash + Objects.hashCode(this.player);
+        hash = 71 * hash + Objects.hashCode(this.age);
+        hash = 71 * hash + Objects.hashCode(this.sex);
+        hash = 71 * hash + Objects.hashCode(this.height);
+        hash = 71 * hash + Objects.hashCode(this.weight);
+        hash = 71 * hash + Objects.hashCode(this.charClass);
+        hash = 71 * hash + Objects.hashCode(this.charRace);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PlayerChar)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        PlayerChar other = (PlayerChar) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final PlayerChar other = (PlayerChar) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Objects.equals(this.age, other.age)) {
+            return false;
+        }
+        if (!Objects.equals(this.sex, other.sex)) {
+            return false;
+        }
+        if (!Objects.equals(this.height, other.height)) {
+            return false;
+        }
+        if (!Objects.equals(this.weight, other.weight)) {
+            return false;
+        }
+        if (!Objects.equals(this.charClass, other.charClass)) {
+            return false;
+        }
+        return Objects.equals(this.charRace, other.charRace);
     }
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.PlayerChar[ id=" + id + " ]";
+        return name;
     }
 
 }

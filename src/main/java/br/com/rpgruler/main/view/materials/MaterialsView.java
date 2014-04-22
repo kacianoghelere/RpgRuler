@@ -12,8 +12,8 @@ import br.com.rpgruler.main.view.materials.bean.MaterialsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.materials.model.MaterialsModel;
-import br.com.rpgruler.main.view.materials.object.MaterialsParameter;
 import br.com.rpgruler.main.view.object.ViewParameter;
+import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,10 +70,11 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
         try {
             if (gTName.validateComponent()) {
                 if (nTWeight.validateComponent()) {
-                    MaterialsParameter param;
-                    param = new MaterialsParameter(gTName.getText(),
-                            (Integer) jSpClass.getValue(), nTWeight.getDouble());
-                    bean.add(new BeanEvent(this, param));
+                    ViewWrapper vw = new ViewWrapper(this);
+                    vw.addValue(gTName.getText());
+                    vw.addValue((Integer) jSpClass.getValue());
+                    vw.addValue(nTWeight.getDouble());
+                    bean.add(new BeanEvent(vw));
                 }
             }
         } catch (Exception e) {

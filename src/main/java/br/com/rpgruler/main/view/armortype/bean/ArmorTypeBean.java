@@ -17,8 +17,9 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
     private ArmorTypeDAO dao;
 
     /**
+     * Cria nova instancia de ArmorTypeBean
      *
-     * @param view
+     * @param view <code>ArmorTypeView</code> View do Bean
      */
     public ArmorTypeBean(ArmorTypeView view) {
         super(view);
@@ -38,12 +39,12 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
      * @param evt <code>BeanEvent</code> Evento do bean
      */
     @Override
-    public void add(BeanEvent evt) {        
+    public void add(BeanEvent evt) {
         ViewWrapper vw = evt.getWrapper();
         ArmorType type = new ArmorType();
         Long nextID = getNextID();
         type.setId(nextID);
-        type.setTypeName((String) vw.getValue(0));
+        type.setName((String) vw.getValue(0));
         type.setMaterialAmount1((Double) vw.getValue(1));
         type.setMaterialAmount2((Double) vw.getValue(2));
         type.setBase((Double) vw.getValue(3));

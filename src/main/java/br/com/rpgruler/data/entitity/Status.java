@@ -1,108 +1,117 @@
 package br.com.rpgruler.data.entitity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
+ * Entidade dos Status de personagens e inimigos
  *
  * @author kaciano
+ * @version 1.0
  */
-public class Status implements Serializable {
+public class Status {
 
+    @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
-    @ColumnName(name = "Nome")
-    private String statusName;
+    @ColumnName(name = "Titulo")
+    private String title;
     @ColumnName(name = "Duração")
-    private long duration;
+    private Integer duration;
     @ColumnName(name = "Efeito")
     private Effect idEffect;
 
     /**
-     *
+     * Cria nova instancia de Status
      */
     public Status() {
     }
 
     /**
+     * Cria nova instancia de Status
      *
-     * @param id
+     * @param id <code>Long</code> ID do Status
+     * @param title <code>String</code> Titulo do Status
+     * @param duration <code>Integer</code> Duração do Status
+     * @param idEffect <code>Effect</code> Efeito do Status
      */
-    public Status(Long id) {
+    public Status(Long id, String title, Integer duration, Effect idEffect) {
         this.id = id;
-    }
-
-    /**
-     *
-     * @param id
-     * @param duration
-     */
-    public Status(Long id, long duration) {
-        this.id = id;
+        this.title = title;
         this.duration = duration;
+        this.idEffect = idEffect;
     }
 
     /**
+     * Retorna o ID
      *
-     * @return
+     * @return <code>Long</code> ID do Status
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o ID
      *
-     * @param id
+     * @param id <code>Long</code> ID do Status
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o Titulo
      *
-     * @return
+     * @return <code>String</code> Titulo do Status
      */
-    public String getStatusName() {
-        return statusName;
+    public String getTitle() {
+        return title;
     }
 
     /**
+     * Modifica o Titulo
      *
-     * @param statusName
+     * @param title <code>String</code> Titulo do Status
      */
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
+     * Retorna a Duração do Status
      *
-     * @return
+     * @return <code>Integer</code> Duração do Status
      */
-    public long getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
     /**
+     * Modifica a Duração do Status
      *
-     * @param duration
+     * @param duration <code>Integer</code> Duração do Status
      */
-    public void setDuration(long duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
     /**
+     * Retorna o Efeito do Status
      *
-     * @return
+     * @return <code>Effect</code> Efeito do Status
      */
     public Effect getIdEffect() {
         return idEffect;
     }
 
     /**
+     * Modifica o Efeito do Status
      *
-     * @param idEffect
+     * @param idEffect <code>Effect</code> Efeito do Status
      */
     public void setIdEffect(Effect idEffect) {
         this.idEffect = idEffect;
@@ -110,27 +119,38 @@ public class Status implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.title);
+        hash = 67 * hash + Objects.hashCode(this.duration);
+        hash = 67 * hash + Objects.hashCode(this.idEffect);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Status)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Status other = (Status) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Status other = (Status) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.duration, other.duration)) {
+            return false;
+        }
+        return Objects.equals(this.idEffect, other.idEffect);
     }
 
     @Override
     public String toString() {
-        return "br.com.rpgruler.data.entitity.Status[ id=" + id + " ]";
+        return title;
     }
 
 }

@@ -8,33 +8,33 @@ import br.com.gmp.comps.annotations.ColumnName;
  *
  * @author kaciano
  */
-public class Attributes {
+public class MainAttributes {
 
     @ColumnName(name = "FOR")
-    private Integer strength;
+    private Attribute strength = new Attribute((long) 1, "Força", "FOR", 0);
     @ColumnName(name = "DES")
-    private Integer dexterity;
+    private Attribute dexterity = new Attribute((long) 2, "Destreza", "DEX", 0);
     @ColumnName(name = "CON")
-    private Integer constitution;
+    private Attribute constitution = new Attribute((long) 1, "Constituição", "CON", 0);
     @ColumnName(name = "INT")
-    private Integer intelligence;
+    private Attribute intelligence = new Attribute((long) 1, "Inteligencia", "INT", 0);
     @ColumnName(name = "WIS")
-    private Integer wisdom;
+    private Attribute wisdom = new Attribute((long) 1, "Sabedoria", "SAB", 0);
     @ColumnName(name = "CHA")
-    private Integer charisma;
+    private Attribute charisma = new Attribute((long) 1, "Carisma", "CAR", 0);
     @ColumnName(name = "HP")
-    private Integer health;
+    private Attribute health = new Attribute((long) 1, "Saúde", "HP", 0);
     @ColumnName(name = "ATK")
-    private Integer attack;
+    private Attribute attack = new Attribute((long) 1, "Ataque", "ATK", 0);
     @ColumnName(name = "DEF")
-    private Integer defense;
+    private Attribute defense = new Attribute((long) 1, "Defesa", "DEF", 0);
     @ColumnName(name = "EVA")
-    private Integer evasion;
+    private Attribute evasion = new Attribute((long) 1, "Evsão", "EVA", 0);
 
     /**
      * Constroi nova instancia de Attributes
      */
-    public Attributes() {
+    public MainAttributes() {
     }
 
     /**
@@ -42,18 +42,18 @@ public class Attributes {
      *
      * @param str <code>Integer</code> Força
      * @param dex <code>Integer</code> Destreza
-     * @param cons <code>Integer</code> Constituição
+     * @param con <code>Integer</code> Constituição
      * @param intel <code>Integer</code> Inteligencia
      * @param wis <code>Integer</code> Sabedoria
      * @param charm <code>Integer</code> Carisma
      */
-    public Attributes(Integer str, Integer dex, Integer cons, Integer intel, Integer wis, Integer charm) {
-        this.strength = str;
-        this.dexterity = dex;
-        this.constitution = cons;
-        this.intelligence = intel;
-        this.wisdom = wis;
-        this.charisma = charm;
+    public MainAttributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm) {
+        this.strength.setValue(str);
+        this.dexterity.setValue(dex);
+        this.constitution.setValue(con);
+        this.intelligence.setValue(intel);
+        this.wisdom.setValue(wis);
+        this.charisma.setValue(charm);
     }
 
     /**
@@ -70,31 +70,31 @@ public class Attributes {
      * @param def <code>Integer</code> Defesa
      * @param eva <code>Integer</code> Evasão
      */
-    public Attributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva) {
-        this.strength = str;
-        this.dexterity = dex;
-        this.constitution = con;
-        this.intelligence = intel;
-        this.wisdom = wis;
-        this.charisma = charm;
-        this.health = hp;
-        this.attack = atk;
-        this.defense = def;
-        this.evasion = eva;
+    public MainAttributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva) {
+        this.strength.setValue(str);
+        this.dexterity.setValue(dex);
+        this.constitution.setValue(con);
+        this.intelligence.setValue(intel);
+        this.wisdom.setValue(wis);
+        this.charisma.setValue(charm);
+        this.health.setValue(hp);
+        this.attack.setValue(atk);
+        this.defense.setValue(def);
+        this.evasion.setValue(eva);
     }
 
     @Override
     public String toString() {
-        return "FOR: " + strength
-                + ", DES: " + dexterity
-                + ", CON: " + constitution
-                + ", INT: " + intelligence
-                + ", SAB: " + wisdom
-                + ", CAR: " + charisma
-                + ", HP: " + health
-                + ", ATK: " + attack
-                + ", DEF: " + defense
-                + ", EVA: " + evasion;
+        return strength.toString()
+                + dexterity.toString()
+                + constitution.toString()
+                + intelligence.toString()
+                + wisdom.toString()
+                + charisma.toString()
+                + health.toString()
+                + attack.toString()
+                + defense.toString()
+                + evasion.toString();
     }
 
     /**
@@ -103,7 +103,7 @@ public class Attributes {
      * @return <code>Integer</code> Força
      */
     public Integer getStrength() {
-        return strength;
+        return strength.getValue();
     }
 
     /**
@@ -112,7 +112,7 @@ public class Attributes {
      * @param strength <code>Integer</code> Força
      */
     public void setStrength(Integer strength) {
-        this.strength = strength;
+        this.strength.setValue(strength);
     }
 
     /**
@@ -121,7 +121,7 @@ public class Attributes {
      * @return <code>Integer</code> Destreza
      */
     public Integer getDexterity() {
-        return dexterity;
+        return dexterity.getValue();
     }
 
     /**
@@ -130,7 +130,7 @@ public class Attributes {
      * @param dexterity <code>Integer</code> Destreza
      */
     public void setDexterity(Integer dexterity) {
-        this.dexterity = dexterity;
+        this.dexterity.setValue(dexterity);
     }
 
     /**
@@ -139,7 +139,7 @@ public class Attributes {
      * @return <code>Integer</code> Constituição
      */
     public Integer getConstitution() {
-        return constitution;
+        return constitution.getValue();
     }
 
     /**
@@ -148,7 +148,7 @@ public class Attributes {
      * @param constitution <code>Integer</code> Constituição
      */
     public void setConstitution(Integer constitution) {
-        this.constitution = constitution;
+        this.constitution.setValue(constitution);
     }
 
     /**
@@ -157,7 +157,7 @@ public class Attributes {
      * @return <code>Integer</code> Inteligencia
      */
     public Integer getIntelligence() {
-        return intelligence;
+        return intelligence.getValue();
     }
 
     /**
@@ -166,7 +166,7 @@ public class Attributes {
      * @param intelligence <code>Integer</code> Inteligencia
      */
     public void setIntelligence(Integer intelligence) {
-        this.intelligence = intelligence;
+        this.intelligence.setValue(intelligence);
     }
 
     /**
@@ -175,7 +175,7 @@ public class Attributes {
      * @return <code>Integer</code> Sabedoria
      */
     public Integer getWisdom() {
-        return wisdom;
+        return wisdom.getValue();
     }
 
     /**
@@ -184,7 +184,7 @@ public class Attributes {
      * @param wisdom <code>Integer</code> Sabedoria
      */
     public void setWisdom(Integer wisdom) {
-        this.wisdom = wisdom;
+        this.wisdom.setValue(wisdom);
     }
 
     /**
@@ -193,7 +193,7 @@ public class Attributes {
      * @return <code>Integer</code> Carisma
      */
     public Integer getCharisma() {
-        return charisma;
+        return charisma.getValue();
     }
 
     /**
@@ -202,7 +202,7 @@ public class Attributes {
      * @param charisma <code>Integer</code> Carisma
      */
     public void setCharisma(Integer charisma) {
-        this.charisma = charisma;
+        this.charisma.setValue(charisma);
     }
 
     /**
@@ -211,7 +211,7 @@ public class Attributes {
      * @return <code>Integer</code> Pontos de vida
      */
     public Integer getHealth() {
-        return health;
+        return health.getValue();
     }
 
     /**
@@ -220,7 +220,7 @@ public class Attributes {
      * @param health <code>Integer</code> Pontos de vida
      */
     public void setHealth(Integer health) {
-        this.health = health;
+        this.health.setValue(health);
     }
 
     /**
@@ -229,7 +229,7 @@ public class Attributes {
      * @return <code>Integer</code> Ataque
      */
     public Integer getAttack() {
-        return attack;
+        return attack.getValue();
     }
 
     /**
@@ -238,7 +238,7 @@ public class Attributes {
      * @param attack <code>Integer</code> Ataque
      */
     public void setAttack(Integer attack) {
-        this.attack = attack;
+        this.attack.setValue(attack);
     }
 
     /**
@@ -247,7 +247,7 @@ public class Attributes {
      * @return <code>Integer</code> Defesa
      */
     public Integer getDefense() {
-        return defense;
+        return defense.getValue();
     }
 
     /**
@@ -256,7 +256,7 @@ public class Attributes {
      * @param defense <code>Integer</code> Defesa
      */
     public void setDefense(Integer defense) {
-        this.defense = defense;
+        this.defense.setValue(defense);
     }
 
     /**
@@ -265,7 +265,7 @@ public class Attributes {
      * @return <code>Integer</code> Evasão
      */
     public Integer getEvasion() {
-        return evasion;
+        return evasion.getValue();
     }
 
     /**
@@ -274,7 +274,7 @@ public class Attributes {
      * @param evasion <code>Integer</code> Evasão
      */
     public void setEvasion(Integer evasion) {
-        this.evasion = evasion;
+        this.evasion.setValue(evasion);
     }
 
 }

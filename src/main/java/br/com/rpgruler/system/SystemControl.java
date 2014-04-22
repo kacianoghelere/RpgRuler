@@ -24,8 +24,9 @@ public class SystemControl {
     }
 
     /**
+     * Método de inicialização principal
      *
-     * @param args
+     * @param args Argumentos
      */
     public static void main(String[] args) {
         try {

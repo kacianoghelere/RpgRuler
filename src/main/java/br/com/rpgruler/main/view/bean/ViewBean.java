@@ -8,7 +8,7 @@ import br.com.rpgruler.main.view.interfaces.BeanListener;
  *
  * @author kaciano
  * @version 1.0
- * @param <T>
+ * @param <T> Tipo da View
  */
 public class ViewBean<T> implements BeanListener<T> {
 
@@ -18,7 +18,7 @@ public class ViewBean<T> implements BeanListener<T> {
      * Cria nova instancia de DefaultViewBean
      *
      * @param view <code>DefaultView</code> View do bean
-     * @see br.com.rpgruler.main.view.generic.DefaultView
+     * @see br.com.rpgruler.main.view.View
      */
     public ViewBean(T view) {
         this.view = view;

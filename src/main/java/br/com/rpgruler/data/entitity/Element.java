@@ -8,10 +8,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * Entidade dos elementos
  *
  * @author kaciano
+ * @version 1.0
  */
-public class Element implements Serializable {
+public class Element {
 
     @Ignore
     @NotCopiable
@@ -19,131 +21,135 @@ public class Element implements Serializable {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String title;    
+    private String title;
     @ColumnName(name = "Simbolo")
-    private String elementSymbol;
+    private String symbol;
     @ColumnName(name = "Bonûs")
     private Element bonus;
     @ColumnName(name = "Fraqueza")
     private Element weakness;
 
     /**
-     *
+     * Cria nova instancia de Element
      */
     public Element() {
     }
 
     /**
+     * Cria nova instancia de Element
      *
-     * @param id
+     * @param id <code>Long</code> ID do elemento
+     * @param title <code>String</code> Titulo do elemento
+     * @param symbol <code>String</code> Simbolo do elemento
      */
-    public Element(Long id) {
+    public Element(Long id, String title, String symbol) {
         this.id = id;
+        this.title = title;
+        this.symbol = symbol;
     }
 
     /**
+     * Cria nova instancia de Element
      *
-     * @param id
-     * @param elementName
-     * @param elementSymbol
+     * @param id <code>Long</code> ID do elemento
+     * @param title <code>String</code> Titulo do elemento
+     * @param symbol <code>String</code> Simbolo do elemento
+     * @param bonus <code>Element</code> Elemento de ganho
+     * @param weakness <code>Element</code> Elemento de perda
      */
-    public Element(Long id, String elementName, String elementSymbol) {
+    public Element(Long id, String title, String symbol, Element bonus, Element weakness) {
         this.id = id;
-        this.title = elementName;
-        this.elementSymbol = elementSymbol;
-    }
-
-    /**
-     *
-     * @param id
-     * @param elementName
-     * @param elementSymbol
-     * @param bonus
-     * @param weakness
-     */
-    public Element(Long id, String elementName, String elementSymbol, Element bonus, Element weakness) {
-        this.id = id;
-        this.title = elementName;
-        this.elementSymbol = elementSymbol;
+        this.title = title;
+        this.symbol = symbol;
         this.bonus = bonus;
         this.weakness = weakness;
     }
 
     /**
+     * Retorna o ID do elemento
      *
-     * @return
+     * @return <code>Long</code> ID do elemento
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Modifica o ID do elemento
      *
-     * @param id
+     * @param id <code>Long</code> ID do elemento
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Retorna o Titulo do elemento
      *
-     * @return
+     * @return <code>String</code> Titulo do elemento
      */
     public String getTitle() {
         return title;
     }
 
     /**
+     * Modifica o Titulo do elemento
      *
-     * @param title
+     * @param title <code>String</code> Titulo do elemento
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
     /**
+     * Retorna o Simbolo do elemento
      *
-     * @return
+     * @return <code>String</code> Simbolo do elemento
      */
-    public String getElementSymbol() {
-        return elementSymbol;
+    public String getSymbol() {
+        return symbol;
     }
 
     /**
+     * Modifica o Simbolo do elemento
      *
-     * @param elementSymbol
+     * @param symbol <code>String</code> Simbolo do elemento
      */
-    public void setElementSymbol(String elementSymbol) {
-        this.elementSymbol = elementSymbol;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     /**
+     * Retorna o Elemento de ganho
      *
-     * @return
+     * @return <code>Element</code> Elemento de ganho
      */
     public Element getBonus() {
         return bonus;
     }
 
     /**
+     * Modifica o Elemento de ganho
      *
-     * @param bonus
+     * @param bonus <code>Element</code> Elemento de ganho
      */
     public void setBonus(Element bonus) {
         this.bonus = bonus;
     }
 
     /**
+     * Retorna o Elemento de perda
      *
-     * @return
+     * @return <code>Element</code> Elemento de perda
      */
     public Element getWeakness() {
         return weakness;
     }
 
     /**
+     * Modifica o Elemento de perda
      *
-     * @param weakness
+     * @param weakness <code>Element</code> Elemento de perda
      */
     public void setWeakness(Element weakness) {
         this.weakness = weakness;
@@ -154,7 +160,7 @@ public class Element implements Serializable {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.id);
         hash = 53 * hash + Objects.hashCode(this.title);
-        hash = 53 * hash + Objects.hashCode(this.elementSymbol);
+        hash = 53 * hash + Objects.hashCode(this.symbol);
         hash = 53 * hash + Objects.hashCode(this.bonus);
         hash = 53 * hash + Objects.hashCode(this.weakness);
         return hash;
@@ -175,7 +181,7 @@ public class Element implements Serializable {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.elementSymbol, other.elementSymbol)) {
+        if (!Objects.equals(this.symbol, other.symbol)) {
             return false;
         }
         if (!Objects.equals(this.bonus, other.bonus)) {

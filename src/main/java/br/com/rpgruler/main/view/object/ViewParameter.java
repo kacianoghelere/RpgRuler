@@ -13,88 +13,102 @@ public class ViewParameter {
     private Boolean canLoad;
 
     /**
-     *
-     * @param canSave
-     * @param canProcces
-     * @param canClear
-     * @param canLoad
+     * Cria nova instancia de ViewParameter
      */
-    public ViewParameter(Boolean canSave, Boolean canProcces,
-            Boolean canClear, Boolean canLoad) {
-        this.canSave = canSave;
-        this.canProcess = canProcces;
-        this.canClear = canClear;
-        this.canLoad = canLoad;
+    public ViewParameter() {
+    }
+
+    /**
+     * Cria nova instancia de ViewParameter
+     *
+     * @param save <code>boolean</code> Pode salvar?
+     * @param procces <code>boolean</code> Pode processar?
+     * @param clear <code>boolean</code> Pode limpar?
+     * @param load <code>boolean</code> Pode carregar?
+     */
+    public ViewParameter(boolean save, boolean procces, boolean clear, boolean load) {
+        this.canSave = save;
+        this.canProcess = procces;
+        this.canClear = clear;
+        this.canLoad = load;
     }
 
     @Override
     public String toString() {
-        return "ViewParameter{\n"
-                + "canSave=" + canSave + ",\n"
-                + "canProcces=" + canProcess + ",\n"
-                + "canClear=" + canClear + ",\n"
-                + "canLoad=" + canLoad + "\n" + '}';
+        return "\n"
+                + "Pode salvar: " + canSave + ",\n"
+                + "Pode processar: " + canProcess + ",\n"
+                + "Pode limpar: " + canClear + ",\n"
+                + "Pode carregar: " + canLoad + "\n";
     }
 
     /**
+     * Retorna se pode salvar
      *
-     * @return
+     * @return <code>boolean</code> Pode salvar?
      */
     public Boolean isSave() {
         return canSave;
     }
 
     /**
+     * Modifica se pode salvar
      *
-     * @param canSave
+     * @param canSave <code>boolean</code> Pode salvar?
      */
     public void setSave(Boolean canSave) {
         this.canSave = canSave;
     }
 
     /**
+     * Retorna se pode processar
      *
-     * @return
+     * @return <code>boolean</code> Pode processar?
      */
     public Boolean isProcess() {
         return canProcess;
     }
 
     /**
+     * Modifica se pode processar
      *
-     * @param canProcces
+     * @param canProcces <code>boolean</code> Pode processar?
      */
     public void setProcess(Boolean canProcces) {
         this.canProcess = canProcces;
     }
 
     /**
+     * Retorna se pode limpar
      *
-     * @return
+     * @return <code>boolean</code> Pode limpar?
      */
     public Boolean isClear() {
         return canClear;
     }
 
     /**
+     * Modifica se pode limpar
      *
-     * @param canClear
+     * @param canClear <code>boolean</code> Pode limpar?
      */
     public void setClear(Boolean canClear) {
         this.canClear = canClear;
     }
 
     /**
+     * Retorna se pode carregar
      *
-     * @return
+     * @return <code>boolean</code> Pode carregar?
      */
     public Boolean isLoad() {
         return canLoad;
     }
 
     /**
+     * Modifica se pode carregar
      *
-     * @param canLoad
+     * @param canLoad <code>boolean</code> Pode carregar?
      */
     public void setLoad(Boolean canLoad) {
         this.canLoad = canLoad;

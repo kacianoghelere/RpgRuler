@@ -30,12 +30,12 @@ public class PerkType extends Type {
     /**
      * Cria nova instancia de PerkType
      *
-     * @param id <code></code>
-     * @param typeName <code></code>
+     * @param id <code>Long</code> Código do tipo
+     * @param title <code>String</code> Nome do tipo
      */
-    public PerkType(Long id, String typeName) {
+    public PerkType(Long id, String title) {
         this.id = id;
-        this.title = typeName;
+        this.title = title;
     }
 
     /**

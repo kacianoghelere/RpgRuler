@@ -3,7 +3,7 @@ package br.com.rpgruler.main.view.armor.sub;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.rpgruler.data.entitity.Armor;
 import br.com.rpgruler.data.entitity.ArmorType;
-import br.com.rpgruler.data.entitity.Attributes;
+import br.com.rpgruler.data.entitity.MainAttributes;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
@@ -84,9 +84,9 @@ public class ArmorSubView extends SubView {
             ArmorType prefix = this.armorTypeModel.getSelectedItem();
             PrimeMaterial mat1 = this.materialModel1.getSelectedItem();
             PrimeMaterial mat2 = this.materialModel2.getSelectedItem();
-            String name = prefix.getTypeName()
-                    + " de " + mat1.getMaterialName()
-                    + " e " + mat2.getMaterialName();
+            String name = prefix.getName()
+                    + " de " + mat1.getName()
+                    + " e " + mat2.getName();
             this.gTName.setText(name);
         }
     }
@@ -122,7 +122,7 @@ public class ArmorSubView extends SubView {
                     this.effectModel.setData(this.armor.getEffects());
                 }
                 if (this.armor.getAttributes() != null) {
-                    Attributes attr = this.armor.getAttributes();
+                    MainAttributes attr = this.armor.getAttributes();
                     jSpinStr.setValue(attr.getStrength());
                     jSpinDex.setValue(attr.getDexterity());
                     jSpinCon.setValue(attr.getConstitution());
@@ -149,7 +149,7 @@ public class ArmorSubView extends SubView {
         if (this.armor.getId() == null) {
             this.armor.setId(bean.getNextID());
         }
-        Attributes attr = new Attributes();
+        MainAttributes attr = new MainAttributes();
         attr.setStrength((Integer) jSpinStr.getValue());
         attr.setDexterity((Integer) jSpinDex.getValue());
         attr.setConstitution((Integer) jSpinCon.getValue());
