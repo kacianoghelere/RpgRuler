@@ -1,6 +1,7 @@
 package br.com.rpgruler.main.view.menuitem.bean;
 
 import br.com.rpgruler.data.db.dao.MenuDAO;
+import br.com.rpgruler.data.db.dao.MenuItemDAO;
 import br.com.rpgruler.data.entitity.Menu;
 import br.com.rpgruler.data.entitity.MenuItem;
 import br.com.rpgruler.main.object.BeanEvent;
@@ -20,6 +21,8 @@ import javax.swing.ImageIcon;
  */
 public class MenuItemBean extends ViewBean<MenuItemView> {
 
+    private MenuItemDAO dao;
+
     /**
      * Cria nova instancia de MenuItemBean
      *
@@ -27,8 +30,14 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      */
     public MenuItemBean(MenuItemView view) {
         super(view);
+        dao = new MenuItemDAO();
         getView().getParentModel().setData(getParentMenus());
         getView().getIconModel().setData(getItemIcons());
+    }
+
+    @Override
+    public void save(BeanEvent evt) throws Exception {
+        dao.replaceAll(getView().getModel().getData());
     }
 
     /**

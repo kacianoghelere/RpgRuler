@@ -1,14 +1,16 @@
 package br.com.rpgruler.main.util;
 
+import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.gmp.utils.reflection.ReflectionUtil;
 import br.com.rpgruler.data.db.dao.MenuDAO;
 import br.com.rpgruler.data.db.dao.MenuItemDAO;
 import br.com.rpgruler.data.entitity.Menu;
 import br.com.rpgruler.data.entitity.MenuItem;
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.view.View;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,7 +82,7 @@ public class MenuBuilder {
      * @param menus <code>List(Menu)</code> Listas de menus
      */
     public void buildMenu(List<Menu> menus) {
-        root.removeAll();        
+        root.removeAll();
         //Collections.sort(menus);
         menus.stream().forEach((Menu menu) -> {
             if (menu.getParent() == 0) {
@@ -111,7 +113,7 @@ public class MenuBuilder {
      */
     private void recursiveMenus(JMenu parent, Menu menu) {
         for (Component comp : parent.getMenuComponents()) {
-            JMenu jmenu = (JMenu) comp;            
+            JMenu jmenu = (JMenu) comp;
             Long menuid = Long.parseLong(jmenu.getText().split("-")[0].trim());
             if (menu.getParent().equals(menuid)) {
                 System.out.println("(INFO) Inserindo em: " + jmenu.getText());
@@ -152,7 +154,7 @@ public class MenuBuilder {
     public void recursiveItems(JMenu jmenu, MenuItem item, boolean execute) throws ClassNotFoundException {
         for (Component comp : jmenu.getMenuComponents()) {
             JMenu menu = (JMenu) comp;
-            Long menuid = Long.parseLong(menu.toString().split("-")[0].trim());
+            Long menuid = Long.parseLong(menu.getText().split("-")[0].trim());
             if (item.getMenu().equals(menuid)) {
                 insertItem(menu, item, execute);
                 break;
@@ -205,10 +207,12 @@ public class MenuBuilder {
         Class<?> objClass = Class.forName(view.getViewClass());
         Class<?>[] argTypes = new Class[]{MainScreen.class};
         Object[] arguments = new Object[]{mainScreen};
+        ObjectInstance inst = new ObjectInstance(objClass, argTypes, arguments);
         if (execute) {
             item.addActionListener((ActionEvent e) -> {
                 try {
-                    reflect.newInstance(objClass, argTypes, arguments);
+                    View newView = (View) reflect.newInstance(inst);
+                    mainScreen.getListener().insertView(newView);
                 } catch (InstantiationException ex) {
                     Logger.getLogger(MenuBuilder.class.getName())
                             .log(Level.SEVERE, null, ex);
@@ -234,10 +238,6 @@ public class MenuBuilder {
      */
     public void setRoot(JMenu root) {
         this.root = root;
-    }
-
-    private void generateItem(MenuItem menu) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

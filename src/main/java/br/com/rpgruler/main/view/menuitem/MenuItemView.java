@@ -16,6 +16,7 @@ import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewWrapper;
 import br.com.rpgruler.main.view.menuitem.bean.MenuItemBean;
 import br.com.rpgruler.main.view.menuitem.model.MenuItemModel;
+import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,6 +57,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
      */
     private void initialize() {
         this.initComponents();
+        this.setControls(new ViewParameter(true, false, true, true));
         this.setSize(600, 420);
         this.parentModel = new GComboBoxModel();
         this.iconModel = new GComboBoxModel();
