@@ -11,30 +11,40 @@ import br.com.gmp.comps.annotations.ColumnName;
 public class MainAttributes {
 
     @ColumnName(name = "FOR")
-    private Attribute strength = new Attribute((long) 1, "Força", "FOR", 0);
+    private Attribute strength;
     @ColumnName(name = "DES")
-    private Attribute dexterity = new Attribute((long) 2, "Destreza", "DEX", 0);
+    private Attribute dexterity;
     @ColumnName(name = "CON")
-    private Attribute constitution = new Attribute((long) 3, "Constituição", "CON", 0);
+    private Attribute constitution;
     @ColumnName(name = "INT")
-    private Attribute intelligence = new Attribute((long) 4, "Inteligencia", "INT", 0);
+    private Attribute intelligence;
     @ColumnName(name = "WIS")
-    private Attribute wisdom = new Attribute((long) 5, "Sabedoria", "SAB", 0);
+    private Attribute wisdom;
     @ColumnName(name = "CHA")
-    private Attribute charisma = new Attribute((long) 6, "Carisma", "CAR", 0);
+    private Attribute charisma;
     @ColumnName(name = "HP")
-    private Attribute health = new Attribute((long) 7, "Saúde", "HP", 0);
+    private Attribute health;
     @ColumnName(name = "ATK")
-    private Attribute attack = new Attribute((long) 8, "Ataque", "ATK", 0);
+    private Attribute attack;
     @ColumnName(name = "DEF")
-    private Attribute defense = new Attribute((long) 9, "Defesa", "DEF", 0);
+    private Attribute defense;
     @ColumnName(name = "EVA")
-    private Attribute evasion = new Attribute((long) 10, "Evsão", "EVA", 0);
+    private Attribute evasion;
 
     /**
      * Constroi nova instancia de Attributes
      */
     public MainAttributes() {
+        this.strength = new Attribute((long) 1, "Força", "FOR", 0);
+        this.dexterity = new Attribute((long) 2, "Destreza", "DEX", 0);
+        this.constitution = new Attribute((long) 3, "Constituição", "CON", 0);
+        this.intelligence = new Attribute((long) 4, "Inteligencia", "INT", 0);
+        this.wisdom = new Attribute((long) 5, "Sabedoria", "SAB", 0);
+        this.charisma = new Attribute((long) 6, "Carisma", "CAR", 0);
+        this.health = new Attribute((long) 7, "Saúde", "HP", 0);
+        this.attack = new Attribute((long) 8, "Ataque", "ATK", 0);
+        this.defense = new Attribute((long) 9, "Defesa", "DEF", 0);
+        this.evasion = new Attribute((long) 10, "Evsão", "EVA", 0);
     }
 
     /**
@@ -48,12 +58,16 @@ public class MainAttributes {
      * @param charm <code>Integer</code> Carisma
      */
     public MainAttributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm) {
-        this.strength.setValue(str);
-        this.dexterity.setValue(dex);
-        this.constitution.setValue(con);
-        this.intelligence.setValue(intel);
-        this.wisdom.setValue(wis);
-        this.charisma.setValue(charm);
+        this.strength = new Attribute((long) 1, "Força", "FOR", str);
+        this.dexterity = new Attribute((long) 2, "Destreza", "DEX", dex);
+        this.constitution = new Attribute((long) 3, "Constituição", "CON", con);
+        this.intelligence = new Attribute((long) 4, "Inteligencia", "INT", intel);
+        this.wisdom = new Attribute((long) 5, "Sabedoria", "SAB", wis);
+        this.charisma = new Attribute((long) 6, "Carisma", "CAR", charm);
+        this.health = new Attribute((long) 7, "Saúde", "HP", 0);
+        this.attack = new Attribute((long) 8, "Ataque", "ATK", 0);
+        this.defense = new Attribute((long) 9, "Defesa", "DEF", 0);
+        this.evasion = new Attribute((long) 10, "Evsão", "EVA", 0);
     }
 
     /**
@@ -71,30 +85,30 @@ public class MainAttributes {
      * @param eva <code>Integer</code> Evasão
      */
     public MainAttributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva) {
-        this.strength.setValue(str);
-        this.dexterity.setValue(dex);
-        this.constitution.setValue(con);
-        this.intelligence.setValue(intel);
-        this.wisdom.setValue(wis);
-        this.charisma.setValue(charm);
-        this.health.setValue(hp);
-        this.attack.setValue(atk);
-        this.defense.setValue(def);
-        this.evasion.setValue(eva);
+        this.strength = new Attribute((long) 1, "Força", "FOR", str);
+        this.dexterity = new Attribute((long) 2, "Destreza", "DEX", dex);
+        this.constitution = new Attribute((long) 3, "Constituição", "CON", con);
+        this.intelligence = new Attribute((long) 4, "Inteligencia", "INT", intel);
+        this.wisdom = new Attribute((long) 5, "Sabedoria", "SAB", wis);
+        this.charisma = new Attribute((long) 6, "Carisma", "CAR", charm);
+        this.health = new Attribute((long) 7, "Saúde", "HP", hp);
+        this.attack = new Attribute((long) 8, "Ataque", "ATK", atk);
+        this.defense = new Attribute((long) 9, "Defesa", "DEF", def);
+        this.evasion = new Attribute((long) 10, "Evsão", "EVA", eva);
     }
 
     @Override
     public String toString() {
-        return strength.toString()
-                + dexterity.toString()
-                + constitution.toString()
-                + intelligence.toString()
-                + wisdom.toString()
-                + charisma.toString()
-                + health.toString()
-                + attack.toString()
-                + defense.toString()
-                + evasion.toString();
+        return strength.getAlias() + ": " + strength.getValue() + ",\n"
+                + dexterity.getAlias() + ": " + dexterity.getValue() + ",\n"
+                + constitution.getAlias() + ": " + constitution.getValue() + ",\n"
+                + intelligence.getAlias() + ": " + intelligence.getValue() + ",\n"
+                + wisdom.getAlias() + ": " + wisdom.getValue() + ",\n"
+                + charisma.getAlias() + ": " + charisma.getValue() + ",\n"
+                + health.getAlias() + ": " + health.getValue() + ",\n"
+                + attack.getAlias() + ": " + attack.getValue() + ",\n"
+                + defense.getAlias() + ": " + defense.getValue() + ",\n"
+                + evasion.getAlias() + ": " + evasion.getValue() + "\n";
     }
 
     /**
