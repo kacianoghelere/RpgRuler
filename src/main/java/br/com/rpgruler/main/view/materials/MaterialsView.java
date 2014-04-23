@@ -7,6 +7,7 @@ import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entitity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.util.Description;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.materials.bean.MaterialsBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
@@ -116,7 +117,17 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
     public BeanListener getBean() {
         return bean;
     }
-
+    @Override
+    public String getDescription() {
+        return new Description()
+                .setTitle(getTitle())
+                .setDescription("Tela para cadastro e controle de materiais")
+                .setSave("Remove os itens anteriores e salva os atuais")
+                .setProcces("Sem função")
+                .setClear("Limpa os campos")
+                .setLoad("Recarrega os dados na tela")
+                .format();
+    }
     /**
      *
      */
