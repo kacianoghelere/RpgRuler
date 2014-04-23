@@ -77,8 +77,8 @@ public class MainScreenBean implements MainListener {
     }
 
     @Override
-    public void clear() {
-        if (screen.getDesktop().getComponentCount() == 0) {
+    public void clear() {        
+        if (screen.getDesktop().getAllFrames().length == 0) {
             this.screen.setControls(new ViewParameter(false, false, false, false));
         }
     }

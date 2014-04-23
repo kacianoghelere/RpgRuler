@@ -50,7 +50,7 @@ public abstract class View extends JInternalFrame implements ViewListener {
      */
     private void initialize() {
         initComponents();
-        addInternalFrameListener(new InternalFrameAdapter() {
+        this.addInternalFrameListener(new InternalFrameAdapter() {
 
             @Override
             public void internalFrameActivated(InternalFrameEvent e) {
@@ -59,7 +59,8 @@ public abstract class View extends JInternalFrame implements ViewListener {
 
             @Override
             public void internalFrameClosed(InternalFrameEvent e) {
-                mainScreen.getListener().clear();
+                mainScreen.getDesktop().remove(View.this);
+                mainScreen.getListener().clear();                
             }
 
         });
