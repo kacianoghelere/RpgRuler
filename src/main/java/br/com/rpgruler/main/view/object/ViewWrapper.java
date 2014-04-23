@@ -29,9 +29,11 @@ public class ViewWrapper {
      * Adiciona novo valor para ser transportado
      *
      * @param value <code>Object</code> Valor à ser transportado
+     * @return <code>ViewWrapper</code> Wrapper
      */
-    public void addValue(Object value) {
+    public ViewWrapper addValue(Object value) {
         values.add(value);
+        return this;
     }
 
     /**

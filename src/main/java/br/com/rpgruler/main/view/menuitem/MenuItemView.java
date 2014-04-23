@@ -75,11 +75,11 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
             if (gCBIcon.validateComponent()) {
                 if (gTClass.validateComponent()) {
                     if (gCBMenu.validateComponent()) {
-                        ViewWrapper vw = new ViewWrapper(this);
-                        vw.addValue(gTTitle.getText());
-                        vw.addValue(gCBIcon.getSelectedIndex());
-                        vw.addValue(gTClass.getText());
-                        vw.addValue((Menu) gCBMenu.getSelectedItem());
+                        ViewWrapper vw = new ViewWrapper(this)
+                                .addValue(gTTitle.getText())
+                                .addValue(gCBIcon.getSelectedIndex())
+                                .addValue(gTClass.getText())
+                                .addValue((Menu) gCBMenu.getSelectedItem());
                         bean.add(new BeanEvent(this, vw));
                     }
                 }

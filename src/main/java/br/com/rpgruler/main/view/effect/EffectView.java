@@ -68,10 +68,10 @@ public class EffectView extends br.com.rpgruler.main.view.View implements TableV
         if (gTTitle.validateComponent() && nTStrength.validateComponent()
                 && gCBType.validateComponent()) {
             try {
-                ViewWrapper vw = new ViewWrapper(this);
-                vw.addValue(gTTitle.getText());
-                vw.addValue(nTStrength.getDouble());
-                vw.addValue((EffectType) gCBType.getSelectedItem());
+                ViewWrapper vw = new ViewWrapper(this)
+                        .addValue(gTTitle.getText())
+                        .addValue(nTStrength.getDouble())
+                        .addValue((EffectType) gCBType.getSelectedItem());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
                 Logger.getLogger(EffectView.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +86,7 @@ public class EffectView extends br.com.rpgruler.main.view.View implements TableV
 
     @Override
     public void edit() {
-        
+
     }
 
     @Override

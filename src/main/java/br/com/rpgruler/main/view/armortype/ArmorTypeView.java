@@ -72,11 +72,11 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
     public void add() {
         try {
             if (gTName.validateComponent()) {
-                ViewWrapper vw = new ViewWrapper(this);
-                vw.addValue(gTName.getText());
-                vw.addValue((Double) jSpQtd1.getValue());
-                vw.addValue((Double) jSpQtd2.getValue());
-                vw.addValue(nTResBase.getDouble());
+                ViewWrapper vw = new ViewWrapper(this)
+                        .addValue(gTName.getText())
+                        .addValue((Double) jSpQtd1.getValue())
+                        .addValue((Double) jSpQtd2.getValue())
+                        .addValue(nTResBase.getDouble());
                 bean.add(new BeanEvent(vw));
             }
         } catch (NumberFormatException e) {

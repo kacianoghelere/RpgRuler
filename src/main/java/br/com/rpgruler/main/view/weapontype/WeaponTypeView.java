@@ -64,13 +64,13 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
             if (gTTitle.validateComponent()) {
                 if (nTBaseDmg.validateComponent()) {
                     if (gCBWear.validateComponent()) {
-                        ViewWrapper vw = new ViewWrapper(this);
-                        vw.addValue(gTTitle.getText());
-                        vw.addValue((Integer) jSpinCategory.getValue());
-                        vw.addValue(nTBaseDmg.getDouble());
-                        vw.addValue(useModel.getSelectedItem());
-                        vw.addValue((Double) jSpQtd1.getValue());
-                        vw.addValue((Double) jSpQtd2.getValue());
+                        ViewWrapper vw = new ViewWrapper(this)
+                                .addValue(gTTitle.getText())
+                                .addValue((Integer) jSpinCategory.getValue())
+                                .addValue(nTBaseDmg.getDouble())
+                                .addValue(useModel.getSelectedItem())
+                                .addValue((Double) jSpQtd1.getValue())
+                                .addValue((Double) jSpQtd2.getValue());
                         bean.add(new BeanEvent(vw));
                     }
                 }

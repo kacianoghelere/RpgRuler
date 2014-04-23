@@ -108,11 +108,11 @@ public class ElementView extends View implements TableSource<Element>, TableView
             if (gTTitle.validateComponent() && (gCBSymbol.getSelectedIndex() >= 0)
                     && (gCBBonus.getSelectedIndex() >= 0)
                     && (gCBWeak.getSelectedIndex() >= 0)) {
-                ViewWrapper vw = new ViewWrapper(this);
-                vw.addValue(gTTitle.getText());
-                vw.addValue(gCBSymbol.getSelectedIndex());
-                vw.addValue(bonusModel.getSelectedItem());
-                vw.addValue(weakModel.getSelectedItem());
+                ViewWrapper vw = new ViewWrapper(this)
+                        .addValue(gTTitle.getText())
+                        .addValue(gCBSymbol.getSelectedIndex())
+                        .addValue(bonusModel.getSelectedItem())
+                        .addValue(weakModel.getSelectedItem());
                 bean.add(new BeanEvent(this, vw));
             }
         } catch (Exception e) {

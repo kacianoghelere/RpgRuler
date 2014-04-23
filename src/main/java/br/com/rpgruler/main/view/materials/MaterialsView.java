@@ -71,10 +71,10 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
         try {
             if (gTName.validateComponent()) {
                 if (nTWeight.validateComponent()) {
-                    ViewWrapper vw = new ViewWrapper(this);
-                    vw.addValue(gTName.getText());
-                    vw.addValue((Integer) jSpClass.getValue());
-                    vw.addValue(nTWeight.getDouble());
+                    ViewWrapper vw = new ViewWrapper(this)
+                            .addValue(gTName.getText())
+                            .addValue((Integer) jSpClass.getValue())
+                            .addValue(nTWeight.getDouble());
                     bean.add(new BeanEvent(vw));
                 }
             }
@@ -117,6 +117,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
     public BeanListener getBean() {
         return bean;
     }
+
     @Override
     public String getDescription() {
         return new Description()
@@ -128,6 +129,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
                 .setLoad("Recarrega os dados na tela")
                 .format();
     }
+
     /**
      *
      */

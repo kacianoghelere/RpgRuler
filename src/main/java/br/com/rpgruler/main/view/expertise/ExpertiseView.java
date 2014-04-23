@@ -68,10 +68,10 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     public void add() {
         if (gTTitle.validateComponent() && gCBAttribute.validateComponent()) {
             try {
-                ViewWrapper vw = new ViewWrapper(this);
-                vw.addValue(gTTitle.getText());
-                vw.addValue(boxModel.getSelectedItem());
-                vw.addValue((Integer) jSpinValue.getValue());
+                ViewWrapper vw = new ViewWrapper(this)
+                        .addValue(gTTitle.getText())
+                        .addValue(boxModel.getSelectedItem())
+                        .addValue((Integer) jSpinValue.getValue());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
                 Logger.getLogger(ExpertiseView.class.getName()).log(Level.SEVERE, null, ex);
