@@ -31,6 +31,7 @@ public class EntityMap {
         map.put(WeaponType.class, "WeaponTypeDB");        
         map.put(RestrictionType.class, "RestrictionTypeDB");                
         map.put(Armor.class, "ArmorDB");                
+        map.put(Expertise.class, "ExpertiseDB");                
         return map;
     }
 

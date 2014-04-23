@@ -15,21 +15,21 @@ public class MainAttributes {
     @ColumnName(name = "DES")
     private Attribute dexterity = new Attribute((long) 2, "Destreza", "DEX", 0);
     @ColumnName(name = "CON")
-    private Attribute constitution = new Attribute((long) 1, "Constituição", "CON", 0);
+    private Attribute constitution = new Attribute((long) 3, "Constituição", "CON", 0);
     @ColumnName(name = "INT")
-    private Attribute intelligence = new Attribute((long) 1, "Inteligencia", "INT", 0);
+    private Attribute intelligence = new Attribute((long) 4, "Inteligencia", "INT", 0);
     @ColumnName(name = "WIS")
-    private Attribute wisdom = new Attribute((long) 1, "Sabedoria", "SAB", 0);
+    private Attribute wisdom = new Attribute((long) 5, "Sabedoria", "SAB", 0);
     @ColumnName(name = "CHA")
-    private Attribute charisma = new Attribute((long) 1, "Carisma", "CAR", 0);
+    private Attribute charisma = new Attribute((long) 6, "Carisma", "CAR", 0);
     @ColumnName(name = "HP")
-    private Attribute health = new Attribute((long) 1, "Saúde", "HP", 0);
+    private Attribute health = new Attribute((long) 7, "Saúde", "HP", 0);
     @ColumnName(name = "ATK")
-    private Attribute attack = new Attribute((long) 1, "Ataque", "ATK", 0);
+    private Attribute attack = new Attribute((long) 8, "Ataque", "ATK", 0);
     @ColumnName(name = "DEF")
-    private Attribute defense = new Attribute((long) 1, "Defesa", "DEF", 0);
+    private Attribute defense = new Attribute((long) 9, "Defesa", "DEF", 0);
     @ColumnName(name = "EVA")
-    private Attribute evasion = new Attribute((long) 1, "Evsão", "EVA", 0);
+    private Attribute evasion = new Attribute((long) 10, "Evsão", "EVA", 0);
 
     /**
      * Constroi nova instancia de Attributes
@@ -95,6 +95,22 @@ public class MainAttributes {
                 + attack.toString()
                 + defense.toString()
                 + evasion.toString();
+    }
+
+    /**
+     * Retorna os principais atributos usados
+     *
+     * @return <code>Attribute[]</code> Principais atributos
+     */
+    public Attribute[] getAttributes() {
+        return new Attribute[]{
+            strength,
+            dexterity,
+            constitution,
+            intelligence,
+            wisdom,
+            charisma
+        };
     }
 
     /**

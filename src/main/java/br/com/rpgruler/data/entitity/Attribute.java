@@ -110,7 +110,7 @@ public class Attribute {
 
     @Override
     public String toString() {
-        return alias + ": " + value;
+        return name;
     }
 
     @Override

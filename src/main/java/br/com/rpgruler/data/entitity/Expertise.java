@@ -20,12 +20,12 @@ public class Expertise implements Serializable {
     @ColumnName(name = "Código")
     private Long id;
     @Editable
-    @ColumnName(name = "title")
+    @ColumnName(name = "Titulo")
     private String title;
     @ColumnName(name = "Atributo chave")
     private Attribute attribute;
     @Editable
-    @ColumnName(name = "value")
+    @ColumnName(name = "Valor")
     private Integer value;
 
     /**

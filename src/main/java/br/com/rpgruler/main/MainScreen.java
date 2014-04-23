@@ -10,6 +10,7 @@ import br.com.rpgruler.main.view.armortype.ArmorTypeView;
 import br.com.rpgruler.main.view.dice.DiceView;
 import br.com.rpgruler.main.view.effect.EffectView;
 import br.com.rpgruler.main.view.element.ElementView;
+import br.com.rpgruler.main.view.expertise.ExpertiseView;
 import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.menu.MenuView;
 import br.com.rpgruler.main.view.perk.PerkView;
@@ -290,16 +291,12 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMIMenus = new javax.swing.JMenuItem();
         jMIViews = new javax.swing.JMenuItem();
         jMInfo = new javax.swing.JMenu();
-        jMPerk = new javax.swing.JMenu();
         jMIRegPerk = new javax.swing.JMenuItem();
-        jMElement = new javax.swing.JMenu();
         jMIRegElement = new javax.swing.JMenuItem();
-        jMMaterials = new javax.swing.JMenu();
         jMIMaterials = new javax.swing.JMenuItem();
-        jMTerms = new javax.swing.JMenu();
         jMITerms = new javax.swing.JMenuItem();
-        jMEffects = new javax.swing.JMenu();
         jMIEffects = new javax.swing.JMenuItem();
+        jMIExpertise = new javax.swing.JMenuItem();
         jMWeapons = new javax.swing.JMenu();
         jMIWeaponTypes = new javax.swing.JMenuItem();
         jMArmors = new javax.swing.JMenu();
@@ -496,87 +493,77 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMInfo.setText("Informações");
         jMInfo.setName("jMInfo"); // NOI18N
 
-        jMPerk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
-        jMPerk.setText("Vantagens");
-        jMPerk.setName("jMPerk"); // NOI18N
-
-        jMIRegPerk.setText("Cadastro");
+        jMIRegPerk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
+        jMIRegPerk.setMnemonic('v');
+        jMIRegPerk.setText("Vantagens");
         jMIRegPerk.setName("jMIRegPerk"); // NOI18N
         jMIRegPerk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIRegPerkActionPerformed(evt);
             }
         });
-        jMPerk.add(jMIRegPerk);
+        jMInfo.add(jMIRegPerk);
 
-        jMInfo.add(jMPerk);
-
-        jMElement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
-        jMElement.setText("Elementos");
-        jMElement.setName("jMElement"); // NOI18N
-
-        jMIRegElement.setText("Cadastro");
+        jMIRegElement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
+        jMIRegElement.setMnemonic('e');
+        jMIRegElement.setText("Elementos");
         jMIRegElement.setName("jMIRegElement"); // NOI18N
         jMIRegElement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIRegElementActionPerformed(evt);
             }
         });
-        jMElement.add(jMIRegElement);
+        jMInfo.add(jMIRegElement);
 
-        jMInfo.add(jMElement);
-
-        jMMaterials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1285_.png"))); // NOI18N
-        jMMaterials.setText("Materiais");
-        jMMaterials.setName("jMMaterials"); // NOI18N
-
-        jMIMaterials.setText("Cadastro");
+        jMIMaterials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1285_.png"))); // NOI18N
+        jMIMaterials.setMnemonic('M');
+        jMIMaterials.setText("Materiais");
         jMIMaterials.setName("jMIMaterials"); // NOI18N
         jMIMaterials.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIMaterialsActionPerformed(evt);
             }
         });
-        jMMaterials.add(jMIMaterials);
-
-        jMInfo.add(jMMaterials);
-
-        jMTerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
-        jMTerms.setText("Termos");
-        jMTerms.setName("jMTerms"); // NOI18N
+        jMInfo.add(jMIMaterials);
 
         jMITerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
-        jMITerms.setText("Itens comuns");
+        jMITerms.setMnemonic('t');
+        jMITerms.setText("Termos");
         jMITerms.setName("jMITerms"); // NOI18N
         jMITerms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMITermsActionPerformed(evt);
             }
         });
-        jMTerms.add(jMITerms);
+        jMInfo.add(jMITerms);
 
-        jMInfo.add(jMTerms);
-
-        jMEffects.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/status/slice1390_@.png"))); // NOI18N
-        jMEffects.setText("Efeitos");
-        jMEffects.setName("jMEffects"); // NOI18N
-
-        jMIEffects.setText("Cadastro");
+        jMIEffects.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/status/slice1390_@.png"))); // NOI18N
+        jMIEffects.setMnemonic('f');
+        jMIEffects.setText("Efeitos");
         jMIEffects.setName("jMIEffects"); // NOI18N
         jMIEffects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIEffectsActionPerformed(evt);
             }
         });
-        jMEffects.add(jMIEffects);
+        jMInfo.add(jMIEffects);
 
-        jMInfo.add(jMEffects);
+        jMIExpertise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1352_@.png"))); // NOI18N
+        jMIExpertise.setMnemonic('p');
+        jMIExpertise.setText("Perícias");
+        jMIExpertise.setName("jMIExpertise"); // NOI18N
+        jMIExpertise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIExpertiseActionPerformed(evt);
+            }
+        });
+        jMInfo.add(jMIExpertise);
 
         jMWeapons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
         jMWeapons.setText("Armas");
         jMWeapons.setName("jMWeapons"); // NOI18N
 
-        jMIWeaponTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
+        jMIWeaponTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_25.png"))); // NOI18N
         jMIWeaponTypes.setText("Tipos de armas");
         jMIWeaponTypes.setName("jMIWeaponTypes"); // NOI18N
         jMIWeaponTypes.addActionListener(new java.awt.event.ActionListener() {
@@ -602,7 +589,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMArmors.add(jMIArmors);
 
-        jMIArmorTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
+        jMIArmorTypes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/R/R_0.png"))); // NOI18N
         jMIArmorTypes.setText("Tipos de armaduras");
         jMIArmorTypes.setName("jMIArmorTypes"); // NOI18N
         jMIArmorTypes.addActionListener(new java.awt.event.ActionListener() {
@@ -729,6 +716,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new ArmorView(this));
     }//GEN-LAST:event_jMIArmorsActionPerformed
 
+    private void jMIExpertiseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIExpertiseActionPerformed
+        listener.insertView(new ExpertiseView(this));
+    }//GEN-LAST:event_jMIExpertiseActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -740,12 +731,11 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMArmors;
     private javax.swing.JMenu jMControls;
-    private javax.swing.JMenu jMEffects;
-    private javax.swing.JMenu jMElement;
     private javax.swing.JMenuItem jMIArmorTypes;
     private javax.swing.JMenuItem jMIArmors;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIEffects;
+    private javax.swing.JMenuItem jMIExpertise;
     private javax.swing.JMenuItem jMIMaterials;
     private javax.swing.JMenuItem jMIMenus;
     private javax.swing.JMenuItem jMIProcess;
@@ -757,11 +747,8 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenuItem jMIViews;
     private javax.swing.JMenuItem jMIWeaponTypes;
     private javax.swing.JMenu jMInfo;
-    private javax.swing.JMenu jMMaterials;
     private javax.swing.JMenu jMOptions;
-    private javax.swing.JMenu jMPerk;
     private javax.swing.JMenu jMRoot;
-    private javax.swing.JMenu jMTerms;
     private javax.swing.JMenu jMWeapons;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JToolBar.Separator jSeparator1;

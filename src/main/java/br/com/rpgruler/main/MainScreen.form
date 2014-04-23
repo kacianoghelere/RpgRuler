@@ -110,109 +110,84 @@
             <Property name="name" type="java.lang.String" value="jMInfo" noResource="true"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMPerk">
+            <MenuItem class="javax.swing.JMenuItem" name="jMIRegPerk">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/RpgIcons/misc/slice1215_.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="118"/>
                 <Property name="text" type="java.lang.String" value="Vantagens"/>
-                <Property name="name" type="java.lang.String" value="jMPerk" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="jMIRegPerk" noResource="true"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIRegPerk">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cadastro"/>
-                    <Property name="name" type="java.lang.String" value="jMIRegPerk" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRegPerkActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMElement">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRegPerkActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIRegElement">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/RpgIcons/misc/slice1399_@.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="101"/>
                 <Property name="text" type="java.lang.String" value="Elementos"/>
-                <Property name="name" type="java.lang.String" value="jMElement" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="jMIRegElement" noResource="true"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIRegElement">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cadastro"/>
-                    <Property name="name" type="java.lang.String" value="jMIRegElement" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRegElementActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMMaterials">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRegElementActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIMaterials">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/RpgIcons/misc/slice1285_.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="77"/>
                 <Property name="text" type="java.lang.String" value="Materiais"/>
-                <Property name="name" type="java.lang.String" value="jMMaterials" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="jMIMaterials" noResource="true"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIMaterials">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cadastro"/>
-                    <Property name="name" type="java.lang.String" value="jMIMaterials" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMaterialsActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMTerms">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMaterialsActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMITerms">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/RpgIcons/misc/slice1213_.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="116"/>
                 <Property name="text" type="java.lang.String" value="Termos"/>
-                <Property name="name" type="java.lang.String" value="jMTerms" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="jMITerms" noResource="true"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMITerms">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/RpgIcons/misc/slice1213_.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Itens comuns"/>
-                    <Property name="name" type="java.lang.String" value="jMITerms" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMITermsActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMEffects">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMITermsActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIEffects">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/RpgIcons/status/slice1390_@.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="102"/>
                 <Property name="text" type="java.lang.String" value="Efeitos"/>
-                <Property name="name" type="java.lang.String" value="jMEffects" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="jMIEffects" noResource="true"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIEffects">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cadastro"/>
-                    <Property name="name" type="java.lang.String" value="jMIEffects" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIEffectsActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIEffectsActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIExpertise">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/RpgIcons/misc/slice1352_@.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="112"/>
+                <Property name="text" type="java.lang.String" value="Per&#xed;cias"/>
+                <Property name="name" type="java.lang.String" value="jMIExpertise" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIExpertiseActionPerformed"/>
+              </Events>
+            </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMWeapons">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -225,7 +200,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="jMIWeaponTypes">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/RpgIcons/weapons/DK/DK_4.png"/>
+                      <Image iconType="3" name="/RpgIcons/weapons/DK/DK_25.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tipos de armas"/>
                     <Property name="name" type="java.lang.String" value="jMIWeaponTypes" noResource="true"/>
@@ -260,7 +235,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="jMIArmorTypes">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/RpgIcons/armor/DVK/DVK_3.png"/>
+                      <Image iconType="3" name="/RpgIcons/armor/R/R_0.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tipos de armaduras"/>
                     <Property name="name" type="java.lang.String" value="jMIArmorTypes" noResource="true"/>
