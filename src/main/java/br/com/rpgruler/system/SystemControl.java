@@ -1,5 +1,6 @@
 package br.com.rpgruler.system;
 
+import br.com.gmp.utils.system.SystemProperties;
 import br.com.rpgruler.main.MainScreen;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +18,13 @@ public class SystemControl {
      * Cria nova instancia de SystemControl
      */
     public SystemControl() {
+        System.out.println("-------------------------------------------------"
+                + "\nSistema operacional: " + SystemProperties.OS_NAME.toUpperCase()
+                + " - " + SystemProperties.OS_ARCH
+                + "\nVersão do Java: " + SystemProperties.JAVA_VERSION
+                + "\nUsuário: " + SystemProperties.USER_NAME.toUpperCase()
+                + "\nPasta principal: " + SystemProperties.USER_HOME
+                + "\n-------------------------------------------------");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new MainScreen().setVisible(true);
