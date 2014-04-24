@@ -1,16 +1,20 @@
 package br.com.rpgruler.main.bean;
 
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.actions.*;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Action;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
+import javax.swing.KeyStroke;
 
 /**
  * Bean de controle da tela principal
@@ -21,6 +25,10 @@ public class MainScreenBean implements MainListener {
 
     private View actualView;
     private final MainScreen screen;
+    private FrameAction saveAction;
+    private FrameAction proccesAction;
+    private FrameAction clearAction;
+    private FrameAction loadAction;
 
     /**
      * Cria nova instancia de MainScreenBean
@@ -31,31 +39,40 @@ public class MainScreenBean implements MainListener {
         this.screen = mainScreen;
     }
 
+
     @Override
     public void save(BeanEvent evt) {
-        if (getActualView() != null) {
+        if (getActualView() != null && getActualView().canSave()) {
             getActualView().save();
+        } else if (!getActualView().canSave()) {
+            screen.printTypedMsg("Esta View nao pode salvar!", MainScreen.WARNING_MSG);
         }
     }
 
     @Override
     public void process(BeanEvent evt) {
-        if (getActualView() != null) {
+        if (getActualView() != null && getActualView().canProcces()) {
             getActualView().process();
+        } else if (!getActualView().canProcces()) {
+            screen.printTypedMsg("Esta View nao pode processar!", MainScreen.WARNING_MSG);
         }
     }
 
     @Override
     public void clear(BeanEvent evt) {
-        if (getActualView() != null) {
+        if (getActualView() != null && getActualView().canClear()) {
             getActualView().clear();
+        } else if (!getActualView().canClear()) {
+            screen.printTypedMsg("Esta View nao pode limpar!", MainScreen.WARNING_MSG);
         }
     }
 
     @Override
     public void load(BeanEvent evt) {
-        if (getActualView() != null) {
+        if (getActualView() != null && getActualView().canLoad()) {
             getActualView().load();
+        } else if (!getActualView().canLoad()) {
+            screen.printTypedMsg("Esta View nao pode carregar!", MainScreen.WARNING_MSG);
         }
     }
 
@@ -77,7 +94,7 @@ public class MainScreenBean implements MainListener {
     }
 
     @Override
-    public void clear() {        
+    public void clear() {
         if (screen.getDesktop().getAllFrames().length == 0) {
             this.screen.setControls(new ViewParameter(false, false, false, false));
         }

@@ -105,15 +105,14 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     }
 
     @Override
-    public String getDescription() {
+    public Description getDescription() {
         return new Description()
                 .setTitle(getTitle())
                 .setDescription("")
                 .setSave("")
                 .setProcces("")
                 .setClear("")
-                .setLoad("")
-                .format();
+                .setLoad("");
     }
 
     /**

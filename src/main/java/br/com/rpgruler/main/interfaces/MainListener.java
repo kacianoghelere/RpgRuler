@@ -2,7 +2,6 @@ package br.com.rpgruler.main.interfaces;
 
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
-import br.com.rpgruler.main.view.interfaces.ViewListener;
 
 /**
  * Interface do bean para a tela principal

@@ -7,6 +7,7 @@ import br.com.rpgruler.data.db.dao.ArmorDAO;
 import br.com.rpgruler.data.entitity.Armor;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.util.Description;
 import br.com.rpgruler.main.util.TableUtil;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.armor.bean.ArmorBean;
@@ -55,10 +56,6 @@ public class ArmorView extends View implements TableView, TableSource<Armor> {
         } catch (Exception ex) {
             Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        setDescription("<html><b>Cadastro de armaduras</b><br>"
-                + "Esta View tem como propósito catalogar, organizar e controlar<br>"
-                + "as armaduras registradas."
-                + "</html>");
     }
 
     @Override
@@ -77,7 +74,7 @@ public class ArmorView extends View implements TableView, TableSource<Armor> {
         getMainScreen().getListener().insertView(dialog);
         if (dialog.getArmor() != null) {
             try {
-                
+
                 bean.add(new BeanEvent(this, dialog.getArmor()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
                 Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,6 +106,17 @@ public class ArmorView extends View implements TableView, TableSource<Armor> {
     @Override
     public ArmorModel getModel() {
         return model;
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description()
+                .setTitle(getTitle())
+                .setDescription("View para cadastro de controle de armaduras.")
+                .setSave("Remove todos os itens e salva os novos")
+                .setProcces("Nada faz.")
+                .setClear("Nada faz.")
+                .setLoad("Nada faz.");
     }
 
     /**

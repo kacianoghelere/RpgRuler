@@ -14,7 +14,8 @@ public class Description {
     private String clear;
     private String load;
     private final String base = "<html>"
-            + "<b>%1$2ss</b><br><br>"
+            + "<body style='margin-left: 20px'>"
+            + "<b>%1$2s</b><br><br>"
             + "%2$2s<br><br>"
             + "Funções<br><br>"
             + "        <table border=\"1\">"
@@ -30,19 +31,20 @@ public class Description {
             + "                    <td>%3$2s</td>"
             + "                </tr>"
             + "                <tr>"
-            + "                    <td><b>F4</b> - Processar</td>"
+            + "                    <td><b>F6</b> - Processar</td>"
             + "                    <td>%4$2s</td>"
             + "                </tr>"
             + "                <tr>"
-            + "                    <td><b>F6</b> - Limpar</td>"
+            + "                    <td><b>F4</b> - Limpar</td>"
             + "                    <td>%5$2s</td>"
             + "                </tr>"
             + "                <tr>"
-            + "                    <td><b>F6</b> - Carregar</td>"
+            + "                    <td><b>F8</b> - Carregar</td>"
             + "                    <td>%6$2s</td>"
             + "                </tr>"
             + "            </tbody>"
             + "        </table>"
+            + "</body>"
             + "</html>";
 
     /**

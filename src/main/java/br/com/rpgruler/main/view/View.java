@@ -2,7 +2,13 @@ package br.com.rpgruler.main.view;
 
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.actions.ClearAction;
+import br.com.rpgruler.main.actions.FrameAction;
+import br.com.rpgruler.main.actions.LoadAction;
+import br.com.rpgruler.main.actions.ProccessAction;
+import br.com.rpgruler.main.actions.SaveAction;
 import br.com.rpgruler.main.object.BeanEvent;
+import br.com.rpgruler.main.util.Description;
 import br.com.rpgruler.main.view.dialog.DescriptionDialog;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.ViewListener;
@@ -12,6 +18,7 @@ import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.KeyStroke;
@@ -32,8 +39,12 @@ public abstract class View extends JInternalFrame implements ViewListener {
     private Boolean canClear;
     private Boolean canLoad;
     private String alias = "";
-    private String description = "<html><b>View</b> padrão!</html>";
+    private Description description;
     private Object parameter;
+    private FrameAction saveAction;
+    private FrameAction proccesAction;
+    private FrameAction clearAction;
+    private FrameAction loadAction;
 
     /**
      * Cria nova instancia de DefaultView
@@ -50,6 +61,7 @@ public abstract class View extends JInternalFrame implements ViewListener {
      */
     private void initialize() {
         initComponents();
+        description = new Description("1", "2", "3", "4", "5", "6");
         this.addInternalFrameListener(new InternalFrameAdapter() {
 
             @Override
@@ -60,13 +72,14 @@ public abstract class View extends JInternalFrame implements ViewListener {
             @Override
             public void internalFrameClosed(InternalFrameEvent e) {
                 mainScreen.getDesktop().remove(View.this);
-                mainScreen.getListener().clear();                
+                mainScreen.getListener().clear();
             }
 
         });
         DescribeAction describe = new DescribeAction();
         getRootPane().getActionMap().put("describe", describe);
         getRootPane().getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "describe");
+        buildActions();
     }
 
     /**
@@ -83,12 +96,38 @@ public abstract class View extends JInternalFrame implements ViewListener {
     }
 
     /**
+     * Monta as ações nas respectivas teclas
+     */
+    private void buildActions() {
+        saveAction = new SaveAction(this);
+        addKeyInput("save", KeyEvent.VK_F2, saveAction);
+        proccesAction = new ProccessAction(this);
+        addKeyInput("proccess", KeyEvent.VK_F6, proccesAction);
+        clearAction = new ClearAction(this);
+        addKeyInput("clear", KeyEvent.VK_F4, clearAction);
+        loadAction = new LoadAction(this);
+        addKeyInput("load", KeyEvent.VK_F8, loadAction);
+    }
+
+    /**
+     * Adiciona as ações especificas de cada tecla
+     *
+     * @param name <b><code>String</code></b> Nome da ação
+     * @param keycode <b><code>KeyEvent</code></b> Código da tecla
+     * @param action <b><code>Action</code></b> Ação da tecla
+     */
+    private void addKeyInput(String name, int keycode, Action action) {
+        this.getRootPane().getActionMap().put(name, action);
+        this.getRootPane().getInputMap().put(KeyStroke.getKeyStroke(keycode, 0), name);
+    }
+
+    /**
      * Descreve o uso da view e suas funções
      *
      * @throws java.lang.Exception Exceção padrão
      */
     public void describe() throws Exception {
-        DescriptionDialog desc = new DescriptionDialog(this, getDescription());
+        DescriptionDialog desc = new DescriptionDialog(this, getDescription().format());
     }
 
     /**
@@ -128,18 +167,18 @@ public abstract class View extends JInternalFrame implements ViewListener {
     /**
      * Retorna a descrição da tela
      *
-     * @return <code>String</code> Descrição da tela
+     * @return <code>Description</code> Descrição da tela
      */
-    public String getDescription() {
+    public Description getDescription() {
         return description;
     }
 
     /**
      * Modifica a descrição da tela
      *
-     * @param description <code>String</code> Descrição da tela
+     * @param description <code>Description</code> Descrição da tela
      */
-    public void setDescription(String description) {
+    public void setDescription(Description description) {
         this.description = description;
     }
 
