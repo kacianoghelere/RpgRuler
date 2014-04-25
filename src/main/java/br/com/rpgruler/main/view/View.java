@@ -183,6 +183,92 @@ public abstract class View extends JInternalFrame implements ViewListener {
     }
 
     @Override
+    public void save() {
+        try {
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().save(new BeanEvent(View.this, null));
+                        showMessage("Dados salvos.", MainScreen.SUCCESS_MSG);
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+        } catch (Exception ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void process() {
+        try {
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().process(new BeanEvent(View.this, null));
+                        showMessage("Dados processados.", MainScreen.INFORMATIVE_MSG);
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+        } catch (Exception ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void clear() {
+        try {
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().clear(new BeanEvent(View.this, null));
+                        showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+        } catch (Exception ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void load() {
+        try {
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        getBean().load(new BeanEvent(View.this, null));
+                        showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
+                    } catch (Exception ex) {
+                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+        } catch (Exception ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void showMessage(String msg, int type) {
+        getMainScreen().printTypedMsg(msg, type);
+    }
+
+    @Override
+    public void showBalloon(JComponent component, String text) {
+        new BalloonUtil().showTimedBallon(component, text);
+    }
+
+    @Override
     public Boolean canSave() {
         return canSave;
     }
@@ -220,92 +306,6 @@ public abstract class View extends JInternalFrame implements ViewListener {
     @Override
     public void setLoad(boolean load) {
         canLoad = load;
-    }
-
-    @Override
-    public void save() {
-        try {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        getBean().save(new BeanEvent(View.this, null));
-                    } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }.start();
-            showMessage("Salvo.", MainScreen.SUCCESS_MSG);
-        } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void process() {
-        try {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        getBean().process(new BeanEvent(View.this, null));
-                    } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }.start();
-            showMessage("Dados processados.", MainScreen.INFORMATIVE_MSG);
-        } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void clear() {
-        try {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        getBean().clear(new BeanEvent(View.this, null));
-                    } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }.start();
-            showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
-        } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void load() {
-        try {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        getBean().load(new BeanEvent(View.this, null));
-                    } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }.start();
-            showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
-        } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void showMessage(String msg, int type) {
-        getMainScreen().printTypedMsg(msg, type);
-    }
-
-    @Override
-    public void showBalloon(JComponent component, String text) {
-        new BalloonUtil().showTimedBallon(component, text);
     }
 
     @Override

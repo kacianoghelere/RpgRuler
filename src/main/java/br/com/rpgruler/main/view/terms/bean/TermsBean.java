@@ -1,10 +1,12 @@
 package br.com.rpgruler.main.view.terms.bean;
 
 import br.com.rpgruler.data.db.dao.EffectTypeDAO;
+import br.com.rpgruler.data.db.dao.ExpertiseTypeDAO;
 import br.com.rpgruler.data.db.dao.PerkTypeDAO;
 import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
 import br.com.rpgruler.data.db.dao.UseTypeDAO;
 import br.com.rpgruler.data.entitity.EffectType;
+import br.com.rpgruler.data.entitity.ExpertiseType;
 import br.com.rpgruler.data.entitity.PerkType;
 import br.com.rpgruler.data.entitity.RestrictionType;
 import br.com.rpgruler.data.entitity.UseType;
@@ -24,6 +26,7 @@ public class TermsBean extends ViewBean<TermsView> {
     private final EffectTypeDAO effectTypeDAO;
     private final PerkTypeDAO perkTypeDao;
     private final RestrictionTypeDAO restDao;
+    private final ExpertiseTypeDAO expDAO;
 
     /**
      * Cria nova instancia de TermsBean
@@ -36,6 +39,7 @@ public class TermsBean extends ViewBean<TermsView> {
         this.effectTypeDAO = new EffectTypeDAO();
         this.perkTypeDao = new PerkTypeDAO();
         this.restDao = new RestrictionTypeDAO();
+        this.expDAO = new ExpertiseTypeDAO();
     }
 
     @Override
@@ -44,14 +48,16 @@ public class TermsBean extends ViewBean<TermsView> {
         effectTypeDAO.replaceAll(getView().getEfModel().getData());
         perkTypeDao.replaceAll(getView().getPerkModel().getData());
         restDao.replaceAll(getView().getRestModel().getData());
+        expDAO.replaceAll(getView().getExpModel().getData());
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void load(BeanEvent evt) throws Exception {        
         getView().getUseModel().setData(useTypeDao.getList());
         getView().getEfModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
         getView().getRestModel().setData(restDao.getList());
+        getView().getExpModel().setData(expDAO.getList());
     }
 
     /**
@@ -96,6 +102,17 @@ public class TermsBean extends ViewBean<TermsView> {
         Long nextId = getNextRestID();
         RestrictionType type = new RestrictionType(nextId, (String) evt.getValue());
         getView().getRestModel().add(type);
+    }
+
+    /**
+     * Adiciona novo elemento na lista de ExpertiseTypes
+     *
+     * @param evt <code>BeanEvent</code> Evento do Bean
+     */
+    public void addExpTp(BeanEvent evt) {
+        Long nextId = getNextRestID();
+        ExpertiseType type = new ExpertiseType(nextId, (String) evt.getValue());
+        getView().getExpModel().add(type);
     }
 
     /**
@@ -151,6 +168,21 @@ public class TermsBean extends ViewBean<TermsView> {
     public Long getNextRestID() {
         Long id = (long) 0;
         for (RestrictionType type : getView().getRestModel().getData()) {
+            if (type.getId() > id) {
+                id = type.getId();
+            }
+        }
+        return (id + 1);
+    }
+
+    /**
+     * Retorna o próximo ID dos ExpertiseTypes
+     *
+     * @return <code>Long</code> Próximo ID para ExpertiseType
+     */
+    public Long getNextExpertiseID() {
+        Long id = (long) 0;
+        for (ExpertiseType type : getView().getExpModel().getData()) {
             if (type.getId() > id) {
                 id = type.getId();
             }
