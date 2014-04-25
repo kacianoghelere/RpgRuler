@@ -22,6 +22,8 @@ public class Expertise implements Serializable {
     @Editable
     @ColumnName(name = "Titulo")
     private String title;
+    @ColumnName(name = "Tipo")
+    private ExpertiseType type;
     @ColumnName(name = "Atributo chave")
     private Attribute attribute;
     @Editable
@@ -39,12 +41,14 @@ public class Expertise implements Serializable {
      *
      * @param id <code>Long</code> ID da perícia
      * @param title <code>String</code> Titulo da perícia
+     * @param type <code>ExpertiseType</code> Tipo de perícia
      * @param attribute <code>Attribute</code> Atributo chave
      * @param value <code>Integer</code> Valor da perícia
      */
-    public Expertise(Long id, String title, Attribute attribute, Integer value) {
+    public Expertise(Long id, String title, ExpertiseType type, Attribute attribute, Integer value) {
         this.id = id;
         this.title = title;
+        this.type = type;
         this.attribute = attribute;
         this.value = value;
     }
@@ -86,6 +90,24 @@ public class Expertise implements Serializable {
     }
 
     /**
+     * Retorna o tipo de perícia
+     *
+     * @return <code>ExpertiseType</code> Tipo de perícia
+     */
+    public ExpertiseType getType() {
+        return type;
+    }
+
+    /**
+     * Modifica o tipo de perícia
+     *
+     * @param type <code>ExpertiseType</code> Tipo de perícia
+     */
+    public void setType(ExpertiseType type) {
+        this.type = type;
+    }
+
+    /**
      * Retorna o atributo chave
      *
      * @return <code>Attribute</code> Atributo chave
@@ -123,9 +145,10 @@ public class Expertise implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.id);
-        hash = 71 * hash + Objects.hashCode(this.attribute);
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.type);
+        hash = 89 * hash + Objects.hashCode(this.attribute);
         return hash;
     }
 
@@ -139,6 +162,9 @@ public class Expertise implements Serializable {
         }
         final Expertise other = (Expertise) obj;
         if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
             return false;
         }
         return Objects.equals(this.attribute, other.attribute);

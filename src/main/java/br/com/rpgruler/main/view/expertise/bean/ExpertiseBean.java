@@ -1,12 +1,16 @@
 package br.com.rpgruler.main.view.expertise.bean;
 
 import br.com.rpgruler.data.db.dao.ExpertiseDAO;
+import br.com.rpgruler.data.db.dao.ExpertiseTypeDAO;
 import br.com.rpgruler.data.entitity.Attribute;
 import br.com.rpgruler.data.entitity.Expertise;
+import br.com.rpgruler.data.entitity.ExpertiseType;
+import br.com.rpgruler.data.entitity.MainAttributes;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.expertise.ExpertiseView;
 import br.com.rpgruler.main.view.object.ViewWrapper;
+import javax.swing.SwingUtilities;
 
 /**
  * Bean de controle para tela de perícias
@@ -16,7 +20,8 @@ import br.com.rpgruler.main.view.object.ViewWrapper;
  */
 public class ExpertiseBean extends ViewBean<ExpertiseView> {
 
-    private ExpertiseDAO dao;
+    private final ExpertiseDAO dao;
+    private final ExpertiseTypeDAO typeDAO;
 
     /**
      * Cria nova instancia de ExpertiseBean
@@ -26,6 +31,7 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
     public ExpertiseBean(ExpertiseView view) {
         super(view);
         this.dao = new ExpertiseDAO();
+        this.typeDAO = new ExpertiseTypeDAO();
     }
 
     @Override
@@ -34,12 +40,21 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
     }
 
     @Override
+    public void load(BeanEvent evt) throws Exception {
+        getView().getAttrModel().setData(new MainAttributes().getAttributes());
+        getView().getTypeModel().setData(typeDAO.getList());
+        SwingUtilities.updateComponentTreeUI(getView());
+    }
+
+    @Override
     public void add(BeanEvent evt) throws Exception {
         ViewWrapper vw = evt.getWrapper();
+        Long id = getNextID();
         String title = (String) vw.getValue(0);
         Attribute attr = (Attribute) vw.getValue(1);
-        Integer value = (Integer) vw.getValue(2);
-        getView().getModel().add(new Expertise(getNextID(), title, attr, value));
+        ExpertiseType type = (ExpertiseType) vw.getValue(2);
+        Integer value = (Integer) vw.getValue(3);
+        getView().getModel().add(new Expertise(id, title, type, attr, value));
     }
 
     /**

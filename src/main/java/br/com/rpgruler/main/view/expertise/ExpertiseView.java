@@ -1,12 +1,12 @@
 package br.com.rpgruler.main.view.expertise;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.gmp.comps.model.GTableModel;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.rpgruler.data.db.dao.ExpertiseDAO;
 import br.com.rpgruler.data.entitity.Attribute;
 import br.com.rpgruler.data.entitity.Expertise;
+import br.com.rpgruler.data.entitity.ExpertiseType;
 import br.com.rpgruler.data.entitity.MainAttributes;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
@@ -32,7 +32,8 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     private ExpertiseBean bean;
     private ExpertiseModel model;
     private TableUtil tableUtil;
-    private GComboBoxModel<Attribute> boxModel;
+    private GComboBoxModel<Attribute> attrModel;
+    private GComboBoxModel<ExpertiseType> typeModel;
 
     /**
      * Cria nova instancia de ExpertiseView
@@ -52,11 +53,18 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
         this.setControls(new ViewParameter(true, false, true, false));
         this.setSize(590, 430);
         this.model = new ExpertiseModel();
-        this.boxModel = new GComboBoxModel<>(new MainAttributes().getAttributes());
-        this.gCBAttribute.setGModel(boxModel);
+        this.attrModel = new GComboBoxModel<>();
+        this.typeModel = new GComboBoxModel<>();
+        this.gCBAttribute.setGModel(attrModel);
+        this.gCBType.setGModel(typeModel);
         this.gTable.buildTable(this, 0, model);
         this.tableUtil = new TableUtil(this);
         this.bean = new ExpertiseBean(this);
+        try {
+            this.bean.load(null);
+        } catch (Exception ex) {
+            Logger.getLogger(ExpertiseView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -70,7 +78,8 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
             try {
                 ViewWrapper vw = new ViewWrapper(this)
                         .addValue(gTTitle.getText())
-                        .addValue(boxModel.getSelectedItem())
+                        .addValue(attrModel.getSelectedItem())
+                        .addValue(typeModel.getSelectedItem())
                         .addValue((Integer) jSpinValue.getValue());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
@@ -108,11 +117,29 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     public Description getDescription() {
         return new Description()
                 .setTitle(getTitle())
-                .setDescription("")
-                .setSave("")
-                .setProcces("")
-                .setClear("")
-                .setLoad("");
+                .setDescription("Tela para cadastro e controle de pericias")
+                .setSave("Remove todos os itens anteriores e salva os novos.")
+                .setProcces("--")
+                .setClear("Limpa os campos")
+                .setLoad("--");
+    }
+
+    /**
+     * Retorna o modelo dos atributos
+     *
+     * @return <code>GComboBoxModel(Attribute)</code> Modelo dos atributos
+     */
+    public GComboBoxModel<Attribute> getAttrModel() {
+        return attrModel;
+    }
+
+    /**
+     * Retorna o modelo dos tipos
+     *
+     * @return <code>GComboBoxModel(ExpertiseType)</code> Modelo dos tipos
+     */
+    public GComboBoxModel<ExpertiseType> getTypeModel() {
+        return typeModel;
     }
 
     /**
@@ -132,6 +159,8 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
         jSpinValue = new javax.swing.JSpinner();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
+        jLType = new javax.swing.JLabel();
+        gCBType = new br.com.gmp.comps.combobox.GComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -174,6 +203,8 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
             }
         });
 
+        jLType.setText("Tipo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,7 +219,6 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
                             .addComponent(jLTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(gCBAttribute, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,7 +228,13 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBAdd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBRemove)))))
+                                .addComponent(jBRemove))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLType)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gCBType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -207,7 +243,9 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLTitle)
-                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLType)
+                    .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBRemove)
@@ -218,11 +256,11 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
                         .addComponent(jSpinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBAdd)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBAttribute, jBAdd, jSpinValue});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBAttribute, gCBType, jBAdd, jSpinValue});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -237,12 +275,14 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBAttribute;
+    private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textfield.GTextField gTTitle;
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;
     private javax.swing.JLabel jLAttribute;
     private javax.swing.JLabel jLTitle;
+    private javax.swing.JLabel jLType;
     private javax.swing.JLabel jLValue;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinValue;

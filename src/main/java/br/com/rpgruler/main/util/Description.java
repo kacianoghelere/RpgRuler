@@ -14,7 +14,7 @@ public class Description {
     private String clear;
     private String load;
     private final String base = "<html>"
-            + "<body style='margin-left: 20px'>"
+            + "<body style='margin: 10px'>"
             + "<b>%1$2s</b><br><br>"
             + "%2$2s<br><br>"
             + "Funções<br><br>"
