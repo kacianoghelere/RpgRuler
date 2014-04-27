@@ -51,12 +51,12 @@ public class Description {
      * Cria nova instancia de Description
      */
     public Description() {
-        this.title = "";
-        this.description = "";
-        this.save = "";
-        this.procces = "";
-        this.clear = "";
-        this.load = "";
+        this.title = "--";
+        this.description = "--";
+        this.save = "--";
+        this.procces = "--";
+        this.clear = "--";
+        this.load = "--";
     }
 
     /**
