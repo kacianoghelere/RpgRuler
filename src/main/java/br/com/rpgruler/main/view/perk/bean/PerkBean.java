@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.perk.bean;
 
 import br.com.rpgruler.data.db.dao.PerkDAO;
-import br.com.rpgruler.data.entitity.Perk;
+import br.com.rpgruler.data.entity.Perk;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.perk.PerkView;
 import br.com.rpgruler.main.view.bean.ViewBean;

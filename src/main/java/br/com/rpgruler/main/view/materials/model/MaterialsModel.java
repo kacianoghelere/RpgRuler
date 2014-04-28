@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.materials.model;
 
 import br.com.gmp.comps.model.GTableModel;
-import br.com.rpgruler.data.entitity.PrimeMaterial;
+import br.com.rpgruler.data.entity.PrimeMaterial;
 
 /**
  * Modelo para tabela de materiais

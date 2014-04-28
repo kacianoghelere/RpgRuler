@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.materials.bean;
 
 import br.com.rpgruler.data.db.dao.MaterialsDAO;
-import br.com.rpgruler.data.entitity.PrimeMaterial;
+import br.com.rpgruler.data.entity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.bean.ViewBean;

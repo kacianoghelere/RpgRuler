@@ -2,7 +2,7 @@ package br.com.rpgruler.main.view.menu.bean;
 
 import br.com.gmp.utils.collections.Triad;
 import br.com.rpgruler.data.db.dao.MenuDAO;
-import br.com.rpgruler.data.entitity.Menu;
+import br.com.rpgruler.data.entity.Menu;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.MenuBuilder;
 import br.com.rpgruler.main.view.bean.ViewBean;

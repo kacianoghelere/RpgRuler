@@ -7,7 +7,7 @@ import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.collections.Triad;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.MenuDAO;
-import br.com.rpgruler.data.entitity.Menu;
+import br.com.rpgruler.data.entity.Menu;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;

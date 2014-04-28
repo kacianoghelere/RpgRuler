@@ -1,10 +1,10 @@
 package br.com.rpgruler.main.view.armor.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.rpgruler.data.entitity.Armor;
-import br.com.rpgruler.data.entitity.ArmorType;
-import br.com.rpgruler.data.entitity.MainAttributes;
-import br.com.rpgruler.data.entitity.PrimeMaterial;
+import br.com.rpgruler.data.entity.Armor;
+import br.com.rpgruler.data.entity.ArmorType;
+import br.com.rpgruler.data.entity.MainAttributes;
+import br.com.rpgruler.data.entity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
 import br.com.rpgruler.main.view.SubView;

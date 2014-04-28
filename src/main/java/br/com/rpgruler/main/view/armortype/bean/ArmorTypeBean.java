@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.armortype.bean;
 
 import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
-import br.com.rpgruler.data.entitity.ArmorType;
+import br.com.rpgruler.data.entity.ArmorType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
 import br.com.rpgruler.main.view.bean.ViewBean;

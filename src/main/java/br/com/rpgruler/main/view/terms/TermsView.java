@@ -1,11 +1,11 @@
 package br.com.rpgruler.main.view.terms;
 
 import br.com.gmp.comps.model.GListModel;
-import br.com.rpgruler.data.entitity.EffectType;
-import br.com.rpgruler.data.entitity.ExpertiseType;
-import br.com.rpgruler.data.entitity.PerkType;
-import br.com.rpgruler.data.entitity.RestrictionType;
-import br.com.rpgruler.data.entitity.UseType;
+import br.com.rpgruler.data.entity.EffectType;
+import br.com.rpgruler.data.entity.ExpertiseType;
+import br.com.rpgruler.data.entity.PerkType;
+import br.com.rpgruler.data.entity.RestrictionType;
+import br.com.rpgruler.data.entity.UseType;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;

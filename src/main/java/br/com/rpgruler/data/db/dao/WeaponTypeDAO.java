@@ -1,7 +1,7 @@
 package br.com.rpgruler.data.db.dao;
 
 import br.com.rpgruler.data.db.GenericDAO;
-import br.com.rpgruler.data.entitity.WeaponType;
+import br.com.rpgruler.data.entity.WeaponType;
 
 /**
  * DAO de controle para tipos de armas

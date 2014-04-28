@@ -4,7 +4,7 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectDescript;
 import br.com.rpgruler.data.db.dao.ArmorDAO;
-import br.com.rpgruler.data.entitity.Armor;
+import br.com.rpgruler.data.entity.Armor;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.Description;

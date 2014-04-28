@@ -1,4 +1,4 @@
-package br.com.rpgruler.data.entitity;
+package br.com.rpgruler.data.entity;
 
 import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class ExpertiseType extends Type {
+public class PerkType extends Type {
 
     @NotCopiable
     @Ignore
@@ -22,53 +22,53 @@ public class ExpertiseType extends Type {
     private String title;
 
     /**
-     * Cria nova instancia de ExpertiseType
+     * Cria nova instancia de PerkType
      */
-    public ExpertiseType() {
+    public PerkType() {
     }
 
     /**
-     * Cria nova instancia de ExpertiseType
+     * Cria nova instancia de PerkType
      *
      * @param id <code>Long</code> Código do tipo
      * @param title <code>String</code> Nome do tipo
      */
-    public ExpertiseType(Long id, String title) {
+    public PerkType(Long id, String title) {
         this.id = id;
         this.title = title;
     }
 
     /**
-     * Retorna o ID do ExpertiseType
+     * Retorna o ID do PerkType
      *
-     * @return <code>Long</code> ID do ExpertiseType
+     * @return <code>Long</code> ID do PerkType
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do ExpertiseType
+     * Modifica o ID do PerkType
      *
-     * @param id <code>Long</code> ID do ExpertiseType
+     * @param id <code>Long</code> ID do PerkType
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Retorna o titulo do ExpertiseType
+     * Retorna o titulo do PerkType
      *
-     * @return <code>String</code> Titulo do ExpertiseType
+     * @return <code>String</code> Titulo do PerkType
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Modifica o titulo do ExpertiseType
+     * Modifica o titulo do PerkType
      *
-     * @param title <code>String</code> Titulo do ExpertiseType
+     * @param title <code>String</code> Titulo do PerkType
      */
     public void setTitle(String title) {
         this.title = title;
@@ -90,7 +90,7 @@ public class ExpertiseType extends Type {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ExpertiseType other = (ExpertiseType) obj;
+        final PerkType other = (PerkType) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

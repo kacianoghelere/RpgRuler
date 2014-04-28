@@ -1,9 +1,10 @@
-package br.com.rpgruler.data.entitity;
+package br.com.rpgruler.data.entity;
 
 import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +15,7 @@ import java.util.Objects;
  * @author kaciano
  * @version 1.0
  */
-public class Armor {
+public class Armor implements Serializable {
 
     @NotCopiable
     @Ignore

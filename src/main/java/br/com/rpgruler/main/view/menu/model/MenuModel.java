@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.menu.model;
 
 import br.com.gmp.comps.model.GTableModel;
-import br.com.rpgruler.data.entitity.Menu;
+import br.com.rpgruler.data.entity.Menu;
 
 /**
  * Modelo de tabela para tela de menus

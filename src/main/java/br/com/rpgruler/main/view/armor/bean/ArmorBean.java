@@ -3,7 +3,7 @@ package br.com.rpgruler.main.view.armor.bean;
 import br.com.rpgruler.data.db.dao.ArmorDAO;
 import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.db.dao.MaterialsDAO;
-import br.com.rpgruler.data.entitity.Armor;
+import br.com.rpgruler.data.entity.Armor;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armor.ArmorView;
 import br.com.rpgruler.main.view.armor.sub.ArmorSubView;

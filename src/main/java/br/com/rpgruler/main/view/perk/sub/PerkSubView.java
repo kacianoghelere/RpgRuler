@@ -2,8 +2,8 @@ package br.com.rpgruler.main.view.perk.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.rpgruler.data.db.dao.PerkTypeDAO;
-import br.com.rpgruler.data.entitity.Perk;
-import br.com.rpgruler.data.entitity.PerkType;
+import br.com.rpgruler.data.entity.Perk;
+import br.com.rpgruler.data.entity.PerkType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.SubView;
 import br.com.rpgruler.main.view.perk.PerkView;

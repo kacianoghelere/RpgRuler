@@ -3,7 +3,7 @@ package br.com.rpgruler.main.view.perk;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.rpgruler.data.db.dao.PerkDAO;
-import br.com.rpgruler.data.entitity.Perk;
+import br.com.rpgruler.data.entity.Perk;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;

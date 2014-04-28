@@ -3,7 +3,7 @@ package br.com.rpgruler.main.view.weapon;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.rpgruler.data.db.dao.WeaponDAO;
-import br.com.rpgruler.data.entitity.Weapon;
+import br.com.rpgruler.data.entity.Weapon;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.util.Description;
 import br.com.rpgruler.main.util.TableUtil;

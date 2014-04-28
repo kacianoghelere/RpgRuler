@@ -4,8 +4,8 @@ import br.com.rpgruler.main.view.armor.sub.ArmorSubView;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.dialog.GDialog;
 import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
-import br.com.rpgruler.data.entitity.Restriction;
-import br.com.rpgruler.data.entitity.RestrictionType;
+import br.com.rpgruler.data.entity.Restriction;
+import br.com.rpgruler.data.entity.RestrictionType;
 
 /**
  * Tela auxiliar para resgistro de restrições

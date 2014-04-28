@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.expertise.model;
 
 import br.com.gmp.comps.model.GTableModel;
-import br.com.rpgruler.data.entitity.Expertise;
+import br.com.rpgruler.data.entity.Expertise;
 
 /**
  * Modelo de tabelas para as perícias

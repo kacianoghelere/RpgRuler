@@ -2,8 +2,8 @@ package br.com.rpgruler.main.view.effect.bean;
 
 import br.com.rpgruler.data.db.dao.EffectDAO;
 import br.com.rpgruler.data.db.dao.EffectTypeDAO;
-import br.com.rpgruler.data.entitity.Effect;
-import br.com.rpgruler.data.entitity.EffectType;
+import br.com.rpgruler.data.entity.Effect;
+import br.com.rpgruler.data.entity.EffectType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.effect.EffectView;

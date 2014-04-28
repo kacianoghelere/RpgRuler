@@ -1,6 +1,21 @@
 package br.com.rpgruler.data.db.map;
 
-import br.com.rpgruler.data.entitity.*;
+import br.com.rpgruler.data.entity.Element;
+import br.com.rpgruler.data.entity.RestrictionType;
+import br.com.rpgruler.data.entity.Weapon;
+import br.com.rpgruler.data.entity.UseType;
+import br.com.rpgruler.data.entity.PerkType;
+import br.com.rpgruler.data.entity.Expertise;
+import br.com.rpgruler.data.entity.EffectType;
+import br.com.rpgruler.data.entity.ArmorType;
+import br.com.rpgruler.data.entity.WeaponType;
+import br.com.rpgruler.data.entity.MenuItem;
+import br.com.rpgruler.data.entity.ExpertiseType;
+import br.com.rpgruler.data.entity.Perk;
+import br.com.rpgruler.data.entity.Menu;
+import br.com.rpgruler.data.entity.PrimeMaterial;
+import br.com.rpgruler.data.entity.Armor;
+import br.com.rpgruler.data.entity.Effect;
 import java.util.HashMap;
 import java.util.Map;
 

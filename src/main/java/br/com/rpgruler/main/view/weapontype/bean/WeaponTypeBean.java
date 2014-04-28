@@ -2,8 +2,8 @@ package br.com.rpgruler.main.view.weapontype.bean;
 
 import br.com.rpgruler.data.db.dao.WeaponTypeDAO;
 import br.com.rpgruler.data.db.dao.UseTypeDAO;
-import br.com.rpgruler.data.entitity.WeaponType;
-import br.com.rpgruler.data.entitity.UseType;
+import br.com.rpgruler.data.entity.WeaponType;
+import br.com.rpgruler.data.entity.UseType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.object.ViewWrapper;

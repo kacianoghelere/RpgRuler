@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.effect.model;
 
 import br.com.gmp.comps.model.GTableModel;
-import br.com.rpgruler.data.entitity.Effect;
+import br.com.rpgruler.data.entity.Effect;
 
 /**
  * Modelo de tabela para os efeitos

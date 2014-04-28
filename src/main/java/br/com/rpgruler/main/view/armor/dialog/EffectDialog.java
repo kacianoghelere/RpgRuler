@@ -4,7 +4,7 @@ import br.com.rpgruler.main.view.armor.sub.ArmorSubView;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.dialog.GDialog;
 import br.com.rpgruler.data.db.dao.EffectDAO;
-import br.com.rpgruler.data.entitity.Effect;
+import br.com.rpgruler.data.entity.Effect;
 
 /**
  * Caixa de dialogo para efeitos de armaduras

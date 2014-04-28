@@ -1,4 +1,4 @@
-package br.com.rpgruler.data.entitity;
+package br.com.rpgruler.data.entity;
 
 import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
@@ -7,11 +7,11 @@ import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
 /**
- * Entidade dos tipos de Perk
+ * Entidade dos tipos de Effects
  *
  * @author kaciano
  */
-public class PerkType extends Type {
+public class EffectType extends Type {
 
     @NotCopiable
     @Ignore
@@ -22,53 +22,53 @@ public class PerkType extends Type {
     private String title;
 
     /**
-     * Cria nova instancia de PerkType
+     * Cria nova instancia de EffectType
      */
-    public PerkType() {
+    public EffectType() {
     }
 
     /**
-     * Cria nova instancia de PerkType
+     * Cria nova instancia de EffectType
      *
      * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Nome do tipo
+     * @param title <code>String</code> Titulo do tipo
      */
-    public PerkType(Long id, String title) {
+    public EffectType(Long id, String title) {
         this.id = id;
         this.title = title;
     }
 
     /**
-     * Retorna o ID do PerkType
+     * Retorna o ID do EffectType
      *
-     * @return <code>Long</code> ID do PerkType
+     * @return <code>Long</code> ID do EffectType
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do PerkType
+     * Modifica o ID do EffectType
      *
-     * @param id <code>Long</code> ID do PerkType
+     * @param id <code>Long</code> ID do EffectType
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Retorna o titulo do PerkType
+     * Retorna o titulo do EffectType
      *
-     * @return <code>String</code> Titulo do PerkType
+     * @return <code>String</code> Titulo do EffectType
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Modifica o titulo do PerkType
+     * Modifica o titulo do EffectType
      *
-     * @param title <code>String</code> Titulo do PerkType
+     * @param title <code>String</code> Titulo do EffectType
      */
     public void setTitle(String title) {
         this.title = title;
@@ -90,7 +90,7 @@ public class PerkType extends Type {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PerkType other = (PerkType) obj;
+        final EffectType other = (EffectType) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

@@ -1,7 +1,7 @@
 package br.com.rpgruler.data.db.dao;
 
 import br.com.rpgruler.data.db.GenericDAO;
-import br.com.rpgruler.data.entitity.MenuItem;
+import br.com.rpgruler.data.entity.MenuItem;
 import br.com.rpgruler.main.view.menu.MenuView;
 
 /**

@@ -2,10 +2,10 @@ package br.com.rpgruler.main.view.expertise.bean;
 
 import br.com.rpgruler.data.db.dao.ExpertiseDAO;
 import br.com.rpgruler.data.db.dao.ExpertiseTypeDAO;
-import br.com.rpgruler.data.entitity.Attribute;
-import br.com.rpgruler.data.entitity.Expertise;
-import br.com.rpgruler.data.entitity.ExpertiseType;
-import br.com.rpgruler.data.entitity.MainAttributes;
+import br.com.rpgruler.data.entity.Attribute;
+import br.com.rpgruler.data.entity.Expertise;
+import br.com.rpgruler.data.entity.ExpertiseType;
+import br.com.rpgruler.data.entity.MainAttributes;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.expertise.ExpertiseView;

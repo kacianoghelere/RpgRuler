@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.armortype.model;
 
 import br.com.gmp.comps.model.GTableModel;
-import br.com.rpgruler.data.entitity.ArmorType;
+import br.com.rpgruler.data.entity.ArmorType;
 
 /**
  * Modelo de tabela para tipos de armadura

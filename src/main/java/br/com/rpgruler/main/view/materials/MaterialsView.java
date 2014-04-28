@@ -4,7 +4,7 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.rpgruler.data.db.dao.MaterialsDAO;
-import br.com.rpgruler.data.entitity.PrimeMaterial;
+import br.com.rpgruler.data.entity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.Description;

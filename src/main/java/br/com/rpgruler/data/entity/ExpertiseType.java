@@ -1,70 +1,74 @@
-package br.com.rpgruler.data.entitity;
+package br.com.rpgruler.data.entity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
+import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
 /**
- * Entidade dos tipos de restrição
+ * Entidade dos tipos de Perk
  *
  * @author kaciano
  */
-public class RestrictionType extends Type {
+public class ExpertiseType extends Type {
 
+    @NotCopiable
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
-    @ColumnName(name = "Titulo")
+    @Editable
+    @ColumnName(name = "Nome")
     private String title;
 
     /**
-     * Cria nova instancia de RestrictionType
+     * Cria nova instancia de ExpertiseType
      */
-    public RestrictionType() {
+    public ExpertiseType() {
     }
 
     /**
-     * Cria nova instancia de RestrictionType
+     * Cria nova instancia de ExpertiseType
      *
      * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Titulo do tipo
+     * @param title <code>String</code> Nome do tipo
      */
-    public RestrictionType(Long id, String title) {
+    public ExpertiseType(Long id, String title) {
         this.id = id;
         this.title = title;
     }
 
     /**
-     * Retorna o código
+     * Retorna o ID do ExpertiseType
      *
-     * @return <code>Long</code> Código do tipo
+     * @return <code>Long</code> ID do ExpertiseType
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o código
+     * Modifica o ID do ExpertiseType
      *
-     * @param id <code>Long</code> Código do tipo
+     * @param id <code>Long</code> ID do ExpertiseType
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Retorna o titulo
+     * Retorna o titulo do ExpertiseType
      *
-     * @return <code>String</code> Titulo do tipo
+     * @return <code>String</code> Titulo do ExpertiseType
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Modifica o titulo
+     * Modifica o titulo do ExpertiseType
      *
-     * @param title <code>String</code> Titulo do tipo
+     * @param title <code>String</code> Titulo do ExpertiseType
      */
     public void setTitle(String title) {
         this.title = title;
@@ -72,9 +76,9 @@ public class RestrictionType extends Type {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.title);
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        hash = 23 * hash + Objects.hashCode(this.title);
         return hash;
     }
 
@@ -86,7 +90,7 @@ public class RestrictionType extends Type {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final RestrictionType other = (RestrictionType) obj;
+        final ExpertiseType other = (ExpertiseType) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.view.armor.model;
 
 import br.com.gmp.comps.model.GTableModel;
-import br.com.rpgruler.data.entitity.Restriction;
+import br.com.rpgruler.data.entity.Restriction;
 
 /**
  * Modelo de tabelas para restrições

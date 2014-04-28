@@ -1,7 +1,7 @@
 package br.com.rpgruler.data.db.dao;
 
 import br.com.rpgruler.data.db.GenericDAO;
-import br.com.rpgruler.data.entitity.Menu;
+import br.com.rpgruler.data.entity.Menu;
 
 /**
  * DAO para controle das entidades de Menu
