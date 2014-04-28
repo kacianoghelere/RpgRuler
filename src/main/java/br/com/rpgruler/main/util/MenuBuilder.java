@@ -10,7 +10,6 @@ import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.View;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +25,8 @@ import javax.swing.SwingUtilities;
  * @version 1.0
  * @see br.com.rpgruler.data.db.dao.MenuDAO
  * @see br.com.rpgruler.data.db.dao.MenuItemDAO
- * @see br.com.rpgruler.data.entitity.Menu
- * @see br.com.rpgruler.data.entitity.MenuItem
+ * @see br.com.rpgruler.data.entity.Menu
+ * @see br.com.rpgruler.data.entity.MenuItem
  */
 public class MenuBuilder {
 
