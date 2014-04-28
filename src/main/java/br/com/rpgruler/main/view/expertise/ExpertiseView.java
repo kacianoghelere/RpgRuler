@@ -7,7 +7,6 @@ import br.com.rpgruler.data.db.dao.ExpertiseDAO;
 import br.com.rpgruler.data.entity.Attribute;
 import br.com.rpgruler.data.entity.Expertise;
 import br.com.rpgruler.data.entity.ExpertiseType;
-import br.com.rpgruler.data.entity.MainAttributes;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.Description;

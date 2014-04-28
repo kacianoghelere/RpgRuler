@@ -1,15 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CharacterSheet" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="728f9b94-7f58-41db-9b11-b121e8690da3">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<field name="charName" class="java.lang.String"/>
+	<field name="charClass" class="java.lang.String"/>
+	<field name="charLevel" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="50"/>
-	</title>
 	<detail>
-		<band height="650" splitType="Stretch"/>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="802" uuid="23d2f4f4-0508-4f05-8e0c-6f71d8f395a0"/>
+				<imageExpression><![CDATA["/home/kaciano/Imagens/Captura de tela de 2014-04-28 16:28:10.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="13" y="51" width="329" height="21" uuid="846cfc89-ba7b-48f4-b79a-3ee1d576ee8b"/>
+				<textFieldExpression><![CDATA[$F{charName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="50" width="120" height="20" uuid="c32de446-e523-445c-a8a4-442ffb42f6b6"/>
+				<textFieldExpression><![CDATA[$F{charClass}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="50" width="27" height="22" uuid="b3f0c2ba-d2df-4161-9ee5-3cd6c77c81a7"/>
+				<textFieldExpression><![CDATA[$F{charLevel}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="342" y="338" width="185" height="60" uuid="5a4b8bd8-b937-420c-a82c-7930aee7f040"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="342" y="267" width="185" height="60" uuid="fde74c55-1ce8-436a-9610-3939aacbf242"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="342" y="196" width="185" height="60" uuid="36fc237c-a667-4d85-91a4-f875358da773"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="13" y="411" width="514" height="98" uuid="f032da6c-e08a-425b-947f-4e7d3ff9e8f1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="13" y="522" width="197" height="269" uuid="6f6086ca-562e-414e-abb4-1e1c6b21e803"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="228" y="522" width="114" height="213" uuid="8b0688cb-1306-406a-a45e-01b641919842"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="357" y="522" width="170" height="213" uuid="8065c205-e974-4e73-922e-2118e008c422"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="228" y="747" width="197" height="44" uuid="38f33b94-992a-4fae-9a84-cd9b27f80bf7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="443" y="747" width="84" height="44" uuid="cfd28139-99aa-411f-9d0e-e2d47cff8eeb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="296" y="126" width="231" height="58" uuid="7f0108c0-df85-4a02-9054-6b9af8ff543c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="13" y="37" width="329" height="35" uuid="e1fb9f44-ad8a-4194-84ff-2c643d60bb6c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="357" y="37" width="120" height="35" uuid="19c1860d-c9a4-428e-b9db-52e3f71ba3a6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="484" y="37" width="43" height="35" uuid="29e7afd0-636c-4665-be82-313a568db641"/>
+			</rectangle>
+		</band>
 	</detail>
 </jasperReport>
