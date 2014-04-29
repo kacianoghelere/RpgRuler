@@ -1,13 +1,12 @@
 package br.com.rpgruler.main.view.character.object;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
 /**
  *
  * @author kaciano
  */
-public class CharacterSheet {
+public class CharacterSheet implements Serializable {
 
     private String charName;
     private String playerName;
@@ -17,12 +16,6 @@ public class CharacterSheet {
         this.charName = charName;
         this.playerName = playerName;
         this.level = level;
-    }
-
-    public List<CharacterSheet> getSheet() {
-        List<CharacterSheet> sheet = new ArrayList<>();
-        sheet.add(this);
-        return sheet;
     }
 
     public CharacterSheet() {
