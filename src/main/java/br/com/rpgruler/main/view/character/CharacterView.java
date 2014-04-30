@@ -4,6 +4,7 @@ import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.character.bean.CharacterBean;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
+import br.com.rpgruler.main.view.object.ViewParameter;
 
 /**
  * View para controle e cadastro de personagens
@@ -30,6 +31,8 @@ public class CharacterView extends View {
      */
     private void initialize() {
         initComponents();
+        this.setControls(new ViewParameter(true, true, true, false));
+        this.setSize(627, 474);
         this.bean = new CharacterBean(this);
     }
 
@@ -71,6 +74,11 @@ public class CharacterView extends View {
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Personagens");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1405_@.png"))); // NOI18N
 
         jPCharData.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do personagem"));
 

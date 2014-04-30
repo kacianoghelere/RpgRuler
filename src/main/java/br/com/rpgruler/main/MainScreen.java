@@ -7,6 +7,7 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.MenuBuilder;
 import br.com.rpgruler.main.view.armor.ArmorView;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
+import br.com.rpgruler.main.view.character.CharacterView;
 import br.com.rpgruler.main.view.dice.DiceView;
 import br.com.rpgruler.main.view.effect.EffectView;
 import br.com.rpgruler.main.view.element.ElementView;
@@ -297,6 +298,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         jMITerms = new javax.swing.JMenuItem();
         jMIEffects = new javax.swing.JMenuItem();
         jMIExpertise = new javax.swing.JMenuItem();
+        jMICharacter = new javax.swing.JMenuItem();
         jMWeapons = new javax.swing.JMenu();
         jMIWeaponTypes = new javax.swing.JMenuItem();
         jMArmors = new javax.swing.JMenu();
@@ -559,6 +561,16 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         });
         jMInfo.add(jMIExpertise);
 
+        jMICharacter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1405_@.png"))); // NOI18N
+        jMICharacter.setText("Personagens");
+        jMICharacter.setName("jMICharacter"); // NOI18N
+        jMICharacter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICharacterActionPerformed(evt);
+            }
+        });
+        jMInfo.add(jMICharacter);
+
         jMWeapons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
         jMWeapons.setText("Armas");
         jMWeapons.setName("jMWeapons"); // NOI18N
@@ -720,6 +732,10 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         listener.insertView(new ExpertiseView(this));
     }//GEN-LAST:event_jMIExpertiseActionPerformed
 
+    private void jMICharacterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICharacterActionPerformed
+        listener.insertView(new CharacterView(this));
+    }//GEN-LAST:event_jMICharacterActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -733,6 +749,7 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
     private javax.swing.JMenu jMControls;
     private javax.swing.JMenuItem jMIArmorTypes;
     private javax.swing.JMenuItem jMIArmors;
+    private javax.swing.JMenuItem jMICharacter;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMIEffects;
     private javax.swing.JMenuItem jMIExpertise;
