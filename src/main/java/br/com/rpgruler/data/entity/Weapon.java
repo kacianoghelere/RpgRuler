@@ -26,8 +26,8 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
-    @ColumnName(name = "Dano")
-    private Double damage;
+    @ColumnName(name = "Dano")    
+    private Double damage;    
     @ColumnName(name = "Preço")
     private Double price;
     @ColumnName(name = "Tipo")

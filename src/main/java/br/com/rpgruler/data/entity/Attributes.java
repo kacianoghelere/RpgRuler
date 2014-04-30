@@ -8,7 +8,7 @@ import br.com.gmp.comps.annotations.ColumnName;
  *
  * @author kaciano
  */
-public class MainAttributes {
+public class Attributes {
 
     @ColumnName(name = "FOR")
     private Attribute strength;
@@ -30,11 +30,15 @@ public class MainAttributes {
     private Attribute defense;
     @ColumnName(name = "EVA")
     private Attribute evasion;
+    @ColumnName(name = "NVL")
+    private Attribute level;
+    @ColumnName(name = "EXP")
+    private Attribute experience;
 
     /**
      * Constroi nova instancia de Attributes
      */
-    public MainAttributes() {
+    public Attributes() {
         this.strength = new Attribute((long) 1, "Força", "FOR", 0);
         this.dexterity = new Attribute((long) 2, "Destreza", "DEX", 0);
         this.constitution = new Attribute((long) 3, "Constituição", "CON", 0);
@@ -44,7 +48,9 @@ public class MainAttributes {
         this.health = new Attribute((long) 7, "Saúde", "HP", 0);
         this.attack = new Attribute((long) 8, "Ataque", "ATK", 0);
         this.defense = new Attribute((long) 9, "Defesa", "DEF", 0);
-        this.evasion = new Attribute((long) 10, "Evsão", "EVA", 0);
+        this.evasion = new Attribute((long) 10, "Evasão", "EVA", 0);
+        this.level = new Attribute((long) 11, "Nível", "NVL", 1);
+        this.experience = new Attribute((long) 12, "Experiência", "EXP", 0);
     }
 
     /**
@@ -57,7 +63,7 @@ public class MainAttributes {
      * @param wis <code>Integer</code> Sabedoria
      * @param charm <code>Integer</code> Carisma
      */
-    public MainAttributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm) {
+    public Attributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm) {
         this.strength = new Attribute((long) 1, "Força", "FOR", str);
         this.dexterity = new Attribute((long) 2, "Destreza", "DEX", dex);
         this.constitution = new Attribute((long) 3, "Constituição", "CON", con);
@@ -68,6 +74,8 @@ public class MainAttributes {
         this.attack = new Attribute((long) 8, "Ataque", "ATK", 0);
         this.defense = new Attribute((long) 9, "Defesa", "DEF", 0);
         this.evasion = new Attribute((long) 10, "Evsão", "EVA", 0);
+        this.level = new Attribute((long) 11, "Nível", "NVL", 1);
+        this.experience = new Attribute((long) 12, "Experiência", "EXP", 0);
     }
 
     /**
@@ -83,8 +91,10 @@ public class MainAttributes {
      * @param atk <code>Integer</code> Ataque
      * @param def <code>Integer</code> Defesa
      * @param eva <code>Integer</code> Evasão
+     * @param lvl <code>Integer</code> Nível
+     * @param exp <code>Integer</code> Experiencia
      */
-    public MainAttributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva) {
+    public Attributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva, Integer lvl, Integer exp) {
         this.strength = new Attribute((long) 1, "Força", "FOR", str);
         this.dexterity = new Attribute((long) 2, "Destreza", "DEX", dex);
         this.constitution = new Attribute((long) 3, "Constituição", "CON", con);
@@ -95,6 +105,8 @@ public class MainAttributes {
         this.attack = new Attribute((long) 8, "Ataque", "ATK", atk);
         this.defense = new Attribute((long) 9, "Defesa", "DEF", def);
         this.evasion = new Attribute((long) 10, "Evsão", "EVA", eva);
+        this.level = new Attribute((long) 11, "Nível", "NVL", lvl);
+        this.experience = new Attribute((long) 12, "Experiência", "EXP", exp);
     }
 
     @Override
@@ -108,7 +120,9 @@ public class MainAttributes {
                 + health.getAlias() + ": " + health.getValue() + ",\n"
                 + attack.getAlias() + ": " + attack.getValue() + ",\n"
                 + defense.getAlias() + ": " + defense.getValue() + ",\n"
-                + evasion.getAlias() + ": " + evasion.getValue() + "\n";
+                + evasion.getAlias() + ": " + evasion.getValue() + "\n"
+                + level.getAlias() + ": " + level.getValue() + "\n"
+                + experience.getAlias() + ": " + experience.getValue() + "\n";
     }
 
     /**
@@ -116,14 +130,9 @@ public class MainAttributes {
      *
      * @return <code>Attribute[]</code> Principais atributos
      */
-    public Attribute[] getAttributes() {
+    public Attribute[] getMainAttributes() {
         return new Attribute[]{
-            strength,
-            dexterity,
-            constitution,
-            intelligence,
-            wisdom,
-            charisma
+            strength, dexterity, constitution, intelligence, wisdom, charisma
         };
     }
 
@@ -305,6 +314,42 @@ public class MainAttributes {
      */
     public void setEvasion(Integer evasion) {
         this.evasion.setValue(evasion);
+    }
+
+    /**
+     * Retorna o nível
+     *
+     * @return <code>Integer</code> Nível
+     */
+    public Integer getLevel() {
+        return level.getValue();
+    }
+
+    /**
+     * Modifica o nível
+     *
+     * @param level <code>Integer</code> Nível
+     */
+    public void setLevel(Integer level) {
+        this.level.setValue(level);
+    }
+
+    /**
+     * Retorna o experiencia
+     *
+     * @return <code>Integer</code> Experiencia
+     */
+    public Integer getExperience() {
+        return experience.getValue();
+    }
+
+    /**
+     * Modifica o experiencia
+     *
+     * @param experience <code>Integer</code> Experiencia
+     */
+    public void setExperience(Integer experience) {
+        this.experience.setValue(experience);
     }
 
 }

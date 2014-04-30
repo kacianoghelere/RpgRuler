@@ -1,6 +1,6 @@
 package br.com.rpgruler.main.view.weapon.sub;
 
-import br.com.rpgruler.main.view.SubView;
+import br.com.rpgruler.main.view.sub.SubView;
 import br.com.rpgruler.main.view.weapon.WeaponView;
 
 /**

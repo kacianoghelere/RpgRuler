@@ -5,11 +5,13 @@ import br.com.rpgruler.data.db.dao.ExpertiseTypeDAO;
 import br.com.rpgruler.data.db.dao.PerkTypeDAO;
 import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
 import br.com.rpgruler.data.db.dao.UseTypeDAO;
+import br.com.rpgruler.data.db.dao.WeaponSizeDAO;
 import br.com.rpgruler.data.entity.EffectType;
 import br.com.rpgruler.data.entity.ExpertiseType;
 import br.com.rpgruler.data.entity.PerkType;
 import br.com.rpgruler.data.entity.RestrictionType;
 import br.com.rpgruler.data.entity.UseType;
+import br.com.rpgruler.data.entity.WeaponSize;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.terms.TermsView;
@@ -27,6 +29,7 @@ public class TermsBean extends ViewBean<TermsView> {
     private final PerkTypeDAO perkTypeDao;
     private final RestrictionTypeDAO restDao;
     private final ExpertiseTypeDAO expDAO;
+    private final WeaponSizeDAO sizeDAO;
 
     /**
      * Cria nova instancia de TermsBean
@@ -40,6 +43,7 @@ public class TermsBean extends ViewBean<TermsView> {
         this.perkTypeDao = new PerkTypeDAO();
         this.restDao = new RestrictionTypeDAO();
         this.expDAO = new ExpertiseTypeDAO();
+        this.sizeDAO = new WeaponSizeDAO();
     }
 
     @Override
@@ -49,15 +53,17 @@ public class TermsBean extends ViewBean<TermsView> {
         perkTypeDao.replaceAll(getView().getPerkModel().getData());
         restDao.replaceAll(getView().getRestModel().getData());
         expDAO.replaceAll(getView().getExpModel().getData());
+        sizeDAO.replaceAll(getView().getSizeModel().getData());
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {        
+    public void load(BeanEvent evt) throws Exception {
         getView().getUseModel().setData(useTypeDao.getList());
         getView().getEfModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
         getView().getRestModel().setData(restDao.getList());
         getView().getExpModel().setData(expDAO.getList());
+        getView().getSizeModel().setData(sizeDAO.getList());
     }
 
     /**
@@ -113,6 +119,17 @@ public class TermsBean extends ViewBean<TermsView> {
         Long nextId = getNextRestID();
         ExpertiseType type = new ExpertiseType(nextId, (String) evt.getValue());
         getView().getExpModel().add(type);
+    }
+
+    /**
+     * Adiciona novo elemento na lista de WeaponSizes
+     *
+     * @param evt <code>BeanEvent</code> Evento do Bean
+     */
+    public void addWeaponSize(BeanEvent evt) {
+        Long nextId = getNextSizeID();
+        WeaponSize size = new WeaponSize(nextId, (String) evt.getValue());
+        getView().getSizeModel().add(size);
     }
 
     /**
@@ -183,6 +200,21 @@ public class TermsBean extends ViewBean<TermsView> {
     public Long getNextExpertiseID() {
         Long id = (long) 0;
         for (ExpertiseType type : getView().getExpModel().getData()) {
+            if (type.getId() > id) {
+                id = type.getId();
+            }
+        }
+        return (id + 1);
+    }
+
+    /**
+     * Retorna o próximo ID dos WeaponSizes
+     *
+     * @return <code>Long</code> Próximo ID para WeaponSize
+     */
+    public Long getNextSizeID() {
+        Long id = (long) 0;
+        for (WeaponSize type : getView().getSizeModel().getData()) {
             if (type.getId() > id) {
                 id = type.getId();
             }

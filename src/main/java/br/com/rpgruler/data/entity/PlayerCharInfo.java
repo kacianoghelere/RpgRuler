@@ -20,7 +20,7 @@ public class PlayerCharInfo implements Serializable {
     private Long charLevel;
     @Ignore
     @ColumnName(name = "Atributos")
-    private MainAttributes attributes;
+    private Attributes attributes;
     @ColumnName(name = "Personagem")
     private PlayerChar playerChar;
     @ColumnName(name = "Ativo")
@@ -37,10 +37,10 @@ public class PlayerCharInfo implements Serializable {
      *
      * @param id <code>Long</code> ID do Info
      * @param charLevel <code>Long</code> Nivel do personagem
-     * @param attributes <code>MainAttributes</code> Atributos principais
+     * @param attributes <code>Attributes</code> Atributos principais
      * @param playerChar <code>PlayerChar</code> Personagem
      */
-    public PlayerCharInfo(Long id, Long charLevel, MainAttributes attributes, PlayerChar playerChar) {
+    public PlayerCharInfo(Long id, Long charLevel, Attributes attributes, PlayerChar playerChar) {
         this.id = id;
         this.charLevel = charLevel;
         this.attributes = attributes;
@@ -82,17 +82,17 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @return <code>MainAttributes</code> Atributos principais
+     * @return <code>Attributes</code> Atributos principais
      */
-    public MainAttributes getAttributes() {
+    public Attributes getAttributes() {
         return attributes;
     }
 
     /**
      *
-     * @param attributes <code>MainAttributes</code> Atributos principais
+     * @param attributes <code>Attributes</code> Atributos principais
      */
-    public void setAttributes(MainAttributes attributes) {
+    public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
     }
 

@@ -35,45 +35,62 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="jLTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="gTTitle" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jLBaseDmg" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Component id="nTBaseDmg" min="-2" pref="66" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLWear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="gCBWear" pref="181" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLCategory" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jSpinCategory" min="-2" pref="66" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLQtd1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jBAdd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jBRemove" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLQtd2" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLTitle" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLWear" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLRange" linkSize="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSpQtd2" linkSize="1" alignment="1" pref="65" max="32767" attributes="0"/>
-                          <Component id="jSpQtd1" linkSize="1" alignment="1" min="-2" pref="66" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="gTTitle" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="jLBaseDmg" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="nTBaseDmg" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jSpRange" pref="77" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLQtd1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSpQtd1" pref="91" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLQtd2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="gCBUse" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLSize" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="gCBSize" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLCategory" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSpinCategory" pref="49" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jSpQtd2" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
+                  </Group>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jBAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jBRemove" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -92,22 +109,29 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLQtd1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpQtd1" linkSize="2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="jLWear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gCBUse" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLCategory" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jSpinCategory" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="gCBWear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gCBSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLSize" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jSpQtd2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLQtd1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSpQtd1" linkSize="2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="jLQtd2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSpRange" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="jLRange" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBRemove" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLQtd2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpQtd2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="242" max="32767" attributes="0"/>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="205" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -179,7 +203,7 @@
         <Property name="text" type="java.lang.String" value="Porte:"/>
       </Properties>
     </Component>
-    <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBWear">
+    <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBUse">
     </Component>
     <Component class="javax.swing.JLabel" name="jLCategory">
       <Properties>
@@ -214,6 +238,25 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRemoveActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLSize">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tamanho:"/>
+      </Properties>
+    </Component>
+    <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBSize">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLRange">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alcance:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="jSpRange">
+      <Properties>
+        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+          <SpinnerModel initial="1" maximum="150" minimum="1" numberType="java.lang.Integer" stepSize="5" type="number"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

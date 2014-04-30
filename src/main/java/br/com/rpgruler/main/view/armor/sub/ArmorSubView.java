@@ -3,11 +3,11 @@ package br.com.rpgruler.main.view.armor.sub;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.rpgruler.data.entity.Armor;
 import br.com.rpgruler.data.entity.ArmorType;
-import br.com.rpgruler.data.entity.MainAttributes;
+import br.com.rpgruler.data.entity.Attributes;
 import br.com.rpgruler.data.entity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
-import br.com.rpgruler.main.view.SubView;
+import br.com.rpgruler.main.view.sub.SubView;
 import br.com.rpgruler.main.view.armor.ArmorView;
 import br.com.rpgruler.main.view.armor.bean.ArmorBean;
 import br.com.rpgruler.main.view.armor.dialog.EffectDialog;
@@ -127,7 +127,7 @@ public class ArmorSubView extends SubView {
                     this.effectModel.setData(this.armor.getEffects());
                 }
                 if (this.armor.getAttributes() != null) {
-                    MainAttributes attr = this.armor.getAttributes();
+                    Attributes attr = this.armor.getAttributes();
                     jSpinStr.setValue(attr.getStrength());
                     jSpinDex.setValue(attr.getDexterity());
                     jSpinCon.setValue(attr.getConstitution());
@@ -154,7 +154,7 @@ public class ArmorSubView extends SubView {
         if (this.armor.getId() == null) {
             this.armor.setId(bean.getNextID());
         }
-        MainAttributes attr = new MainAttributes();
+        Attributes attr = new Attributes();
         attr.setStrength((Integer) jSpinStr.getValue());
         attr.setDexterity((Integer) jSpinDex.getValue());
         attr.setConstitution((Integer) jSpinCon.getValue());

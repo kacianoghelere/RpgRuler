@@ -5,7 +5,7 @@ import br.com.rpgruler.data.db.dao.ExpertiseTypeDAO;
 import br.com.rpgruler.data.entity.Attribute;
 import br.com.rpgruler.data.entity.Expertise;
 import br.com.rpgruler.data.entity.ExpertiseType;
-import br.com.rpgruler.data.entity.MainAttributes;
+import br.com.rpgruler.data.entity.Attributes;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.expertise.ExpertiseView;
@@ -41,7 +41,7 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
 
     @Override
     public void load(BeanEvent evt) throws Exception {
-        getView().getAttrModel().setData(new MainAttributes().getAttributes());
+        getView().getAttrModel().setData(new Attributes().getMainAttributes());
         getView().getTypeModel().setData(typeDAO.getList());
         SwingUtilities.updateComponentTreeUI(getView());
     }

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
  *
  * @author kaciano
  */
-public interface IMainScreen {
+public interface Main {
 
     /**
      * Metodo padrão para salvar

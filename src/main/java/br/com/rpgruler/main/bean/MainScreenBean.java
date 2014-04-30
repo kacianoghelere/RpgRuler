@@ -7,14 +7,11 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Component;
-import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Action;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
-import javax.swing.KeyStroke;
 
 /**
  * Bean de controle da tela principal

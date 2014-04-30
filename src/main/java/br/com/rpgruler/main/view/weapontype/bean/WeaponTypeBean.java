@@ -2,8 +2,10 @@ package br.com.rpgruler.main.view.weapontype.bean;
 
 import br.com.rpgruler.data.db.dao.WeaponTypeDAO;
 import br.com.rpgruler.data.db.dao.UseTypeDAO;
+import br.com.rpgruler.data.db.dao.WeaponSizeDAO;
 import br.com.rpgruler.data.entity.WeaponType;
 import br.com.rpgruler.data.entity.UseType;
+import br.com.rpgruler.data.entity.WeaponSize;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.object.ViewWrapper;
@@ -37,6 +39,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     @Override
     public void load(BeanEvent evt) throws Exception {
         getView().getUseModel().setData(new UseTypeDAO().getList());
+        getView().getSizeModel().setData(new WeaponSizeDAO().getList());
     }
 
     @Override
@@ -51,6 +54,8 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
         type.setWearType((UseType) vw.getValue(3));
         type.setMaterialAmount1((Double) vw.getValue(4));
         type.setMaterialAmount2((Double) vw.getValue(5));
+        type.setSize((WeaponSize) vw.getValue(6));
+        type.setRange((Integer) vw.getValue(7));
         getView().getModel().add(type);
     }
 

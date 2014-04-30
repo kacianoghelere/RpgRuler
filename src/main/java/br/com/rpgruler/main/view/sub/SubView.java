@@ -1,5 +1,6 @@
-package br.com.rpgruler.main.view;
+package br.com.rpgruler.main.view.sub;
 
+import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 
 /**
@@ -32,7 +33,7 @@ public class SubView extends View {
 
     @Override
     public BeanListener getBean() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**

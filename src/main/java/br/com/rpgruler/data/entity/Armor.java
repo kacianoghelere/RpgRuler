@@ -39,7 +39,7 @@ public class Armor implements Serializable {
     private PrimeMaterial material2;
     @Ignore
     @ColumnName(name = "Atributos")
-    private MainAttributes attributes;
+    private Attributes attributes;
     @Ignore
     @ColumnName(name = "Restrições")
     private List<Restriction> restriction;
@@ -63,9 +63,9 @@ public class Armor implements Serializable {
      * @param price <code>Double</code> Preço da armadura
      * @param material1 <code>PrimeMaterial</code> Material 1
      * @param material2 <code>PrimeMaterial</code> Material 2
-     * @param attributes <code>MainAttributes</code> Atributos da armadura
+     * @param attributes <code>Attributes</code> Atributos da armadura
      */
-    public Armor(Long id, String name, String description, ArmorType type, Double price, PrimeMaterial material1, PrimeMaterial material2, MainAttributes attributes) {
+    public Armor(Long id, String name, String description, ArmorType type, Double price, PrimeMaterial material1, PrimeMaterial material2, Attributes attributes) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -235,18 +235,18 @@ public class Armor implements Serializable {
     /**
      * Retorna os atributos
      *
-     * @return <code>MainAttributes</code> Atributos
+     * @return <code>Attributes</code> Atributos
      */
-    public MainAttributes getAttributes() {
+    public Attributes getAttributes() {
         return attributes;
     }
 
     /**
      * Modifica os atributos
      *
-     * @param attributes <code>MainAttributes</code> Atributos
+     * @param attributes <code>Attributes</code> Atributos
      */
-    public void setAttributes(MainAttributes attributes) {
+    public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
     }
 

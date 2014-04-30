@@ -1,7 +1,8 @@
 package br.com.rpgruler.main;
 
+import br.com.gmp.utils.system.SystemProperties;
 import br.com.rpgruler.main.bean.MainScreenBean;
-import br.com.rpgruler.main.interfaces.IMainScreen;
+import br.com.rpgruler.main.interfaces.Main;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.MenuBuilder;
@@ -31,7 +32,7 @@ import javax.swing.JMenu;
  *
  * @author kaciano
  */
-public class MainScreen extends javax.swing.JFrame implements IMainScreen {
+public class MainScreen extends javax.swing.JFrame implements Main {
 
     /**
      * Tipo de mensagem para erros
@@ -224,22 +225,22 @@ public class MainScreen extends javax.swing.JFrame implements IMainScreen {
         switch (type) {
             case 1:
                 printMsg(text, INFORMATIVE_ICON);
-                System.out.println("(INFO) " + text);
+                System.out.println(SystemProperties.ANSI_BLUE + "(INFO) " + text);
                 break;
             case 2:
                 printMsg(text, QUESTION_ICON);
-                System.out.println("(QUESTION) " + text);
+                System.out.println(SystemProperties.ANSI_BLUE + "(QUESTION) " + text);
                 break;
             case 3:
                 printMsg(text, WARNING_ICON);
-                System.out.println("(WARNING) " + text);
+                System.out.println(SystemProperties.ANSI_YELLOW + "(WARNING) " + text);
                 break;
             case 4:
                 printMsg(text, ERROR_ICON);
-                System.out.println("(ERROR) " + text);
+                System.out.println(SystemProperties.ANSI_RED + "(ERROR) " + text);
             case 5:
                 printMsg(text, SUCCESS_ICON);
-                System.out.println("(SUCCESS) " + text);
+                System.out.println(SystemProperties.ANSI_GREEN + "(SUCCESS) " + text);
                 break;
             default:
                 throw new AssertionError();

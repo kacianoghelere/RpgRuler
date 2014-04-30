@@ -16,6 +16,7 @@ import br.com.rpgruler.data.entity.Menu;
 import br.com.rpgruler.data.entity.PrimeMaterial;
 import br.com.rpgruler.data.entity.Armor;
 import br.com.rpgruler.data.entity.Effect;
+import br.com.rpgruler.data.entity.WeaponSize;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,15 +41,16 @@ public class EntityMap {
         map.put(Effect.class, "EffectDB");
         map.put(EffectType.class, "EffectTypeDB");
         map.put(Menu.class, "MenuDB");
-        map.put(MenuItem.class, "MenuItemDB");        
-        map.put(Perk.class, "PerkDB");        
-        map.put(PerkType.class, "PerkTypeDB");        
-        map.put(WeaponType.class, "WeaponTypeDB");        
-        map.put(Weapon.class, "WeaponDB");        
-        map.put(RestrictionType.class, "RestrictionTypeDB");                
-        map.put(Armor.class, "ArmorDB");                
-        map.put(Expertise.class, "ExpertiseDB");                
-        map.put(ExpertiseType.class, "ExpertiseTypeDB");                
+        map.put(MenuItem.class, "MenuItemDB");
+        map.put(Perk.class, "PerkDB");
+        map.put(PerkType.class, "PerkTypeDB");
+        map.put(WeaponType.class, "WeaponTypeDB");
+        map.put(WeaponSize.class, "WeaponSizeDB");
+        map.put(Weapon.class, "WeaponDB");
+        map.put(RestrictionType.class, "RestrictionTypeDB");
+        map.put(Armor.class, "ArmorDB");
+        map.put(Expertise.class, "ExpertiseDB");
+        map.put(ExpertiseType.class, "ExpertiseTypeDB");
         return map;
     }
 

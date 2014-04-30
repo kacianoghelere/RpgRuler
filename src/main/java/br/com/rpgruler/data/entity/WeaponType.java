@@ -24,6 +24,11 @@ public class WeaponType extends Type {
     @ColumnName(name = "Dano base")
     private Double damageBase;
     @Editable
+    @ColumnName(name = "Alcance")
+    private Integer range;
+    @ColumnName(name = "Tamanho")
+    private WeaponSize size;
+    @Editable
     @ColumnName(name = "Categoria")
     private Integer category;
     @ColumnName(name = "Porte")
@@ -56,6 +61,30 @@ public class WeaponType extends Type {
         this.id = id;
         this.typeName = typeName;
         this.damageBase = damageBase;
+        this.category = category;
+        this.wearType = wearType;
+        this.materialAmount1 = materialAmount1;
+        this.materialAmount2 = materialAmount2;
+    }
+
+    /**
+     *
+     * @param id <code>Long</code> Código do tipo de arma
+     * @param typeName <code>String</code> Titulo do tipo de arma
+     * @param damageBase <code>Double</code> Dano base do tipo
+     * @param range <code>Integer</code> Alcance da arma
+     * @param size <code>WeaponSize</code> Tamanho da arma
+     * @param category <code>Integer</code> Classificação do tipo
+     * @param wearType <code>WearType</code> Tipo de porte
+     * @param materialAmount1 <code>Double</code> Qtd. do material 1
+     * @param materialAmount2 <code>Double</code> Qtd. do material 2
+     */
+    public WeaponType(Long id, String typeName, Double damageBase, Integer range, WeaponSize size, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
+        this.id = id;
+        this.typeName = typeName;
+        this.damageBase = damageBase;
+        this.range = range;
+        this.size = size;
         this.category = category;
         this.wearType = wearType;
         this.materialAmount1 = materialAmount1;
@@ -150,6 +179,42 @@ public class WeaponType extends Type {
      */
     public void setDamageBase(Double damageBase) {
         this.damageBase = damageBase;
+    }
+
+    /**
+     * Retorna o alcance da arma
+     *
+     * @return <code>Integer</code> Alcance da arma
+     */
+    public Integer getRange() {
+        return range;
+    }
+
+    /**
+     * Modifica o alcance da arma
+     *
+     * @param range <code>Integer</code> Alcance da arma
+     */
+    public void setRange(Integer range) {
+        this.range = range;
+    }
+
+    /**
+     * Retorna o tamanho da arma
+     *
+     * @return <code>WeaponSize</code> Tamanho da arma
+     */
+    public WeaponSize getSize() {
+        return size;
+    }
+
+    /**
+     * Modifica o tamanho da arma
+     *
+     * @param size <code>WeaponSize</code> Tamanho da arma
+     */
+    public void setSize(WeaponSize size) {
+        this.size = size;
     }
 
     /**

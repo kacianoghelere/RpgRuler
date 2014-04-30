@@ -1,6 +1,7 @@
 package br.com.rpgruler.data.entity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 
 /**
  * Restrição de uso para equipamentos
@@ -11,8 +12,11 @@ public class Restriction {
 
     @ColumnName(name = "Tipo")
     private RestrictionType type;
+    @Editable
     @ColumnName(name = "Valor")
     private Integer value;
+    @ColumnName(name = "Atributo")
+    private Attribute attribute;
 
     /**
      * Cria nova instancia de Restriction
@@ -29,6 +33,19 @@ public class Restriction {
     public Restriction(RestrictionType type, Integer value) {
         this.type = type;
         this.value = value;
+    }
+
+    /**
+     * Cria nova instancia de Restriction
+     *
+     * @param type <code>RestrictionType</code> Tipo da Restrição
+     * @param value <code>Integer</code> Valor da Restrição
+     * @param attribute <code>Attribute</code> Atributo da Restrição
+     */
+    public Restriction(RestrictionType type, Integer value, Attribute attribute) {
+        this.type = type;
+        this.value = value;
+        this.attribute = attribute;
     }
 
     /**
@@ -65,6 +82,24 @@ public class Restriction {
      */
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    /**
+     * Retorna o atributo da Restrição
+     *
+     * @return <code>Attribute</code> Atributo da Restrição
+     */
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    /**
+     * Modifica o atributo da Restrição
+     *
+     * @param attribute <code>Attribute</code> Atributo da Restrição
+     */
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
     }
 
 }

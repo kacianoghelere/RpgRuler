@@ -6,6 +6,7 @@ import br.com.rpgruler.data.entity.ExpertiseType;
 import br.com.rpgruler.data.entity.PerkType;
 import br.com.rpgruler.data.entity.RestrictionType;
 import br.com.rpgruler.data.entity.UseType;
+import br.com.rpgruler.data.entity.WeaponSize;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
@@ -30,6 +31,7 @@ public class TermsView extends View {
     private GListModel<PerkType> perkModel;
     private GListModel<RestrictionType> restModel;
     private GListModel<ExpertiseType> expModel;
+    private GListModel<WeaponSize> sizeModel;
 
     /**
      * Cria nova instancia de TermsView
@@ -53,12 +55,14 @@ public class TermsView extends View {
         this.perkModel = new GListModel<>();
         this.restModel = new GListModel<>();
         this.expModel = new GListModel<>();
-        this.bean = new TermsBean(this);                  
+        this.sizeModel = new GListModel<>();
+        this.bean = new TermsBean(this);
         this.gLtUseTp.setModel(useModel);
         this.gLtEffectTp.setModel(efModel);
         this.gLtPerkTp.setModel(perkModel);
         this.gLtRestTp.setModel(restModel);
-        this.gLtExpTp.setModel(expModel);        
+        this.gLtExpTp.setModel(expModel);
+        this.gLtWeaponSize.setModel(sizeModel);
         try {
             this.bean.load(null);
         } catch (Exception ex) {
@@ -187,6 +191,30 @@ public class TermsView extends View {
     }
 
     /**
+     * Adiciona novo elemento na lista de WeaponSizes
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
+     */
+    private void addSize(KeyEvent evt) {
+        if (gTWeaponSize.validateComponent()) {
+            bean.addWeaponSize(new BeanEvent(this, gTWeaponSize.getText()));
+            gTWeaponSize.clear();
+        }
+    }
+
+    /**
+     * Remove o WeaponSize selecionado
+     *
+     * @param evt <code>KeyEvent</code> Evento do teclado
+     */
+    private void removeSize(KeyEvent evt) {
+        if (gLtWeaponSize.getModel().getSize() > 0 && gLtWeaponSize.getSelectedIndex() >= 0) {
+            WeaponSize size = sizeModel.getElementAt(gLtWeaponSize.getSelectedIndex());
+            sizeModel.remove(size);
+        }
+    }
+
+    /**
      * Retorna o modelo de lista dos WearTypes
      *
      * @return <code>GListModel(WearType)</code>
@@ -231,6 +259,15 @@ public class TermsView extends View {
         return expModel;
     }
 
+    /**
+     * Retorna o modelo de lista dos WeaponSizes
+     *
+     * @return <code>GListModel(WeaponSize)</code>
+     */
+    public GListModel<WeaponSize> getSizeModel() {
+        return sizeModel;
+    }
+
     @Override
     public BeanListener getBean() {
         return bean;
@@ -263,6 +300,10 @@ public class TermsView extends View {
         gTPerkTp = new br.com.gmp.comps.textfield.GTextField();
         jSPPerk = new javax.swing.JScrollPane();
         gLtPerkTp = new br.com.gmp.comps.list.GList();
+        jPWeaponSize = new javax.swing.JPanel();
+        gTWeaponSize = new br.com.gmp.comps.textfield.GTextField();
+        jSPPerk1 = new javax.swing.JScrollPane();
+        gLtWeaponSize = new br.com.gmp.comps.list.GList();
 
         setClosable(true);
         setIconifiable(true);
@@ -488,6 +529,49 @@ public class TermsView extends View {
         );
 
         getContentPane().add(jPPerkTypes);
+
+        jPWeaponSize.setBorder(javax.swing.BorderFactory.createTitledBorder("Tamanho da arma"));
+
+        gTWeaponSize.setPlaceholder("Tipos de vantagens");
+        gTWeaponSize.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTWeaponSize.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTWeaponSize.setNextFocusableComponent(gTUseTp);
+        gTWeaponSize.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTWeaponSize.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTWeaponSizeKeyReleased(evt);
+            }
+        });
+
+        gLtWeaponSize.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtWeaponSizeKeyReleased(evt);
+            }
+        });
+        jSPPerk1.setViewportView(gLtWeaponSize);
+
+        javax.swing.GroupLayout jPWeaponSizeLayout = new javax.swing.GroupLayout(jPWeaponSize);
+        jPWeaponSize.setLayout(jPWeaponSizeLayout);
+        jPWeaponSizeLayout.setHorizontalGroup(
+            jPWeaponSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPWeaponSizeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPWeaponSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTWeaponSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPPerk1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPWeaponSizeLayout.setVerticalGroup(
+            jPWeaponSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPWeaponSizeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPPerk1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTWeaponSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        getContentPane().add(jPWeaponSize);
     }// </editor-fold>//GEN-END:initComponents
 
     private void gTUseTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTUseTpKeyReleased
@@ -590,25 +674,49 @@ public class TermsView extends View {
         }
     }//GEN-LAST:event_gLtExpTpKeyReleased
 
+    private void gTWeaponSizeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTWeaponSizeKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                addSize(evt);
+            } catch (Exception ex) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gTWeaponSizeKeyReleased
+
+    private void gLtWeaponSizeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtWeaponSizeKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                removeSize(evt);
+            } catch (Exception ex) {
+                Logger.getLogger(TermsView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gLtWeaponSizeKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.list.GList gLtEffectTp;
     private br.com.gmp.comps.list.GList gLtExpTp;
     private br.com.gmp.comps.list.GList gLtPerkTp;
     private br.com.gmp.comps.list.GList gLtRestTp;
     private br.com.gmp.comps.list.GList gLtUseTp;
+    private br.com.gmp.comps.list.GList gLtWeaponSize;
     private br.com.gmp.comps.textfield.GTextField gTEffectTp;
     private br.com.gmp.comps.textfield.GTextField gTExpertiseTp;
     private br.com.gmp.comps.textfield.GTextField gTPerkTp;
     private br.com.gmp.comps.textfield.GTextField gTRestrictTp;
     private br.com.gmp.comps.textfield.GTextField gTUseTp;
+    private br.com.gmp.comps.textfield.GTextField gTWeaponSize;
     private javax.swing.JPanel jPEffects;
     private javax.swing.JPanel jPExpertiseTypes;
     private javax.swing.JPanel jPPerkTypes;
     private javax.swing.JPanel jPRestrictTypes;
     private javax.swing.JPanel jPUseTypes;
+    private javax.swing.JPanel jPWeaponSize;
     private javax.swing.JScrollPane jSPEffect;
     private javax.swing.JScrollPane jSPExpertise;
     private javax.swing.JScrollPane jSPPerk;
+    private javax.swing.JScrollPane jSPPerk1;
     private javax.swing.JScrollPane jSPRestrict;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
