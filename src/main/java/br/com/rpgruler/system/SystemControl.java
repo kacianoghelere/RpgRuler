@@ -26,8 +26,11 @@ public class SystemControl {
                 + "\nPasta principal: " + SystemProperties.USER_HOME
                 + "\n-------------------------------------------------");
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new MainScreen().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new MainScreen().setVisible(true);
+            }
         });
     }
 

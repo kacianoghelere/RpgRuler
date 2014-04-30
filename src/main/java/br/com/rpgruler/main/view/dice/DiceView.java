@@ -9,6 +9,7 @@ import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -41,9 +42,13 @@ public class DiceView extends View {
         initComponents();
         for (Component c : jPDices.getComponents()) {
             if (c instanceof JButton) {
-                JButton bt = (JButton) c;
-                bt.addActionListener((ActionEvent e) -> {
-                    simulateDice(bt);
+                final JButton bt = (JButton) c;
+                bt.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        simulateDice(bt);
+                    }
                 });
             }
         }

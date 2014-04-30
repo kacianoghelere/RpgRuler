@@ -16,6 +16,7 @@ import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import br.com.rpgruler.main.view.object.ViewWrapper;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
@@ -25,6 +26,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
 
 /**
  * View dos Elementos
@@ -86,19 +88,23 @@ public class ElementView extends View implements TableSource<Element>, TableView
      * Monta os dados da tabela
      */
     private void buildTable() {
-        gTable.getColumnModel().getColumn(SYMBOL_COLUMN).setCellRenderer((JTable table, Object value, boolean isSelected1, boolean hasFocus, int row, int column) -> {
-            ImageIcon ic = new ImageIcon(getClass().getResource((String) value));
-            Image sc = new ImageUtil().getScaledImage(ic.getImage(), 20, 20);
-            ic.setImage(sc);
-            JLabel label = new JLabel(ic);
-            if (isSelected1) {
-                label.setOpaque(true);
-                label.setBackground(table.getSelectionBackground());
-            } else {
-                label.setOpaque(true);
-                label.setBackground(new JLabel().getBackground());
+        gTable.getColumnModel().getColumn(SYMBOL_COLUMN).setCellRenderer(new TableCellRenderer() {
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                ImageIcon ic = new ImageIcon(getClass().getResource((String) value));
+                Image sc = new ImageUtil().getScaledImage(ic.getImage(), 20, 20);
+                ic.setImage(sc);
+                JLabel label = new JLabel(ic);
+                if (isSelected) {
+                    label.setOpaque(true);
+                    label.setBackground(table.getSelectionBackground());
+                } else {
+                    label.setOpaque(true);
+                    label.setBackground(new JLabel().getBackground());
+                }
+                return label;
             }
-            return label;
         });
     }
 

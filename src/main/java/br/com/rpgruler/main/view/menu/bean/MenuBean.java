@@ -143,9 +143,9 @@ public class MenuBean extends ViewBean<MenuView> {
     private List<Menu> getParentMenus() {
         List<Menu> parents = new ArrayList<>();
         parents.add(new Menu((long) 0, "Raiz", null));
-        getView().getModel().getData().stream().forEach((menu) -> {
+        for (Menu menu : getView().getModel().getData()) {
             parents.add(menu);
-        });
+        }
         return parents;
     }
 

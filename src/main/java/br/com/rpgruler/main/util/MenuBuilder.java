@@ -10,6 +10,7 @@ import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.view.View;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -83,13 +84,13 @@ public class MenuBuilder {
     public void buildMenu(List<Menu> menus) {
         root.removeAll();
         //Collections.sort(menus);
-        menus.stream().forEach((Menu menu) -> {
+        for (Menu menu : menus) {
             if (menu.getParent() == 0) {
                 insertMenu(root, menu);
             } else {
                 recursiveMenus(root, menu);
             }
-        });
+        }
         SwingUtilities.updateComponentTreeUI(root);
     }
 
@@ -199,22 +200,26 @@ public class MenuBuilder {
      * @throws ClassNotFoundException Exceção de classe não encontrada
      */
     public JMenuItem generateItem(MenuItem view, boolean execute) throws ClassNotFoundException {
-        ReflectionUtil reflect = new ReflectionUtil();
+        final ReflectionUtil reflect = new ReflectionUtil();
         JMenuItem item = new JMenuItem();
         item.setText(view.toString());
         item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
         Class<?> objClass = Class.forName(view.getViewClass());
         Class<?>[] argTypes = new Class[]{MainScreen.class};
         Object[] arguments = new Object[]{mainScreen};
-        ObjectInstance inst = new ObjectInstance(objClass, argTypes, arguments);
+        final ObjectInstance inst = new ObjectInstance(objClass, argTypes, arguments);
         if (execute) {
-            item.addActionListener((ActionEvent e) -> {
-                try {
-                    View newView = (View) reflect.newInstance(inst);
-                    mainScreen.getListener().insertView(newView);
-                } catch (InstantiationException ex) {
-                    Logger.getLogger(MenuBuilder.class.getName())
-                            .log(Level.SEVERE, null, ex);
+            item.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        View newView = (View) reflect.newInstance(inst);
+                        mainScreen.getListener().insertView(newView);
+                    } catch (InstantiationException ex) {
+                        Logger.getLogger(MenuBuilder.class.getName())
+                                .log(Level.SEVERE, null, ex);
+                    }
                 }
             });
         }

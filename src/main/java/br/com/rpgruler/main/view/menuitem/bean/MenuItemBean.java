@@ -106,9 +106,9 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
     private List<Menu> getParentMenus() {
         List<Menu> parents = new ArrayList<>();
         parents.add(new Menu((long) 0, "Raiz", null));
-        new MenuDAO().getList().stream().forEach((menu) -> {
+        for (Menu menu : new MenuDAO().getList()) {
             parents.add(menu);
-        });
+        }
         return parents;
     }
 

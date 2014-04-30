@@ -15,6 +15,7 @@ import br.com.rpgruler.main.view.armor.dialog.RestrictionDialog;
 import br.com.rpgruler.main.view.armor.model.ArmorEffectModel;
 import br.com.rpgruler.main.view.armor.model.RestrictionModel;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -68,8 +69,12 @@ public class ArmorSubView extends SubView {
         this.gCBMat2.setModel(materialModel2);
         JMenuItem jMIGen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
                 .getResource("/ComponentIcons/controlers/settings.png")));
-        jMIGen.addActionListener((ActionEvent e) -> {
-            autoName();
+        jMIGen.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
         });
         this.gTName.getComponentPopupMenu().add(jMIGen);
         setArmor(armor);

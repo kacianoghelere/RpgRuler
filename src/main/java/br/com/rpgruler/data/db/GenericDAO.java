@@ -88,9 +88,9 @@ public class GenericDAO<T> implements DAO<T> {
     @Override
     public void insertAll(List<T> entities) {
         ObjectContainer db = Db4o.openFile(database);
-        entities.stream().forEach((entity) -> {
+        for (T entity : entities) {
             db.store(entity);
-        });
+        }
         db.commit();
         db.close();
     }
@@ -121,10 +121,10 @@ public class GenericDAO<T> implements DAO<T> {
     @Override
     public void deleteAll(List<T> entities) {
         ObjectContainer db = Db4o.openFile(database);
-        entities.stream().forEach((entity) -> {
+        for (T entity : entities) {
             ObjectSet<T> os = db.queryByExample(entity);
             db.delete(os.next());
-        });
+        }
         db.commit();
         db.close();
     }
