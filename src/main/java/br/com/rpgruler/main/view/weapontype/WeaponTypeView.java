@@ -49,7 +49,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
      */
     private void initialize() {
         this.initComponents();
-        this.setSize(630, 400);
+        this.setSize(647, 401);
         this.setControls(new ViewParameter(true, false, false, false));
         this.initComponents();
         this.model = new WeaponTypeModel();
@@ -60,6 +60,11 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         this.bean = new WeaponTypeBean(this);
         this.gCBUse.setGModel(useModel);
         this.gCBSize.setGModel(sizeModel);
+        try {        
+            this.bean.load(null);
+        } catch (Exception ex) {
+            Logger.getLogger(WeaponTypeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -167,8 +172,8 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         setResizable(true);
         setTitle("Tipos de armas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
-        setMinimumSize(new java.awt.Dimension(630, 400));
-        setPreferredSize(new java.awt.Dimension(630, 400));
+        setMinimumSize(new java.awt.Dimension(647, 401));
+        setPreferredSize(new java.awt.Dimension(647, 401));
 
         gTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,6 +183,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
 
             }
         ));
+        gTable.setOpaque(false);
         jScrollPane1.setViewportView(gTable);
 
         jLTitle.setText("Titulo:");
@@ -244,11 +250,11 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jSpRange, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                                        .addComponent(jSpRange)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLQtd1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpQtd1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                        .addComponent(jSpQtd1)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLQtd2))
                                     .addGroup(layout.createSequentialGroup()
@@ -262,7 +268,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLCategory)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE))
+                                        .addComponent(jSpinCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE))
                                     .addComponent(jSpQtd2)))))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
@@ -304,8 +310,8 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAdd)
                     .addComponent(jBRemove))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

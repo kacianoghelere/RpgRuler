@@ -34,10 +34,10 @@ public class WeaponType extends Type {
     @ColumnName(name = "Porte")
     private UseType wearType;
     @Editable
-    @ColumnName(name = "Quantidade 1")
+    @ColumnName(name = "Qtd. 1")
     private Double materialAmount1;
     @Editable
-    @ColumnName(name = "Quantidade 2")
+    @ColumnName(name = "Qtd. 2")
     private Double materialAmount2;
 
     /**

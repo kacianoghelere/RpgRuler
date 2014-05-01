@@ -28,7 +28,6 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     public WeaponTypeBean(WeaponTypeView view) {
         super(view);
         this.dao = new WeaponTypeDAO();
-        getView().getUseModel().setData(new UseTypeDAO().getList());
     }
 
     @Override
