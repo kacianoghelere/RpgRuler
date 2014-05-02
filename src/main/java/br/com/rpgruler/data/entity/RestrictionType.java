@@ -16,6 +16,8 @@ public class RestrictionType extends Type {
     private Long id;
     @ColumnName(name = "Titulo")
     private String title;
+    @ColumnName(name = "Atributo")
+    private Attribute attribute;
 
     /**
      * Cria nova instancia de RestrictionType
@@ -32,6 +34,19 @@ public class RestrictionType extends Type {
     public RestrictionType(Long id, String title) {
         this.id = id;
         this.title = title;
+    }
+
+    /**
+     * Cria nova instancia de RestrictionType
+     *
+     * @param id <code>Long</code> Código do tipo
+     * @param title <code>String</code> Titulo do tipo
+     * @param attribute <code>Attribute</code> Atributo da Restrição
+     */
+    public RestrictionType(Long id, String title, Attribute attribute) {
+        this.id = id;
+        this.title = title;
+        this.attribute = attribute;
     }
 
     /**
@@ -59,6 +74,24 @@ public class RestrictionType extends Type {
      */
     public String getTitle() {
         return title;
+    }
+
+    /**
+     * Retorna o atributo da Restrição
+     *
+     * @return <code>Attribute</code> Atributo da Restrição
+     */
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    /**
+     * Modifica o atributo da Restrição
+     *
+     * @param attribute <code>Attribute</code> Atributo da Restrição
+     */
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
     }
 
     /**
