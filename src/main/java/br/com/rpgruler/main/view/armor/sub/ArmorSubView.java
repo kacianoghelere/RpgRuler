@@ -96,7 +96,7 @@ public class ArmorSubView extends SubView {
             ArmorType prefix = this.armorTypeModel.getSelectedItem();
             PrimeMaterial mat1 = this.materialModel1.getSelectedItem();
             PrimeMaterial mat2 = this.materialModel2.getSelectedItem();
-            String name = prefix.getName()
+            String name = prefix.getTitle()
                     + " de " + mat1.getName()
                     + " e " + mat2.getName();
             this.gTName.setText(name);

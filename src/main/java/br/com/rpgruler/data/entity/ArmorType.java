@@ -19,7 +19,7 @@ public class ArmorType extends Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String name;
+    private String title;
     @Editable
     @ColumnName(name = "Base")
     private Double base;
@@ -46,7 +46,7 @@ public class ArmorType extends Type {
      */
     public ArmorType(Long id, String typeName, Double materialAmount1, Double materialAmount2) {
         this.id = id;
-        this.name = typeName;
+        this.title = typeName;
         this.base = (double) 0;
         this.materialAmount1 = materialAmount1;
         this.materialAmount2 = materialAmount2;
@@ -57,6 +57,7 @@ public class ArmorType extends Type {
      *
      * @return <code>Long</code> Código do tipo
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -66,6 +67,7 @@ public class ArmorType extends Type {
      *
      * @param id <code>Long</code> Código do tipo
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -75,17 +77,19 @@ public class ArmorType extends Type {
      *
      * @return <code>String</code> Nome do tipo
      */
-    public String getName() {
-        return name;
+    @Override
+    public String getTitle() {
+        return title;
     }
 
     /**
      * Modifica o Nome do tipo
      *
-     * @param name <code>String</code> Nome do tipo
+     * @param title <code>String</code> Nome do tipo
      */
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
@@ -146,7 +150,7 @@ public class ArmorType extends Type {
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.title);
         hash = 89 * hash + Objects.hashCode(this.materialAmount1);
         hash = 89 * hash + Objects.hashCode(this.materialAmount2);
         return hash;
@@ -164,7 +168,7 @@ public class ArmorType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.title, other.title)) {
             return false;
         }
         if (!Objects.equals(this.materialAmount1, other.materialAmount1)) {
@@ -175,7 +179,7 @@ public class ArmorType extends Type {
 
     @Override
     public String toString() {
-        return name;
+        return title;
     }
 
 }

@@ -44,7 +44,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
         ArmorType type = new ArmorType();
         Long nextID = getNextID();
         type.setId(nextID);
-        type.setName((String) vw.getValue(0));
+        type.setTitle((String) vw.getValue(0));
         type.setMaterialAmount1((Double) vw.getValue(1));
         type.setMaterialAmount2((Double) vw.getValue(2));
         type.setBase((Double) vw.getValue(3));

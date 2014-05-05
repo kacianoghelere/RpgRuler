@@ -19,13 +19,15 @@ public class WeaponType extends Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String typeName;
+    private String title;
     @Editable
     @ColumnName(name = "Dano base")
     private Double damageBase;
     @Editable
     @ColumnName(name = "Alcance")
     private Integer range;
+    @ColumnName(name = "Tipo de dano")
+    private DamageType damageType;
     @ColumnName(name = "Tamanho")
     private WeaponSize size;
     @Editable
@@ -59,7 +61,7 @@ public class WeaponType extends Type {
      */
     public WeaponType(Long id, String typeName, Double damageBase, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
-        this.typeName = typeName;
+        this.title = typeName;
         this.damageBase = damageBase;
         this.category = category;
         this.wearType = wearType;
@@ -81,9 +83,35 @@ public class WeaponType extends Type {
      */
     public WeaponType(Long id, String typeName, Double damageBase, Integer range, WeaponSize size, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
-        this.typeName = typeName;
+        this.title = typeName;
         this.damageBase = damageBase;
         this.range = range;
+        this.size = size;
+        this.category = category;
+        this.wearType = wearType;
+        this.materialAmount1 = materialAmount1;
+        this.materialAmount2 = materialAmount2;
+    }
+
+    /**
+     *
+     * @param id <code>Long</code> Código do tipo de arma
+     * @param title <code>String</code> Titulo do tipo de arma
+     * @param damageBase <code>Double</code> Dano base do tipo
+     * @param range <code>Integer</code> Alcance da arma
+     * @param damageType <code>DamageType</code> Tipo de dano
+     * @param size <code>WeaponSize</code> Tamanho da arma
+     * @param category <code>Integer</code> Classificação do tipo
+     * @param wearType <code>WearType</code> Tipo de porte
+     * @param materialAmount1 <code>Double</code> Qtd. do material 1
+     * @param materialAmount2 <code>Double</code> Qtd. do material 2
+     */
+    public WeaponType(Long id, String title, Double damageBase, Integer range, DamageType damageType, WeaponSize size, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
+        this.id = id;
+        this.title = title;
+        this.damageBase = damageBase;
+        this.range = range;
+        this.damageType = damageType;
         this.size = size;
         this.category = category;
         this.wearType = wearType;
@@ -96,6 +124,7 @@ public class WeaponType extends Type {
      *
      * @return <code>Long</code> Código do tipo de arma
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -105,6 +134,7 @@ public class WeaponType extends Type {
      *
      * @param id <code>Long</code> Código do tipo de arma
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -114,17 +144,19 @@ public class WeaponType extends Type {
      *
      * @return <code>String</code> Titulo do tipo de arma
      */
-    public String getTypeName() {
-        return typeName;
+    @Override
+    public String getTitle() {
+        return title;
     }
 
     /**
      * Modifica o Titulo do tipo de arma
      *
-     * @param typeName <code>String</code> Titulo do tipo de arma
+     * @param title <code>String</code> Titulo do tipo de arma
      */
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
@@ -173,12 +205,30 @@ public class WeaponType extends Type {
     }
 
     /**
-     * Modifica o Dano base do tipo
+     * Modificao tipo de Dano
      *
-     * @param damageBase <code>Double</code> Dano base do tipo
+     * @param damageBase <code>DamageType</code> Tipo de dano
      */
     public void setDamageBase(Double damageBase) {
         this.damageBase = damageBase;
+    }
+
+    /**
+     * Retorna o Dano base do tipo
+     *
+     * @return <code>Double</code> Dano base do tipo
+     */
+    public DamageType getDamageType() {
+        return damageType;
+    }
+
+    /**
+     * Modifica o tipo de Dano
+     *
+     * @param damageType <code>DamageType</code> Tipo de dano
+     */
+    public void setDamageType(DamageType damageType) {
+        this.damageType = damageType;
     }
 
     /**
@@ -257,7 +307,7 @@ public class WeaponType extends Type {
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.typeName);
+        hash = 29 * hash + Objects.hashCode(this.title);
         hash = 29 * hash + Objects.hashCode(this.damageBase);
         hash = 29 * hash + Objects.hashCode(this.category);
         hash = 29 * hash + Objects.hashCode(this.wearType);
@@ -276,7 +326,7 @@ public class WeaponType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.typeName, other.typeName)) {
+        if (!Objects.equals(this.title, other.title)) {
             return false;
         }
         if (!Objects.equals(this.damageBase, other.damageBase)) {
@@ -290,7 +340,7 @@ public class WeaponType extends Type {
 
     @Override
     public String toString() {
-        return typeName;
+        return title;
     }
 
 }

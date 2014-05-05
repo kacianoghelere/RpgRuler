@@ -52,7 +52,7 @@ public class TermsView extends View {
      */
     private void initialize() {
         initComponents();
-        this.setSize(625, 465);
+        this.setSize(442, 465);
         this.setControls(new ViewParameter(true, false, false, true));
         this.useModel = new GListModel<>();
         this.efModel = new GListModel<>();
@@ -294,39 +294,41 @@ public class TermsView extends View {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane = new javax.swing.JTabbedPane();
         jPUseTypes = new javax.swing.JPanel();
         gTUseTp = new br.com.gmp.comps.textfield.GTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         gLtUseTp = new br.com.gmp.comps.list.GList();
-        jPEffects = new javax.swing.JPanel();
-        gTEffectTp = new br.com.gmp.comps.textfield.GTextField();
-        jSPEffect = new javax.swing.JScrollPane();
-        gLtEffectTp = new br.com.gmp.comps.list.GList();
         jPRestrictTypes = new javax.swing.JPanel();
         jSPRestrict = new javax.swing.JScrollPane();
         gLtRestTp = new br.com.gmp.comps.list.GList();
         gCBAttribute = new br.com.gmp.comps.combobox.GComboBox();
-        jPExpertiseTypes = new javax.swing.JPanel();
-        gTExpertiseTp = new br.com.gmp.comps.textfield.GTextField();
-        jSPExpertise = new javax.swing.JScrollPane();
-        gLtExpTp = new br.com.gmp.comps.list.GList();
-        jPPerkTypes = new javax.swing.JPanel();
-        gTPerkTp = new br.com.gmp.comps.textfield.GTextField();
-        jSPPerk = new javax.swing.JScrollPane();
-        gLtPerkTp = new br.com.gmp.comps.list.GList();
         jPWeaponSize = new javax.swing.JPanel();
         gTWeaponSize = new br.com.gmp.comps.textfield.GTextField();
         jSPPerk1 = new javax.swing.JScrollPane();
         gLtWeaponSize = new br.com.gmp.comps.list.GList();
+        jPPerkTypes = new javax.swing.JPanel();
+        gTPerkTp = new br.com.gmp.comps.textfield.GTextField();
+        jSPPerk = new javax.swing.JScrollPane();
+        gLtPerkTp = new br.com.gmp.comps.list.GList();
+        jPEffects = new javax.swing.JPanel();
+        gTEffectTp = new br.com.gmp.comps.textfield.GTextField();
+        jSPEffect = new javax.swing.JScrollPane();
+        gLtEffectTp = new br.com.gmp.comps.list.GList();
+        jPExpertiseTypes = new javax.swing.JPanel();
+        gTExpertiseTp = new br.com.gmp.comps.textfield.GTextField();
+        jSPExpertise = new javax.swing.JScrollPane();
+        gLtExpTp = new br.com.gmp.comps.list.GList();
 
         setClosable(true);
         setIconifiable(true);
         setTitle("Termos comuns");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         setMaximumSize(new java.awt.Dimension(625, 465));
-        setMinimumSize(new java.awt.Dimension(625, 465));
-        setPreferredSize(new java.awt.Dimension(625, 465));
-        getContentPane().setLayout(new java.awt.GridLayout(2, 4));
+        setMinimumSize(new java.awt.Dimension(442, 465));
+        setPreferredSize(new java.awt.Dimension(442, 465));
+
+        jTabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         jPUseTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Usos de armas"));
 
@@ -356,63 +358,20 @@ public class TermsView extends View {
                 .addContainerGap()
                 .addGroup(jPUseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(gTUseTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
         jPUseTypesLayout.setVerticalGroup(
             jPUseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPUseTypesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTUseTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        getContentPane().add(jPUseTypes);
-
-        jPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Efeitos"));
-
-        gTEffectTp.setPlaceholder("Tipos de efeitos");
-        gTEffectTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
-        gTEffectTp.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTEffectTp.setNextFocusableComponent(gTPerkTp);
-        gTEffectTp.setPreferredSize(new java.awt.Dimension(150, 28));
-        gTEffectTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gTEffectTpKeyReleased(evt);
-            }
-        });
-
-        gLtEffectTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gLtEffectTpKeyReleased(evt);
-            }
-        });
-        jSPEffect.setViewportView(gLtEffectTp);
-
-        javax.swing.GroupLayout jPEffectsLayout = new javax.swing.GroupLayout(jPEffects);
-        jPEffects.setLayout(jPEffectsLayout);
-        jPEffectsLayout.setHorizontalGroup(
-            jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPEffectsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gTEffectTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSPEffect, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPEffectsLayout.setVerticalGroup(
-            jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPEffectsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPEffect, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gTEffectTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-        );
-
-        getContentPane().add(jPEffects);
+        jTabbedPane.addTab("Uso de armas", jPUseTypes);
 
         jPRestrictTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Restrições"));
 
@@ -439,7 +398,7 @@ public class TermsView extends View {
             .addGroup(jPRestrictTypesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPRestrictTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                    .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                     .addComponent(gCBAttribute, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -447,99 +406,13 @@ public class TermsView extends View {
             jPRestrictTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRestrictTypesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gCBAttribute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
 
-        getContentPane().add(jPRestrictTypes);
-
-        jPExpertiseTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Perícias"));
-
-        gTExpertiseTp.setPlaceholder("Tipos de perícias");
-        gTExpertiseTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
-        gTExpertiseTp.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTExpertiseTp.setNextFocusableComponent(gTUseTp);
-        gTExpertiseTp.setPreferredSize(new java.awt.Dimension(150, 28));
-        gTExpertiseTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gTExpertiseTpKeyReleased(evt);
-            }
-        });
-
-        gLtExpTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gLtExpTpKeyReleased(evt);
-            }
-        });
-        jSPExpertise.setViewportView(gLtExpTp);
-
-        javax.swing.GroupLayout jPExpertiseTypesLayout = new javax.swing.GroupLayout(jPExpertiseTypes);
-        jPExpertiseTypes.setLayout(jPExpertiseTypesLayout);
-        jPExpertiseTypesLayout.setHorizontalGroup(
-            jPExpertiseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPExpertiseTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPExpertiseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gTExpertiseTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSPExpertise, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPExpertiseTypesLayout.setVerticalGroup(
-            jPExpertiseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPExpertiseTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPExpertise, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gTExpertiseTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-        );
-
-        getContentPane().add(jPExpertiseTypes);
-
-        jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Vantagens"));
-
-        gTPerkTp.setPlaceholder("Tipos de vantagens");
-        gTPerkTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
-        gTPerkTp.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTPerkTp.setNextFocusableComponent(gTUseTp);
-        gTPerkTp.setPreferredSize(new java.awt.Dimension(150, 28));
-        gTPerkTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gTPerkTpKeyReleased(evt);
-            }
-        });
-
-        gLtPerkTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gLtPerkTpKeyReleased(evt);
-            }
-        });
-        jSPPerk.setViewportView(gLtPerkTp);
-
-        javax.swing.GroupLayout jPPerkTypesLayout = new javax.swing.GroupLayout(jPPerkTypes);
-        jPPerkTypes.setLayout(jPPerkTypesLayout);
-        jPPerkTypesLayout.setHorizontalGroup(
-            jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPPerkTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gTPerkTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSPPerk, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPPerkTypesLayout.setVerticalGroup(
-            jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPPerkTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPPerk, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gTPerkTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-        );
-
-        getContentPane().add(jPPerkTypes);
+        jTabbedPane.addTab("Restrições", jPRestrictTypes);
 
         jPWeaponSize.setBorder(javax.swing.BorderFactory.createTitledBorder("Tamanho da arma"));
 
@@ -576,13 +449,153 @@ public class TermsView extends View {
             jPWeaponSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPWeaponSizeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSPPerk1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(jSPPerk1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTWeaponSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
-        getContentPane().add(jPWeaponSize);
+        jTabbedPane.addTab("Tamanho de armas", jPWeaponSize);
+
+        jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Vantagens"));
+
+        gTPerkTp.setPlaceholder("Tipos de vantagens");
+        gTPerkTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTPerkTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTPerkTp.setNextFocusableComponent(gTUseTp);
+        gTPerkTp.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTPerkTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTPerkTpKeyReleased(evt);
+            }
+        });
+
+        gLtPerkTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtPerkTpKeyReleased(evt);
+            }
+        });
+        jSPPerk.setViewportView(gLtPerkTp);
+
+        javax.swing.GroupLayout jPPerkTypesLayout = new javax.swing.GroupLayout(jPPerkTypes);
+        jPPerkTypes.setLayout(jPPerkTypesLayout);
+        jPPerkTypesLayout.setHorizontalGroup(
+            jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPPerkTypesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTPerkTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPPerk, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPPerkTypesLayout.setVerticalGroup(
+            jPPerkTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPPerkTypesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPPerk, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTPerkTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Vantagens", jPPerkTypes);
+
+        jPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Efeitos"));
+
+        gTEffectTp.setPlaceholder("Tipos de efeitos");
+        gTEffectTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTEffectTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTEffectTp.setNextFocusableComponent(gTPerkTp);
+        gTEffectTp.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTEffectTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTEffectTpKeyReleased(evt);
+            }
+        });
+
+        gLtEffectTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtEffectTpKeyReleased(evt);
+            }
+        });
+        jSPEffect.setViewportView(gLtEffectTp);
+
+        javax.swing.GroupLayout jPEffectsLayout = new javax.swing.GroupLayout(jPEffects);
+        jPEffects.setLayout(jPEffectsLayout);
+        jPEffectsLayout.setHorizontalGroup(
+            jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPEffectsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTEffectTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPEffect, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPEffectsLayout.setVerticalGroup(
+            jPEffectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPEffectsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPEffect, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTEffectTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Efeitos", jPEffects);
+
+        jPExpertiseTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Perícias"));
+
+        gTExpertiseTp.setPlaceholder("Tipos de perícias");
+        gTExpertiseTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTExpertiseTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTExpertiseTp.setNextFocusableComponent(gTUseTp);
+        gTExpertiseTp.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTExpertiseTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTExpertiseTpKeyReleased(evt);
+            }
+        });
+
+        gLtExpTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtExpTpKeyReleased(evt);
+            }
+        });
+        jSPExpertise.setViewportView(gLtExpTp);
+
+        javax.swing.GroupLayout jPExpertiseTypesLayout = new javax.swing.GroupLayout(jPExpertiseTypes);
+        jPExpertiseTypes.setLayout(jPExpertiseTypesLayout);
+        jPExpertiseTypesLayout.setHorizontalGroup(
+            jPExpertiseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPExpertiseTypesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPExpertiseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTExpertiseTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPExpertise, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPExpertiseTypesLayout.setVerticalGroup(
+            jPExpertiseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPExpertiseTypesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPExpertise, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTExpertiseTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Perícias", jPExpertiseTypes);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void gTUseTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTUseTpKeyReleased
@@ -730,5 +743,6 @@ public class TermsView extends View {
     private javax.swing.JScrollPane jSPPerk1;
     private javax.swing.JScrollPane jSPRestrict;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }
