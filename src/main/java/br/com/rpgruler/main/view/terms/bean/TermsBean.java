@@ -6,6 +6,7 @@ import br.com.rpgruler.data.db.dao.PerkTypeDAO;
 import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
 import br.com.rpgruler.data.db.dao.UseTypeDAO;
 import br.com.rpgruler.data.db.dao.WeaponSizeDAO;
+import br.com.rpgruler.data.entity.Attribute;
 import br.com.rpgruler.data.entity.EffectType;
 import br.com.rpgruler.data.entity.ExpertiseType;
 import br.com.rpgruler.data.entity.PerkType;
@@ -61,7 +62,7 @@ public class TermsBean extends ViewBean<TermsView> {
         getView().getUseModel().setData(useTypeDao.getList());
         getView().getEfModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
-        getView().getRestModel().setData(restDao.getList());
+        getView().getRestModel().setData(restDao.getList());        
         getView().getExpModel().setData(expDAO.getList());
         getView().getSizeModel().setData(sizeDAO.getList());
     }
@@ -106,8 +107,18 @@ public class TermsBean extends ViewBean<TermsView> {
      */
     public void addRestTp(BeanEvent evt) {
         Long nextId = getNextRestID();
-        RestrictionType type = new RestrictionType(nextId, (String) evt.getValue());
-        getView().getRestModel().add(type);
+        Attribute attr = (Attribute) evt.getValue();
+        RestrictionType type = new RestrictionType(nextId, attr.getName(), attr);
+        boolean contain = false;
+        for (RestrictionType tp : getView().getRestModel().getData()) {
+            if (tp.getAttribute().equals(attr)) {
+                contain = true;
+                break;
+            }
+        }
+        if (!contain) {
+            getView().getRestModel().add(type);
+        }        
     }
 
     /**

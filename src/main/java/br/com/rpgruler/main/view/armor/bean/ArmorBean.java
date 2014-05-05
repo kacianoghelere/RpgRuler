@@ -3,6 +3,7 @@ package br.com.rpgruler.main.view.armor.bean;
 import br.com.rpgruler.data.db.dao.ArmorDAO;
 import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.db.dao.MaterialsDAO;
+import br.com.rpgruler.data.db.dao.RestrictionTypeDAO;
 import br.com.rpgruler.data.entity.Armor;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armor.ArmorView;
@@ -20,6 +21,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
     private ArmorTypeDAO armorTypeDAO;
     private MaterialsDAO materialsDAO;
     private ArmorDAO armorDAO;
+    private RestrictionTypeDAO restDAO;
 
     /**
      * Cria nova instancia de ArmorBean
@@ -31,6 +33,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
         this.armorTypeDAO = new ArmorTypeDAO();
         this.materialsDAO = new MaterialsDAO();
         this.armorDAO = new ArmorDAO();
+        this.restDAO = new RestrictionTypeDAO();
     }
 
     @Override
@@ -76,6 +79,15 @@ public class ArmorBean extends ViewBean<ArmorView> {
      */
     public MaterialsDAO getMaterialsDAO() {
         return materialsDAO;
+    }
+
+    /**
+     * Retorna o DAO de controle dos tipos de restrições
+     *
+     * @return <code>RestrictionTypeDAO</code> DAO de RestrictionType
+     */
+    public RestrictionTypeDAO getRestDAO() {
+        return restDAO;
     }
 
     /**

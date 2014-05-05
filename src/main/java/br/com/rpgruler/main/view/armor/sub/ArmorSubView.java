@@ -5,6 +5,8 @@ import br.com.rpgruler.data.entity.Armor;
 import br.com.rpgruler.data.entity.ArmorType;
 import br.com.rpgruler.data.entity.Attributes;
 import br.com.rpgruler.data.entity.PrimeMaterial;
+import br.com.rpgruler.data.entity.Restriction;
+import br.com.rpgruler.data.entity.RestrictionType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.TableUtil;
 import br.com.rpgruler.main.view.sub.SubView;
@@ -35,6 +37,7 @@ public class ArmorSubView extends SubView {
     private GComboBoxModel<ArmorType> armorTypeModel;
     private GComboBoxModel<PrimeMaterial> materialModel1;
     private GComboBoxModel<PrimeMaterial> materialModel2;
+    private GComboBoxModel<RestrictionType> restrictModel;
 
     /**
      * Cria nova instancia de ArmorSubView
@@ -62,23 +65,27 @@ public class ArmorSubView extends SubView {
         this.armorTypeModel = new GComboBoxModel<>(bean.getArmorTypeDAO().getList());
         this.materialModel1 = new GComboBoxModel<>(bean.getMaterialsDAO().getList());
         this.materialModel2 = new GComboBoxModel<>(bean.getMaterialsDAO().getList());
+        this.restrictModel = new GComboBoxModel<>(bean.getRestDAO().getList());
         this.gTblRestrictions.setModel(restModel);
         this.gTblEffects.setModel(effectModel);
-        this.gCBType.setModel(armorTypeModel);
-        this.gCBMat1.setModel(materialModel1);
-        this.gCBMat2.setModel(materialModel2);
+        this.gCBType.setGModel(armorTypeModel);
+        this.gCBMat1.setGModel(materialModel1);
+        this.gCBMat2.setGModel(materialModel2);
+        this.gCBRest.setGModel(restrictModel);
+        //----------------------------------------------------------------------
         JMenuItem jMIGen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
                 .getResource("/ComponentIcons/controlers/settings.png")));
         jMIGen.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                autoName();
             }
         });
         this.gTName.getComponentPopupMenu().add(jMIGen);
-        setArmor(armor);
-        setVisible(true);
+        //----------------------------------------------------------------------
+        this.setArmor(armor);
+        this.setVisible(true);
     }
 
     /**
@@ -199,9 +206,10 @@ public class ArmorSubView extends SubView {
      * Adiciona nova restrição
      */
     private void addRestriction() {
-        RestrictionDialog dialog = new RestrictionDialog(this, null, true);
-        if (dialog.getRestriction() != null) {
-            restModel.add(dialog.getRestriction());
+        RestrictionType rest = restrictModel.getSelectedItem();
+        Restriction restriction = new Restriction(rest.getId(), rest, 0);
+        if (!restModel.contains(restriction)) {
+            restModel.add(restriction);
         }
     }
 
@@ -298,8 +306,7 @@ public class ArmorSubView extends SubView {
         jPRestrictions = new javax.swing.JPanel();
         jSPRestrictions = new javax.swing.JScrollPane();
         gTblRestrictions = new br.com.gmp.comps.table.GTable();
-        jBRemoveRest = new javax.swing.JButton();
-        jBAddRest = new javax.swing.JButton();
+        gCBRest = new br.com.gmp.comps.combobox.GComboBox();
         jSPModifiers = new javax.swing.JScrollPane();
         jPModifiers = new javax.swing.JPanel();
         JLStr = new javax.swing.JLabel();
@@ -372,23 +379,22 @@ public class ArmorSubView extends SubView {
         jPCaracteristics.setLayout(jPCaracteristicsLayout);
         jPCaracteristicsLayout.setHorizontalGroup(
             jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSPEffects, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
             .addGroup(jPCaracteristicsLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jBAddEffect)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBRemoveEffect)
-                .addContainerGap(153, Short.MAX_VALUE))
-            .addComponent(jSPEffects, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPCaracteristicsLayout.setVerticalGroup(
             jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCaracteristicsLayout.createSequentialGroup()
                 .addComponent(jSPEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPCaracteristicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAddEffect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBRemoveEffect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         jPBasics.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações basicas"));
@@ -492,21 +498,9 @@ public class ArmorSubView extends SubView {
         });
         jSPRestrictions.setViewportView(gTblRestrictions);
 
-        jBRemoveRest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
-        jBRemoveRest.setFocusable(false);
-        jBRemoveRest.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBRemoveRest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRemoveRestActionPerformed(evt);
-            }
-        });
-
-        jBAddRest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
-        jBAddRest.setFocusable(false);
-        jBAddRest.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBAddRest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAddRestActionPerformed(evt);
+        gCBRest.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gCBRestKeyReleased(evt);
             }
         });
 
@@ -514,22 +508,20 @@ public class ArmorSubView extends SubView {
         jPRestrictions.setLayout(jPRestrictionsLayout);
         jPRestrictionsLayout.setHorizontalGroup(
             jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPRestrictionsLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRestrictionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBAddRest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBRemoveRest)
-                .addContainerGap(153, Short.MAX_VALUE))
-            .addComponent(jSPRestrictions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSPRestrictions, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(gCBRest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPRestrictionsLayout.setVerticalGroup(
             jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRestrictionsLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jSPRestrictions, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPRestrictionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBAddRest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBRemoveRest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(gCBRest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -764,14 +756,6 @@ public class ArmorSubView extends SubView {
         new TableUtil(view, gTblEffects, effectModel).remove(null);
     }//GEN-LAST:event_jBRemoveEffectActionPerformed
 
-    private void jBRemoveRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveRestActionPerformed
-        new TableUtil(view, gTblRestrictions, restModel).remove(null);
-    }//GEN-LAST:event_jBRemoveRestActionPerformed
-
-    private void jBAddRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddRestActionPerformed
-        addRestriction();
-    }//GEN-LAST:event_jBAddRestActionPerformed
-
     private void gTblRestrictionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTblRestrictionsMouseClicked
         if (evt.getClickCount() == 2) {
             editRestriction();
@@ -790,12 +774,17 @@ public class ArmorSubView extends SubView {
         }
     }//GEN-LAST:event_gTblEffectsMouseClicked
 
+    private void gCBRestKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gCBRestKeyReleased
+        addRestriction();
+    }//GEN-LAST:event_gCBRestKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLStr;
     private javax.swing.JLabel JLType;
     private br.com.gmp.comps.combobox.GComboBox gCBMat1;
     private br.com.gmp.comps.combobox.GComboBox gCBMat2;
+    private br.com.gmp.comps.combobox.GComboBox gCBRest;
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textarea.GMPTextArea gTADesc;
     private br.com.gmp.comps.textfield.GTextField gTName;
@@ -803,10 +792,8 @@ public class ArmorSubView extends SubView {
     private br.com.gmp.comps.table.GTable gTblRestrictions;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBAddEffect;
-    private javax.swing.JButton jBAddRest;
     private javax.swing.JButton jBCancel;
     private javax.swing.JButton jBRemoveEffect;
-    private javax.swing.JButton jBRemoveRest;
     private javax.swing.JLabel jLChar;
     private javax.swing.JLabel jLCon;
     private javax.swing.JLabel jLDef;

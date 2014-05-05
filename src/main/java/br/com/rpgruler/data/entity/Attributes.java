@@ -1,6 +1,8 @@
 package br.com.rpgruler.data.entity;
 
 import br.com.gmp.comps.annotations.ColumnName;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Entidade dos atributos para personagens, classes, raças, inimigos e
@@ -111,29 +113,49 @@ public class Attributes {
 
     @Override
     public String toString() {
-        return strength.getAlias() + ": " + strength.getValue() + ",\n"
-                + dexterity.getAlias() + ": " + dexterity.getValue() + ",\n"
-                + constitution.getAlias() + ": " + constitution.getValue() + ",\n"
-                + intelligence.getAlias() + ": " + intelligence.getValue() + ",\n"
-                + wisdom.getAlias() + ": " + wisdom.getValue() + ",\n"
-                + charisma.getAlias() + ": " + charisma.getValue() + ",\n"
-                + health.getAlias() + ": " + health.getValue() + ",\n"
-                + attack.getAlias() + ": " + attack.getValue() + ",\n"
-                + defense.getAlias() + ": " + defense.getValue() + ",\n"
-                + evasion.getAlias() + ": " + evasion.getValue() + "\n"
-                + level.getAlias() + ": " + level.getValue() + "\n"
-                + experience.getAlias() + ": " + experience.getValue() + "\n";
+        StringBuilder sb = new StringBuilder();
+        for (Attribute attr : getAttributes()) {
+            sb.append((attr.getAlias() + ": " + attr.getValue() + "\n"));
+        }
+        return sb.toString();
     }
 
     /**
      * Retorna os principais atributos usados
      *
-     * @return <code>Attribute[]</code> Principais atributos
+     * @return <code>List(Attribute)</code> Principais atributos
      */
-    public Attribute[] getMainAttributes() {
-        return new Attribute[]{
-            strength, dexterity, constitution, intelligence, wisdom, charisma
-        };
+    public List<Attribute> getMainAttributes() {
+        List<Attribute> list = new ArrayList<>();
+        list.add(strength);
+        list.add(dexterity);
+        list.add(constitution);
+        list.add(intelligence);
+        list.add(wisdom);
+        list.add(charisma);
+        return list;
+    }
+
+    /**
+     * Retorna os atributos usados
+     *
+     * @return <code>List(Attribute)</code> Atributos
+     */
+    public List<Attribute> getAttributes() {
+        List<Attribute> list = new ArrayList<>();
+        list.add(strength);
+        list.add(dexterity);
+        list.add(constitution);
+        list.add(intelligence);
+        list.add(wisdom);
+        list.add(charisma);
+        list.add(health);
+        list.add(attack);
+        list.add(defense);
+        list.add(evasion);
+        list.add(level);
+        list.add(experience);
+        return list;
     }
 
     /**
