@@ -25,7 +25,7 @@ public class ViewBean<T> implements BeanListener<T> {
     }
 
     @Override
-    public void save(BeanEvent evt) throws Exception {
+    public void commit(BeanEvent evt) throws Exception {
         System.out.println("Save not implemented yet.");
     }
 

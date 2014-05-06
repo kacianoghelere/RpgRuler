@@ -8,20 +8,20 @@ import java.awt.event.ActionEvent;
  *
  * @author kaciano
  */
-public class SaveAction extends FrameAction {
+public class CommitAction extends FrameAction {
 
     /**
      * Cria nova instancia de SaveAction
      *
      * @param view <code>View</code> da ação
      */
-    public SaveAction(View view) {
+    public CommitAction(View view) {
         super("save", view);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {        
-        getView().getMainScreen().save(null);
+        getView().getMainScreen().commit(null);
     }
 
 }

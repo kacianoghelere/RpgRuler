@@ -37,7 +37,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
     }
 
     @Override
-    public void save(BeanEvent evt) throws Exception {
+    public void commit(BeanEvent evt) throws Exception {
         armorDAO.replaceAll(getView().getModel().getData());
     }
 

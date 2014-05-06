@@ -27,7 +27,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
     }
 
     @Override
-    public void save(BeanEvent evt) throws Exception {
+    public void commit(BeanEvent evt) throws Exception {
         List<ArmorType> data = getView().getModel().getData();
         dao.deleteAll();
         dao.insertAll(data);

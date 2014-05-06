@@ -6,7 +6,7 @@ import br.com.rpgruler.main.actions.ClearAction;
 import br.com.rpgruler.main.actions.FrameAction;
 import br.com.rpgruler.main.actions.LoadAction;
 import br.com.rpgruler.main.actions.ProccessAction;
-import br.com.rpgruler.main.actions.SaveAction;
+import br.com.rpgruler.main.actions.CommitAction;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.util.Description;
 import br.com.rpgruler.main.view.dialog.DescriptionDialog;
@@ -99,8 +99,8 @@ public abstract class View extends JInternalFrame implements ViewListener {
      * Monta as ações nas respectivas teclas
      */
     private void buildActions() {
-        saveAction = new SaveAction(this);
-        addKeyInput("save", KeyEvent.VK_F2, saveAction);
+        saveAction = new CommitAction(this);
+        addKeyInput("commit", KeyEvent.VK_F2, saveAction);
         proccesAction = new ProccessAction(this);
         addKeyInput("proccess", KeyEvent.VK_F6, proccesAction);
         clearAction = new ClearAction(this);
@@ -183,13 +183,13 @@ public abstract class View extends JInternalFrame implements ViewListener {
     }
 
     @Override
-    public void save() {
+    public void commit() {
         try {
             new Thread() {
                 @Override
                 public void run() {
                     try {
-                        getBean().save(new BeanEvent(View.this, null));
+                        getBean().commit(new BeanEvent(View.this, null));
                         showMessage("Dados salvos.", MainScreen.SUCCESS_MSG);
                     } catch (Exception ex) {
                         Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
@@ -269,12 +269,12 @@ public abstract class View extends JInternalFrame implements ViewListener {
     }
 
     @Override
-    public Boolean canSave() {
+    public Boolean canCommit() {
         return canSave;
     }
 
     @Override
-    public void setSave(boolean save) {
+    public void setCommit(boolean save) {
         canSave = save;
     }
 

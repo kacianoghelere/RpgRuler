@@ -36,7 +36,7 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
     }
 
     @Override
-    public void save(BeanEvent evt) throws Exception {
+    public void commit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
     }
 

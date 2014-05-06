@@ -38,10 +38,10 @@ public class MainScreenBean implements MainListener {
 
 
     @Override
-    public void save(BeanEvent evt) {
-        if (getActualView() != null && getActualView().canSave()) {
-            getActualView().save();
-        } else if (!getActualView().canSave()) {
+    public void commit(BeanEvent evt) {
+        if (getActualView() != null && getActualView().canCommit()) {
+            getActualView().commit();
+        } else if (!getActualView().canCommit()) {
             screen.printTypedMsg("Esta View nao pode salvar!", MainScreen.WARNING_MSG);
         }
     }
@@ -82,7 +82,7 @@ public class MainScreenBean implements MainListener {
     public void setActualView(View view) {
         this.actualView = view;
         this.screen.setControls(new ViewParameter(
-                this.actualView.canSave() != null ? actualView.canSave() : false,
+                this.actualView.canCommit() != null ? actualView.canCommit() : false,
                 this.actualView.canProcces() != null ? actualView.canProcces() : false,
                 this.actualView.canClear() != null ? actualView.canClear() : false,
                 this.actualView.canLoad() != null ? actualView.canLoad() : false

@@ -14,9 +14,9 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.View#save()
+     * @see br.com.rpgruler.main.view.View#commit()
      */
-    void save(BeanEvent evt) throws Exception;
+    void commit(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para processar os dados

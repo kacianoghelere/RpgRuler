@@ -15,7 +15,7 @@ public interface ViewListener {
      *
      * @return <code>Boolean</code> Pode salvar
      */
-    Boolean canSave();
+    Boolean canCommit();
 
     /**
      * Retorna se a View pode processar
@@ -43,7 +43,7 @@ public interface ViewListener {
      *
      * @param save <code>Boolean</code> Pode salvar
      */
-    void setSave(boolean save);
+    void setCommit(boolean save);
 
     /**
      * Modifica a permissão para processar
@@ -70,9 +70,9 @@ public interface ViewListener {
      * Metodo padrão para salvar
      *
      * @see
-     * br.com.rpgruler.main.view.bean.ViewBean#save(br.com.rpgruler.main.object.BeanEvent)
+     * br.com.rpgruler.main.view.bean.ViewBean#commit(br.com.rpgruler.main.object.BeanEvent)
      */
-    void save();
+    void commit();
 
     /**
      * Metodo padrão para processar os dados

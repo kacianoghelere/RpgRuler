@@ -48,7 +48,7 @@ public class TermsBean extends ViewBean<TermsView> {
     }
 
     @Override
-    public void save(BeanEvent evt) throws Exception {
+    public void commit(BeanEvent evt) throws Exception {
         useTypeDao.replaceAll(getView().getUseModel().getData());
         effectTypeDAO.replaceAll(getView().getEfModel().getData());
         perkTypeDao.replaceAll(getView().getPerkModel().getData());

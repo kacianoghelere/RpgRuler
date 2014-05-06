@@ -14,7 +14,7 @@ public interface Main {
      *
      * @param evt <code>ActionEvent</code>
      */
-    void save(ActionEvent evt);
+    void commit(ActionEvent evt);
 
     /**
      * Metodo padrão para processar os dados

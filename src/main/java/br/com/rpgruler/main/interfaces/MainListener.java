@@ -15,7 +15,7 @@ public interface MainListener {
      *
      * @param evt <code>BeanEvent</code> Evento
      */
-    void save(BeanEvent evt);
+    void commit(BeanEvent evt);
 
     /**
      * Metodo padrão para processar os dados

@@ -40,8 +40,8 @@ public class CharacterBean extends ViewBean<CharacterView> {
     }
 
     @Override
-    public void save(BeanEvent evt) throws Exception {
-        super.save(evt); //To change body of generated methods, choose Tools | Templates.
+    public void commit(BeanEvent evt) throws Exception {
+        super.commit(evt); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

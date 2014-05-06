@@ -29,7 +29,7 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
     }
 
     @Override
-    public void save(BeanEvent evt) {
+    public void commit(BeanEvent evt) {
         List<PrimeMaterial> data = getView().getModel().getData();
         dao.deleteAll();
         dao.insertAll(data);

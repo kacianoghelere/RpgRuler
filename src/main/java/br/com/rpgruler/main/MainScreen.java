@@ -111,8 +111,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }
 
     @Override
-    public void save(ActionEvent evt) {
-        listener.save(new BeanEvent(this, evt));
+    public void commit(ActionEvent evt) {
+        listener.commit(new BeanEvent(this, evt));
     }
 
     @Override
@@ -650,7 +650,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
-        save(evt);
+        commit(evt);
     }//GEN-LAST:event_jBSaveActionPerformed
 
     private void jBProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessActionPerformed
@@ -662,7 +662,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }//GEN-LAST:event_jBRefreshActionPerformed
 
     private void jMISaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISaveActionPerformed
-        save(evt);
+        commit(evt);
     }//GEN-LAST:event_jMISaveActionPerformed
 
     private void jMIProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIProcessActionPerformed
