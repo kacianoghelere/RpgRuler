@@ -74,7 +74,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public void insert(T entity) {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         db.store(entity);
         db.commit();
         db.close();
@@ -87,7 +87,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public void insertAll(List<T> entities) {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         for (T entity : entities) {
             db.store(entity);
         }
@@ -103,7 +103,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public void update(T entity) throws IllegalArgumentException, IllegalAccessException {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         Query query = db.query();
         query.constrain(objectClass);
         ObjectSet<T> get = db.queryByExample(entity);
@@ -120,7 +120,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public void deleteAll(List<T> entities) {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         for (T entity : entities) {
             ObjectSet<T> os = db.queryByExample(entity);
             db.delete(os.next());
@@ -134,7 +134,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public void deleteAll() {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         ObjectSet<T> query = db.query(objectClass);
         for (T t : query) {
             db.delete(t);
@@ -150,7 +150,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public void delete(T entity) {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         ObjectSet<T> os = db.queryByExample(entity);
         db.delete(os.next());
         db.commit();
@@ -176,7 +176,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public T queryByID(int id) {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         Query query = db.query();
         query.constrain(objectClass);
         query.descend("id").orderAscending();
@@ -200,7 +200,7 @@ public class GenericDAO<T> implements DAO<T> {
     @Override
     public List<T> queryByField(String field, Object value) {
         List<T> list = new ArrayList<>();
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         Query query = db.query();
         query.constrain(objectClass);
         query.descend(field).constrain(value);
