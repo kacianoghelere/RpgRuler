@@ -225,22 +225,32 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         switch (type) {
             case 1:
                 printMsg(text, INFORMATIVE_ICON);
-                System.out.println(SystemProperties.ANSI_BLUE + "(INFO) " + text);
+                System.out.println(SystemProperties.ANSI_BLUE
+                        + "(INFO) " + text
+                        + SystemProperties.ANSI_BLACK);
                 break;
             case 2:
                 printMsg(text, QUESTION_ICON);
-                System.out.println(SystemProperties.ANSI_BLUE + "(QUESTION) " + text);
+                System.out.println(SystemProperties.ANSI_BLUE
+                        + "(QUESTION) " + text
+                        + SystemProperties.ANSI_BLACK);
                 break;
             case 3:
                 printMsg(text, WARNING_ICON);
-                System.out.println(SystemProperties.ANSI_YELLOW + "(WARNING) " + text);
+                System.out.println(SystemProperties.ANSI_YELLOW
+                        + "(WARNING) " + text
+                        + SystemProperties.ANSI_BLACK);
                 break;
             case 4:
                 printMsg(text, ERROR_ICON);
-                System.out.println(SystemProperties.ANSI_RED + "(ERROR) " + text);
+                System.out.println(SystemProperties.ANSI_RED
+                        + "(ERROR) " + text
+                        + SystemProperties.ANSI_BLACK);
             case 5:
                 printMsg(text, SUCCESS_ICON);
-                System.out.println(SystemProperties.ANSI_GREEN + "(SUCCESS) " + text);
+                System.out.println(SystemProperties.ANSI_GREEN
+                        + "(SUCCESS) " + text
+                        + SystemProperties.ANSI_BLACK);
                 break;
             default:
                 throw new AssertionError();

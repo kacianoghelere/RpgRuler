@@ -22,7 +22,7 @@ import java.util.List;
 public class GenericDAO<T> implements DAO<T> {
 
     private Class<T> objectClass;
-    private String prefix = "db/";
+    private String dir = "db/";
     private String database;
     private String sufix = ".yap";
 
@@ -32,7 +32,7 @@ public class GenericDAO<T> implements DAO<T> {
     public GenericDAO() {
         this.objectClass = (Class<T>) ((ParameterizedType) (getClass()
                 .getGenericSuperclass())).getActualTypeArguments()[0];
-        this.database = prefix + (new EntityMap().getMap().get(objectClass)) + sufix;
+        this.database = dir + (new EntityMap().getMap().get(objectClass)) + sufix;
         File file = new File("db");
         if (!file.exists()) {
             file.mkdir();
@@ -45,7 +45,7 @@ public class GenericDAO<T> implements DAO<T> {
      * @return <code>ObjectContainer</code> Conexão com o banco
      */
     @Override
-    public ObjectContainer getDB() {
+    public ObjectContainer getClient() {
         return Db4o.openFile(database);
     }
 
@@ -56,7 +56,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public List<T> getList() {
-        ObjectContainer db = Db4o.openFile(database);
+        ObjectContainer db = getClient();
         Query query = db.query();
         query.constrain(objectClass);
         query.descend("id").orderAscending();
@@ -216,7 +216,7 @@ public class GenericDAO<T> implements DAO<T> {
      * @return <code>Class(?)</code> Classe do DAO
      */
     @Override
-    public Class<T> getObjectClass() {
+    public Class<T> getObjClass() {
         return objectClass;
     }
 
@@ -226,7 +226,7 @@ public class GenericDAO<T> implements DAO<T> {
      * @param oClass <code>Class(?)</code> Classe do DAO
      */
     @Override
-    public void setObjectClass(Class<T> oClass) {
+    public void setObjClass(Class<T> oClass) {
         this.objectClass = oClass;
     }
 
@@ -236,18 +236,17 @@ public class GenericDAO<T> implements DAO<T> {
      * @return <code>String</code> Prefixo da base de dados
      */
     @Override
-    public String getPrefix() {
-        return prefix;
+    public String getDir() {
+        return dir;
     }
 
     /**
      * Modifica o prefixo da base de dados (Caminho do arquivo)
      *
-     * @param prefix <code>String</code> Prefixo da base de dados
+     * @param dir <code>String</code> Prefixo da base de dados
      */
-    @Override
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
+    public void setDir(String dir) {
+        this.dir = dir;
     }
 
     /**
@@ -286,9 +285,7 @@ public class GenericDAO<T> implements DAO<T> {
      * @param sufix <code>String</code> Sufixo da base de dados (Extensão do
      * arquivo)
      */
-    @Override
     public void setSufix(String sufix) {
         this.sufix = sufix;
     }
-
 }

@@ -35,7 +35,7 @@ public interface DAO<T> {
      *
      * @return <code>ObjectContainer</code> Conexão com o banco
      */
-    ObjectContainer getDB();
+    ObjectContainer getClient();
 
     /**
      * Retorna o nome da base de dados
@@ -56,14 +56,14 @@ public interface DAO<T> {
      *
      * @return <code>Class(?)</code> Classe do DAO
      */
-    Class<T> getObjectClass();
+    Class<T> getObjClass();
 
     /**
      * Retorna o prefixo da base de dados (Caminho do arquivo)
      *
      * @return <code>String</code> Prefixo da base de dados
      */
-    String getPrefix();
+    String getDir();
 
     /**
      * Retorna o sufixo da base de dados (Extensão do arquivo)
@@ -122,22 +122,7 @@ public interface DAO<T> {
      *
      * @param oClass <code>Class(?)</code> Classe do DAO
      */
-    void setObjectClass(Class<T> oClass);
-
-    /**
-     * Modifica o prefixo da base de dados (Caminho do arquivo)
-     *
-     * @param prefix <code>String</code> Prefixo da base de dados
-     */
-    void setPrefix(String prefix);
-
-    /**
-     * Modifica o sufixo da base de dados (Extensão do arquivo)
-     *
-     * @param sufix <code>String</code> Sufixo da base de dados (Extensão do
-     * arquivo)
-     */
-    void setSufix(String sufix);
+    void setObjClass(Class<T> oClass);
 
     /**
      * Atualiza a entidade
