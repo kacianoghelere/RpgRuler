@@ -7,8 +7,9 @@ import javax.swing.JComponent;
  * Interface para Views
  *
  * @author kaciano
+ * @param <T> Tipo do Bean
  */
-public interface ViewListener {
+public interface ViewListener<T> {
 
     /**
      * Retorna se a View pode salvar
@@ -103,7 +104,7 @@ public interface ViewListener {
      *
      * @return <code>BeanListener</code>
      */
-    BeanListener getBean();
+    <T> BeanListener getBean();
 
     /**
      * Retorna a tela principal

@@ -1,7 +1,12 @@
 package br.com.rpgruler.system;
 
+import br.com.gmp.utils.annotations.Intercept;
+import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
 import br.com.rpgruler.main.MainScreen;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -24,7 +29,16 @@ public class SystemControl {
                 + "\nVersão do Java: " + SystemProperties.JAVA_VERSION
                 + "\nUsuário: " + SystemProperties.USER_NAME.toUpperCase()
                 + "\nPasta principal: " + SystemProperties.USER_HOME
-                + "\n-------------------------------------------------");
+                + "\n-------------------------------------------------\n");
+    }
+
+    /**
+     * Carrega a tela principal
+     *
+     * @return <code>SystemControl</code>
+     */
+    @Intercept
+    public SystemControl loadScreen() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -32,6 +46,7 @@ public class SystemControl {
                 new MainScreen().setVisible(true);
             }
         });
+        return this;
     }
 
     /**
@@ -45,6 +60,8 @@ public class SystemControl {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(SystemControl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        SystemControl systemControl = new SystemControl();
+        Injector injector = Guice.createInjector(new InterceptorModule());
+        SystemControl controls = injector.getInstance(SystemControl.class);
+        controls.loadScreen();
     }
 }

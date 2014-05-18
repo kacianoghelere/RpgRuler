@@ -30,8 +30,9 @@ import javax.swing.event.InternalFrameEvent;
  *
  * @author kaciano
  * @version 1.0
+ * @param <T> Tipo do Bean
  */
-public abstract class View extends JInternalFrame implements ViewListener {
+public abstract class View<T> extends JInternalFrame implements ViewListener<T> {
 
     private final MainScreen mainScreen;
     private Boolean canSave;
@@ -309,7 +310,7 @@ public abstract class View extends JInternalFrame implements ViewListener {
     }
 
     @Override
-    public abstract BeanListener getBean();
+    public abstract <T> BeanListener getBean();
 
     @Override
     public MainScreen getMainScreen() {

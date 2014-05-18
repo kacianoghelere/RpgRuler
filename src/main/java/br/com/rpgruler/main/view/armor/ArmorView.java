@@ -2,7 +2,6 @@ package br.com.rpgruler.main.view.armor;
 
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
-import br.com.gmp.utils.object.ObjectDescript;
 import br.com.rpgruler.data.db.dao.ArmorDAO;
 import br.com.rpgruler.data.entity.Armor;
 import br.com.rpgruler.main.MainScreen;
@@ -13,7 +12,6 @@ import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.armor.bean.ArmorBean;
 import br.com.rpgruler.main.view.armor.sub.ArmorSubView;
 import br.com.rpgruler.main.view.armor.model.ArmorModel;
-import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.util.List;
@@ -24,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author kaciano
  */
-public class ArmorView extends View implements TableView, TableSource<Armor> {
+public class ArmorView extends View<ArmorBean> implements TableView, TableSource<Armor> {
 
     private ArmorBean bean;
     private ArmorModel model;
@@ -60,7 +58,7 @@ public class ArmorView extends View implements TableView, TableSource<Armor> {
 
     @Override
     public ArmorBean getBean() {
-        return this.bean;
+        return bean;
     }
 
     @Override
