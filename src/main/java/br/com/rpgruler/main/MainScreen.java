@@ -1,5 +1,6 @@
 package br.com.rpgruler.main;
 
+import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
 import br.com.rpgruler.main.bean.MainScreenBean;
 import br.com.rpgruler.main.interfaces.Main;
@@ -20,6 +21,8 @@ import br.com.rpgruler.main.view.terms.TermsView;
 import br.com.rpgruler.main.view.menuitem.MenuItemView;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import br.com.rpgruler.main.view.weapontype.WeaponTypeView;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -85,6 +88,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     public static String WARNING_ICON = "/ComponentIcons/transition/toolbar/3.png";
     private final String ICON = "/dices/d12-icon.png";
     private MainListener listener;
+    private Injector injector;
 
     /**
      * Cria novo MainScreen
@@ -106,7 +110,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         initComponents();
         setControls(new ViewParameter(false, false, false, false));
         //setExtendedState(Frame.MAXIMIZED_BOTH);
-        listener = new MainScreenBean(this);
+        injector = Guice.createInjector(new InterceptorModule());
+        listener = injector.getInstance(MainScreenBean.class);
+        listener.setScreen(this);
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
     }
 

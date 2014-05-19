@@ -1,5 +1,6 @@
 package br.com.rpgruler.main.interfaces;
 
+import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 
@@ -63,4 +64,18 @@ public interface MainListener {
      * @param view <code>View</code> View
      */
     void insertView(View view);
+
+    /**
+     * Retorna a tela principal
+     *
+     * @return <code>MainScreen</code> Tela principal
+     */
+    MainScreen getScreen();
+
+    /**
+     * Modifica a tela principal
+     *
+     * @param screen <code>MainScreen</code> Tela principal
+     */
+    void setScreen(MainScreen screen);
 }

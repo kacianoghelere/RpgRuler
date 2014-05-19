@@ -1,7 +1,7 @@
 package br.com.rpgruler.main.bean;
 
+import br.com.gmp.utils.annotations.Intercept;
 import br.com.rpgruler.main.MainScreen;
-import br.com.rpgruler.main.actions.*;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
@@ -21,11 +21,14 @@ import javax.swing.JInternalFrame;
 public class MainScreenBean implements MainListener {
 
     private View actualView;
-    private final MainScreen screen;
-    private FrameAction saveAction;
-    private FrameAction proccesAction;
-    private FrameAction clearAction;
-    private FrameAction loadAction;
+    private MainScreen screen;
+
+    /**
+     * Cria nova instancia de MainScreenBean
+     */
+    public MainScreenBean() {
+        this.screen = null;
+    }
 
     /**
      * Cria nova instancia de MainScreenBean
@@ -36,7 +39,7 @@ public class MainScreenBean implements MainListener {
         this.screen = mainScreen;
     }
 
-
+    @Intercept
     @Override
     public void commit(BeanEvent evt) {
         if (getActualView() != null && getActualView().canCommit()) {
@@ -46,6 +49,7 @@ public class MainScreenBean implements MainListener {
         }
     }
 
+    @Intercept
     @Override
     public void process(BeanEvent evt) {
         if (getActualView() != null && getActualView().canProcces()) {
@@ -55,6 +59,7 @@ public class MainScreenBean implements MainListener {
         }
     }
 
+    @Intercept
     @Override
     public void clear(BeanEvent evt) {
         if (getActualView() != null && getActualView().canClear()) {
@@ -64,6 +69,7 @@ public class MainScreenBean implements MainListener {
         }
     }
 
+    @Intercept
     @Override
     public void load(BeanEvent evt) {
         if (getActualView() != null && getActualView().canLoad()) {
@@ -149,8 +155,27 @@ public class MainScreenBean implements MainListener {
     /**
      * Remove todos os frames da tela principal
      */
+    @Intercept
     public void clearDesktop() {
         screen.getDesktop().removeAll();
+    }
+
+    /**
+     * Retorna a tela principal
+     *
+     * @return <code>MainScreen</code> Tela principal
+     */
+    public MainScreen getScreen() {
+        return screen;
+    }
+
+    /**
+     * Modifica a tela principal
+     *
+     * @param screen <code>MainScreen</code> Tela principal
+     */
+    public void setScreen(MainScreen screen) {
+        this.screen = screen;
     }
 
 }
