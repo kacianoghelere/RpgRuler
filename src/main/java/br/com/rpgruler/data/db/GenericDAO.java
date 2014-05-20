@@ -185,7 +185,7 @@ public class GenericDAO<T> implements DAO<T> {
         ObjectSet<T> os = query.execute();
         List<T> list = new ArrayList<>();
         list.addAll(os);
-        db.close();
+        db.close();        
         for (T entity : list) {
             return entity;
         }
