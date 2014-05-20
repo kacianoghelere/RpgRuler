@@ -165,8 +165,7 @@ public class MainScreenBean implements MainListener {
                 screen.getDesktop().setSelectedFrame(view);
                 view.setSelected(true);
             } catch (PropertyVetoException ex) {
-                Logger.getLogger(MainScreenBean.class.getName())
-                        .log(Level.SEVERE, null, ex);
+                Logger.getLogger(MainScreenBean.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("View já está aberta");
