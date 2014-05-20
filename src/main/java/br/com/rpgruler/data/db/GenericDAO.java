@@ -31,7 +31,6 @@ public class GenericDAO<T> implements DAO<T> {
      * Cria nova instancia de GenericDAO
      */
     public GenericDAO() {
-
         this.objectClass = (Class<T>) ((ParameterizedType) (getClass()
                 .getGenericSuperclass())).getActualTypeArguments()[0];
         File file = new File(dir);
@@ -60,8 +59,11 @@ public class GenericDAO<T> implements DAO<T> {
     public List<T> getList() {
         ObjectContainer db = getClient();
         Query query = db.query();
-        query.constrain(objectClass);
-        query.descend("id").orderAscending();
+        query = new QueryBuilder(query)
+                .constrain(objectClass)
+                .descend("id")
+                .orderAscending()
+                .ready();
         ObjectSet os = query.execute();
         List<T> objs = new ArrayList<>();
         objs.addAll(os);
@@ -106,8 +108,6 @@ public class GenericDAO<T> implements DAO<T> {
     @Override
     public void update(T entity) throws IllegalArgumentException, IllegalAccessException {
         ObjectContainer db = getClient();
-        Query query = db.query();
-        query.constrain(objectClass);
         ObjectSet<T> get = db.queryByExample(entity);
         ObjectCopy.copy(entity, get);
         db.store(get);
@@ -180,8 +180,12 @@ public class GenericDAO<T> implements DAO<T> {
     public T queryByID(int id) {
         ObjectContainer db = getClient();
         Query query = db.query();
-        query.constrain(objectClass);
-        query.descend("id").orderAscending();
+        query = new QueryBuilder(query)
+                .constrain(objectClass)
+                .searchFor("id", id)
+                .descend("id")
+                .orderAscending()
+                .ready();
         ObjectSet<T> os = query.execute();
         List<T> list = new ArrayList<>();
         list.addAll(os);
@@ -204,8 +208,12 @@ public class GenericDAO<T> implements DAO<T> {
         List<T> list = new ArrayList<>();
         ObjectContainer db = getClient();
         Query query = db.query();
-        query.constrain(objectClass);
-        query.descend(field).constrain(value);
+        query = new QueryBuilder(query)
+                .constrain(objectClass)
+                .searchFor(field, value)
+                .descend("id")
+                .orderAscending()
+                .ready();
         ObjectSet<T> os = query.execute();
         list.addAll(os);
         db.close();

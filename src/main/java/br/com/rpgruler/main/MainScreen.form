@@ -101,13 +101,13 @@
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMInfo">
+        <Menu class="javax.swing.JMenu" name="jMRoot">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/RpgIcons/misc/slice1214_.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es"/>
-            <Property name="name" type="java.lang.String" value="jMInfo" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jMRoot" noResource="true"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMIRegPerk">
@@ -259,12 +259,6 @@
               </SubComponents>
             </Menu>
           </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMRoot">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Root"/>
-            <Property name="name" type="java.lang.String" value="jMRoot" noResource="true"/>
-          </Properties>
         </Menu>
       </SubComponents>
     </Menu>
@@ -470,6 +464,9 @@
               <Dimension value="[170, 28]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="gTViewKeyReleased"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

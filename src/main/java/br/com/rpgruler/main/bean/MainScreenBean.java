@@ -1,11 +1,15 @@
 package br.com.rpgruler.main.bean;
 
 import br.com.gmp.utils.annotations.Intercept;
+import br.com.gmp.utils.reflection.ObjectInstance;
+import br.com.gmp.utils.reflection.ReflectionUtil;
+import br.com.rpgruler.data.entity.MenuItem;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.object.ViewParameter;
+import com.sun.glass.ui.Screen;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
 import java.util.HashMap;
@@ -24,7 +28,7 @@ public class MainScreenBean implements MainListener {
 
     private View actualView;
     private MainScreen screen;
-    private Map<String, View> viewMap;
+    private Map<String, MenuItem> viewMap;
 
     /**
      * Cria nova instancia de MainScreenBean
@@ -109,12 +113,37 @@ public class MainScreenBean implements MainListener {
     }
 
     @Override
+    public Boolean searchView(String prefix) {
+        boolean found = false;
+        for (Map.Entry<String, MenuItem> entry : viewMap.entrySet()) {
+            System.out.println(prefix + " == " + entry.getKey() + "?");
+            if (prefix.equalsIgnoreCase(entry.getKey())) {
+                try {
+                    ReflectionUtil reflect = new ReflectionUtil();
+                    Class<?> objClass = Class.forName(entry.getValue().getViewClass());
+                    Class<?>[] argTypes = new Class[]{MainScreen.class};
+                    Object[] arguments = new Object[]{screen};
+                    ObjectInstance inst = new ObjectInstance(objClass, argTypes, arguments);
+                    View newView = (View) reflect.newInstance(inst);
+                    insertView(newView);
+                    found = true;
+                } catch (ClassNotFoundException | InstantiationException ex) {
+                    Logger.getLogger(MainScreenBean.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            }
+        }
+        return found;
+    }
+
+    @Override
     public void clear() {
         if (screen.getDesktop().getAllFrames().length == 0) {
             this.screen.setControls(new ViewParameter(false, false, false, false));
         }
     }
 
+    @Intercept
     @Override
     public void insertView(View view) {
         if (!isOnDesktop(view)) {
@@ -190,6 +219,11 @@ public class MainScreenBean implements MainListener {
     @Override
     public void setScreen(MainScreen screen) {
         this.screen = screen;
+    }
+
+    @Override
+    public Map<String, MenuItem> getViewMap() {
+        return viewMap;
     }
 
 }

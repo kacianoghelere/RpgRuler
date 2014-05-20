@@ -2,6 +2,7 @@ package br.com.rpgruler.data.entity;
 
 import br.com.gmp.comps.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
+import br.com.gmp.utils.object.StringUtil;
 import java.util.Objects;
 
 /**
@@ -85,7 +86,8 @@ public class MenuItem implements Comparable<MenuItem> {
 
     @Override
     public String toString() {
-        return id + " - " + title;
+        String number = new StringUtil().completeWithZeros(3, id);
+        return "V" + number + " - " + title;
     }
 
     /**

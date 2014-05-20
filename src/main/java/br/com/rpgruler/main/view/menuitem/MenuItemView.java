@@ -184,6 +184,9 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
             }
         ));
         gTable.setOpaque(false);
+        gTable.setPreferredScrollableViewportSize(new java.awt.Dimension(450, 500));
+        gTable.setPreferredSize(new java.awt.Dimension(280, 500));
+        gTable.setRowHeight(22);
         jScrollPane.setViewportView(gTable);
 
         jLTitle.setText("Titulo:");
@@ -270,6 +273,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBIcon, gTTitle});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBMenu, jBAdd});
 
     }// </editor-fold>//GEN-END:initComponents
 

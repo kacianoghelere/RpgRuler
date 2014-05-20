@@ -102,6 +102,7 @@ public interface ViewListener<T> {
     /**
      * Retorna o Bean da View
      *
+     * @param <T> Tipo de Retorno
      * @return <code>BeanListener</code>
      */
     <T> BeanListener getBean();

@@ -1,8 +1,10 @@
 package br.com.rpgruler.main.interfaces;
 
+import br.com.rpgruler.data.entity.MenuItem;
 import br.com.rpgruler.main.MainScreen;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
+import java.util.Map;
 
 /**
  * Interface do bean para a tela principal
@@ -78,4 +80,19 @@ public interface MainListener {
      * @param screen <code>MainScreen</code> Tela principal
      */
     void setScreen(MainScreen screen);
+
+    /**
+     * Retorna o mapa das views carregadas
+     *
+     * @return <code>Map(String, MenuItem)</code> Mapa das views carregadas
+     */
+    Map<String, MenuItem> getViewMap();
+
+    /**
+     * Faz a busca das views pelo prefixo indicado, caso exista, carrega na tela
+     *
+     * @param prefix <code>String</code> Prefixo da View
+     * @return <code>Boolean</code> A view foi encontrada?
+     */
+    Boolean searchView(String prefix);
 }

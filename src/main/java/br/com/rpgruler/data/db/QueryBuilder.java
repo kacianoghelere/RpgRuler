@@ -84,4 +84,22 @@ public class QueryBuilder {
         return query;
     }
 
+    /**
+     * Retorna a criteria utilizada no builder
+     *
+     * @return <code>Query</code> Query construida
+     */
+    public Query getQuery() {
+        return query;
+    }
+
+    /**
+     * Modifica a criteria utilizada no builder
+     *
+     * @param query <code>Query</code> Query utilizada
+     */
+    public void setQuery(Query query) {
+        this.query = query;
+    }
+
 }

@@ -23,7 +23,9 @@ import br.com.rpgruler.main.view.object.ViewParameter;
 import br.com.rpgruler.main.view.weapontype.WeaponTypeView;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -95,11 +97,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      */
     public MainScreen() {
         initialize();
-        try {
-            new MenuBuilder(this, jMRoot).build();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**
@@ -114,6 +111,47 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         listener = injector.getInstance(MainScreenBean.class);
         listener.setScreen(this);
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
+        loadRootMenu();
+        //printViews();
+    }
+
+    /**
+     * Carrega o menu principal com as views no banco de dados
+     */
+    private void loadRootMenu() {
+        try {
+            MenuBuilder builder = injector.getInstance(MenuBuilder.class);
+            builder.setMainScreen(this);
+            builder.setRoot(jMRoot);
+            builder.build();
+        } catch (ClassNotFoundException | InstantiationException ex) {
+            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Método que efetua a impressão de todas as views geradas
+     */
+    private void printViews() {
+        File viewDir = new File("src/main/java/br/com/rpgruler/main/view");
+        printChild(viewDir);
+    }
+
+    /**
+     * Imprime as pastas e arquivos dentro do diretório indicado
+     *
+     * @param dir <code>File</code> Diretório
+     */
+    private void printChild(File dir) {
+        for (File file : dir.listFiles()) {
+            if (file.isDirectory()) {
+                printChild(file);
+            }
+            if (file.getPath().endsWith("View.java")
+                    && !file.getPath().endsWith("SubView.java")) {
+                System.out.println(file.getPath().substring(14).replaceAll("/", "."));
+            }
+        }
     }
 
     @Override
@@ -252,6 +290,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 System.out.println(SystemProperties.ANSI_RED
                         + "(ERROR) " + text
                         + SystemProperties.ANSI_BLACK);
+                break;
             case 5:
                 printMsg(text, SUCCESS_ICON);
                 System.out.println(SystemProperties.ANSI_GREEN
@@ -277,7 +316,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @return <code>JMenu</code> Menu raiz
      */
     public JMenu getRoot() {
-        return jMInfo;
+        return jMRoot;
     }
 
     /**
@@ -308,7 +347,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMControls = new javax.swing.JMenu();
         jMIMenus = new javax.swing.JMenuItem();
         jMIViews = new javax.swing.JMenuItem();
-        jMInfo = new javax.swing.JMenu();
+        jMRoot = new javax.swing.JMenu();
         jMIRegPerk = new javax.swing.JMenuItem();
         jMIRegElement = new javax.swing.JMenuItem();
         jMIMaterials = new javax.swing.JMenuItem();
@@ -321,7 +360,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMArmors = new javax.swing.JMenu();
         jMIArmors = new javax.swing.JMenuItem();
         jMIArmorTypes = new javax.swing.JMenuItem();
-        jMRoot = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPG");
@@ -433,6 +471,11 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
         gTView.setName("gTView"); // NOI18N
         gTView.setPreferredSize(new java.awt.Dimension(170, 28));
+        gTView.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTViewKeyReleased(evt);
+            }
+        });
         jTBSearch.add(gTView);
 
         jMenuBar.setName("jMenuBar"); // NOI18N
@@ -509,9 +552,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
         jMenuBar.add(jMOptions);
 
-        jMInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
-        jMInfo.setText("Informações");
-        jMInfo.setName("jMInfo"); // NOI18N
+        jMRoot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
+        jMRoot.setText("Informações");
+        jMRoot.setName("jMRoot"); // NOI18N
 
         jMIRegPerk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1215_.png"))); // NOI18N
         jMIRegPerk.setMnemonic('v');
@@ -522,7 +565,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMIRegPerkActionPerformed(evt);
             }
         });
-        jMInfo.add(jMIRegPerk);
+        jMRoot.add(jMIRegPerk);
 
         jMIRegElement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
         jMIRegElement.setMnemonic('e');
@@ -533,7 +576,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMIRegElementActionPerformed(evt);
             }
         });
-        jMInfo.add(jMIRegElement);
+        jMRoot.add(jMIRegElement);
 
         jMIMaterials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1285_.png"))); // NOI18N
         jMIMaterials.setMnemonic('M');
@@ -544,7 +587,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMIMaterialsActionPerformed(evt);
             }
         });
-        jMInfo.add(jMIMaterials);
+        jMRoot.add(jMIMaterials);
 
         jMITerms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         jMITerms.setMnemonic('t');
@@ -555,7 +598,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMITermsActionPerformed(evt);
             }
         });
-        jMInfo.add(jMITerms);
+        jMRoot.add(jMITerms);
 
         jMIEffects.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/status/slice1390_@.png"))); // NOI18N
         jMIEffects.setMnemonic('f');
@@ -566,7 +609,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMIEffectsActionPerformed(evt);
             }
         });
-        jMInfo.add(jMIEffects);
+        jMRoot.add(jMIEffects);
 
         jMIExpertise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1352_@.png"))); // NOI18N
         jMIExpertise.setMnemonic('p');
@@ -577,7 +620,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMIExpertiseActionPerformed(evt);
             }
         });
-        jMInfo.add(jMIExpertise);
+        jMRoot.add(jMIExpertise);
 
         jMICharacter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1405_@.png"))); // NOI18N
         jMICharacter.setText("Personagens");
@@ -587,7 +630,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMICharacterActionPerformed(evt);
             }
         });
-        jMInfo.add(jMICharacter);
+        jMRoot.add(jMICharacter);
 
         jMWeapons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
         jMWeapons.setText("Armas");
@@ -603,7 +646,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMWeapons.add(jMIWeaponTypes);
 
-        jMInfo.add(jMWeapons);
+        jMRoot.add(jMWeapons);
 
         jMArmors.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DVK/DVK_3.png"))); // NOI18N
         jMArmors.setText("Armaduras");
@@ -629,12 +672,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMArmors.add(jMIArmorTypes);
 
-        jMInfo.add(jMArmors);
+        jMRoot.add(jMArmors);
 
-        jMenuBar.add(jMInfo);
-
-        jMRoot.setText("Root");
-        jMRoot.setName("jMRoot"); // NOI18N
         jMenuBar.add(jMRoot);
 
         setJMenuBar(jMenuBar);
@@ -754,6 +793,18 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         listener.insertView(new CharacterView(this));
     }//GEN-LAST:event_jMICharacterActionPerformed
 
+    private void gTViewKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTViewKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {    
+            boolean searchView = listener.searchView(gTView.getText());
+            if (searchView) {
+                printTypedMsg("View sendo carregada!", MainScreen.INFORMATIVE_MSG);
+                gTView.clear();
+            } else {
+                printTypedMsg("View não encontrada!", MainScreen.ERROR_MSG);
+            }
+        }
+    }//GEN-LAST:event_gTViewKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -781,7 +832,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JMenuItem jMITerms;
     private javax.swing.JMenuItem jMIViews;
     private javax.swing.JMenuItem jMIWeaponTypes;
-    private javax.swing.JMenu jMInfo;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenu jMRoot;
     private javax.swing.JMenu jMWeapons;
