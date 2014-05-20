@@ -432,6 +432,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jTBSearch.setName("jTBSearch"); // NOI18N
 
         gTView.setName("gTView"); // NOI18N
+        gTView.setPreferredSize(new java.awt.Dimension(170, 28));
         jTBSearch.add(gTView);
 
         jMenuBar.setName("jMenuBar"); // NOI18N

@@ -9,6 +9,7 @@ import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.menu.MenuView;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.ImageIcon;
 
@@ -126,12 +127,14 @@ public class MenuBean extends ViewBean<MenuView> {
      * @return <code>String[]</code> Nomes dos icones
      */
     private String[] getIcons() {
-        String path = "/RpgIcons/misc/";
+        String path = "/MenuIcons/";
         List<String> list = new ArrayList<>();
         File dir = new File(getClass().getResource(path).getFile());
         for (File file : dir.listFiles()) {
             list.add(path + file.getName());
         }
+        list.removeAll(Collections.singleton(null));
+        Collections.sort(list);
         return list.toArray(new String[]{});
     }
 

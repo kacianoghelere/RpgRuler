@@ -8,6 +8,8 @@ import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.object.ViewParameter;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
@@ -22,12 +24,14 @@ public class MainScreenBean implements MainListener {
 
     private View actualView;
     private MainScreen screen;
+    private Map<String, View> viewMap;
 
     /**
      * Cria nova instancia de MainScreenBean
      */
     public MainScreenBean() {
         this.screen = null;
+        this.initialize();
     }
 
     /**
@@ -37,6 +41,14 @@ public class MainScreenBean implements MainListener {
      */
     public MainScreenBean(MainScreen mainScreen) {
         this.screen = mainScreen;
+        this.initialize();
+    }
+
+    /**
+     * Método inicializador
+     */
+    private void initialize() {
+        this.viewMap = new HashMap<>();
     }
 
     @Intercept
@@ -165,6 +177,7 @@ public class MainScreenBean implements MainListener {
      *
      * @return <code>MainScreen</code> Tela principal
      */
+    @Override
     public MainScreen getScreen() {
         return screen;
     }
@@ -174,6 +187,7 @@ public class MainScreenBean implements MainListener {
      *
      * @param screen <code>MainScreen</code> Tela principal
      */
+    @Override
     public void setScreen(MainScreen screen) {
         this.screen = screen;
     }

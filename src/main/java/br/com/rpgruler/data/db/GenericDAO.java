@@ -2,6 +2,7 @@ package br.com.rpgruler.data.db;
 
 import br.com.rpgruler.data.db.interfaces.DAO;
 import br.com.gmp.utils.object.ObjectCopy;
+import br.com.gmp.utils.system.SystemProperties;
 import br.com.rpgruler.data.db.map.EntityMap;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -22,7 +23,7 @@ import java.util.List;
 public class GenericDAO<T> implements DAO<T> {
 
     private Class<T> objectClass;
-    private String dir = "db/";
+    private String dir = SystemProperties.USER_HOME + "/.config/rpg/";
     private String database;
     private String sufix = ".yap";
 
@@ -30,13 +31,14 @@ public class GenericDAO<T> implements DAO<T> {
      * Cria nova instancia de GenericDAO
      */
     public GenericDAO() {
+
         this.objectClass = (Class<T>) ((ParameterizedType) (getClass()
                 .getGenericSuperclass())).getActualTypeArguments()[0];
-        this.database = dir + (new EntityMap().getMap().get(objectClass)) + sufix;
-        File file = new File("db");
+        File file = new File(dir);
         if (!file.exists()) {
             file.mkdir();
-        }
+        }        
+        this.database = dir + (new EntityMap().getMap().get(objectClass)) + sufix;
     }
 
     /**

@@ -183,6 +183,23 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
         this.description = description;
     }
 
+    /**
+     * Retorna a sigla da View
+     *
+     * @return Sigla da View
+     */
+    public String getAlias() {
+        return alias;
+    }
+
+    /**
+     * 
+     * @param alias Sigla da View
+     */
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
     @Override
     public void commit() {
         try {
