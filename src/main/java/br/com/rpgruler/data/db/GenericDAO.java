@@ -37,7 +37,7 @@ public class GenericDAO<T> implements DAO<T> {
         File file = new File(dir);
         if (!file.exists()) {
             file.mkdir();
-        }        
+        }
         this.database = dir + (new EntityMap().getMap().get(objectClass)) + sufix;
     }
 
@@ -185,7 +185,7 @@ public class GenericDAO<T> implements DAO<T> {
         ObjectSet<T> os = query.execute();
         List<T> list = new ArrayList<>();
         list.addAll(os);
-        db.close();        
+        db.close();
         for (T entity : list) {
             return entity;
         }
