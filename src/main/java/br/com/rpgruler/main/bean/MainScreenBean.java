@@ -9,7 +9,6 @@ import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import com.sun.glass.ui.Screen;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
 import java.util.HashMap;
