@@ -2,7 +2,9 @@ package br.com.rpgruler.main.view.object;
 
 import br.com.rpgruler.main.view.View;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Involcro para transporte de dados entre views e beans
@@ -14,7 +16,8 @@ import java.util.List;
 public class ViewWrapper {
 
     private View view;
-    private List<Object> values = new ArrayList<>();
+    private final List<Object> list = new ArrayList<>();
+    private final Map<String, Object> map = new HashMap<>();
 
     /**
      * Cria nova instancia de ViewWrapper
@@ -26,13 +29,25 @@ public class ViewWrapper {
     }
 
     /**
-     * Adiciona novo valor para ser transportado
+     * Adiciona novo valor na lista para ser transportado
      *
      * @param value <code>Object</code> Valor à ser transportado
      * @return <code>ViewWrapper</code> Wrapper
      */
     public ViewWrapper addValue(Object value) {
-        values.add(value);
+        list.add(value);
+        return this;
+    }
+
+    /**
+     * Adiciona novo valor no mapa para ser transportado
+     *
+     * @param key <code>String</code> Chave do valor
+     * @param value <code>Object</code> Valor à ser transportado
+     * @return <code>ViewWrapper</code> Wrapper
+     */
+    public ViewWrapper addValue(String key, Object value) {
+        map.put(key, value);
         return this;
     }
 
@@ -41,16 +56,43 @@ public class ViewWrapper {
      *
      * @param index <code>int</code> Posição do objeto
      * @return <code>Object</code> Valor transportado
+     * @throws java.lang.Exception Exceção lançada
      */
-    public Object getValue(int index) {
-        return values.get(index);
+    public Object getValue(int index) throws Exception {
+        return list.get(index);
     }
 
     /**
-     * Limpa os valores carregados
+     * Retorna o objeto carregado na posição indicada
+     *
+     * @param key <code>int</code> Chave do objeto
+     * @return <code>Object</code> Valor transportado
+     * @throws java.lang.Exception Exceção lançada
+     */
+    public Object getValue(String key) throws Exception {
+        return map.get(key);
+    }
+
+    /**
+     * Limpa todos os valores carregados
      */
     public void clear() {
-        values.clear();
+        list.clear();
+        map.clear();
+    }
+
+    /**
+     * Limpa todos os valores carregados na lista
+     */
+    public void clearList() {
+        list.clear();
+    }
+
+    /**
+     * Limpa todos os valores carregados no mapa
+     */
+    public void clearMap() {
+        map.clear();
     }
 
     /**
@@ -72,21 +114,21 @@ public class ViewWrapper {
     }
 
     /**
-     * Retorna a lista de valores a serem transportados
+     * Retorna a lista de valores transportados
      *
      * @return <code>List(Object)</code> Lista de valores
      */
-    public List<Object> getValues() {
-        return values;
+    public List<Object> getList() {
+        return list;
     }
 
     /**
-     * Modifica a lista de valores a serem transportados
+     * Retorna o mapa de valores transportados
      *
-     * @param values <code>List(Object)</code> Lista de valores
+     * @return <code>Map(String, Object)</code> Mapa de valores
      */
-    public void setValues(List<Object> values) {
-        this.values = values;
+    public Map<String, Object> getMap() {
+        return map;
     }
 
 }

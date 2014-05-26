@@ -70,7 +70,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     }
 
     @Override
-    public void add() {
+    public void add() throws Exception {
         if (gTTitle.validateComponent()) {
             if (gCBIcon.validateComponent()) {
                 if (gTClass.validateComponent()) {
@@ -279,7 +279,11 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
-        add();
+        try {
+            add();
+        } catch (Exception ex) {
+            Logger.getLogger(MenuItemView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed

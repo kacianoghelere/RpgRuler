@@ -13,8 +13,10 @@ public interface TableView {
 
     /**
      * Adiciona um item na tabela
+     *
+     * @throws java.lang.Exception Exceção lançada
      */
-    void add();
+    void add() throws Exception;
 
     /**
      * Remove um item na tabela

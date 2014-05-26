@@ -9,6 +9,8 @@ import br.com.rpgruler.main.view.element.ElementView;
 import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -49,12 +51,16 @@ public class ElementBean extends ViewBean<ElementView> {
 
     @Override
     public void add(BeanEvent evt) {
-        ViewWrapper vw = (ViewWrapper) evt.getValue();
-        String title = (String) vw.getValue(0);
-        int symbol = (int) vw.getValue(1);
-        Element bonus = (Element) vw.getValue(2);
-        Element weak = (Element) vw.getValue(3);
-        add(title, symbol, bonus, weak);
+        try {
+            ViewWrapper vw = (ViewWrapper) evt.getValue();
+            String title = (String) vw.getValue(0);
+            int symbol = (int) vw.getValue(1);
+            Element bonus = (Element) vw.getValue(2);
+            Element weak = (Element) vw.getValue(3);
+            add(title, symbol, bonus, weak);
+        } catch (Exception ex) {
+            Logger.getLogger(ElementBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

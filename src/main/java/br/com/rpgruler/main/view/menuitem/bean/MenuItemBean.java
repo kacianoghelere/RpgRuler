@@ -45,9 +45,10 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      * Adiciona novo item na tabela
      *
      * @param evt <code>BeanEvent</code> Evento do bean
+     * @throws java.lang.Exception Exceção lançada
      */
     @Override
-    public void add(BeanEvent evt) {
+    public void add(BeanEvent evt) throws Exception {
         ViewWrapper vw = (ViewWrapper) evt.getValue();
         String title = (String) vw.getValue(0);
         Integer icon = (Integer) vw.getValue(1);
@@ -91,7 +92,7 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      */
     private String[] getIcons() {
         String path = "/MenuIcons/";
-        List<String> list = new ArrayList<>();        
+        List<String> list = new ArrayList<>();
         File dir = new File(getClass().getResource(path).getFile());
         for (File file : dir.listFiles()) {
             list.add(path + file.getName());

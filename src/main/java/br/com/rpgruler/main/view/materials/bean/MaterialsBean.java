@@ -7,6 +7,8 @@ import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Bean para controle da tela de materiais
@@ -42,14 +44,18 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
      */
     @Override
     public void add(BeanEvent evt) {
-        ViewWrapper vw = evt.getWrapper();
-        PrimeMaterial pm = new PrimeMaterial();
-        pm.setId(getNextID());
-        pm.setName((String) vw.getValue(0));
-        pm.setMaterialClass((Integer) vw.getValue(1));
-        pm.setWeight((Double) vw.getValue(2));
-        pm.setResistence(pm.getWeight() * pm.getMaterialClass());
-        getView().getModel().add(pm);
+        try {
+            ViewWrapper vw = evt.getWrapper();
+            PrimeMaterial pm = new PrimeMaterial();
+            pm.setId(getNextID());
+            pm.setName((String) vw.getValue(0));
+            pm.setMaterialClass((Integer) vw.getValue(1));
+            pm.setWeight((Double) vw.getValue(2));
+            pm.setResistence(pm.getWeight() * pm.getMaterialClass());
+            getView().getModel().add(pm);
+        } catch (Exception ex) {
+            Logger.getLogger(MaterialsBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
