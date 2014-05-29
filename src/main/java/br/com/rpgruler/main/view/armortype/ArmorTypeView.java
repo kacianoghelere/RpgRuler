@@ -3,6 +3,7 @@ package br.com.rpgruler.main.view.armortype;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.entity.ArmorType;
 import br.com.rpgruler.main.MainScreen;
@@ -13,7 +14,6 @@ import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.armortype.model.ArmorTypeModel;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,12 +71,12 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
     @Override
     public void add() {
         try {
-            if (gTName.validateComponent()) {
-                ViewWrapper vw = new ViewWrapper(this)
-                        .addValue(gTName.getText())
-                        .addValue((Double) jSpQtd1.getValue())
-                        .addValue((Double) jSpQtd2.getValue())
-                        .addValue(nTResBase.getDouble());
+            if (gTTitle.validateComponent()) {
+                ObjectWrapper vw = new ObjectWrapper(this)
+                        .addValue("title", gTTitle.getText())
+                        .addValue("qtd1", (Double) jSpQtd1.getValue())
+                        .addValue("qtd2", (Double) jSpQtd2.getValue())
+                        .addValue("resbase", nTResBase.getDouble());
                 bean.add(new BeanEvent(vw));
             }
         } catch (NumberFormatException e) {
@@ -132,7 +132,7 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
 
         jScrollPane1 = new javax.swing.JScrollPane();
         gTable = new br.com.gmp.comps.table.GTable();
-        gTName = new br.com.gmp.comps.textfield.GTextField();
+        gTTitle = new br.com.gmp.comps.textfield.GTextField();
         jLName = new javax.swing.JLabel();
         nTResBase = new br.com.gmp.comps.textfield.NumericTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -211,7 +211,7 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gTName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,7 +239,7 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLName))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(nTResBase, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,7 +272,7 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
     }//GEN-LAST:event_jBRemoveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.textfield.GTextField gTName;
+    private br.com.gmp.comps.textfield.GTextField gTTitle;
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;

@@ -1,11 +1,11 @@
 package br.com.rpgruler.main.view.materials.bean;
 
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entity.PrimeMaterial;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.materials.MaterialsView;
 import br.com.rpgruler.main.view.bean.ViewBean;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,12 +45,12 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
     @Override
     public void add(BeanEvent evt) {
         try {
-            ViewWrapper vw = evt.getWrapper();
+            ObjectWrapper vw = evt.getWrapper();
             PrimeMaterial pm = new PrimeMaterial();
             pm.setId(getNextID());
-            pm.setName((String) vw.getValue(0));
-            pm.setMaterialClass((Integer) vw.getValue(1));
-            pm.setWeight((Double) vw.getValue(2));
+            pm.setName((String) vw.getValue("name"));
+            pm.setMaterialClass((Integer) vw.getValue("category"));
+            pm.setWeight((Double) vw.getValue("weight"));
             pm.setResistence(pm.getWeight() * pm.getMaterialClass());
             getView().getModel().add(pm);
         } catch (Exception ex) {

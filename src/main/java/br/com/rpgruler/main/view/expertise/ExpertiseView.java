@@ -3,6 +3,7 @@ package br.com.rpgruler.main.view.expertise;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.ExpertiseDAO;
 import br.com.rpgruler.data.entity.Attribute;
 import br.com.rpgruler.data.entity.Expertise;
@@ -16,7 +17,6 @@ import br.com.rpgruler.main.view.expertise.bean.ExpertiseBean;
 import br.com.rpgruler.main.view.expertise.model.ExpertiseModel;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,11 +75,11 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     public void add() {
         if (gTTitle.validateComponent() && gCBAttribute.validateComponent()) {
             try {
-                ViewWrapper vw = new ViewWrapper(this)
-                        .addValue(gTTitle.getText())
-                        .addValue(attrModel.getSelectedItem())
-                        .addValue(typeModel.getSelectedItem())
-                        .addValue((Integer) jSpinValue.getValue());
+                ObjectWrapper vw = new ObjectWrapper(this)
+                        .addValue("title", gTTitle.getText())
+                        .addValue("attr", attrModel.getSelectedItem())
+                        .addValue("type", typeModel.getSelectedItem())
+                        .addValue("value", (Integer) jSpinValue.getValue());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
                 Logger.getLogger(ExpertiseView.class.getName()).log(Level.SEVERE, null, ex);

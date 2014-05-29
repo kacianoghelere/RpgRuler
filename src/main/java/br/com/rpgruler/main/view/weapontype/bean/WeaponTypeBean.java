@@ -1,5 +1,6 @@
 package br.com.rpgruler.main.view.weapontype.bean;
 
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.WeaponTypeDAO;
 import br.com.rpgruler.data.db.dao.UseTypeDAO;
 import br.com.rpgruler.data.db.dao.WeaponSizeDAO;
@@ -8,7 +9,6 @@ import br.com.rpgruler.data.entity.UseType;
 import br.com.rpgruler.data.entity.WeaponSize;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import br.com.rpgruler.main.view.weapontype.WeaponTypeView;
 
 /**
@@ -44,17 +44,17 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     @Override
     public void add(BeanEvent evt) throws Exception {
         Long nextID = getNextID();
-        ViewWrapper vw = evt.getWrapper();
+        ObjectWrapper ow = evt.getWrapper();
         WeaponType type = new WeaponType();
         type.setId(nextID);
-        type.setTitle((String) vw.getValue(0));
-        type.setCategory((Integer) vw.getValue(1));
-        type.setDamageBase((Double) vw.getValue(2));
-        type.setWearType((UseType) vw.getValue(3));
-        type.setMaterialAmount1((Double) vw.getValue(4));
-        type.setMaterialAmount2((Double) vw.getValue(5));
-        type.setSize((WeaponSize) vw.getValue(6));
-        type.setRange((Integer) vw.getValue(7));
+        type.setTitle((String) ow.getValue("title"));
+        type.setCategory((Integer) ow.getValue("category"));
+        type.setDamageBase((Double) ow.getValue("basedmg"));
+        type.setUseType((UseType) ow.getValue("use"));
+        type.setMaterialAmount1((Double) ow.getValue("qtd1"));
+        type.setMaterialAmount2((Double) ow.getValue("qtd2"));
+        type.setSize((WeaponSize) ow.getValue("size"));
+        type.setRange((Integer) ow.getValue("range"));
         getView().getModel().add(type);
     }
 

@@ -5,6 +5,7 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.MenuItemDAO;
 import br.com.rpgruler.data.entity.Menu;
 import br.com.rpgruler.data.entity.MenuItem;
@@ -13,7 +14,6 @@ import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import br.com.rpgruler.main.view.menuitem.bean.MenuItemBean;
 import br.com.rpgruler.main.view.menuitem.model.MenuItemModel;
 import br.com.rpgruler.main.view.object.ViewParameter;
@@ -75,12 +75,12 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
             if (gCBIcon.validateComponent()) {
                 if (gTClass.validateComponent()) {
                     if (gCBMenu.validateComponent()) {
-                        ViewWrapper vw = new ViewWrapper(this)
-                                .addValue(gTTitle.getText())
-                                .addValue(gCBIcon.getSelectedIndex())
-                                .addValue(gTClass.getText())
-                                .addValue((Menu) gCBMenu.getSelectedItem());
-                        bean.add(new BeanEvent(this, vw));
+                        ObjectWrapper ow = new ObjectWrapper(this)
+                                .addValue("title", gTTitle.getText())
+                                .addValue("icon", gCBIcon.getSelectedIndex())
+                                .addValue("class", gTClass.getText())
+                                .addValue("menu", (Menu) gCBMenu.getSelectedItem());
+                        bean.add(new BeanEvent(this, ow));
                     }
                 }
             }

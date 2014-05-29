@@ -1,12 +1,12 @@
 package br.com.rpgruler.main.view.menuitem.bean;
 
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.MenuDAO;
 import br.com.rpgruler.data.db.dao.MenuItemDAO;
 import br.com.rpgruler.data.entity.Menu;
 import br.com.rpgruler.data.entity.MenuItem;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import br.com.rpgruler.main.view.menuitem.MenuItemView;
 import java.io.File;
 import java.util.ArrayList;
@@ -49,11 +49,11 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      */
     @Override
     public void add(BeanEvent evt) throws Exception {
-        ViewWrapper vw = (ViewWrapper) evt.getValue();
-        String title = (String) vw.getValue(0);
-        Integer icon = (Integer) vw.getValue(1);
-        String itemClass = (String) vw.getValue(2);
-        Long menu = ((Menu) vw.getValue(3)).getId();
+        ObjectWrapper ow = (ObjectWrapper) evt.getValue();
+        String title = (String) ow.getValue("title");
+        Integer icon = (Integer) ow.getValue("icon");
+        String itemClass = (String) ow.getValue("class");
+        Long menu = ((Menu) ow.getValue("menu")).getId();
         MenuItem item = buildNew(title, icon, itemClass, menu);
         getView().getModel().add(item);
     }

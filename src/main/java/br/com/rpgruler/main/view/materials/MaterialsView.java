@@ -3,6 +3,7 @@ package br.com.rpgruler.main.view.materials;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.MaterialsDAO;
 import br.com.rpgruler.data.entity.PrimeMaterial;
 import br.com.rpgruler.main.MainScreen;
@@ -14,7 +15,6 @@ import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.materials.model.MaterialsModel;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,11 +71,11 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
         try {
             if (gTName.validateComponent()) {
                 if (nTWeight.validateComponent()) {
-                    ViewWrapper vw = new ViewWrapper(this)
-                            .addValue(gTName.getText())
-                            .addValue((Integer) jSpClass.getValue())
-                            .addValue(nTWeight.getDouble());
-                    bean.add(new BeanEvent(vw));
+                    ObjectWrapper ow = new ObjectWrapper(this)
+                            .addValue("name", gTName.getText())
+                            .addValue("category", (Integer) jSpCategory.getValue())
+                            .addValue("weight", nTWeight.getDouble());
+                    bean.add(new BeanEvent(ow));
                 }
             }
         } catch (Exception e) {
@@ -141,7 +141,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
         jLName = new javax.swing.JLabel();
         gTName = new br.com.gmp.comps.textfield.GTextField();
         jLClass = new javax.swing.JLabel();
-        jSpClass = new javax.swing.JSpinner();
+        jSpCategory = new javax.swing.JSpinner();
         jLWeight = new javax.swing.JLabel();
         nTWeight = new br.com.gmp.comps.textfield.NumericTextField();
         jBAdd = new javax.swing.JButton();
@@ -167,8 +167,8 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
         jLClass.setText("Classe:");
         jTBControls.add(jLClass);
 
-        jSpClass.setModel(new javax.swing.SpinnerNumberModel(1, 1, 50, 1));
-        jTBControls.add(jSpClass);
+        jSpCategory.setModel(new javax.swing.SpinnerNumberModel(1, 1, 50, 1));
+        jTBControls.add(jSpCategory);
 
         jLWeight.setText("Peso:");
         jTBControls.add(jLWeight);
@@ -231,7 +231,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
     private javax.swing.JLabel jLName;
     private javax.swing.JLabel jLWeight;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpClass;
+    private javax.swing.JSpinner jSpCategory;
     private javax.swing.JToolBar jTBControls;
     private br.com.gmp.comps.textfield.NumericTextField nTWeight;
     // End of variables declaration//GEN-END:variables

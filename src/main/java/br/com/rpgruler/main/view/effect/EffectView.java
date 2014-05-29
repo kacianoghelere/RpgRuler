@@ -3,6 +3,7 @@ package br.com.rpgruler.main.view.effect;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.EffectDAO;
 import br.com.rpgruler.data.entity.Effect;
 import br.com.rpgruler.data.entity.EffectType;
@@ -14,7 +15,6 @@ import br.com.rpgruler.main.view.effect.model.EffectModel;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,10 +68,10 @@ public class EffectView extends br.com.rpgruler.main.view.View implements TableV
         if (gTTitle.validateComponent() && nTStrength.validateComponent()
                 && gCBType.validateComponent()) {
             try {
-                ViewWrapper vw = new ViewWrapper(this)
-                        .addValue(gTTitle.getText())
-                        .addValue(nTStrength.getDouble())
-                        .addValue((EffectType) gCBType.getSelectedItem());
+                ObjectWrapper vw = new ObjectWrapper(this)
+                        .addValue("title", gTTitle.getText())
+                        .addValue("strength", nTStrength.getDouble())
+                        .addValue("type", (EffectType) gCBType.getSelectedItem());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
                 Logger.getLogger(EffectView.class.getName()).log(Level.SEVERE, null, ex);

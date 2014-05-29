@@ -76,7 +76,7 @@
             <Property name="text" type="java.lang.String" value="Classe:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpClass">
+        <Component class="javax.swing.JSpinner" name="jSpCategory">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="1" maximum="50" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>

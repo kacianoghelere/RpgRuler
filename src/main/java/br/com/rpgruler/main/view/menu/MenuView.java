@@ -6,6 +6,7 @@ import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.collections.Triad;
 import br.com.gmp.utils.interact.WindowUtil;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.MenuDAO;
 import br.com.rpgruler.data.entity.Menu;
 import br.com.rpgruler.main.MainScreen;
@@ -83,6 +84,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
                     Long parent = ((Menu) gCBParent.getSelectedItem()).getId();
                     int index = gCBIcon.getSelectedIndex();
                     triad = new Triad(gTTitle.getText(), index, parent);
+                    ObjectWrapper ow = new ObjectWrapper(parent);
                     bean.add(new BeanEvent(this, triad));
                 }
             }

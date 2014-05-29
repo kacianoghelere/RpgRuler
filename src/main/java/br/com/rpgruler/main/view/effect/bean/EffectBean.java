@@ -1,5 +1,6 @@
 package br.com.rpgruler.main.view.effect.bean;
 
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.EffectDAO;
 import br.com.rpgruler.data.db.dao.EffectTypeDAO;
 import br.com.rpgruler.data.entity.Effect;
@@ -7,7 +8,6 @@ import br.com.rpgruler.data.entity.EffectType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.effect.EffectView;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 
 /**
  * Bean de controle para EffectView
@@ -37,10 +37,10 @@ public class EffectBean extends ViewBean<EffectView> {
 
     @Override
     public void add(BeanEvent evt) throws Exception {
-        ViewWrapper vw = evt.getWrapper();
-        String title = (String) vw.getValue(0);
-        Double strength = (Double) vw.getValue(1);
-        EffectType type = (EffectType) vw.getValue(2);
+        ObjectWrapper vw = evt.getWrapper();
+        String title = (String) vw.getValue("title");
+        Double strength = (Double) vw.getValue("strength");
+        EffectType type = (EffectType) vw.getValue("type");
         Long nextID = getNextID();
         Effect effect = new Effect(nextID, title, strength, type);
         getView().getModel().add(effect);

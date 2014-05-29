@@ -299,7 +299,7 @@ public class WeaponType extends Type {
      *
      * @param wearType <code>WearType</code> Tipo de porte
      */
-    public void setWearType(UseType wearType) {
+    public void setUseType(UseType wearType) {
         this.wearType = wearType;
     }
 

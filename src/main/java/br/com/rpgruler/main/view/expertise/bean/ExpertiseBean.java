@@ -1,5 +1,6 @@
 package br.com.rpgruler.main.view.expertise.bean;
 
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.ExpertiseDAO;
 import br.com.rpgruler.data.db.dao.ExpertiseTypeDAO;
 import br.com.rpgruler.data.entity.Attribute;
@@ -9,7 +10,6 @@ import br.com.rpgruler.data.entity.Attributes;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.expertise.ExpertiseView;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import javax.swing.SwingUtilities;
 
 /**
@@ -48,12 +48,12 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
 
     @Override
     public void add(BeanEvent evt) throws Exception {
-        ViewWrapper vw = evt.getWrapper();
+        ObjectWrapper vw = evt.getWrapper();
         Long id = getNextID();
-        String title = (String) vw.getValue(0);
-        Attribute attr = (Attribute) vw.getValue(1);
-        ExpertiseType type = (ExpertiseType) vw.getValue(2);
-        Integer value = (Integer) vw.getValue(3);
+        String title = (String) vw.getValue("title");
+        Attribute attr = (Attribute) vw.getValue("attr");
+        ExpertiseType type = (ExpertiseType) vw.getValue("type");
+        Integer value = (Integer) vw.getValue("value");
         getView().getModel().add(new Expertise(id, title, type, attr, value));
     }
 

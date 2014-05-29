@@ -1,6 +1,7 @@
 package br.com.rpgruler.main.object;
 
-import br.com.rpgruler.main.view.object.ViewWrapper;
+import br.com.gmp.utils.object.ObjectWrapper;
+
 
 /**
  * Evento de transporte de dados
@@ -11,15 +12,15 @@ public class BeanEvent {
 
     private Object frame;
     private Object value;
-    private ViewWrapper wrapper;
+    private ObjectWrapper viewWrapper;    
 
     /**
      * Cria nova instancia de BeanEvent
      *
      * @param wrapper <code>ViewWrapper</code> Objeto de transporte
      */
-    public BeanEvent(ViewWrapper wrapper) {
-        this.wrapper = wrapper;
+    public BeanEvent(ObjectWrapper wrapper) {
+        this.viewWrapper = wrapper;
     }
 
     /**
@@ -72,19 +73,19 @@ public class BeanEvent {
     /**
      * Retorna o objeto de transporte
      *
-     * @return <code>ViewWrapper</code> Objeto de transporte
+     * @return <code>ObjectWrapper</code> Objeto de transporte
      */
-    public ViewWrapper getWrapper() {
-        return wrapper;
+    public ObjectWrapper getWrapper() {
+        return viewWrapper;
     }
 
     /**
      * Modifica o objeto de transporte
      *
-     * @param wrapper <code>ViewWrapper</code> Objeto de transporte
+     * @param viewWrapper <code>ObjectWrapper</code> Objeto de transporte
      */
-    public void setWrapper(ViewWrapper wrapper) {
-        this.wrapper = wrapper;
+    public void setViewWrapper(ObjectWrapper viewWrapper) {
+        this.viewWrapper = viewWrapper;
     }
 
 }

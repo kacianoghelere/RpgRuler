@@ -1,12 +1,12 @@
 package br.com.rpgruler.main.view.element.bean;
 
 import br.com.gmp.utils.image.ImageUtil;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.data.entity.Element;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.bean.ViewBean;
 import br.com.rpgruler.main.view.element.ElementView;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,11 +52,11 @@ public class ElementBean extends ViewBean<ElementView> {
     @Override
     public void add(BeanEvent evt) {
         try {
-            ViewWrapper vw = (ViewWrapper) evt.getValue();
-            String title = (String) vw.getValue(0);
-            int symbol = (int) vw.getValue(1);
-            Element bonus = (Element) vw.getValue(2);
-            Element weak = (Element) vw.getValue(3);
+            ObjectWrapper vw = evt.getWrapper();
+            String title = (String) vw.getValue("title");
+            int symbol = (int) vw.getValue("symbol");
+            Element bonus = (Element) vw.getValue("bonus");
+            Element weak = (Element) vw.getValue("weak");
             add(title, symbol, bonus, weak);
         } catch (Exception ex) {
             Logger.getLogger(ElementBean.class.getName()).log(Level.SEVERE, null, ex);

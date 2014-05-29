@@ -1,11 +1,11 @@
 package br.com.rpgruler.main.view.armortype.bean;
 
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.ArmorTypeDAO;
 import br.com.rpgruler.data.entity.ArmorType;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.armortype.ArmorTypeView;
 import br.com.rpgruler.main.view.bean.ViewBean;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,14 +43,14 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
     @Override
     public void add(BeanEvent evt) {
         try {
-            ViewWrapper vw = evt.getWrapper();
+            ObjectWrapper vw = evt.getWrapper();
             ArmorType type = new ArmorType();
             Long nextID = getNextID();
             type.setId(nextID);
-            type.setTitle((String) vw.getValue(0));
-            type.setMaterialAmount1((Double) vw.getValue(1));
-            type.setMaterialAmount2((Double) vw.getValue(2));
-            type.setBase((Double) vw.getValue(3));
+            type.setTitle((String) vw.getValue("title"));
+            type.setMaterialAmount1((Double) vw.getValue("qtd1"));
+            type.setMaterialAmount2((Double) vw.getValue("qtd2"));
+            type.setBase((Double) vw.getValue("resbase"));
             getView().getModel().add(type);
         } catch (Exception ex) {
             Logger.getLogger(ArmorTypeBean.class.getName()).log(Level.SEVERE, null, ex);

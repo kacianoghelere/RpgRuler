@@ -3,6 +3,7 @@ package br.com.rpgruler.main.view.weapontype;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.WeaponTypeDAO;
 import br.com.rpgruler.data.entity.WeaponType;
 import br.com.rpgruler.data.entity.UseType;
@@ -14,7 +15,6 @@ import br.com.rpgruler.main.view.View;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import br.com.rpgruler.main.view.weapontype.bean.WeaponTypeBean;
 import br.com.rpgruler.main.view.weapontype.model.WeaponTypeModel;
 import java.util.List;
@@ -74,15 +74,15 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                     && nTBaseDmg.validateComponent()
                     && gCBUse.validateComponent()
                     && gCBSize.validateComponent()) {
-                ViewWrapper vw = new ViewWrapper(this)
-                        .addValue(gTTitle.getText())
-                        .addValue((Integer) jSpinCategory.getValue())
-                        .addValue(nTBaseDmg.getDouble())
-                        .addValue(useModel.getSelectedItem())
-                        .addValue((Double) jSpQtd1.getValue())
-                        .addValue((Double) jSpQtd2.getValue())
-                        .addValue(sizeModel.getSelectedItem())
-                        .addValue((Integer) jSpRange.getValue());                
+                ObjectWrapper vw = new ObjectWrapper(this)
+                        .addValue("title",gTTitle.getText())
+                        .addValue("category",(Integer) jSpinCategory.getValue())
+                        .addValue("basedmg",nTBaseDmg.getDouble())
+                        .addValue("use",useModel.getSelectedItem())
+                        .addValue("qtd1",(Double) jSpQtd1.getValue())
+                        .addValue("qtd2",(Double) jSpQtd2.getValue())
+                        .addValue("size",sizeModel.getSelectedItem())
+                        .addValue("range",(Integer) jSpRange.getValue());                
                 bean.add(new BeanEvent(vw));
             }
         } catch (Exception ex) {

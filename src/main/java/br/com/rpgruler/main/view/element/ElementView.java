@@ -5,6 +5,7 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.image.ImageUtil;
 import br.com.gmp.utils.interact.WindowUtil;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.rpgruler.data.db.dao.ElementDAO;
 import br.com.rpgruler.data.entity.Element;
 import br.com.rpgruler.main.MainScreen;
@@ -15,7 +16,6 @@ import br.com.rpgruler.main.view.element.model.ElementModel;
 import br.com.rpgruler.main.view.interfaces.BeanListener;
 import br.com.rpgruler.main.view.interfaces.TableView;
 import br.com.rpgruler.main.view.object.ViewParameter;
-import br.com.rpgruler.main.view.object.ViewWrapper;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -114,12 +114,12 @@ public class ElementView extends View implements TableSource<Element>, TableView
             if (gTTitle.validateComponent() && (gCBSymbol.getSelectedIndex() >= 0)
                     && (gCBBonus.getSelectedIndex() >= 0)
                     && (gCBWeak.getSelectedIndex() >= 0)) {
-                ViewWrapper vw = new ViewWrapper(this)
-                        .addValue(gTTitle.getText())
-                        .addValue(gCBSymbol.getSelectedIndex())
-                        .addValue(bonusModel.getSelectedItem())
-                        .addValue(weakModel.getSelectedItem());
-                bean.add(new BeanEvent(this, vw));
+                ObjectWrapper vw = new ObjectWrapper(this)
+                        .addValue("title", gTTitle.getText())
+                        .addValue("symbol", gCBSymbol.getSelectedIndex())
+                        .addValue("bonus", bonusModel.getSelectedItem())
+                        .addValue("weak", weakModel.getSelectedItem());
+                bean.add(new BeanEvent(vw));
             }
         } catch (Exception e) {
             Logger.getLogger(ElementView.class.getName()).log(Level.SEVERE, null, e);
