@@ -120,13 +120,14 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
 
     @Override
     public Description getDescription() {
-        return new Description()
+        return new Description.Builder()
                 .setTitle(getTitle())
                 .setDescription("Tela para cadastro e controle de materiais")
                 .setSave("Remove os itens anteriores e salva os atuais")
                 .setProcces("Sem função")
                 .setClear("Limpa os campos")
-                .setLoad("Recarrega os dados na tela");
+                .setLoad("Recarrega os dados na tela")
+                .apply();
     }
 
     /**

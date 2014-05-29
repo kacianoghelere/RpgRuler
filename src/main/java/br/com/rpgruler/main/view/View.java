@@ -62,7 +62,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
      */
     private void initialize() {
         initComponents();
-        description = new Description("1", "2", "3", "4", "5", "6");
+        description = new Description.Builder("1", "2", "3", "4", "5", "6").apply();
         this.addInternalFrameListener(new InternalFrameAdapter() {
 
             @Override

@@ -81,10 +81,11 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
 
     @Override
     public Description getDescription() {
-        return new Description()
+        return new Description.Builder()
                 .setTitle(getTitle())
                 .setDescription("Tela de controle e cadastro de armas")
-                .setSave("Remove os itens antigos e salva os novos.");
+                .setSave("Remove os itens antigos e salva os novos.")
+                .apply();
     }
 
     /**

@@ -50,7 +50,7 @@ public class Description {
     /**
      * Cria nova instancia de Description
      */
-    public Description() {
+    private Description() {
         this.title = "--";
         this.description = "--";
         this.save = "--";
@@ -69,7 +69,7 @@ public class Description {
      * @param clear <code>String</code> Texto da função de limpar
      * @param load <code>String</code> Texto da função de carregar
      */
-    public Description(String title, String description, String save, String procces, String clear, String load) {
+    private Description(String title, String description, String save, String procces, String clear, String load) {
         this.title = title;
         this.description = description;
         this.save = save;
@@ -88,6 +88,110 @@ public class Description {
     }
 
     /**
+     * Classe construtora
+     */
+    public static class Builder {
+
+        private Description description;
+
+        /**
+         * Cria nova instancia de builder
+         */
+        public Builder() {
+            this.description = new Description();
+        }
+
+        /**
+         * Cria nova instancia de Builder
+         *
+         * @param title <code>String</code> Texto do titulo
+         * @param description <code>String</code> Texto da descrição
+         * @param save <code>String</code> Texto da função de salvar
+         * @param procces <code>String</code> Texto da função de processar
+         * @param clear <code>String</code> Texto da função de limpar
+         * @param load <code>String</code> Texto da função de carregar
+         */
+        public Builder(String title, String description, String save, String procces, String clear, String load) {
+            this.description = new Description(title, description, save, procces, clear, load);
+        }
+
+        /**
+         * Retorna a descrição construida
+         *
+         * @return
+         */
+        public Description apply() {
+            return this.description;
+        }
+
+        /**
+         * Modifica o Texto do titulo
+         *
+         * @param title <code>String</code> Texto do titulo
+         * @return <code>Builder</code> Construtor de descrição
+         */
+        public Builder setTitle(String title) {
+            this.description.setTitle(title);
+            return this;
+        }
+
+        /**
+         * Modifica o Texto da descrição
+         *
+         * @param description <code>String</code> Texto da descrição
+         * @return <code>Builder</code> Construtor de descrição
+         */
+        public Builder setDescription(String description) {
+            this.description.setDescription(description);
+            return this;
+        }
+
+        /**
+         * Modifica o Texto da função de salvar
+         *
+         * @param save <code>String</code> Texto da função de salvar
+         * @return <code>Builder</code> Construtor de descrição
+         */
+        public Builder setSave(String save) {
+            this.description.setSave(save);
+            return this;
+        }
+
+        /**
+         * Modifica o Texto da função de processar
+         *
+         * @param procces <code>String</code> Texto da função de processar
+         * @return <code>Builder</code> Construtor de descrição
+         */
+        public Builder setProcces(String procces) {
+            this.description.setProcces(procces);
+            return this;
+        }
+
+        /**
+         * Modifica o Texto da função de limpar
+         *
+         * @param clear <code>String</code> Texto da função de limpar
+         * @return <code>Builder</code> Construtor de descrição
+         */
+        public Builder setClear(String clear) {
+            this.description.setClear(clear);
+            return this;
+        }
+
+        /**
+         * Modifica o Texto da função de carregar
+         *
+         * @param load <code>String</code> Texto da função de carregar
+         * @return <code>Builder</code> Construtor de descrição
+         */
+        public Builder setLoad(String load) {
+            this.description.setLoad(load);
+            return this;
+        }
+    }
+
+    /**
      * Retorna o Texto do titulo
      *
      * @return <code>String</code> Texto do titulo
@@ -102,7 +206,7 @@ public class Description {
      * @param title <code>String</code> Texto do titulo
      * @return <code>Description</code> Construtor de descrição
      */
-    public Description setTitle(String title) {
+    private Description setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -122,7 +226,7 @@ public class Description {
      * @param description <code>String</code> Texto da descrição
      * @return <code>Description</code> Construtor de descrição
      */
-    public Description setDescription(String description) {
+    private Description setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -142,7 +246,7 @@ public class Description {
      * @param save <code>String</code> Texto da função de salvar
      * @return <code>Description</code> Construtor de descrição
      */
-    public Description setSave(String save) {
+    private Description setSave(String save) {
         this.save = save;
         return this;
     }
@@ -162,7 +266,7 @@ public class Description {
      * @param procces <code>String</code> Texto da função de processar
      * @return <code>Description</code> Construtor de descrição
      */
-    public Description setProcces(String procces) {
+    private Description setProcces(String procces) {
         this.procces = procces;
         return this;
     }
@@ -182,7 +286,7 @@ public class Description {
      * @param clear <code>String</code> Texto da função de limpar
      * @return <code>Description</code> Construtor de descrição
      */
-    public Description setClear(String clear) {
+    private Description setClear(String clear) {
         this.clear = clear;
         return this;
     }
@@ -202,7 +306,7 @@ public class Description {
      * @param load <code>String</code> Texto da função de carregar
      * @return <code>Description</code> Construtor de descrição
      */
-    public Description setLoad(String load) {
+    private Description setLoad(String load) {
         this.load = load;
         return this;
     }

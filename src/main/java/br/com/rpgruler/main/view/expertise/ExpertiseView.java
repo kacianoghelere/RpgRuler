@@ -114,13 +114,14 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
 
     @Override
     public Description getDescription() {
-        return new Description()
+        return new Description.Builder()
                 .setTitle(getTitle())
                 .setDescription("Tela para cadastro e controle de pericias")
                 .setSave("Remove todos os itens anteriores e salva os novos.")
                 .setProcces("--")
                 .setClear("Limpa os campos")
-                .setLoad("--");
+                .setLoad("--")
+                .apply();
     }
 
     /**
