@@ -110,7 +110,7 @@ public class PerkSubView extends SubView {
         gTTitle = new br.com.gmp.comps.textfield.GTextField();
         jLTitle = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        gTADesc = new br.com.gmp.comps.textarea.GMPTextArea();
+        gTADesc = new br.com.gmp.comps.textarea.GTextArea();
         jBAdd = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
         jChInherited = new javax.swing.JCheckBox();
@@ -128,7 +128,7 @@ public class PerkSubView extends SubView {
 
         gTADesc.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
         gTADesc.setColumns(20);
-        gTADesc.setMaximumlength(255);
+        gTADesc.setMaximum(255);
         gTADesc.setRows(5);
         jScrollPane2.setViewportView(gTADesc);
 
@@ -229,7 +229,7 @@ public class PerkSubView extends SubView {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;
-    private br.com.gmp.comps.textarea.GMPTextArea gTADesc;
+    private br.com.gmp.comps.textarea.GTextArea gTADesc;
     private br.com.gmp.comps.textfield.GTextField gTID;
     private br.com.gmp.comps.textfield.GTextField gTTitle;
     private javax.swing.JButton jBAdd;

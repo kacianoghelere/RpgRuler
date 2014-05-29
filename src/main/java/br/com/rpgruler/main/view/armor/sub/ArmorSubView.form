@@ -635,7 +635,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="br.com.gmp.comps.textarea.GMPTextArea" name="gTADesc">
+        <Component class="br.com.gmp.comps.textarea.GTextArea" name="gTADesc">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>

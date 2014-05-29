@@ -330,7 +330,7 @@ public class ArmorSubView extends SubView {
         jBAdd = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
         jSPDesc = new javax.swing.JScrollPane();
-        gTADesc = new br.com.gmp.comps.textarea.GMPTextArea();
+        gTADesc = new br.com.gmp.comps.textarea.GTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -786,7 +786,7 @@ public class ArmorSubView extends SubView {
     private br.com.gmp.comps.combobox.GComboBox gCBMat2;
     private br.com.gmp.comps.combobox.GComboBox gCBRest;
     private br.com.gmp.comps.combobox.GComboBox gCBType;
-    private br.com.gmp.comps.textarea.GMPTextArea gTADesc;
+    private br.com.gmp.comps.textarea.GTextArea gTADesc;
     private br.com.gmp.comps.textfield.GTextField gTName;
     private br.com.gmp.comps.table.GTable gTblEffects;
     private br.com.gmp.comps.table.GTable gTblRestrictions;
