@@ -84,6 +84,8 @@ public class MenuBuilder {
      */
     @Intercept
     public void build(List<Menu> menus, List<MenuItem> items, boolean execute) throws ClassNotFoundException, InstantiationException {
+        menus.removeAll(Collections.singleton(null));
+        items.removeAll(Collections.singleton(null));
         Collections.sort(menus);
         Collections.sort(items);
         buildMenu(menus);
@@ -96,7 +98,6 @@ public class MenuBuilder {
      *
      * @param menus <code>List(Menu)</code> Listas de menus
      */
-    @Intercept
     public void buildMenu(List<Menu> menus) {
         root.removeAll();
         Collections.sort(menus);
@@ -116,7 +117,6 @@ public class MenuBuilder {
      * @param parent <code>JMenu</code> Menu pai
      * @param menu <code>Menu</code> Menu à ser inserido
      */
-    @Intercept
     private void insertMenu(JMenu parent, Menu menu) {
         JMenu jmenu = generateMenu(menu);
         parent.add(jmenu);
@@ -151,7 +151,6 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
-    @Intercept
     public void buildItems(List<MenuItem> items, boolean execute) throws ClassNotFoundException, InstantiationException {
         //Collections.sort(items);
         for (MenuItem item : items) {
@@ -195,7 +194,6 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe não encontrada
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
-    @Intercept
     private void insertItem(JMenu menu, MenuItem item, boolean execute) throws ClassNotFoundException, InstantiationException {
         JMenuItem jitem = generateItem(item, execute);
         menu.add(jitem);
@@ -207,7 +205,6 @@ public class MenuBuilder {
      * @param menu <code>Menu</code> Objeto de Menu
      * @return <code>JMenu</code> JMenu gerado
      */
-    @Intercept
     public JMenu generateMenu(Menu menu) {
         JMenu jmenu = new JMenu();
         jmenu.setName(menu.toString());
@@ -225,7 +222,6 @@ public class MenuBuilder {
      * @throws ClassNotFoundException Exceção de classe não encontrada
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
-    @Intercept
     public JMenuItem generateItem(final MenuItem view, boolean execute) throws ClassNotFoundException, InstantiationException {
         JMenuItem item = new JMenuItem();
         item.setText(view.toString());

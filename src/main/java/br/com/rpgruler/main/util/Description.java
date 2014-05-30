@@ -118,7 +118,7 @@ public class Description {
         /**
          * Retorna a descrição construida
          *
-         * @return
+         * @return <code>Description</code> Descrição construida
          */
         public Description apply() {
             return this.description;
