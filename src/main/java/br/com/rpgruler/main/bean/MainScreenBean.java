@@ -5,6 +5,7 @@ import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.gmp.utils.reflection.ReflectionUtil;
 import br.com.rpgruler.data.entity.MenuItem;
 import br.com.rpgruler.main.MainScreen;
+import br.com.rpgruler.main.interfaces.Main;
 import br.com.rpgruler.main.interfaces.MainListener;
 import br.com.rpgruler.main.object.BeanEvent;
 import br.com.rpgruler.main.view.View;
@@ -167,7 +168,7 @@ public class MainScreenBean implements MainListener {
                 Logger.getLogger(MainScreenBean.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            System.out.println("View já está aberta");
+            screen.printTypedMsg("View já carregada!", Main.INFORMATIVE_MSG);
         }
     }
 

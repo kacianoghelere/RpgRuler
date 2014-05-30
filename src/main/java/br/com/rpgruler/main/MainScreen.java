@@ -1,5 +1,6 @@
 package br.com.rpgruler.main;
 
+import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
 import br.com.rpgruler.main.bean.MainScreenBean;
@@ -216,6 +217,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @param text <code>String</code> Texto à ser impresso
      * @param type <code>int</code> Tipo da mensagem
      */
+    @Intercept
     public void printTypedMsg(String text, int type) {
         switch (type) {
             case 1:
