@@ -141,7 +141,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             try {
                 describe();
             } catch (Exception ex) {
-                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                throwException(ex);
             }
         }
 
@@ -193,7 +193,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     /**
-     * 
+     *
      * @param alias Sigla da View
      */
     public void setAlias(String alias) {
@@ -210,12 +210,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().commit(new BeanEvent(View.this, null));
                         showMessage("Dados salvos.", MainScreen.SUCCESS_MSG);
                     } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                        throwException(ex);
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            throwException(ex);
         }
     }
 
@@ -229,12 +229,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().process(new BeanEvent(View.this, null));
                         showMessage("Dados processados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                        throwException(ex);
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            throwException(ex);
         }
     }
 
@@ -248,12 +248,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().clear(new BeanEvent(View.this, null));
                         showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                        throwException(ex);
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            throwException(ex);
         }
     }
 
@@ -267,13 +267,23 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().load(new BeanEvent(View.this, null));
                         showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
-                        Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                        throwException(ex);
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            throwException(ex);
         }
+    }
+
+    /**
+     * Método padronizado para lançar exceções
+     *
+     * @param ex <code>Exception</code> Exceção a ser lançada
+     */
+    protected void throwException(Exception ex) {
+        Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        this.showMessage(ex.getMessage(), MainScreen.ERROR_MSG);
     }
 
     @Override

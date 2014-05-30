@@ -39,55 +39,6 @@ import javax.swing.JMenu;
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
 
-    /**
-     * Tipo de mensagem para erros
-     */
-    public static int ERROR_MSG = 4;
-
-    /**
-     * Tipo de mensagem para informação
-     */
-    public static int INFORMATIVE_MSG = 1;
-
-    /**
-     * Tipo de mensagem para questionamento
-     */
-    public static int QUESTION_MSG = 2;
-
-    /**
-     * Tipo de mensagem para secesso
-     */
-    public static int SUCCESS_MSG = 5;
-
-    /**
-     * Tipo de mensagem para avisos
-     */
-    public static int WARNING_MSG = 3;
-
-    /**
-     * Icone de mensagem para erros
-     */
-    public static String ERROR_ICON = "/ComponentIcons/transition/toolbar/4.png";
-
-    /**
-     * Icone de mensagem para informação
-     */
-    public static String INFORMATIVE_ICON = "/ComponentIcons/transition/toolbar/1.png";
-
-    /**
-     * Icone de mensagem para questionamento
-     */
-    public static String QUESTION_ICON = "/ComponentIcons/transition/toolbar/2.png";
-
-    /**
-     * Icone de mensagem para secesso
-     */
-    public static String SUCCESS_ICON = "/ComponentIcons/transition/toolbar/5.png";
-
-    /**
-     * Icone de mensagem para avisos
-     */
-    public static String WARNING_ICON = "/ComponentIcons/transition/toolbar/3.png";
     private final String ICON = "/dices/d12-icon.png";
     private MainListener listener;
     private Injector injector;
