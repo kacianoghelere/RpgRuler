@@ -1,6 +1,6 @@
 package br.com.rpgruler.data.entity;
 
-import br.com.gmp.comps.annotations.ColumnName;
+import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
